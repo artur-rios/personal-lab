@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 290" role="img" aria-labelledby="ht-title">
+  <title id="ht-title">Two ways a hash table handles collisions, with eight buckets. In separate chaining, each bucket holds a short list, so fox and dog, which both hash to bucket 1, sit in the same chain. In open addressing with linear probing, every key lives in the array itself: dog also hashes to slot 1, finds it taken by fox, and moves on to the next free slot, 2.</title>
+  <defs>
+    <marker id="ht-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Separate chaining -->
+  <text class="strong" x="0" y="18">Separate chaining</text>
+  <text class="sm" x="0" y="36">bucket = hash(key) mod 8</text>
+  <g>
+    <text class="mono" x="50" y="64" text-anchor="end">0</text>
+    <text class="mono" x="50" y="92" text-anchor="end">1</text>
+    <text class="mono" x="50" y="120" text-anchor="end">2</text>
+    <text class="mono" x="50" y="148" text-anchor="end">3</text>
+    <text class="mono" x="50" y="176" text-anchor="end">4</text>
+    <text class="mono" x="50" y="204" text-anchor="end">5</text>
+    <text class="mono" x="50" y="232" text-anchor="end">6</text>
+    <text class="mono" x="50" y="260" text-anchor="end">7</text>
+    <rect class="box" x="60" y="46" width="40" height="28"/>
+    <rect class="box" x="60" y="74" width="40" height="28"/>
+    <rect class="box" x="60" y="102" width="40" height="28"/>
+    <rect class="box" x="60" y="130" width="40" height="28"/>
+    <rect class="box" x="60" y="158" width="40" height="28"/>
+    <rect class="box" x="60" y="186" width="40" height="28"/>
+    <rect class="box" x="60" y="214" width="40" height="28"/>
+    <rect class="box" x="60" y="242" width="40" height="28"/>
+  </g>
+  <line class="wire" x1="80" y1="88" x2="128" y2="88" marker-end="url(#ht-arrow)"/>
+  <rect class="box-accent" x="130" y="77" width="64" height="22" rx="4"/>
+  <text class="mono" x="162" y="92" text-anchor="middle">fox</text>
+  <line class="wire" x1="194" y1="88" x2="218" y2="88" marker-end="url(#ht-arrow)"/>
+  <rect class="box-accent" x="220" y="77" width="64" height="22" rx="4"/>
+  <text class="mono" x="252" y="92" text-anchor="middle">dog</text>
+  <line class="wire" x1="80" y1="144" x2="128" y2="144" marker-end="url(#ht-arrow)"/>
+  <rect class="box-accent" x="130" y="133" width="64" height="22" rx="4"/>
+  <text class="mono" x="162" y="148" text-anchor="middle">the</text>
+  <line class="wire" x1="80" y1="228" x2="128" y2="228" marker-end="url(#ht-arrow)"/>
+  <rect class="box-accent" x="130" y="217" width="64" height="22" rx="4"/>
+  <text class="mono" x="162" y="232" text-anchor="middle">quick</text>
+  <line class="wire" x1="80" y1="256" x2="128" y2="256" marker-end="url(#ht-arrow)"/>
+  <rect class="box-accent" x="130" y="245" width="64" height="22" rx="4"/>
+  <text class="mono" x="162" y="260" text-anchor="middle">over</text>
+
+  <!-- Open addressing -->
+  <text class="strong" x="360" y="18">Open addressing</text>
+  <text class="sm" x="360" y="36">linear probing: if taken, try the next slot</text>
+  <g>
+    <text class="mono" x="430" y="64" text-anchor="end">0</text>
+    <text class="mono" x="430" y="92" text-anchor="end">1</text>
+    <text class="mono" x="430" y="120" text-anchor="end">2</text>
+    <text class="mono" x="430" y="148" text-anchor="end">3</text>
+    <text class="mono" x="430" y="176" text-anchor="end">4</text>
+    <text class="mono" x="430" y="204" text-anchor="end">5</text>
+    <text class="mono" x="430" y="232" text-anchor="end">6</text>
+    <text class="mono" x="430" y="260" text-anchor="end">7</text>
+    <rect class="box" x="440" y="46" width="100" height="28"/>
+    <rect class="box-accent" x="440" y="74" width="100" height="28"/>
+    <rect class="solid" x="440" y="102" width="100" height="28"/>
+    <rect class="box-accent" x="440" y="130" width="100" height="28"/>
+    <rect class="box" x="440" y="158" width="100" height="28"/>
+    <rect class="box" x="440" y="186" width="100" height="28"/>
+    <rect class="box-accent" x="440" y="214" width="100" height="28"/>
+    <rect class="box-accent" x="440" y="242" width="100" height="28"/>
+  </g>
+  <text class="mono" x="490" y="92" text-anchor="middle">fox</text>
+  <text class="mono on-solid" x="490" y="120" text-anchor="middle">dog</text>
+  <text class="mono" x="490" y="148" text-anchor="middle">the</text>
+  <text class="mono" x="490" y="232" text-anchor="middle">quick</text>
+  <text class="mono" x="490" y="260" text-anchor="middle">over</text>
+  <path class="wire" d="M542 88 C582 88 582 116 544 116" marker-end="url(#ht-arrow)"/>
+  <text class="sm" x="590" y="100">dog hashes</text>
+  <text class="sm" x="590" y="114">to 1: taken</text>
+</svg>

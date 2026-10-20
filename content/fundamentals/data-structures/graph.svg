@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 230" role="img" aria-labelledby="gr-title">
+  <title id="gr-title">One undirected graph in two representations. The graph has vertices A, B, C and D and edges A–B, A–C, B–C and C–D. As adjacency lists: A connects to B and C; B to A and C; C to A, B and D; D to C. As an adjacency matrix, a four-by-four grid has a 1 wherever two vertices are joined and 0 elsewhere.</title>
+
+  <!-- The graph -->
+  <text class="sm" x="0" y="16">The graph</text>
+  <line class="wire" x1="50" y1="60" x2="190" y2="60"/>
+  <line class="wire" x1="50" y1="60" x2="50" y2="180"/>
+  <line class="wire" x1="190" y1="60" x2="50" y2="180"/>
+  <line class="wire" x1="50" y1="180" x2="190" y2="180"/>
+  <circle class="solid" cx="50" cy="60" r="20"/>
+  <text class="strong on-solid" x="50" y="65" text-anchor="middle">A</text>
+  <circle class="solid" cx="190" cy="60" r="20"/>
+  <text class="strong on-solid" x="190" y="65" text-anchor="middle">B</text>
+  <circle class="solid" cx="50" cy="180" r="20"/>
+  <text class="strong on-solid" x="50" y="185" text-anchor="middle">C</text>
+  <circle class="solid" cx="190" cy="180" r="20"/>
+  <text class="strong on-solid" x="190" y="185" text-anchor="middle">D</text>
+
+  <!-- Adjacency lists -->
+  <text class="sm" x="260" y="16">Adjacency lists</text>
+  <text class="mono" x="260" y="64">A → B, C</text>
+  <text class="mono" x="260" y="104">B → A, C</text>
+  <text class="mono" x="260" y="144">C → A, B, D</text>
+  <text class="mono" x="260" y="184">D → C</text>
+  <text class="sm" x="260" y="216">space grows with the edges</text>
+
+  <!-- Adjacency matrix -->
+  <text class="sm" x="470" y="16">Adjacency matrix</text>
+  <text class="mono" x="514" y="40" text-anchor="middle">A</text>
+  <text class="mono" x="550" y="40" text-anchor="middle">B</text>
+  <text class="mono" x="586" y="40" text-anchor="middle">C</text>
+  <text class="mono" x="622" y="40" text-anchor="middle">D</text>
+  <text class="mono" x="484" y="68" text-anchor="middle">A</text>
+  <text class="mono" x="484" y="104" text-anchor="middle">B</text>
+  <text class="mono" x="484" y="140" text-anchor="middle">C</text>
+  <text class="mono" x="484" y="176" text-anchor="middle">D</text>
+  <rect class="box" x="496" y="46" width="144" height="144"/>
+  <line class="sep" x1="532" y1="46" x2="532" y2="190"/>
+  <line class="sep" x1="568" y1="46" x2="568" y2="190"/>
+  <line class="sep" x1="604" y1="46" x2="604" y2="190"/>
+  <line class="sep" x1="496" y1="82" x2="640" y2="82"/>
+  <line class="sep" x1="496" y1="118" x2="640" y2="118"/>
+  <line class="sep" x1="496" y1="154" x2="640" y2="154"/>
+  <text class="sm" x="514" y="68" text-anchor="middle">0</text>
+  <text class="accent" x="550" y="68" text-anchor="middle">1</text>
+  <text class="accent" x="586" y="68" text-anchor="middle">1</text>
+  <text class="sm" x="622" y="68" text-anchor="middle">0</text>
+  <text class="accent" x="514" y="104" text-anchor="middle">1</text>
+  <text class="sm" x="550" y="104" text-anchor="middle">0</text>
+  <text class="accent" x="586" y="104" text-anchor="middle">1</text>
+  <text class="sm" x="622" y="104" text-anchor="middle">0</text>
+  <text class="accent" x="514" y="140" text-anchor="middle">1</text>
+  <text class="accent" x="550" y="140" text-anchor="middle">1</text>
+  <text class="sm" x="586" y="140" text-anchor="middle">0</text>
+  <text class="accent" x="622" y="140" text-anchor="middle">1</text>
+  <text class="sm" x="514" y="176" text-anchor="middle">0</text>
+  <text class="sm" x="550" y="176" text-anchor="middle">0</text>
+  <text class="accent" x="586" y="176" text-anchor="middle">1</text>
+  <text class="sm" x="622" y="176" text-anchor="middle">0</text>
+  <text class="sm" x="470" y="216">space grows with vertices²</text>
+</svg>
