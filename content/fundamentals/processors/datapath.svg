@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 262" role="img" aria-labelledby="dp-title">
+  <title id="dp-title">The five stages of the classic RISC pipeline. Fetch reads the instruction at the program counter from the instruction cache. Decode reads the source registers from the register file. Execute uses the ALU to compute a result or an address. Memory loads from or stores to the data cache if needed. Write back puts the result into a register.</title>
+  <defs>
+    <marker id="dp-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="sm" x="58" y="48" text-anchor="middle">IF</text>
+  <text class="sm" x="199" y="48" text-anchor="middle">ID</text>
+  <text class="sm" x="340" y="48" text-anchor="middle">EX</text>
+  <text class="sm" x="481" y="48" text-anchor="middle">MEM</text>
+  <text class="sm" x="622" y="48" text-anchor="middle">WB</text>
+
+  <rect class="box-accent" x="0" y="58" width="116" height="92" rx="8"/>
+  <text class="strong" x="58" y="86" text-anchor="middle">Fetch</text>
+  <text class="sm" x="58" y="108" text-anchor="middle">read instruction</text>
+  <text class="sm" x="58" y="126" text-anchor="middle">at PC; PC += 4</text>
+  <line class="wire" x1="116" y1="104" x2="139" y2="104" marker-end="url(#dp-arrow)"/>
+
+  <rect class="box-accent" x="141" y="58" width="116" height="92" rx="8"/>
+  <text class="strong" x="199" y="86" text-anchor="middle">Decode</text>
+  <text class="sm" x="199" y="108" text-anchor="middle">work out the op,</text>
+  <text class="sm" x="199" y="126" text-anchor="middle">read registers</text>
+  <line class="wire" x1="257" y1="104" x2="280" y2="104" marker-end="url(#dp-arrow)"/>
+
+  <rect class="box-accent" x="282" y="58" width="116" height="92" rx="8"/>
+  <text class="strong" x="340" y="86" text-anchor="middle">Execute</text>
+  <text class="sm" x="340" y="108" text-anchor="middle">ALU computes a</text>
+  <text class="sm" x="340" y="126" text-anchor="middle">result or address</text>
+  <line class="wire" x1="398" y1="104" x2="421" y2="104" marker-end="url(#dp-arrow)"/>
+
+  <rect class="box-accent" x="423" y="58" width="116" height="92" rx="8"/>
+  <text class="strong" x="481" y="86" text-anchor="middle">Memory</text>
+  <text class="sm" x="481" y="108" text-anchor="middle">load or store,</text>
+  <text class="sm" x="481" y="126" text-anchor="middle">if the op needs it</text>
+  <line class="wire" x1="539" y1="104" x2="562" y2="104" marker-end="url(#dp-arrow)"/>
+
+  <rect class="box-accent" x="564" y="58" width="116" height="92" rx="8"/>
+  <text class="strong" x="622" y="86" text-anchor="middle">Write back</text>
+  <text class="sm" x="622" y="108" text-anchor="middle">result into</text>
+  <text class="sm" x="622" y="126" text-anchor="middle">a register</text>
+
+  <!-- Shared state -->
+  <rect class="box" x="0" y="182" width="116" height="36" rx="6"/>
+  <text x="58" y="205" text-anchor="middle">I-cache</text>
+  <line class="wire" x1="58" y1="182" x2="58" y2="152" marker-end="url(#dp-arrow)"/>
+
+  <rect class="box" x="141" y="182" width="116" height="36" rx="6"/>
+  <text x="199" y="205" text-anchor="middle">Register file</text>
+  <line class="wire" x1="199" y1="182" x2="199" y2="152" marker-end="url(#dp-arrow)"/>
+
+  <rect class="box" x="423" y="182" width="116" height="36" rx="6"/>
+  <text x="481" y="205" text-anchor="middle">D-cache</text>
+  <line class="wire" x1="481" y1="152" x2="481" y2="180" marker-start="url(#dp-arrow)" marker-end="url(#dp-arrow)"/>
+
+  <path class="wire" d="M622 150 V240 H230 V220" marker-end="url(#dp-arrow)"/>
+  <text class="sm" x="426" y="256" text-anchor="middle">write the result</text>
+</svg>
