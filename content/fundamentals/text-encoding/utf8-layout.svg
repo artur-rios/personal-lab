@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 224" role="img" aria-labelledby="u8-title">
+  <title id="u8-title">The four UTF-8 byte patterns. Code points U+0000 to U+007F use one byte, 0xxxxxxx, carrying 7 bits. U+0080 to U+07FF use two bytes, 110xxxxx 10xxxxxx, carrying 11 bits. U+0800 to U+FFFF use three bytes, 1110xxxx 10xxxxxx 10xxxxxx, carrying 16 bits. U+10000 to U+10FFFF use four bytes, 11110xxx followed by three 10xxxxxx bytes, carrying 21 bits. The x positions hold the bits of the code point.</title>
+
+  <text class="sm" x="0" y="16">Code points</text>
+  <text class="sm" x="202" y="16" text-anchor="middle">Byte 1</text>
+  <text class="sm" x="317" y="16" text-anchor="middle">Byte 2</text>
+  <text class="sm" x="432" y="16" text-anchor="middle">Byte 3</text>
+  <text class="sm" x="547" y="16" text-anchor="middle">Byte 4</text>
+  <text class="sm" x="680" y="16" text-anchor="end">Bits</text>
+
+  <text class="mono" x="0" y="53">U+0000–U+007F</text>
+  <rect class="box-accent" x="150" y="30" width="105" height="36" rx="4"/>
+  <text class="mono" x="202" y="53" text-anchor="middle"><tspan class="accent">0</tspan>xxxxxxx</text>
+  <text x="680" y="53" text-anchor="end">7</text>
+
+  <text class="mono" x="0" y="101">U+0080–U+07FF</text>
+  <rect class="box-accent" x="150" y="78" width="105" height="36" rx="4"/>
+  <text class="mono" x="202" y="101" text-anchor="middle"><tspan class="accent">110</tspan>xxxxx</text>
+  <rect class="box" x="265" y="78" width="105" height="36" rx="4"/>
+  <text class="mono" x="317" y="101" text-anchor="middle"><tspan class="accent">10</tspan>xxxxxx</text>
+  <text x="680" y="101" text-anchor="end">11</text>
+
+  <text class="mono" x="0" y="149">U+0800–U+FFFF</text>
+  <rect class="box-accent" x="150" y="126" width="105" height="36" rx="4"/>
+  <text class="mono" x="202" y="149" text-anchor="middle"><tspan class="accent">1110</tspan>xxxx</text>
+  <rect class="box" x="265" y="126" width="105" height="36" rx="4"/>
+  <text class="mono" x="317" y="149" text-anchor="middle"><tspan class="accent">10</tspan>xxxxxx</text>
+  <rect class="box" x="380" y="126" width="105" height="36" rx="4"/>
+  <text class="mono" x="432" y="149" text-anchor="middle"><tspan class="accent">10</tspan>xxxxxx</text>
+  <text x="680" y="149" text-anchor="end">16</text>
+
+  <text class="mono" x="0" y="197">U+10000–U+10FFFF</text>
+  <rect class="box-accent" x="150" y="174" width="105" height="36" rx="4"/>
+  <text class="mono" x="202" y="197" text-anchor="middle"><tspan class="accent">11110</tspan>xxx</text>
+  <rect class="box" x="265" y="174" width="105" height="36" rx="4"/>
+  <text class="mono" x="317" y="197" text-anchor="middle"><tspan class="accent">10</tspan>xxxxxx</text>
+  <rect class="box" x="380" y="174" width="105" height="36" rx="4"/>
+  <text class="mono" x="432" y="197" text-anchor="middle"><tspan class="accent">10</tspan>xxxxxx</text>
+  <rect class="box" x="495" y="174" width="105" height="36" rx="4"/>
+  <text class="mono" x="547" y="197" text-anchor="middle"><tspan class="accent">10</tspan>xxxxxx</text>
+  <text x="680" y="197" text-anchor="end">21</text>
+</svg>

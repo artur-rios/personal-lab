@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 348" role="img" aria-labelledby="lay-title">
+  <title id="lay-title">The layers between a character and the bytes that store it, using the euro sign. The abstract character EURO SIGN is assigned the code point U+20AC in Unicode. An encoding form turns the code point into code units: three 8-bit units E2 82 AC in UTF-8, or one 16-bit unit 20AC in UTF-16. An encoding scheme fixes the byte order: UTF-16 big-endian stores 20 AC, little-endian AC 20. Finally a font draws a glyph for the character.</title>
+  <defs>
+    <marker id="lay-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="0" y="0" width="680" height="54" rx="8"/>
+  <text class="strong" x="16" y="24">Abstract character</text>
+  <text class="sm" x="16" y="42">what the writer means</text>
+  <text x="664" y="33" text-anchor="end">EURO SIGN</text>
+  <line class="wire" x1="340" y1="54" x2="340" y2="66" marker-end="url(#lay-arrow)"/>
+
+  <rect class="box-accent" x="0" y="68" width="680" height="54" rx="8"/>
+  <text class="strong" x="16" y="92">Code point</text>
+  <text class="sm" x="16" y="110">the number Unicode assigns it</text>
+  <text class="mono" x="664" y="100" text-anchor="end">U+20AC</text>
+  <line class="wire" x1="340" y1="122" x2="340" y2="134" marker-end="url(#lay-arrow)"/>
+
+  <rect class="box-accent" x="0" y="136" width="680" height="54" rx="8"/>
+  <text class="strong" x="16" y="160">Encoding form</text>
+  <text class="sm" x="16" y="178">code units of a fixed size</text>
+  <text class="mono" x="664" y="160" text-anchor="end">UTF-8: E2 82 AC (three 8-bit units)</text>
+  <text class="mono" x="664" y="178" text-anchor="end">UTF-16: 20AC (one 16-bit unit)</text>
+  <line class="wire" x1="340" y1="190" x2="340" y2="202" marker-end="url(#lay-arrow)"/>
+
+  <rect class="box-accent" x="0" y="204" width="680" height="54" rx="8"/>
+  <text class="strong" x="16" y="228">Encoding scheme</text>
+  <text class="sm" x="16" y="246">bytes, in a fixed order</text>
+  <text class="mono" x="664" y="228" text-anchor="end">UTF-8: E2 82 AC</text>
+  <text class="mono" x="664" y="246" text-anchor="end">UTF-16BE: 20 AC   UTF-16LE: AC 20</text>
+  <line class="zone" x1="340" y1="258" x2="340" y2="288"/>
+  <text class="sm" x="352" y="278">decode to code points; a font draws a glyph</text>
+
+  <rect class="solid" x="0" y="290" width="680" height="54" rx="8"/>
+  <text class="strong on-solid" x="16" y="314">Glyph</text>
+  <text class="sm on-solid" x="16" y="332">the shape a font draws</text>
+  <text class="strong on-solid" x="664" y="324" text-anchor="end" style="font-size:24px">€</text>
+</svg>

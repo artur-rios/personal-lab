@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 240" role="img" aria-labelledby="mj-title">
+  <title id="mj-title">How mojibake happens. The word café is saved in UTF-8 as five bytes: 63, 61, 66, C3 and A9; the é takes two bytes. Decoded as UTF-8, the bytes give back café. Decoded as Windows-1252, which maps each of these bytes to one character, C3 becomes Ã and A9 becomes ©, giving cafÃ©.</title>
+
+  <text class="sm" x="0" y="16">"café" saved as UTF-8</text>
+  <rect class="box" x="150" y="26" width="70" height="40" rx="4"/>
+  <rect class="box" x="230" y="26" width="70" height="40" rx="4"/>
+  <rect class="box" x="310" y="26" width="70" height="40" rx="4"/>
+  <rect class="box-accent" x="390" y="26" width="70" height="40" rx="4"/>
+  <rect class="box-accent" x="470" y="26" width="70" height="40" rx="4"/>
+  <text class="mono" x="185" y="51" text-anchor="middle">63</text>
+  <text class="mono" x="265" y="51" text-anchor="middle">61</text>
+  <text class="mono" x="345" y="51" text-anchor="middle">66</text>
+  <text class="mono" x="425" y="51" text-anchor="middle">C3</text>
+  <text class="mono" x="505" y="51" text-anchor="middle">A9</text>
+
+  <!-- read as UTF-8 -->
+  <line class="wire" x1="185" y1="66" x2="185" y2="104"/>
+  <line class="wire" x1="265" y1="66" x2="265" y2="104"/>
+  <line class="wire" x1="345" y1="66" x2="345" y2="104"/>
+  <path class="wire-accent" d="M425 66 L465 104 M505 66 L465 104"/>
+  <text class="sm" x="0" y="124">read as UTF-8</text>
+  <rect class="box-accent" x="150" y="104" width="390" height="34" rx="4"/>
+  <text x="185" y="126" text-anchor="middle">c</text>
+  <text x="265" y="126" text-anchor="middle">a</text>
+  <text x="345" y="126" text-anchor="middle">f</text>
+  <text class="strong" x="465" y="126" text-anchor="middle">é</text>
+  <text class="sm accent" x="560" y="126">correct</text>
+
+  <!-- read as Windows-1252 -->
+  <text class="sm" x="185" y="150" text-anchor="middle">63</text>
+  <text class="sm" x="265" y="150" text-anchor="middle">61</text>
+  <text class="sm" x="345" y="150" text-anchor="middle">66</text>
+  <line class="wire" x1="185" y1="154" x2="185" y2="190"/>
+  <line class="wire" x1="265" y1="154" x2="265" y2="190"/>
+  <line class="wire" x1="345" y1="154" x2="345" y2="190"/>
+  <text class="sm" x="0" y="212">read as</text>
+  <text class="sm" x="0" y="228">Windows-1252</text>
+  <rect class="box" x="150" y="190" width="390" height="34" rx="4"/>
+  <line class="wire" x1="425" y1="154" x2="425" y2="190"/>
+  <line class="wire" x1="505" y1="154" x2="505" y2="190"/>
+  <text class="sm" x="425" y="150" text-anchor="middle">C3</text>
+  <text class="sm" x="505" y="150" text-anchor="middle">A9</text>
+  <text x="185" y="212" text-anchor="middle">c</text>
+  <text x="265" y="212" text-anchor="middle">a</text>
+  <text x="345" y="212" text-anchor="middle">f</text>
+  <text class="strong accent" x="425" y="212" text-anchor="middle">Ã</text>
+  <text class="strong accent" x="505" y="212" text-anchor="middle">©</text>
+  <text class="sm accent" x="560" y="212">mojibake</text>
+</svg>
