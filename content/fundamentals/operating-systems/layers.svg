@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 404" role="img" aria-labelledby="layers-title">
+  <title id="layers-title">Applications and system libraries run in user mode above the system call interface; the kernel runs in kernel mode beneath it, directly on the hardware.</title>
+
+  <!-- Mode brackets -->
+  <path class="wire" d="M96 10 H90 V142 H96"/>
+  <text class="sm" x="44" y="80" text-anchor="middle">User mode</text>
+  <path class="wire" d="M96 172 H90 V322 H96"/>
+  <text class="sm" x="44" y="251" text-anchor="middle">Kernel mode</text>
+
+  <!-- User space -->
+  <rect class="box" x="110" y="10" width="570" height="60" rx="8"/>
+  <text class="strong" x="126" y="36">Applications</text>
+  <text class="sm" x="126" y="56">browser · editor · shell · the program you just wrote</text>
+
+  <rect class="box" x="110" y="82" width="570" height="60" rx="8"/>
+  <text class="strong" x="126" y="108">System libraries and services</text>
+  <text class="sm" x="126" y="128">C library · language runtimes · background daemons · window system</text>
+
+  <!-- The boundary -->
+  <line class="wire-accent" x1="110" y1="157" x2="680" y2="157"/>
+  <text class="sm accent" x="680" y="151" text-anchor="end">system call interface</text>
+
+  <!-- Kernel -->
+  <rect class="box-accent" x="110" y="172" width="570" height="150" rx="8"/>
+  <text class="strong" x="126" y="198">Kernel</text>
+
+  <rect class="box" x="126" y="210" width="100" height="70" rx="6"/>
+  <text x="176" y="240" text-anchor="middle">Process</text>
+  <text x="176" y="258" text-anchor="middle">management</text>
+
+  <rect class="box" x="235.5" y="210" width="100" height="70" rx="6"/>
+  <text x="285.5" y="240" text-anchor="middle">Memory</text>
+  <text x="285.5" y="258" text-anchor="middle">management</text>
+
+  <rect class="box" x="345" y="210" width="100" height="70" rx="6"/>
+  <text x="395" y="240" text-anchor="middle">File</text>
+  <text x="395" y="258" text-anchor="middle">systems</text>
+
+  <rect class="box" x="454.5" y="210" width="100" height="70" rx="6"/>
+  <text x="504.5" y="240" text-anchor="middle">Networking</text>
+  <text x="504.5" y="258" text-anchor="middle">stack</text>
+
+  <rect class="box" x="564" y="210" width="100" height="70" rx="6"/>
+  <text x="614" y="240" text-anchor="middle">Device</text>
+  <text x="614" y="258" text-anchor="middle">drivers</text>
+
+  <text class="sm" x="395" y="305" text-anchor="middle">interrupt handling · scheduling · protection · accounting</text>
+
+  <!-- Hardware -->
+  <rect class="box" x="110" y="334" width="570" height="60" rx="8"/>
+  <text class="strong" x="126" y="360">Hardware</text>
+  <text class="sm" x="126" y="380">CPU · memory · disks and SSDs · network cards · keyboard, display, sensors</text>
+</svg>

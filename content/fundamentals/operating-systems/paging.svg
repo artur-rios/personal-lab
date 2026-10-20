@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" role="img" aria-labelledby="paging-title">
+  <title id="paging-title">Address translation. A virtual address is split into a virtual page number and an offset. The page number is looked up in the TLB; on a hit it yields the physical frame number, and on a miss the page table is walked and the TLB filled. A missing page raises a page fault. The offset is copied unchanged into the physical address.</title>
+  <defs>
+    <marker id="paging-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Virtual address -->
+  <text class="sm" x="20" y="16">Virtual address, as the program sees it</text>
+  <rect class="box" x="20" y="26" width="420" height="40" rx="4"/>
+  <text x="230" y="51" text-anchor="middle">Virtual page number</text>
+  <rect class="box" x="440" y="26" width="220" height="40" rx="4"/>
+  <text x="550" y="51" text-anchor="middle">Offset</text>
+
+  <!-- Lookup -->
+  <line class="wire" x1="110" y1="66" x2="110" y2="108" marker-end="url(#paging-arrow)"/>
+  <rect class="box" x="20" y="110" width="180" height="56" rx="8"/>
+  <text class="strong" x="110" y="134" text-anchor="middle">TLB</text>
+  <text class="sm" x="110" y="154" text-anchor="middle">cache of recent translations</text>
+
+  <line class="wire" x1="200" y1="138" x2="248" y2="138" marker-end="url(#paging-arrow)"/>
+  <text class="sm" x="225" y="128" text-anchor="middle">miss</text>
+  <rect class="box" x="250" y="110" width="190" height="56" rx="8"/>
+  <text class="strong" x="345" y="134" text-anchor="middle">Page table walk</text>
+  <text class="sm" x="345" y="154" text-anchor="middle">page missing → page fault</text>
+
+  <line class="wire" x1="110" y1="166" x2="110" y2="228" marker-end="url(#paging-arrow)"/>
+  <text class="sm" x="118" y="202">hit</text>
+  <line class="wire" x1="345" y1="166" x2="345" y2="228" marker-end="url(#paging-arrow)"/>
+  <text class="sm" x="353" y="202">found, TLB filled</text>
+
+  <line class="wire" x1="550" y1="66" x2="550" y2="228" marker-end="url(#paging-arrow)"/>
+  <text class="sm" x="558" y="150">copied unchanged</text>
+
+  <!-- Physical address -->
+  <rect class="box-accent" x="20" y="230" width="420" height="40" rx="4"/>
+  <text x="230" y="255" text-anchor="middle">Physical frame number</text>
+  <rect class="box-accent" x="440" y="230" width="220" height="40" rx="4"/>
+  <text x="550" y="255" text-anchor="middle">Offset</text>
+  <text class="sm" x="20" y="290">Physical address, as the memory chips see it</text>
+</svg>

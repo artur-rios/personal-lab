@@ -1,0 +1,39 @@
+{{- /* {{< diagram src="layers.svg" caption="What it shows." >}}
+
+       Inlines an SVG from the page bundle rather than linking it as an image,
+       so the drawing can use the theme's colour tokens and follow whichever of
+       the four palettes the reader has picked. Diagram SVGs carry no colours of
+       their own: they draw with the classes styled below. The stylesheet goes
+       out with every diagram; the copies are identical and gzip folds them
+       away. Wide drawings scroll sideways on a phone instead of shrinking
+       their text below reading size. */ -}}
+{{- $src := .Get "src" -}}
+{{- with .Page.Resources.Get $src -}}
+<figure class="diagram">
+  <style>
+    .diagram__canvas { overflow-x: auto; }
+    .diagram__canvas svg { display: block; width: 100%; min-width: 560px; height: auto; }
+    .diagram svg text { fill: var(--ink); font-family: var(--font); font-size: 14px; }
+    .diagram svg .sm { fill: var(--muted); font-size: 12px; }
+    .diagram svg .mono { font-family: var(--mono); font-size: 12px; }
+    .diagram svg .strong { font-weight: 700; }
+    .diagram svg .accent { fill: var(--accent); }
+    .diagram svg .on-solid { fill: var(--accent-ink); }
+    .diagram svg .box { fill: var(--surface); stroke: var(--line); stroke-width: 1.5; }
+    .diagram svg .box-accent { fill: var(--surface); stroke: var(--accent); stroke-width: 1.5; }
+    .diagram svg .solid { fill: var(--accent); }
+    .diagram svg .sep { stroke: var(--line); stroke-width: 1; }
+    .diagram svg .zone { fill: none; stroke: var(--muted); stroke-width: 1; stroke-dasharray: 6 5; }
+    .diagram svg .wire { fill: none; stroke: var(--muted); stroke-width: 1.5; }
+    .diagram svg .wire-accent { fill: none; stroke: var(--accent); stroke-width: 1.5; }
+    .diagram svg .head { fill: var(--muted); }
+    .diagram svg .head-accent { fill: var(--accent); }
+  </style>
+  <div class="diagram__canvas">{{ .Content | safeHTML }}</div>
+  {{- with $.Get "caption" }}
+  <figcaption>{{ . | markdownify }}</figcaption>
+  {{- end }}
+</figure>
+{{- else -}}
+  {{- errorf "diagram: %q is not in the page bundle of %s" $src $.Page.File.Path -}}
+{{- end -}}
