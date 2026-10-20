@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 236" role="img" aria-labelledby="sz-title">
+  <title id="sz-title">Bytes downloaded on the first load of the same counter app, compressed with brotli, drawn to one linear scale. Angular 22.2: 30.0 kilobytes. React 19.3 with Vite: 58.6 kilobytes. Flutter 3.47 web, WebAssembly build: 1,738.7 kilobytes. Flutter 3.47 web, JavaScript build: 2,064.0 kilobytes. The two DOM-based apps are barely visible next to Flutter's, which must also download its rendering engine.</title>
+
+  <text class="sm" x="0" y="12">Brotli-compressed bytes on first load, one linear scale (kB = 1,000 bytes)</text>
+
+  <text x="0" y="47">Angular 22.2</text>
+  <rect class="solid" x="170" y="30" width="6.3" height="24" rx="2"/>
+  <text class="sm" x="184" y="47">30.0 kB</text>
+
+  <text x="0" y="87">React 19.3 + Vite</text>
+  <rect class="solid" x="170" y="70" width="12.3" height="24" rx="2"/>
+  <text class="sm" x="190" y="87">58.6 kB</text>
+
+  <text x="0" y="127">Flutter web, Wasm</text>
+  <rect class="box-accent" x="170" y="110" width="364.3" height="24" rx="2"/>
+  <text class="sm" x="542" y="127">1,738.7 kB</text>
+
+  <text x="0" y="167">Flutter web, JS</text>
+  <rect class="box-accent" x="170" y="150" width="432.4" height="24" rx="2"/>
+  <text class="sm" x="610" y="167">2,064.0 kB</text>
+
+  <line class="sep" x1="170" y1="24" x2="170" y2="182"/>
+  <text class="sm" x="0" y="208">Flutter's figure includes its engine (CanvasKit or skwasm, about 1.2 to 1.5 MB compressed)</text>
+  <text class="sm" x="0" y="226">and a font; the DOM frameworks rely on the browser to draw and to supply fonts.</text>
+</svg>

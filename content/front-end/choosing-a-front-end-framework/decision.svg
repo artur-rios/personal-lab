@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 446" role="img" aria-labelledby="dc-title">
+  <title id="dc-title">A decision flowchart. First question: is it mostly content to read and to be found in search, such as documentation, a blog or shop pages? If yes, start HTML first, with static or server rendering, and add JavaScript only where it is needed. If no, second question: must it run outside the browser, on phones, desktops or embedded devices? If no, it is a web application; third question: is it a large, long-lived application built by a team that wants one opinionated toolkit? If yes, consider Angular; if no, or if the team prefers to choose its own libraries, consider React with a framework such as Next.js or React Router. If it must run outside the browser, fourth question: what matters most on the device? For the same custom design on every platform from one code base, consider Flutter. For the platform's native views, with React skills shared with a web app, consider React Native. For the deepest fit with a single platform, consider SwiftUI or Jetpack Compose. The chart is a starting point; a team's existing skills and code often decide first.</title>
+  <defs>
+    <marker id="dc-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Q1 -->
+  <rect class="box" x="0" y="0" width="300" height="56" rx="8"/>
+  <text class="strong" x="14" y="22">Mostly content to read and</text>
+  <text class="sm" x="14" y="42">be found: docs, blog, shop pages?</text>
+  <line class="wire" x1="300" y1="28" x2="378" y2="28" marker-end="url(#dc-arrow)"/>
+  <text class="sm" x="324" y="20">yes</text>
+  <rect class="box-accent" x="380" y="0" width="300" height="56" rx="8"/>
+  <text class="strong accent" x="394" y="22">HTML first</text>
+  <text class="sm" x="394" y="42">static or server rendering; add JS where needed</text>
+
+  <line class="wire" x1="150" y1="56" x2="150" y2="94" marker-end="url(#dc-arrow)"/>
+  <text class="sm" x="158" y="80">no</text>
+
+  <!-- Q2 -->
+  <rect class="box" x="0" y="96" width="300" height="56" rx="8"/>
+  <text class="strong" x="14" y="118">Must it run outside the browser?</text>
+  <text class="sm" x="14" y="138">phones, desktops, embedded devices</text>
+  <line class="wire" x1="300" y1="124" x2="378" y2="124" marker-end="url(#dc-arrow)"/>
+  <text class="sm" x="324" y="116">yes</text>
+
+  <line class="wire" x1="150" y1="152" x2="150" y2="190" marker-end="url(#dc-arrow)"/>
+  <text class="sm" x="158" y="176">no: a web app</text>
+
+  <!-- Q3 -->
+  <rect class="box" x="0" y="192" width="300" height="56" rx="8"/>
+  <text class="strong" x="14" y="214">Large, long-lived, built by a team</text>
+  <text class="sm" x="14" y="234">that wants one opinionated toolkit?</text>
+  <path class="wire" d="M75 248 V294" marker-end="url(#dc-arrow)"/>
+  <text class="sm" x="83" y="276">yes</text>
+  <path class="wire" d="M225 248 V294" marker-end="url(#dc-arrow)"/>
+  <text class="sm" x="233" y="276">no</text>
+  <rect class="solid" x="0" y="296" width="140" height="56" rx="8"/>
+  <text class="strong on-solid" x="70" y="320" text-anchor="middle">Angular</text>
+  <text class="sm on-solid" x="70" y="338" text-anchor="middle">everything included</text>
+  <rect class="solid" x="160" y="296" width="140" height="56" rx="8"/>
+  <text class="strong on-solid" x="230" y="320" text-anchor="middle">React</text>
+  <text class="sm on-solid" x="230" y="338" text-anchor="middle">with a framework</text>
+
+  <!-- Q4 -->
+  <rect class="box" x="380" y="96" width="300" height="56" rx="8"/>
+  <text class="strong" x="394" y="118">What matters most on the device?</text>
+  <text class="sm" x="394" y="138">pick the closest of the three below</text>
+  <path class="wire" d="M396 152 V378 H412" marker-end="url(#dc-arrow)"/>
+  <path class="wire" d="M396 213 H412" marker-end="url(#dc-arrow)"/>
+  <path class="wire" d="M396 296 H412" marker-end="url(#dc-arrow)"/>
+
+  <rect class="solid" x="414" y="186" width="266" height="56" rx="8"/>
+  <text class="strong on-solid" x="428" y="208">Flutter</text>
+  <text class="sm on-solid" x="428" y="228">the same custom UI everywhere</text>
+  <rect class="solid" x="414" y="268" width="266" height="56" rx="8"/>
+  <text class="strong on-solid" x="428" y="290">React Native</text>
+  <text class="sm on-solid" x="428" y="310">native views; React shared with the web</text>
+  <rect class="box-accent" x="414" y="350" width="266" height="56" rx="8"/>
+  <text class="strong accent" x="428" y="372">SwiftUI or Jetpack Compose</text>
+  <text class="sm" x="428" y="392">the deepest fit with one platform</text>
+
+  <text class="sm" x="0" y="436">A starting point, not a verdict: a team's existing skills and code often decide first.</text>
+</svg>

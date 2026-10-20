@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 342" role="img" aria-labelledby="cat-title">
+  <title id="cat-title">What each of the three is. Angular is a framework: you write TypeScript components with HTML templates; it includes a router, forms, HTTP, dependency injection, server rendering, the CLI and testing; the browser draws the page from the DOM; it runs on the web. React is a library: you write JavaScript or TypeScript functions that return JSX; it provides components, state and Hooks, and the rest comes from a framework such as Next.js; the browser draws the DOM through react-dom, or React Native uses the platform's native views; it runs on the web, and on mobile through React Native. Flutter is a UI toolkit: you write Dart classes that build widgets; it includes widgets, layout, routing, the Material and Cupertino designs, a CLI and tests; Flutter's own engine draws every pixel into a canvas or surface; it runs on mobile, web, desktop and embedded devices.</title>
+  <defs>
+    <marker id="cat-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Angular -->
+  <rect class="solid" x="0" y="0" width="216" height="44" rx="6"/>
+  <text class="strong on-solid" x="108" y="20" text-anchor="middle">Angular</text>
+  <text class="sm on-solid" x="108" y="36" text-anchor="middle">a framework</text>
+  <line class="wire" x1="108" y1="44" x2="108" y2="58" marker-end="url(#cat-arrow)"/>
+  <rect class="box" x="0" y="60" width="216" height="64" rx="6"/>
+  <text class="sm" x="12" y="78">you write</text>
+  <text x="12" y="98">TypeScript components</text>
+  <text x="12" y="116">and HTML templates</text>
+  <line class="wire" x1="108" y1="124" x2="108" y2="138" marker-end="url(#cat-arrow)"/>
+  <rect class="box-accent" x="0" y="140" width="216" height="64" rx="6"/>
+  <text class="sm" x="12" y="158">in the box</text>
+  <text x="12" y="178">router, forms, HTTP, DI,</text>
+  <text x="12" y="196">SSR, CLI, testing</text>
+  <line class="wire" x1="108" y1="204" x2="108" y2="218" marker-end="url(#cat-arrow)"/>
+  <rect class="box" x="0" y="220" width="216" height="64" rx="6"/>
+  <text class="sm" x="12" y="238">who draws</text>
+  <text x="12" y="258">the browser,</text>
+  <text x="12" y="276">from the DOM</text>
+  <text class="sm" x="0" y="308">runs on: the web</text>
+
+  <!-- React -->
+  <rect class="solid" x="232" y="0" width="216" height="44" rx="6"/>
+  <text class="strong on-solid" x="340" y="20" text-anchor="middle">React</text>
+  <text class="sm on-solid" x="340" y="36" text-anchor="middle">a library</text>
+  <line class="wire" x1="340" y1="44" x2="340" y2="58" marker-end="url(#cat-arrow)"/>
+  <rect class="box" x="232" y="60" width="216" height="64" rx="6"/>
+  <text class="sm" x="244" y="78">you write</text>
+  <text x="244" y="98">JavaScript or TypeScript</text>
+  <text x="244" y="116">functions returning JSX</text>
+  <line class="wire" x1="340" y1="124" x2="340" y2="138" marker-end="url(#cat-arrow)"/>
+  <rect class="box-accent" x="232" y="140" width="216" height="64" rx="6"/>
+  <text class="sm" x="244" y="158">in the box</text>
+  <text x="244" y="178">components, state, Hooks;</text>
+  <text x="244" y="196">the rest from a framework</text>
+  <line class="wire" x1="340" y1="204" x2="340" y2="218" marker-end="url(#cat-arrow)"/>
+  <rect class="box" x="232" y="220" width="216" height="64" rx="6"/>
+  <text class="sm" x="244" y="238">who draws</text>
+  <text x="244" y="258">the browser (react-dom),</text>
+  <text x="244" y="276">or native views (RN)</text>
+  <text class="sm" x="232" y="308">runs on: the web; mobile through</text>
+  <text class="sm" x="232" y="326">React Native</text>
+
+  <!-- Flutter -->
+  <rect class="solid" x="464" y="0" width="216" height="44" rx="6"/>
+  <text class="strong on-solid" x="572" y="20" text-anchor="middle">Flutter</text>
+  <text class="sm on-solid" x="572" y="36" text-anchor="middle">a UI toolkit</text>
+  <line class="wire" x1="572" y1="44" x2="572" y2="58" marker-end="url(#cat-arrow)"/>
+  <rect class="box" x="464" y="60" width="216" height="64" rx="6"/>
+  <text class="sm" x="476" y="78">you write</text>
+  <text x="476" y="98">Dart classes that</text>
+  <text x="476" y="116">build widgets</text>
+  <line class="wire" x1="572" y1="124" x2="572" y2="138" marker-end="url(#cat-arrow)"/>
+  <rect class="box-accent" x="464" y="140" width="216" height="64" rx="6"/>
+  <text class="sm" x="476" y="158">in the box</text>
+  <text x="476" y="178">widgets, layout, routing,</text>
+  <text x="476" y="196">Material, CLI, tests</text>
+  <line class="wire" x1="572" y1="204" x2="572" y2="218" marker-end="url(#cat-arrow)"/>
+  <rect class="box-accent" x="464" y="220" width="216" height="64" rx="6"/>
+  <text class="sm" x="476" y="238">who draws</text>
+  <text class="accent" x="476" y="258">its own engine, every</text>
+  <text class="accent" x="476" y="276">pixel, on a canvas or surface</text>
+  <text class="sm" x="464" y="308">runs on: mobile, web, desktop,</text>
+  <text class="sm" x="464" y="326">embedded</text>
+</svg>

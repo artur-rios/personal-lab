@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 336" role="img" aria-labelledby="um-title">
+  <title id="um-title">How one change of state reaches the screen in each. In Angular with signals, setting a signal marks the views that read it as dirty; those views re-check all their bindings; the DOM nodes whose values changed are written, and the browser renders them. In React, calling a state setter queues an update; the component and, by default, its children re-render, producing new elements; the new elements are compared with the old; the differences are committed to the DOM, and the browser renders them. In Flutter, setState marks an element dirty; build methods re-run for the dirty subtree; elements update their render objects; then Flutter's own pipeline lays out, paints and rasterises the frame into pixels, without a browser rendering engine.</title>
+  <defs>
+    <marker id="um-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Angular -->
+  <text class="sm" x="0" y="14">Angular: signals, zoneless, OnPush by default</text>
+  <rect class="box" x="0" y="24" width="152" height="56" rx="6"/>
+  <text class="sm mono" x="76" y="48" text-anchor="middle">count.set(1)</text>
+  <text class="sm" x="76" y="64" text-anchor="middle">the signal changes</text>
+  <line class="wire" x1="152" y1="52" x2="174" y2="52" marker-end="url(#um-arrow)"/>
+  <rect class="box" x="176" y="24" width="152" height="56" rx="6"/>
+  <text class="sm" x="252" y="48" text-anchor="middle">views that read it</text>
+  <text class="sm" x="252" y="64" text-anchor="middle">are marked dirty</text>
+  <line class="wire" x1="328" y1="52" x2="350" y2="52" marker-end="url(#um-arrow)"/>
+  <rect class="box" x="352" y="24" width="152" height="56" rx="6"/>
+  <text class="sm" x="428" y="48" text-anchor="middle">those views re-check</text>
+  <text class="sm" x="428" y="64" text-anchor="middle">their bindings</text>
+  <line class="wire" x1="504" y1="52" x2="526" y2="52" marker-end="url(#um-arrow)"/>
+  <rect class="box-accent" x="528" y="24" width="152" height="56" rx="6"/>
+  <text class="sm" x="604" y="48" text-anchor="middle">changed DOM nodes</text>
+  <text class="sm" x="604" y="64" text-anchor="middle">are written</text>
+
+  <!-- React -->
+  <text class="sm" x="0" y="114">React: re-render, then reconcile</text>
+  <rect class="box" x="0" y="124" width="152" height="56" rx="6"/>
+  <text class="sm mono" x="76" y="148" text-anchor="middle">setCount(1)</text>
+  <text class="sm" x="76" y="164" text-anchor="middle">an update is queued</text>
+  <line class="wire" x1="152" y1="152" x2="174" y2="152" marker-end="url(#um-arrow)"/>
+  <rect class="box" x="176" y="124" width="152" height="56" rx="6"/>
+  <text class="sm" x="252" y="148" text-anchor="middle">the component and</text>
+  <text class="sm" x="252" y="164" text-anchor="middle">its children re-render</text>
+  <line class="wire" x1="328" y1="152" x2="350" y2="152" marker-end="url(#um-arrow)"/>
+  <rect class="box" x="352" y="124" width="152" height="56" rx="6"/>
+  <text class="sm" x="428" y="148" text-anchor="middle">new elements are</text>
+  <text class="sm" x="428" y="164" text-anchor="middle">diffed with the old</text>
+  <line class="wire" x1="504" y1="152" x2="526" y2="152" marker-end="url(#um-arrow)"/>
+  <rect class="box-accent" x="528" y="124" width="152" height="56" rx="6"/>
+  <text class="sm" x="604" y="148" text-anchor="middle">changed DOM nodes</text>
+  <text class="sm" x="604" y="164" text-anchor="middle">are committed</text>
+
+  <!-- Flutter -->
+  <text class="sm" x="0" y="214">Flutter: rebuild, then its own render pipeline</text>
+  <rect class="box" x="0" y="224" width="152" height="56" rx="6"/>
+  <text class="sm mono" x="76" y="248" text-anchor="middle">setState(...)</text>
+  <text class="sm" x="76" y="264" text-anchor="middle">element marked dirty</text>
+  <line class="wire" x1="152" y1="252" x2="174" y2="252" marker-end="url(#um-arrow)"/>
+  <rect class="box" x="176" y="224" width="152" height="56" rx="6"/>
+  <text class="sm" x="252" y="248" text-anchor="middle">build() re-runs for</text>
+  <text class="sm" x="252" y="264" text-anchor="middle">the dirty subtree</text>
+  <line class="wire" x1="328" y1="252" x2="350" y2="252" marker-end="url(#um-arrow)"/>
+  <rect class="box" x="352" y="224" width="152" height="56" rx="6"/>
+  <text class="sm" x="428" y="248" text-anchor="middle">elements update</text>
+  <text class="sm" x="428" y="264" text-anchor="middle">their render objects</text>
+  <line class="wire" x1="504" y1="252" x2="526" y2="252" marker-end="url(#um-arrow)"/>
+  <rect class="solid" x="528" y="224" width="152" height="56" rx="6"/>
+  <text class="sm on-solid" x="604" y="248" text-anchor="middle">layout, paint, raster:</text>
+  <text class="sm on-solid" x="604" y="264" text-anchor="middle">Flutter draws pixels</text>
+
+  <text class="sm" x="0" y="312">Angular and React end by handing the browser a few DOM changes to style, lay out and paint;</text>
+  <text class="sm" x="0" y="328">Flutter does all of that work itself.</text>
+</svg>

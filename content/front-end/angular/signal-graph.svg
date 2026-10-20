@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 232" role="img" aria-labelledby="sg-title">
+  <title id="sg-title">A graph of signals. Two writable signals, price and quantity, feed a computed signal, total, which reads both. Two consumers read total: the template of a component's view and an effect. When quantity is set to a new value, the signals that depend on it are notified that they may be stale. The computed value is recomputed only when something reads it again, and a view whose template read it is marked for refresh.</title>
+  <defs>
+    <marker id="sg-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="sm" x="0" y="14">Writable signals</text>
+  <rect class="box" x="0" y="24" width="200" height="44" rx="6"/>
+  <text class="mono" x="14" y="51">price = signal(10)</text>
+  <rect class="box-accent" x="0" y="100" width="200" height="44" rx="6"/>
+  <text class="mono" x="14" y="127">quantity = signal(3)</text>
+
+  <text class="sm" x="250" y="14">Computed signal</text>
+  <rect class="box-accent" x="250" y="62" width="190" height="44" rx="6"/>
+  <text class="mono" x="264" y="89">total = computed(…)</text>
+  <path class="wire" d="M200 46 H224 V78 H248" marker-end="url(#sg-arrow)"/>
+  <path class="wire" d="M200 122 H224 V90 H248" marker-end="url(#sg-arrow)"/>
+
+  <text class="sm" x="490" y="14">Consumers</text>
+  <rect class="box-accent" x="490" y="24" width="190" height="44" rx="6"/>
+  <text x="504" y="51">a view's template</text>
+  <rect class="box" x="490" y="100" width="190" height="44" rx="6"/>
+  <text class="mono" x="504" y="127">effect(…)</text>
+  <path class="wire" d="M440 78 H464 V46 H488" marker-end="url(#sg-arrow)"/>
+  <path class="wire" d="M440 90 H464 V122 H488" marker-end="url(#sg-arrow)"/>
+
+  <line class="sep" x1="0" y1="168" x2="680" y2="168"/>
+  <text class="sm" x="0" y="190"><tspan class="mono accent">quantity.set(4)</tspan> notifies everything that depends on quantity that it may be stale.</text>
+  <text class="sm" x="0" y="210">total is recomputed only when it is read again, and only if a dependency changed;</text>
+  <text class="sm" x="0" y="228">a view that read it is marked for refresh, and the effect is scheduled to run again.</text>
+</svg>

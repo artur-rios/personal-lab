@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" role="img" aria-labelledby="fl-con-title">
+  <title id="fl-con-title">Layout of a Center containing a 100 by 50 SizedBox on a 400 by 300 surface. Constraints go down: the screen gives Center tight constraints of exactly 400 by 300; Center loosens them to anything from zero up to 400 by 300 for the SizedBox; the SizedBox gives its child tight constraints of exactly 100 by 50. Sizes go up: the child reports 100 by 50, the SizedBox reports 100 by 50, and Center reports 400 by 300. Then the parent sets the position: Center places the SizedBox at x 150, y 125, in the middle of the surface.</title>
+  <defs>
+    <marker id="fl-con-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="fl-con-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- The surface as laid out -->
+  <text class="sm" x="0" y="28">the result on a 400 × 300 surface</text>
+  <rect class="box" x="0" y="40" width="240" height="180" rx="4"/>
+  <line class="zone" x1="0" y1="130" x2="240" y2="130"/>
+  <line class="zone" x1="120" y1="40" x2="120" y2="220"/>
+  <rect class="solid" x="90" y="115" width="60" height="30" rx="3"/>
+  <text class="sm on-solid" x="120" y="134" text-anchor="middle">100×50</text>
+  <text class="sm mono" x="88" y="108" text-anchor="end">(150, 125)</text>
+  <text class="sm" x="0" y="246">Center decides where its child goes;</text>
+  <text class="sm" x="0" y="262">the child never knows its own position</text>
+
+  <!-- The tree -->
+  <text class="sm" x="440" y="16">constraints down</text>
+  <text class="sm accent" x="600" y="16" text-anchor="end">sizes up</text>
+
+  <rect class="box" x="440" y="24" width="160" height="40" rx="6"/>
+  <text x="520" y="49" text-anchor="middle">Screen</text>
+  <rect class="box-accent" x="440" y="104" width="160" height="40" rx="6"/>
+  <text class="mono" x="520" y="129" text-anchor="middle">Center</text>
+  <rect class="box-accent" x="440" y="184" width="160" height="40" rx="6"/>
+  <text class="mono" x="520" y="209" text-anchor="middle">SizedBox</text>
+  <rect class="box-accent" x="440" y="264" width="160" height="40" rx="6"/>
+  <text class="mono" x="520" y="289" text-anchor="middle">child</text>
+
+  <line class="wire" x1="462" y1="64" x2="462" y2="102" marker-end="url(#fl-con-arrow)"/>
+  <line class="wire" x1="462" y1="144" x2="462" y2="182" marker-end="url(#fl-con-arrow)"/>
+  <line class="wire" x1="462" y1="224" x2="462" y2="262" marker-end="url(#fl-con-arrow)"/>
+  <text class="sm mono" x="452" y="80" text-anchor="end">w = 400, h = 300</text>
+  <text class="sm" x="452" y="95" text-anchor="end">tight</text>
+  <text class="sm mono" x="452" y="160" text-anchor="end">0 ≤ w ≤ 400, 0 ≤ h ≤ 300</text>
+  <text class="sm" x="452" y="175" text-anchor="end">loose</text>
+  <text class="sm mono" x="452" y="240" text-anchor="end">w = 100, h = 50</text>
+  <text class="sm" x="452" y="255" text-anchor="end">tight</text>
+
+  <line class="wire-accent" x1="578" y1="262" x2="578" y2="226" marker-end="url(#fl-con-arrow-accent)"/>
+  <line class="wire-accent" x1="578" y1="182" x2="578" y2="146" marker-end="url(#fl-con-arrow-accent)"/>
+  <line class="wire-accent" x1="578" y1="102" x2="578" y2="66" marker-end="url(#fl-con-arrow-accent)"/>
+  <text class="sm mono accent" x="588" y="248">100×50</text>
+  <text class="sm mono accent" x="588" y="168">100×50</text>
+  <text class="sm mono accent" x="588" y="88">400×300</text>
+</svg>

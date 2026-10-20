@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 306" role="img" aria-labelledby="cd-title">
+  <title id="cd-title">Two ways Angular decides what to re-render. With Zone.js, which patches browser APIs, any click, timer or network response tells Angular that some code ran, so it checks the component tree from the root, skipping only OnPush subtrees that nothing has marked. Without Zone.js, the default since Angular 21, Angular waits for a notification: a signal read by a template changing, an event bound in a template firing, or markForCheck being called. The notified view is marked dirty, and Angular walks down to it through its ancestors and refreshes only that view.</title>
+  <defs>
+    <marker id="cd-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Left: Zone.js -->
+  <text class="strong" x="0" y="16">With Zone.js</text>
+  <rect class="box" x="0" y="28" width="320" height="52" rx="6"/>
+  <text class="sm" x="14" y="50">any click, timer or HTTP response: the</text>
+  <text class="sm" x="14" y="68">patched browser API reports "code ran"</text>
+  <line class="wire" x1="160" y1="80" x2="160" y2="104" marker-end="url(#cd-arrow)"/>
+
+  <line class="sep" x1="160" y1="134" x2="80" y2="170"/>
+  <line class="sep" x1="160" y1="134" x2="240" y2="170"/>
+  <line class="sep" x1="80" y1="198" x2="40" y2="232"/>
+  <line class="sep" x1="80" y1="198" x2="120" y2="232"/>
+  <line class="sep" x1="240" y1="198" x2="200" y2="232"/>
+  <line class="sep" x1="240" y1="198" x2="280" y2="232"/>
+  <rect class="solid" x="125" y="106" width="70" height="28" rx="5"/>
+  <rect class="solid" x="45" y="170" width="70" height="28" rx="5"/>
+  <rect class="solid" x="205" y="170" width="70" height="28" rx="5"/>
+  <rect class="solid" x="5" y="232" width="70" height="28" rx="5"/>
+  <rect class="solid" x="85" y="232" width="70" height="28" rx="5"/>
+  <rect class="solid" x="165" y="232" width="70" height="28" rx="5"/>
+  <rect class="solid" x="245" y="232" width="70" height="28" rx="5"/>
+  <text class="sm" x="0" y="284">every view is checked, top to bottom,</text>
+  <text class="sm" x="0" y="300">except OnPush subtrees nothing has marked</text>
+
+  <!-- Right: zoneless -->
+  <text class="strong" x="360" y="16">Zoneless (the default since v21)</text>
+  <rect class="box" x="360" y="28" width="320" height="52" rx="6"/>
+  <text class="sm" x="374" y="50">a signal read by a template changes, a bound</text>
+  <text class="sm" x="374" y="68">event fires, or markForCheck() is called</text>
+  <line class="wire" x1="520" y1="80" x2="520" y2="104" marker-end="url(#cd-arrow)"/>
+
+  <line class="sep" x1="520" y1="134" x2="440" y2="170"/>
+  <line class="sep" x1="520" y1="134" x2="600" y2="170"/>
+  <line class="sep" x1="440" y1="198" x2="400" y2="232"/>
+  <line class="sep" x1="440" y1="198" x2="480" y2="232"/>
+  <line class="sep" x1="600" y1="198" x2="560" y2="232"/>
+  <line class="sep" x1="600" y1="198" x2="640" y2="232"/>
+  <rect class="box-accent" x="485" y="106" width="70" height="28" rx="5"/>
+  <rect class="box" x="405" y="170" width="70" height="28" rx="5"/>
+  <rect class="box-accent" x="565" y="170" width="70" height="28" rx="5"/>
+  <rect class="box" x="365" y="232" width="70" height="28" rx="5"/>
+  <rect class="box" x="445" y="232" width="70" height="28" rx="5"/>
+  <rect class="box" x="525" y="232" width="70" height="28" rx="5"/>
+  <rect class="solid" x="605" y="232" width="70" height="28" rx="5"/>
+  <text class="sm on-solid" x="640" y="251" text-anchor="middle">dirty</text>
+  <text class="sm" x="360" y="284">only the dirty view is refreshed; its</text>
+  <text class="sm" x="360" y="300">ancestors are walked through to reach it</text>
+</svg>

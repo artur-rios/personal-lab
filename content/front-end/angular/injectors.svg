@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 322" role="img" aria-labelledby="inj-title">
+  <title id="inj-title">Angular's two injector hierarchies. On the left, the environment injectors: the root environment injector, configured by the application config and by services marked @Service, whose parent is the platform injector shared by every application on the page, whose parent is the NullInjector at the top of the tree, which throws when nothing provides the token. On the right, element injectors created along the tree of components: App contains Shop, which contains two Panel components, each providing its own PanelState. When a Panel injects Cart, Angular searches the Panel, then Shop, then App element injectors, and only then the environment injectors, finding Cart in the root injector.</title>
+  <defs>
+    <marker id="inj-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="inj-arrow-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="sm" x="0" y="14">Environment injectors</text>
+  <rect class="box" x="0" y="24" width="230" height="50" rx="6"/>
+  <text class="strong" x="14" y="45">NullInjector</text>
+  <text class="sm" x="14" y="63">top of the tree: throws</text>
+  <line class="wire" x1="115" y1="104" x2="115" y2="76" marker-end="url(#inj-arrow)"/>
+  <text class="sm" x="124" y="94">parent</text>
+  <rect class="box" x="0" y="106" width="230" height="50" rx="6"/>
+  <text class="strong" x="14" y="127">Platform injector</text>
+  <text class="sm" x="14" y="145">shared by apps on the page</text>
+  <line class="wire" x1="115" y1="186" x2="115" y2="158" marker-end="url(#inj-arrow)"/>
+  <text class="sm" x="124" y="176">parent</text>
+  <rect class="box-accent" x="0" y="188" width="230" height="50" rx="6"/>
+  <text class="strong" x="14" y="209">Root environment injector</text>
+  <text class="sm" x="14" y="227">app config, @Service() classes</text>
+
+  <text class="sm" x="330" y="14">Element injectors, along the component tree</text>
+  <rect class="box" x="420" y="24" width="130" height="44" rx="6"/>
+  <text x="485" y="51" text-anchor="middle">App</text>
+  <line class="sep" x1="485" y1="68" x2="485" y2="98"/>
+  <rect class="box" x="420" y="98" width="130" height="44" rx="6"/>
+  <text x="485" y="125" text-anchor="middle">Shop</text>
+  <line class="sep" x1="485" y1="142" x2="405" y2="172"/>
+  <line class="sep" x1="485" y1="142" x2="575" y2="172"/>
+  <rect class="box-accent" x="330" y="172" width="150" height="58" rx="6"/>
+  <text x="405" y="196" text-anchor="middle">Panel</text>
+  <text class="sm" x="405" y="216" text-anchor="middle">provides PanelState</text>
+  <rect class="box" x="500" y="172" width="150" height="58" rx="6"/>
+  <text x="575" y="196" text-anchor="middle">Panel</text>
+  <text class="sm" x="575" y="216" text-anchor="middle">provides PanelState</text>
+
+  <!-- The search for Cart, starting at the left Panel -->
+  <path class="wire-accent" d="M350 172 V120 H418" marker-end="url(#inj-arrow-a)"/>
+  <path class="wire-accent" d="M420 108 H392 V46 H418" marker-end="url(#inj-arrow-a)"/>
+  <path class="wire-accent" d="M420 34 H300 V213 H232" marker-end="url(#inj-arrow-a)"/>
+  <text class="sm accent" x="244" y="205">found</text>
+
+  <line class="sep" x1="0" y1="258" x2="680" y2="258"/>
+  <text class="sm" x="0" y="280">inject(Cart) in a Panel: Angular searches the Panel, Shop and App element injectors,</text>
+  <text class="sm" x="0" y="298">then the environment injectors, where @Service() registered Cart in the root injector.</text>
+  <text class="sm" x="0" y="316">Each Panel gets its own PanelState; both get the same Cart.</text>
+</svg>

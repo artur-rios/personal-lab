@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 268" role="img" aria-labelledby="hy-title">
+  <title id="hy-title">Server-side rendering and hydration. The server renders the application for the requested URL and sends the resulting HTML, together with serialized state. The browser paints that HTML straight away, so the page is visible before any application JavaScript has run; clicks made in the meantime are recorded. When the JavaScript has loaded, hydration reuses the existing DOM nodes instead of re-creating them, attaches event listeners and replays the recorded events. With incremental hydration, a @defer block with a hydrate trigger stays as server-rendered HTML until its trigger fires, and only then is its code fetched and hydrated.</title>
+  <defs>
+    <marker id="hy-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="strong" x="0" y="46">Server</text>
+  <rect class="box" x="90" y="20" width="180" height="50" rx="6"/>
+  <text x="104" y="41">render the app</text>
+  <text class="sm" x="104" y="59">for the requested URL</text>
+  <line class="wire" x1="270" y1="45" x2="298" y2="45" marker-end="url(#hy-arrow)"/>
+  <rect class="box" x="300" y="20" width="200" height="50" rx="6"/>
+  <text x="314" y="41">HTML response</text>
+  <text class="sm" x="314" y="59">markup + serialized state</text>
+  <path class="wire" d="M400 70 V88 H180 V104" marker-end="url(#hy-arrow)"/>
+
+  <text class="strong" x="0" y="136">Browser</text>
+  <rect class="box-accent" x="90" y="106" width="180" height="56" rx="6"/>
+  <text x="104" y="129">paint the HTML</text>
+  <text class="sm" x="104" y="148">visible, not interactive</text>
+  <line class="wire" x1="270" y1="134" x2="298" y2="134" marker-end="url(#hy-arrow)"/>
+  <rect class="box-accent" x="300" y="106" width="170" height="56" rx="6"/>
+  <text x="314" y="129">load the JavaScript</text>
+  <text class="sm" x="314" y="148">clicks are recorded</text>
+  <line class="wire" x1="470" y1="134" x2="498" y2="134" marker-end="url(#hy-arrow)"/>
+  <rect class="solid" x="500" y="106" width="180" height="56" rx="6"/>
+  <text class="on-solid" x="514" y="129">hydrate</text>
+  <text class="sm on-solid" x="514" y="148">reuse DOM, replay events</text>
+
+  <rect class="zone" x="0" y="186" width="680" height="76" rx="8"/>
+  <text class="strong" x="16" y="210">Incremental hydration</text>
+  <text class="sm" x="16" y="230"><tspan class="mono">@defer (hydrate on viewport) { … }</tspan> stays server-rendered HTML until its trigger</text>
+  <text class="sm" x="16" y="248">fires; only then is its code fetched and that part of the page hydrated.</text>
+</svg>
