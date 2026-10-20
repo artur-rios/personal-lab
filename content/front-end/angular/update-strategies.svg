@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 236" role="img" aria-labelledby="us-title">
+  <title id="us-title">Two ways a framework can update the page. With a virtual DOM, a change of state re-runs a render function that builds a new tree of plain objects, which is diffed against the previous tree before the differences are applied to the real DOM. With the incremental DOM approach that Angular's Ivy runtime follows, a change of state re-runs the compiled template function in update mode, which compares each binding with the value it had last time and writes only the DOM nodes whose bindings changed, without building a second copy of the tree.</title>
+  <defs>
+    <marker id="us-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="sm" x="0" y="14">Virtual DOM</text>
+  <rect class="box" x="0" y="24" width="150" height="56" rx="6"/>
+  <text x="75" y="57" text-anchor="middle">state changes</text>
+  <line class="wire" x1="150" y1="52" x2="174" y2="52" marker-end="url(#us-arrow)"/>
+  <rect class="box" x="176" y="24" width="150" height="56" rx="6"/>
+  <text class="sm" x="251" y="48" text-anchor="middle">render: build a new</text>
+  <text class="sm" x="251" y="64" text-anchor="middle">tree of objects</text>
+  <line class="wire" x1="326" y1="52" x2="350" y2="52" marker-end="url(#us-arrow)"/>
+  <rect class="box" x="352" y="24" width="150" height="56" rx="6"/>
+  <text class="sm" x="427" y="48" text-anchor="middle">diff it against the</text>
+  <text class="sm" x="427" y="64" text-anchor="middle">previous tree</text>
+  <line class="wire" x1="502" y1="52" x2="526" y2="52" marker-end="url(#us-arrow)"/>
+  <rect class="box" x="528" y="24" width="152" height="56" rx="6"/>
+  <text class="sm" x="604" y="48" text-anchor="middle">apply the differences</text>
+  <text class="sm" x="604" y="64" text-anchor="middle">to the real DOM</text>
+
+  <text class="sm" x="0" y="118">Incremental DOM (Angular's Ivy)</text>
+  <rect class="box-accent" x="0" y="128" width="150" height="56" rx="6"/>
+  <text x="75" y="161" text-anchor="middle">state changes</text>
+  <line class="wire-accent" x1="150" y1="156" x2="174" y2="156" marker-end="url(#us-arrow)"/>
+  <rect class="box-accent" x="176" y="128" width="150" height="56" rx="6"/>
+  <text class="sm" x="251" y="152" text-anchor="middle">run the template</text>
+  <text class="sm" x="251" y="168" text-anchor="middle">function, update mode</text>
+  <line class="wire-accent" x1="326" y1="156" x2="350" y2="156" marker-end="url(#us-arrow)"/>
+  <rect class="box-accent" x="352" y="128" width="150" height="56" rx="6"/>
+  <text class="sm" x="427" y="152" text-anchor="middle">compare each binding</text>
+  <text class="sm" x="427" y="168" text-anchor="middle">with its last value</text>
+  <line class="wire-accent" x1="502" y1="156" x2="526" y2="156" marker-end="url(#us-arrow)"/>
+  <rect class="solid" x="528" y="128" width="152" height="56" rx="6"/>
+  <text class="sm on-solid" x="604" y="152" text-anchor="middle">write only the nodes</text>
+  <text class="sm on-solid" x="604" y="168" text-anchor="middle">that changed</text>
+
+  <text class="sm" x="0" y="222">No second copy of the tree is built: the instructions mutate the existing DOM in place.</text>
+</svg>
