@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" role="img" aria-labelledby="dns-title">
+  <title id="dns-title">Resolving example.com with an empty cache. 1, the program's stub resolver asks a recursive resolver for the A record of example.com. 2, the recursive resolver asks a root server, and 3, the root server refers it to the servers for com. 4, it asks a com server, and 5, that server refers it to the servers for example.com. 6, it asks an example.com server, and 7, that authoritative server answers with the address and a time to live. 8, the recursive resolver caches the answer for its time to live and returns it to the program.</title>
+  <defs>
+    <marker id="dns-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="dns-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- The asker -->
+  <rect class="box" x="0" y="126" width="150" height="68" rx="6"/>
+  <text class="strong" x="14" y="152">Your program</text>
+  <text class="sm" x="14" y="172">stub resolver</text>
+  <text class="sm" x="14" y="186">in the OS</text>
+
+  <!-- The recursive resolver -->
+  <rect class="box-accent" x="210" y="116" width="180" height="88" rx="6"/>
+  <text class="strong" x="224" y="142">Recursive resolver</text>
+  <text class="sm" x="224" y="162">your ISP's, or a public</text>
+  <text class="sm" x="224" y="176">one such as 1.1.1.1;</text>
+  <text class="sm" x="224" y="190">caches answers</text>
+
+  <!-- The hierarchy -->
+  <rect class="box" x="470" y="8" width="210" height="60" rx="6"/>
+  <text class="strong" x="484" y="33">Root servers</text>
+  <text class="mono" x="484" y="54">a…m.root-servers.net</text>
+
+  <rect class="box" x="470" y="130" width="210" height="60" rx="6"/>
+  <text class="strong" x="484" y="155">com. TLD servers</text>
+  <text class="sm" x="484" y="176">know who serves example.com</text>
+
+  <rect class="box" x="470" y="252" width="210" height="60" rx="6"/>
+  <text class="strong" x="484" y="277">example.com servers</text>
+  <text class="sm" x="484" y="298">authoritative for the zone</text>
+
+  <!-- 1 and 8 -->
+  <line class="wire-accent" x1="150" y1="146" x2="208" y2="146" marker-end="url(#dns-arrow-accent)"/>
+  <text class="sm accent" x="179" y="140" text-anchor="middle">1</text>
+  <line class="wire-accent" x1="210" y1="176" x2="152" y2="176" marker-end="url(#dns-arrow-accent)"/>
+  <text class="sm accent" x="181" y="194" text-anchor="middle">8</text>
+
+  <!-- 2 and 3: root -->
+  <line class="wire" x1="372" y1="116" x2="468" y2="44" marker-end="url(#dns-arrow)"/>
+  <text class="sm" x="408" y="76" text-anchor="middle">2</text>
+  <line class="wire" x1="470" y1="60" x2="390" y2="120" marker-end="url(#dns-arrow)"/>
+  <text class="sm" x="446" y="100" text-anchor="middle">3</text>
+
+  <!-- 4 and 5: TLD -->
+  <line class="wire" x1="390" y1="150" x2="468" y2="150" marker-end="url(#dns-arrow)"/>
+  <text class="sm" x="429" y="144" text-anchor="middle">4</text>
+  <line class="wire" x1="470" y1="172" x2="392" y2="172" marker-end="url(#dns-arrow)"/>
+  <text class="sm" x="429" y="188" text-anchor="middle">5</text>
+
+  <!-- 6 and 7: authoritative -->
+  <line class="wire" x1="372" y1="204" x2="468" y2="276" marker-end="url(#dns-arrow)"/>
+  <text class="sm" x="408" y="256" text-anchor="middle">6</text>
+  <line class="wire" x1="470" y1="260" x2="390" y2="200" marker-end="url(#dns-arrow)"/>
+  <text class="sm" x="446" y="222" text-anchor="middle">7</text>
+
+  <!-- Legend -->
+  <line class="sep" x1="0" y1="330" x2="680" y2="330"/>
+  <text class="sm" x="0" y="352">1 · A record for example.com?</text>
+  <text class="sm" x="0" y="370">2 · the resolver asks a root server</text>
+  <text class="sm" x="0" y="388">3 · referral: ask the com. servers</text>
+  <text class="sm" x="0" y="406">4 · the resolver asks a com. server</text>
+  <text class="sm" x="350" y="352">5 · referral: ask example.com's servers</text>
+  <text class="sm" x="350" y="370">6 · the resolver asks example.com's server</text>
+  <text class="sm" x="350" y="388">7 · answer: the address, with a TTL</text>
+  <text class="sm" x="350" y="406">8 · cached for the TTL and returned</text>
+</svg>

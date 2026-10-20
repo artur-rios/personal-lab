@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 384" role="img" aria-labelledby="md-title">
+  <title id="md-title">The seven layers of the OSI reference model beside the four layers of the TCP/IP model. OSI's application, presentation and session layers correspond to the TCP/IP application layer, which carries HTTP, DNS, TLS, SSH and SMTP. The transport layers match, with TCP, UDP and QUIC. The OSI network layer is the TCP/IP internet layer, with IPv4, IPv6 and ICMP. The OSI data link and physical layers make up the TCP/IP link layer: Ethernet, Wi-Fi and ARP over cables, fibre and radio.</title>
+
+  <text class="strong" x="0" y="16">OSI reference model</text>
+  <text class="strong" x="250" y="16">TCP/IP model</text>
+  <text class="strong" x="450" y="16">Example protocols</text>
+
+  <!-- OSI: seven rows, 40 high, every 46 -->
+  <rect class="box" x="0" y="30" width="230" height="40" rx="6"/>
+  <text x="14" y="55">7 · Application</text>
+  <text class="sm" x="216" y="55" text-anchor="end">message</text>
+
+  <rect class="box" x="0" y="76" width="230" height="40" rx="6"/>
+  <text x="14" y="101">6 · Presentation</text>
+
+  <rect class="box" x="0" y="122" width="230" height="40" rx="6"/>
+  <text x="14" y="147">5 · Session</text>
+
+  <rect class="box" x="0" y="168" width="230" height="40" rx="6"/>
+  <text x="14" y="193">4 · Transport</text>
+  <text class="sm" x="216" y="193" text-anchor="end">segment</text>
+
+  <rect class="box" x="0" y="214" width="230" height="40" rx="6"/>
+  <text x="14" y="239">3 · Network</text>
+  <text class="sm" x="216" y="239" text-anchor="end">packet</text>
+
+  <rect class="box" x="0" y="260" width="230" height="40" rx="6"/>
+  <text x="14" y="285">2 · Data link</text>
+  <text class="sm" x="216" y="285" text-anchor="end">frame</text>
+
+  <rect class="box" x="0" y="306" width="230" height="40" rx="6"/>
+  <text x="14" y="331">1 · Physical</text>
+  <text class="sm" x="216" y="331" text-anchor="end">bits</text>
+
+  <!-- TCP/IP: four layers spanning the OSI rows -->
+  <rect class="box-accent" x="250" y="30" width="180" height="132" rx="6"/>
+  <text class="strong" x="340" y="101" text-anchor="middle">Application</text>
+
+  <rect class="box-accent" x="250" y="168" width="180" height="40" rx="6"/>
+  <text class="strong" x="340" y="193" text-anchor="middle">Transport</text>
+
+  <rect class="box-accent" x="250" y="214" width="180" height="40" rx="6"/>
+  <text class="strong" x="340" y="239" text-anchor="middle">Internet</text>
+
+  <rect class="box-accent" x="250" y="260" width="180" height="86" rx="6"/>
+  <text class="strong" x="340" y="308" text-anchor="middle">Link</text>
+
+  <!-- Protocols -->
+  <text x="450" y="90">HTTP · DNS · TLS</text>
+  <text x="450" y="112">SSH · SMTP · DHCP</text>
+  <text x="450" y="193">TCP · UDP · QUIC</text>
+  <text x="450" y="239">IPv4 · IPv6 · ICMP</text>
+  <text x="450" y="285">Ethernet · Wi-Fi · ARP</text>
+  <text x="450" y="331">cables, fibre, radio</text>
+
+  <line class="sep" x1="0" y1="364" x2="680" y2="364"/>
+  <text class="sm" x="0" y="380">OSI is a reference model to think with; TCP/IP is the model the Internet's protocols were built to.</text>
+</svg>
