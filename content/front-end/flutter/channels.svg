@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" role="img" aria-labelledby="fl-ch-title">
+  <title id="fl-ch-title">Two ways for Flutter code to reach native code. With a platform channel, Dart code calls invokeMethod on a MethodChannel; the call's name and arguments are encoded by the standard message codec into bytes, carried by the engine's binary messenger to the host platform, decoded, and handled by Kotlin, Java, Swift or Objective-C code on the platform's main thread. The result or error travels back the same way and completes a Dart Future. Pigeon can generate both ends of a channel from one Dart interface. With dart:ffi, Dart calls functions in a C library directly, with no serialisation, on every platform except the web.</title>
+  <defs>
+    <marker id="fl-ch-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="fl-ch-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="sm" x="0" y="14">Platform channel</text>
+  <rect class="box-accent" x="0" y="24" width="180" height="96" rx="8"/>
+  <text class="strong" x="14" y="46">Dart</text>
+  <text class="sm mono" x="14" y="68">MethodChannel</text>
+  <text class="sm mono" x="14" y="86">.invokeMethod(</text>
+  <text class="sm mono" x="14" y="104">  'getBatteryLevel')</text>
+
+  <rect class="box" x="250" y="24" width="180" height="96" rx="8"/>
+  <text class="strong" x="264" y="46">Engine</text>
+  <text class="sm" x="264" y="68">binary messenger</text>
+  <text class="sm" x="264" y="86">StandardMessageCodec:</text>
+  <text class="sm" x="264" y="104">values ⇄ bytes</text>
+
+  <rect class="box-accent" x="500" y="24" width="180" height="96" rx="8"/>
+  <text class="strong" x="514" y="46">Host</text>
+  <text class="sm" x="514" y="68">Kotlin, Java, Swift,</text>
+  <text class="sm" x="514" y="86">Objective-C handler,</text>
+  <text class="sm" x="514" y="104">on the main thread</text>
+
+  <line class="wire" x1="180" y1="50" x2="248" y2="50" marker-end="url(#fl-ch-arrow)"/>
+  <line class="wire" x1="430" y1="50" x2="498" y2="50" marker-end="url(#fl-ch-arrow)"/>
+  <line class="wire-accent" x1="498" y1="96" x2="432" y2="96" marker-end="url(#fl-ch-arrow-accent)"/>
+  <line class="wire-accent" x1="248" y1="96" x2="182" y2="96" marker-end="url(#fl-ch-arrow-accent)"/>
+  <text class="sm" x="215" y="42" text-anchor="middle">call</text>
+  <text class="sm" x="465" y="42" text-anchor="middle">bytes</text>
+  <text class="sm accent" x="215" y="114" text-anchor="middle">Future</text>
+  <text class="sm accent" x="465" y="114" text-anchor="middle">result</text>
+
+  <text class="sm" x="0" y="146">asynchronous, untyped by default: both ends must agree on names and types,</text>
+  <text class="sm" x="0" y="162">or Pigeon can generate both ends from one Dart interface</text>
+
+  <line class="sep" x1="0" y1="186" x2="680" y2="186"/>
+
+  <text class="sm" x="0" y="212">Foreign function interface</text>
+  <rect class="box-accent" x="0" y="222" width="180" height="48" rx="8"/>
+  <text class="strong" x="14" y="244">Dart</text>
+  <text class="sm mono" x="14" y="262">dart:ffi</text>
+  <line class="wire" x1="180" y1="246" x2="498" y2="246" marker-end="url(#fl-ch-arrow)"/>
+  <text class="sm" x="340" y="238" text-anchor="middle">direct call, no serialisation</text>
+  <rect class="solid" x="500" y="222" width="180" height="48" rx="8"/>
+  <text class="on-solid" x="590" y="244" text-anchor="middle">C library</text>
+  <text class="sm on-solid" x="590" y="262" text-anchor="middle">or C-compatible API</text>
+  <text class="sm" x="0" y="292">available on every platform except the web</text>
+</svg>

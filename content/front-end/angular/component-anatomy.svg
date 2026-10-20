@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" role="img" aria-labelledby="ca-title">
+  <title id="ca-title">The anatomy of an Angular component. A TypeScript class holding state and behaviour, an HTML template with bindings and control flow blocks, and optional styles scoped to the component are joined by the @Component decorator. At build time the Angular compiler turns them into generated JavaScript: a factory that creates instances and a component definition holding the selector, the compiled template function and the styles. At run time, every place a parent template uses the component's selector gets a host element, a component instance and a view made of DOM nodes.</title>
+  <defs>
+    <marker id="ca-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="sm" x="0" y="14">What you write</text>
+  <rect class="box" x="0" y="24" width="200" height="54" rx="6"/>
+  <text class="strong" x="14" y="46">Class</text>
+  <text class="sm" x="14" y="66">state (signals) and methods</text>
+  <rect class="box" x="0" y="90" width="200" height="54" rx="6"/>
+  <text class="strong" x="14" y="112">Template</text>
+  <text class="sm" x="14" y="132">HTML, bindings, @if, @for</text>
+  <rect class="box" x="0" y="156" width="200" height="54" rx="6"/>
+  <text class="strong" x="14" y="178">Styles</text>
+  <text class="sm" x="14" y="198">CSS scoped to this component</text>
+  <text class="sm mono" x="0" y="232">@Component({ selector, … })</text>
+
+  <path class="wire" d="M200 51 H222 V105 H246" marker-end="url(#ca-arrow)"/>
+  <line class="wire" x1="200" y1="117" x2="246" y2="117" marker-end="url(#ca-arrow)"/>
+  <path class="wire" d="M200 183 H222 V129 H246" marker-end="url(#ca-arrow)"/>
+
+  <rect class="solid" x="248" y="88" width="160" height="58" rx="6"/>
+  <text class="strong on-solid" x="328" y="112" text-anchor="middle">Angular compiler</text>
+  <text class="sm on-solid" x="328" y="132" text-anchor="middle">at build time (AOT)</text>
+  <line class="wire" x1="408" y1="117" x2="446" y2="117" marker-end="url(#ca-arrow)"/>
+
+  <text class="sm" x="448" y="14">What the browser runs</text>
+  <rect class="box-accent" x="448" y="24" width="232" height="186" rx="6"/>
+  <text class="strong" x="462" y="48">Generated JavaScript</text>
+  <text class="mono accent" x="462" y="78">ɵfac</text>
+  <text class="sm" x="462" y="96">a factory that creates instances</text>
+  <text class="mono accent" x="462" y="126">ɵcmp</text>
+  <text class="sm" x="462" y="144">the component definition:</text>
+  <text class="sm" x="462" y="160">selector, the template compiled</text>
+  <text class="sm" x="462" y="176">to a function of instructions,</text>
+  <text class="sm" x="462" y="192">styles, inputs and outputs</text>
+
+  <line class="sep" x1="0" y1="252" x2="680" y2="252"/>
+  <text class="sm" x="0" y="274">At run time, wherever a parent template contains &lt;app-todo-list&gt;:</text>
+  <rect class="box" x="0" y="286" width="190" height="40" rx="6"/>
+  <text x="95" y="311" text-anchor="middle">host element</text>
+  <line class="wire" x1="190" y1="306" x2="242" y2="306" marker-end="url(#ca-arrow)"/>
+  <rect class="box-accent" x="244" y="286" width="190" height="40" rx="6"/>
+  <text x="339" y="311" text-anchor="middle">component instance</text>
+  <line class="wire" x1="434" y1="306" x2="486" y2="306" marker-end="url(#ca-arrow)"/>
+  <rect class="box" x="488" y="286" width="192" height="40" rx="6"/>
+  <text x="584" y="311" text-anchor="middle">view: its DOM nodes</text>
+</svg>

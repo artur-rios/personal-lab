@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 290" role="img" aria-labelledby="fl-frame-title">
+  <title id="fl-frame-title">How Flutter produces a frame. On the UI thread, which runs the app's Dart code, a frame starts with the vsync signal and any pending input. Animations advance, the dirty elements rebuild their widgets, layout passes constraints down and sizes up, and paint records drawing commands into a tree of layers. The layer tree is handed to the raster thread, where the engine composites the layers and Impeller turns them into GPU commands, and the GPU puts the frame on the screen. Both threads must finish within the frame budget, about 16 milliseconds at 60 hertz.</title>
+  <defs>
+    <marker id="fl-frame-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="strong" x="0" y="20">UI thread</text>
+  <text class="sm" x="80" y="20">the framework and your Dart code</text>
+
+  <rect class="box" x="0" y="34" width="100" height="40" rx="6"/>
+  <text x="50" y="59" text-anchor="middle">vsync, input</text>
+  <rect class="box-accent" x="116" y="34" width="100" height="40" rx="6"/>
+  <text x="166" y="59" text-anchor="middle">Animate</text>
+  <rect class="box-accent" x="232" y="34" width="100" height="40" rx="6"/>
+  <text x="282" y="59" text-anchor="middle">Build</text>
+  <rect class="box-accent" x="348" y="34" width="100" height="40" rx="6"/>
+  <text x="398" y="59" text-anchor="middle">Layout</text>
+  <rect class="box-accent" x="464" y="34" width="100" height="40" rx="6"/>
+  <text x="514" y="59" text-anchor="middle">Paint</text>
+  <rect class="solid" x="580" y="34" width="100" height="40" rx="6"/>
+  <text class="on-solid" x="630" y="59" text-anchor="middle">Layer tree</text>
+
+  <line class="wire" x1="100" y1="54" x2="114" y2="54" marker-end="url(#fl-frame-arrow)"/>
+  <line class="wire" x1="216" y1="54" x2="230" y2="54" marker-end="url(#fl-frame-arrow)"/>
+  <line class="wire" x1="332" y1="54" x2="346" y2="54" marker-end="url(#fl-frame-arrow)"/>
+  <line class="wire" x1="448" y1="54" x2="462" y2="54" marker-end="url(#fl-frame-arrow)"/>
+  <line class="wire" x1="564" y1="54" x2="578" y2="54" marker-end="url(#fl-frame-arrow)"/>
+
+  <text class="sm" x="50" y="94" text-anchor="middle">a new frame</text>
+  <text class="sm" x="50" y="108" text-anchor="middle">is due</text>
+  <text class="sm" x="166" y="94" text-anchor="middle">tickers move</text>
+  <text class="sm" x="166" y="108" text-anchor="middle">animations on</text>
+  <text class="sm" x="282" y="94" text-anchor="middle">dirty elements</text>
+  <text class="sm" x="282" y="108" text-anchor="middle">rebuild</text>
+  <text class="sm" x="398" y="94" text-anchor="middle">constraints down,</text>
+  <text class="sm" x="398" y="108" text-anchor="middle">sizes up</text>
+  <text class="sm" x="514" y="94" text-anchor="middle">record drawing</text>
+  <text class="sm" x="514" y="108" text-anchor="middle">commands</text>
+  <text class="sm" x="630" y="94" text-anchor="middle">handed over</text>
+  <text class="sm" x="630" y="108" text-anchor="middle">to the engine</text>
+
+  <path class="wire" d="M630 116 V140 H410 V172" marker-end="url(#fl-frame-arrow)"/>
+
+  <text class="strong" x="0" y="190">Raster thread</text>
+  <text class="sm" x="0" y="208">the engine, in C++</text>
+
+  <rect class="box-accent" x="348" y="174" width="110" height="40" rx="6"/>
+  <text x="403" y="199" text-anchor="middle">Composite</text>
+  <rect class="solid" x="474" y="174" width="100" height="40" rx="6"/>
+  <text class="on-solid" x="524" y="199" text-anchor="middle">Impeller</text>
+  <rect class="box" x="590" y="174" width="90" height="40" rx="6"/>
+  <text x="635" y="199" text-anchor="middle">GPU</text>
+  <line class="wire" x1="458" y1="194" x2="472" y2="194" marker-end="url(#fl-frame-arrow)"/>
+  <line class="wire" x1="574" y1="194" x2="588" y2="194" marker-end="url(#fl-frame-arrow)"/>
+
+  <text class="sm" x="403" y="234" text-anchor="middle">combine layers</text>
+  <text class="sm" x="524" y="234" text-anchor="middle">Metal, Vulkan</text>
+  <text class="sm" x="524" y="248" text-anchor="middle">or OpenGL calls</text>
+  <text class="sm" x="635" y="234" text-anchor="middle">pixels on</text>
+  <text class="sm" x="635" y="248" text-anchor="middle">screen</text>
+
+  <line class="sep" x1="0" y1="266" x2="680" y2="266"/>
+  <text class="sm" x="0" y="284">Each thread has about 16 ms per frame at 60 Hz; going over on either one drops a frame (jank).</text>
+</svg>

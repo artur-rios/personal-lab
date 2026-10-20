@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 292" role="img" aria-labelledby="ra-title">
+  <title id="ra-title">How React is put together. At build time, a compiler such as Babel or esbuild turns JSX in your source into plain calls to the jsx function. At run time, your components are functions of props and state that return elements. The reconciler, called Fiber, calls the components, compares the old and new trees and schedules the work. A renderer then applies the changes to its platform: react-dom to the browser DOM, react-native to iOS and Android views.</title>
+  <defs>
+    <marker id="ra-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Build time -->
+  <rect class="zone" x="1" y="1" width="678" height="96" rx="8"/>
+  <text class="sm" x="14" y="20">Build time</text>
+
+  <rect class="box" x="20" y="32" width="190" height="48" rx="6"/>
+  <text class="mono" x="115" y="61" text-anchor="middle">&lt;Card title="Ada"/&gt;</text>
+  <line class="wire" x1="210" y1="56" x2="244" y2="56" marker-end="url(#ra-arrow)"/>
+
+  <rect class="box-accent" x="246" y="32" width="190" height="48" rx="6"/>
+  <text class="strong" x="341" y="52" text-anchor="middle">Compiler</text>
+  <text class="sm" x="341" y="70" text-anchor="middle">Babel, esbuild, SWC, …</text>
+  <line class="wire" x1="436" y1="56" x2="470" y2="56" marker-end="url(#ra-arrow)"/>
+
+  <rect class="box" x="472" y="32" width="190" height="48" rx="6"/>
+  <text class="mono" x="567" y="61" text-anchor="middle">jsx(Card, {title:"Ada"})</text>
+
+  <!-- Run time -->
+  <rect class="zone" x="1" y="113" width="678" height="176" rx="8"/>
+  <text class="sm" x="14" y="132">Run time</text>
+
+  <rect class="box" x="20" y="146" width="190" height="104" rx="6"/>
+  <text class="strong" x="115" y="174" text-anchor="middle">Your components</text>
+  <text class="sm" x="115" y="196" text-anchor="middle">functions of props and</text>
+  <text class="sm" x="115" y="212" text-anchor="middle">state that return</text>
+  <text class="sm" x="115" y="228" text-anchor="middle">elements</text>
+
+  <line class="wire" x1="246" y1="182" x2="212" y2="182" marker-end="url(#ra-arrow)"/>
+  <line class="wire" x1="210" y1="214" x2="244" y2="214" marker-end="url(#ra-arrow)"/>
+
+  <rect class="solid" x="246" y="146" width="190" height="104" rx="6"/>
+  <text class="strong on-solid" x="341" y="174" text-anchor="middle">Reconciler (Fiber)</text>
+  <text class="sm on-solid" x="341" y="196" text-anchor="middle">calls components, compares</text>
+  <text class="sm on-solid" x="341" y="212" text-anchor="middle">old and new trees,</text>
+  <text class="sm on-solid" x="341" y="228" text-anchor="middle">schedules the work</text>
+
+  <path class="wire" d="M436 198 H454 V170 H470" marker-end="url(#ra-arrow)"/>
+  <path class="wire" d="M454 198 V226 H470" marker-end="url(#ra-arrow)"/>
+
+  <rect class="box-accent" x="472" y="146" width="190" height="48" rx="6"/>
+  <text class="mono" x="567" y="166" text-anchor="middle">react-dom</text>
+  <text class="sm" x="567" y="184" text-anchor="middle">→ the browser DOM</text>
+  <rect class="box-accent" x="472" y="202" width="190" height="48" rx="6"/>
+  <text class="mono" x="567" y="222" text-anchor="middle">react-native</text>
+  <text class="sm" x="567" y="240" text-anchor="middle">→ iOS and Android views</text>
+
+  <text class="sm" x="20" y="276">The reconciler works out what changed; a renderer applies it to its platform.</text>
+</svg>

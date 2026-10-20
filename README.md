@@ -10,7 +10,7 @@ GitHub Pages at **<https://artur-rios.github.io/personal-lab/>**.
 
 | Kind | What it is |
 | --- | --- |
-| **Study notes** | What I learn, written up properly, with references. [Fundamentals](content/fundamentals/) is the first section: the core ideas of computing and programming. |
+| **Study notes** | What I learn, written up properly, with references. [Fundamentals](content/fundamentals/) covers the core ideas of computing and programming; [Front-end](content/front-end/) covers the frameworks behind web and mobile interfaces. |
 | **Brainstorms** | Ideas while they are still rough: questions, sketches and options before anything is decided. They live in [Brainstorms](content/brainstorms/). |
 | **Projects** | The things I am building: what each one is, where it stands and what comes next. They live in [Projects](content/projects/). |
 
@@ -22,6 +22,7 @@ section.
 ```txt
 content/          site content, one folder per section
   fundamentals/   study notes on the fundamentals of computing
+  front-end/      study notes on front-end frameworks: Angular, React, Flutter
   brainstorms/    rough ideas, questions and options before anything is decided
   projects/       the things being built: what, status and what comes next
 data/             site data (the lines the home page masthead cycles through)

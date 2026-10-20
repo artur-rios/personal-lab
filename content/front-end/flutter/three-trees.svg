@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 336" role="img" aria-labelledby="fl-trees-title">
+  <title id="fl-trees-title">The three trees for a Container with a colour and padding around a Text. The developer wrote two widgets, Container and Text. Building them expands Container into a ColoredBox and a Padding, and Text into a RichText, giving five widgets. Each widget has one element: the Container and Text widgets get component elements, which only build other widgets, and ColoredBox, Padding and RichText get render object elements. Only those three elements own render objects: a colored box render object, RenderPadding and RenderParagraph, which do the layout, painting and hit testing.</title>
+  <defs>
+    <marker id="fl-trees-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+  <text class="strong" x="0" y="16">Widgets</text>
+  <text class="sm" x="0" y="34">immutable configuration</text>
+  <text class="strong" x="226" y="16">Elements</text>
+  <text class="sm" x="226" y="34">persistent, one per widget</text>
+  <text class="strong" x="510" y="16">Render objects</text>
+  <text class="sm" x="510" y="34">layout, paint, hit testing</text>
+  <rect class="box-accent" x="0" y="50" width="170" height="34" rx="6"/>
+  <text class="mono" x="14" y="72">Container</text>
+  <line class="wire" x1="170" y1="67" x2="224" y2="67" marker-end="url(#fl-trees-arrow)"/>
+  <rect class="box" x="226" y="50" width="240" height="34" rx="6"/>
+  <text class="mono" x="240" y="72">StatelessElement</text>
+  <line class="wire" x1="40" y1="84" x2="40" y2="100" marker-end="url(#fl-trees-arrow)"/>
+  <rect class="box" x="0" y="102" width="170" height="34" rx="6"/>
+  <text class="mono" x="14" y="124">ColoredBox</text>
+  <line class="wire" x1="170" y1="119" x2="224" y2="119" marker-end="url(#fl-trees-arrow)"/>
+  <rect class="box" x="226" y="102" width="240" height="34" rx="6"/>
+  <text class="mono" x="240" y="124">SingleChildRenderObjectElement</text>
+  <line class="wire-accent" x1="466" y1="119" x2="508" y2="119" marker-end="url(#fl-trees-arrow)"/>
+  <rect class="solid" x="510" y="102" width="170" height="34" rx="6"/>
+  <text class="mono on-solid" x="524" y="124">_RenderColoredBox</text>
+  <line class="wire" x1="40" y1="136" x2="40" y2="152" marker-end="url(#fl-trees-arrow)"/>
+  <rect class="box" x="0" y="154" width="170" height="34" rx="6"/>
+  <text class="mono" x="14" y="176">Padding</text>
+  <line class="wire" x1="170" y1="171" x2="224" y2="171" marker-end="url(#fl-trees-arrow)"/>
+  <rect class="box" x="226" y="154" width="240" height="34" rx="6"/>
+  <text class="mono" x="240" y="176">SingleChildRenderObjectElement</text>
+  <line class="wire-accent" x1="466" y1="171" x2="508" y2="171" marker-end="url(#fl-trees-arrow)"/>
+  <rect class="solid" x="510" y="154" width="170" height="34" rx="6"/>
+  <text class="mono on-solid" x="524" y="176">RenderPadding</text>
+  <line class="wire" x1="40" y1="188" x2="40" y2="204" marker-end="url(#fl-trees-arrow)"/>
+  <rect class="box-accent" x="0" y="206" width="170" height="34" rx="6"/>
+  <text class="mono" x="14" y="228">Text</text>
+  <line class="wire" x1="170" y1="223" x2="224" y2="223" marker-end="url(#fl-trees-arrow)"/>
+  <rect class="box" x="226" y="206" width="240" height="34" rx="6"/>
+  <text class="mono" x="240" y="228">StatelessElement</text>
+  <line class="wire" x1="40" y1="240" x2="40" y2="256" marker-end="url(#fl-trees-arrow)"/>
+  <rect class="box" x="0" y="258" width="170" height="34" rx="6"/>
+  <text class="mono" x="14" y="280">RichText</text>
+  <line class="wire" x1="170" y1="275" x2="224" y2="275" marker-end="url(#fl-trees-arrow)"/>
+  <rect class="box" x="226" y="258" width="240" height="34" rx="6"/>
+  <text class="mono" x="240" y="280">MultiChildRenderObjectElement</text>
+  <line class="wire-accent" x1="466" y1="275" x2="508" y2="275" marker-end="url(#fl-trees-arrow)"/>
+  <rect class="solid" x="510" y="258" width="170" height="34" rx="6"/>
+  <text class="mono on-solid" x="524" y="280">RenderParagraph</text>
+  <line class="wire-accent" x1="660" y1="136" x2="660" y2="152" marker-end="url(#fl-trees-arrow)"/>
+  <line class="wire-accent" x1="660" y1="188" x2="660" y2="256" marker-end="url(#fl-trees-arrow)"/>
+  <rect class="box-accent" x="0" y="316" width="16" height="12" rx="2"/>
+  <text class="sm" x="24" y="327">written by the developer; the others were produced by their build methods</text>
+</svg>

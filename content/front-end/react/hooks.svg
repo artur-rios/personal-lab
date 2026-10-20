@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 262" role="img" aria-labelledby="hk-title">
+  <title id="hk-title">How React matches Hook calls to their state. A component calls useState for a name, useState for an age, and useEffect, in that order. React keeps the component's Hook state in a list indexed by call order: slot 0 holds the name, slot 1 the age, slot 2 the effect and its dependencies. On every render the calls must come in the same order. If a condition skips the first call, the second call reads slot 0 and gets the name instead of the age, and every later Hook is off by one.</title>
+  <defs>
+    <marker id="hk-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="sm" x="0" y="16">Your component, every render</text>
+  <rect class="box" x="0" y="26" width="360" height="118" rx="6"/>
+  <text class="mono" x="14" y="50">function Profile() {</text>
+  <text class="mono" x="30" y="72">const [name] = useState("Ada");</text>
+  <text class="mono" x="30" y="94">const [age] = useState(36);</text>
+  <text class="mono" x="30" y="116">useEffect(() => {…}, [name]);</text>
+  <text class="mono" x="14" y="136">}</text>
+
+  <text class="sm" x="460" y="16">React's list for this component</text>
+  <rect class="box-accent" x="460" y="52" width="220" height="30" rx="4"/>
+  <text class="sm" x="474" y="72">slot 0 · state "Ada"</text>
+  <rect class="box-accent" x="460" y="88" width="220" height="30" rx="4"/>
+  <text class="sm" x="474" y="108">slot 1 · state 36</text>
+  <rect class="box-accent" x="460" y="124" width="220" height="30" rx="4"/>
+  <text class="sm" x="474" y="144">slot 2 · effect, deps ["Ada"]</text>
+
+  <path class="wire" d="M300 68 H458" marker-end="url(#hk-arrow)"/>
+  <path class="wire" d="M300 90 H400 V103 H458" marker-end="url(#hk-arrow)"/>
+  <path class="wire" d="M330 112 H380 V139 H458" marker-end="url(#hk-arrow)"/>
+
+  <!-- What goes wrong -->
+  <text class="sm" x="0" y="184">If a condition skips a call…</text>
+  <rect class="box" x="0" y="194" width="360" height="58" rx="6"/>
+  <text class="mono" x="30" y="218">if (x) useState("Ada"); // skipped</text>
+  <text class="mono" x="30" y="240">const [age] = useState(36);</text>
+  <path class="wire-accent" d="M260 236 H420 V67 H458" marker-end="url(#hk-arrow)"/>
+  <text class="sm accent" x="460" y="210">…the next call reads slot 0</text>
+  <text class="sm accent" x="460" y="228">and gets "Ada" for the age;</text>
+  <text class="sm accent" x="460" y="246">every later Hook is off by one</text>
+</svg>
