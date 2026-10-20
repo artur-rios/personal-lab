@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" role="img" aria-labelledby="hs-title">
+  <title id="hs-title">The life of a TCP connection, matching the captured trace. Handshake: the client sends SYN with sequence number x, the server answers SYN-ACK with sequence number y and acknowledgement x plus 1, and the client acknowledges y plus 1. Data: the client sends five bytes, hello, which the server acknowledges with x plus 6; the server sends five bytes, HELLO, which the client acknowledges with y plus 6. Close: the server sends FIN, the client sends its own FIN with an acknowledgement, and the server acknowledges it. The side that closed first, here the server, then waits in TIME-WAIT for twice the maximum segment lifetime.</title>
+  <defs>
+    <marker id="hs-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="hs-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Ends and lifelines -->
+  <rect class="box" x="100" y="8" width="100" height="32" rx="6"/>
+  <text class="strong" x="150" y="29" text-anchor="middle">Client</text>
+  <rect class="box" x="480" y="8" width="100" height="32" rx="6"/>
+  <text class="strong" x="530" y="29" text-anchor="middle">Server</text>
+  <line class="sep" x1="150" y1="40" x2="150" y2="380"/>
+  <line class="sep" x1="530" y1="40" x2="530" y2="380"/>
+  <text class="sm" x="545" y="62">LISTEN</text>
+
+  <!-- Phases -->
+  <path class="wire" d="M76 58 H70 V146 H76"/>
+  <text class="sm" x="62" y="106" text-anchor="end">handshake</text>
+  <path class="wire" d="M76 154 H70 V274 H76"/>
+  <text class="sm" x="62" y="218" text-anchor="end">data</text>
+  <path class="wire" d="M76 282 H70 V370 H76"/>
+  <text class="sm" x="62" y="330" text-anchor="end">close</text>
+
+  <!-- Handshake -->
+  <line class="wire-accent" x1="150" y1="60" x2="528" y2="80" marker-end="url(#hs-arrow-accent)"/>
+  <text class="mono" x="340" y="63" text-anchor="middle">SYN  seq=x</text>
+  <line class="wire-accent" x1="530" y1="92" x2="152" y2="112" marker-end="url(#hs-arrow-accent)"/>
+  <text class="mono" x="340" y="95" text-anchor="middle">SYN-ACK  seq=y ack=x+1</text>
+  <line class="wire-accent" x1="150" y1="124" x2="528" y2="144" marker-end="url(#hs-arrow-accent)"/>
+  <text class="mono" x="340" y="127" text-anchor="middle">ACK  ack=y+1</text>
+  <text class="sm" x="545" y="150">ESTABLISHED</text>
+
+  <!-- Data -->
+  <line class="wire" x1="150" y1="156" x2="528" y2="176" marker-end="url(#hs-arrow)"/>
+  <text class="mono" x="340" y="159" text-anchor="middle">seq=x+1  "hello" (5 bytes)</text>
+  <line class="wire" x1="530" y1="188" x2="152" y2="208" marker-end="url(#hs-arrow)"/>
+  <text class="mono" x="340" y="191" text-anchor="middle">ACK  ack=x+6</text>
+  <line class="wire" x1="530" y1="220" x2="152" y2="240" marker-end="url(#hs-arrow)"/>
+  <text class="mono" x="340" y="223" text-anchor="middle">seq=y+1  "HELLO" (5 bytes)</text>
+  <line class="wire" x1="150" y1="252" x2="528" y2="272" marker-end="url(#hs-arrow)"/>
+  <text class="mono" x="340" y="255" text-anchor="middle">ACK  ack=y+6</text>
+
+  <!-- Close -->
+  <line class="wire" x1="530" y1="284" x2="152" y2="304" marker-end="url(#hs-arrow)"/>
+  <text class="mono" x="340" y="287" text-anchor="middle">FIN  seq=y+6</text>
+  <line class="wire" x1="150" y1="316" x2="528" y2="336" marker-end="url(#hs-arrow)"/>
+  <text class="mono" x="340" y="319" text-anchor="middle">FIN  seq=x+6 ack=y+7</text>
+  <line class="wire" x1="530" y1="348" x2="152" y2="368" marker-end="url(#hs-arrow)"/>
+  <text class="mono" x="340" y="351" text-anchor="middle">ACK  ack=x+7</text>
+
+  <rect class="box-accent" x="450" y="384" width="160" height="30" rx="6"/>
+  <text x="530" y="404" text-anchor="middle">TIME-WAIT · 2 × MSL</text>
+  <text class="sm" x="150" y="404" text-anchor="middle">CLOSED</text>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" role="img" aria-labelledby="cg-title">
+  <title id="cg-title">How a classic TCP sender's congestion window changes over time. It starts at the initial window and doubles every round trip in slow start. When three duplicate acknowledgements signal a lost segment, the window is halved and then grows by a constant amount per round trip, in congestion avoidance, giving a sawtooth. When the retransmission timer expires, the window falls to one segment, slow start begins again and stops at the new slow-start threshold, half of the window before the timeout.</title>
+
+  <!-- Axes -->
+  <line class="wire" x1="60" y1="300" x2="670" y2="300"/>
+  <line class="wire" x1="60" y1="300" x2="60" y2="20"/>
+  <text class="sm" x="670" y="320" text-anchor="end">time, in round trips →</text>
+  <text class="sm" x="52" y="34" text-anchor="end">cwnd</text>
+  <text class="sm" x="52" y="276" text-anchor="end">IW</text>
+
+  <!-- New slow-start threshold after the timeout -->
+  <line class="zone" x1="465" y1="216" x2="660" y2="216"/>
+  <text class="sm" x="474" y="232">new ssthresh</text>
+
+  <!-- The window -->
+  <polyline class="wire-accent" style="stroke-width: 2.5" points="60,272 87,244 114,188 141,76 141,188 357,76 357,188 465,132 465,297 492,294 519,289 546,278 573,255 600,216 627,202 654,188"/>
+
+  <!-- Annotations -->
+  <text class="sm" x="122" y="252">slow start:</text>
+  <text class="sm" x="122" y="266">doubles each</text>
+  <text class="sm" x="122" y="280">round trip</text>
+
+  <text class="sm" x="249" y="196" text-anchor="middle">congestion avoidance:</text>
+  <text class="sm" x="249" y="210" text-anchor="middle">grows linearly</text>
+
+  <text class="sm" x="141" y="46" text-anchor="middle">3 duplicate ACKs:</text>
+  <text class="sm" x="141" y="60" text-anchor="middle">halve the window</text>
+  <text class="sm" x="357" y="46" text-anchor="middle">3 duplicate ACKs:</text>
+  <text class="sm" x="357" y="60" text-anchor="middle">halve the window</text>
+
+  <text class="sm" x="465" y="102" text-anchor="middle">timeout:</text>
+  <text class="sm" x="465" y="116" text-anchor="middle">back to 1 segment</text>
+</svg>
