@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" role="img" aria-labelledby="fl-comp-title">
+  <title id="fl-comp-title">How one Dart code base is compiled for each target. In debug builds for mobile and desktop, Dart is compiled to kernel files and run by the Dart virtual machine with a just-in-time compiler, which is what makes hot reload possible. Profile and release builds are compiled ahead of time to ARM or x64 machine code. For the web, debug builds use the dartdevc compiler to produce modular JavaScript, and release builds use dart2js to produce JavaScript or dart2wasm to produce WebAssembly; the page is then drawn by the CanvasKit or skwasm renderer.</title>
+  <defs>
+    <marker id="fl-comp-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+  <rect class="box-accent" x="0" y="140" width="110" height="56" rx="8"/>
+  <text class="strong" x="55" y="165" text-anchor="middle">Dart</text>
+  <text class="sm" x="55" y="183" text-anchor="middle">source</text>
+  <path class="wire" d="M110 168 H130 V48 H178" marker-end="url(#fl-comp-arrow)"/>
+  <text class="sm" x="180" y="22">debug · mobile, desktop</text>
+  <rect class="box" x="180" y="30" width="170" height="36" rx="6"/>
+  <text class="mono" x="265" y="53" text-anchor="middle">front end → kernel</text>
+  <line class="wire" x1="350" y1="48" x2="388" y2="48" marker-end="url(#fl-comp-arrow)"/>
+  <rect class="box" x="390" y="30" width="290" height="36" rx="6"/>
+  <text x="535" y="53" text-anchor="middle">Dart VM with a JIT</text>
+  <text class="sm" x="390" y="84">hot reload swaps in changed libraries</text>
+  <path class="wire" d="M110 168 H130 V132 H178" marker-end="url(#fl-comp-arrow)"/>
+  <text class="sm" x="180" y="106">profile, release</text>
+  <rect class="box" x="180" y="114" width="170" height="36" rx="6"/>
+  <text class="mono" x="265" y="137" text-anchor="middle">AOT compiler</text>
+  <line class="wire" x1="350" y1="132" x2="388" y2="132" marker-end="url(#fl-comp-arrow)"/>
+  <rect class="solid" x="390" y="114" width="290" height="36" rx="6"/>
+  <text class="on-solid" x="535" y="137" text-anchor="middle">ARM or x64 machine code</text>
+  <text class="sm" x="390" y="168">no interpreter, no JIT, fast start</text>
+  <path class="wire" d="M110 168 H130 V216 H178" marker-end="url(#fl-comp-arrow)"/>
+  <text class="sm" x="180" y="190">debug · web</text>
+  <rect class="box" x="180" y="198" width="170" height="36" rx="6"/>
+  <text class="mono" x="265" y="221" text-anchor="middle">dartdevc</text>
+  <line class="wire" x1="350" y1="216" x2="388" y2="216" marker-end="url(#fl-comp-arrow)"/>
+  <rect class="box" x="390" y="198" width="290" height="36" rx="6"/>
+  <text x="535" y="221" text-anchor="middle">modular JavaScript</text>
+  <text class="sm" x="390" y="252">incremental, for fast edit cycles</text>
+  <path class="wire" d="M110 168 H130 V300 H178" marker-end="url(#fl-comp-arrow)"/>
+  <text class="sm" x="180" y="274">release · web</text>
+  <rect class="box" x="180" y="282" width="170" height="36" rx="6"/>
+  <text class="mono" x="265" y="305" text-anchor="middle">dart2js / dart2wasm</text>
+  <line class="wire" x1="350" y1="300" x2="388" y2="300" marker-end="url(#fl-comp-arrow)"/>
+  <rect class="solid" x="390" y="282" width="290" height="36" rx="6"/>
+  <text class="on-solid" x="535" y="305" text-anchor="middle">JavaScript or WebAssembly</text>
+  <text class="sm" x="390" y="336">drawn by CanvasKit or skwasm</text>
+</svg>

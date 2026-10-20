@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" role="img" aria-labelledby="fl-layers-title">
+  <title id="fl-layers-title">Flutter's layered architecture. At the top is the framework, written in Dart: the Material and Cupertino design libraries, the widgets layer, the rendering layer, and the animation, painting and gestures libraries, all resting on the foundation library. Below it is the engine, written mostly in C++, which the framework reaches through the dart:ui library. The engine contains the Impeller renderer, text layout, the Dart runtime and compilers, and the plumbing for platform channels. At the bottom is the platform-specific embedder, written in Java and C++ on Android, Swift and Objective-C on iOS and macOS, and C++ on Windows and Linux. The embedder talks to the operating system and the GPU.</title>
+
+  <!-- Framework -->
+  <text class="sm" x="0" y="14">Framework · Dart · the code your app calls</text>
+  <rect class="box-accent" x="0" y="22" width="680" height="168" rx="8"/>
+  <rect class="solid" x="16" y="36" width="318" height="30" rx="5"/>
+  <text class="on-solid" x="175" y="56" text-anchor="middle">Material</text>
+  <rect class="solid" x="346" y="36" width="318" height="30" rx="5"/>
+  <text class="on-solid" x="505" y="56" text-anchor="middle">Cupertino</text>
+  <rect class="box" x="16" y="74" width="648" height="30" rx="5"/>
+  <text x="340" y="94" text-anchor="middle">Widgets</text>
+  <rect class="box" x="16" y="112" width="648" height="30" rx="5"/>
+  <text x="340" y="132" text-anchor="middle">Rendering</text>
+  <rect class="box" x="16" y="150" width="208" height="30" rx="5"/>
+  <text x="120" y="170" text-anchor="middle">Animation</text>
+  <rect class="box" x="236" y="150" width="208" height="30" rx="5"/>
+  <text x="340" y="170" text-anchor="middle">Painting</text>
+  <rect class="box" x="456" y="150" width="208" height="30" rx="5"/>
+  <text x="560" y="170" text-anchor="middle">Gestures</text>
+
+  <!-- dart:ui boundary -->
+  <line class="sep" x1="0" y1="206" x2="680" y2="206"/>
+  <rect class="box" x="270" y="194" width="140" height="24" rx="12"/>
+  <text class="mono" x="340" y="211" text-anchor="middle">dart:ui</text>
+
+  <!-- Engine -->
+  <text class="sm" x="0" y="238">Engine · C++ · shipped inside every app</text>
+  <rect class="box" x="0" y="246" width="680" height="54" rx="8"/>
+  <text x="85" y="278" text-anchor="middle">Impeller</text>
+  <text x="250" y="278" text-anchor="middle">Text layout</text>
+  <text x="430" y="278" text-anchor="middle">Dart runtime</text>
+  <text x="600" y="278" text-anchor="middle">Channels, I/O</text>
+  <line class="sep" x1="170" y1="256" x2="170" y2="290"/>
+  <line class="sep" x1="335" y1="256" x2="335" y2="290"/>
+  <line class="sep" x1="520" y1="256" x2="520" y2="290"/>
+
+  <!-- Embedder -->
+  <text class="sm" x="0" y="326">Embedder · platform-specific · window, input, threads, event loop</text>
+  <rect class="box" x="0" y="334" width="212" height="40" rx="6"/>
+  <text x="106" y="353" text-anchor="middle">Android</text>
+  <text class="sm" x="106" y="368" text-anchor="middle">Java, C++</text>
+  <rect class="box" x="234" y="334" width="212" height="40" rx="6"/>
+  <text x="340" y="353" text-anchor="middle">iOS, macOS</text>
+  <text class="sm" x="340" y="368" text-anchor="middle">Swift, Objective-C</text>
+  <rect class="box" x="468" y="334" width="212" height="40" rx="6"/>
+  <text x="574" y="353" text-anchor="middle">Windows, Linux</text>
+  <text class="sm" x="574" y="368" text-anchor="middle">C++</text>
+  <text class="sm" x="340" y="396" text-anchor="middle">operating system and GPU</text>
+</svg>
