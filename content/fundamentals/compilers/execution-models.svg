@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" role="img" aria-labelledby="em-title">
+  <title id="em-title">Three ways to run a program. Ahead-of-time compilation translates source to machine code before the program runs, and the CPU then runs that code directly. An interpreter reads the source, or a tree built from it, at run time and carries out each step itself. A bytecode virtual machine compiles source to bytecode first; at run time the VM interprets the bytecode, compiles it to machine code just in time, or both.</title>
+  <defs>
+    <marker id="em-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="sm" x="405" y="14" text-anchor="end">before the program runs</text>
+  <text class="sm" x="425" y="14">while it runs</text>
+  <line class="zone" x1="415" y1="22" x2="415" y2="296"/>
+
+  <!-- Ahead of time -->
+  <text class="sm" x="0" y="42">Ahead-of-time compilation · C, C++, Rust, Go</text>
+  <rect class="box" x="0" y="52" width="80" height="44" rx="6"/>
+  <text x="40" y="79" text-anchor="middle">source</text>
+  <line class="wire" x1="80" y1="74" x2="108" y2="74" marker-end="url(#em-arrow)"/>
+  <rect class="box-accent" x="110" y="52" width="120" height="44" rx="6"/>
+  <text x="170" y="79" text-anchor="middle">compiler</text>
+  <line class="wire" x1="230" y1="74" x2="258" y2="74" marker-end="url(#em-arrow)"/>
+  <rect class="box" x="260" y="52" width="130" height="44" rx="6"/>
+  <text x="325" y="79" text-anchor="middle">machine code</text>
+  <line class="wire" x1="390" y1="74" x2="438" y2="74" marker-end="url(#em-arrow)"/>
+  <rect class="solid" x="440" y="52" width="240" height="44" rx="6"/>
+  <text class="on-solid" x="560" y="79" text-anchor="middle">CPU runs it directly</text>
+
+  <!-- Interpreter -->
+  <text class="sm" x="0" y="136">Interpretation · shells, early BASIC</text>
+  <rect class="box" x="0" y="146" width="80" height="44" rx="6"/>
+  <text x="40" y="173" text-anchor="middle">source</text>
+  <line class="wire" x1="80" y1="168" x2="438" y2="168" marker-end="url(#em-arrow)"/>
+  <rect class="box-accent" x="440" y="146" width="240" height="44" rx="6"/>
+  <text x="560" y="166" text-anchor="middle">interpreter reads it and</text>
+  <text x="560" y="183" text-anchor="middle">carries out each step</text>
+
+  <!-- Bytecode and JIT -->
+  <text class="sm" x="0" y="230">Bytecode virtual machine · Java, C#</text>
+  <rect class="box" x="0" y="240" width="80" height="52" rx="6"/>
+  <text x="40" y="271" text-anchor="middle">source</text>
+  <line class="wire" x1="80" y1="266" x2="108" y2="266" marker-end="url(#em-arrow)"/>
+  <rect class="box-accent" x="110" y="240" width="120" height="52" rx="6"/>
+  <text x="170" y="271" text-anchor="middle">compiler</text>
+  <line class="wire" x1="230" y1="266" x2="258" y2="266" marker-end="url(#em-arrow)"/>
+  <rect class="box" x="260" y="240" width="130" height="52" rx="6"/>
+  <text x="325" y="271" text-anchor="middle">bytecode</text>
+  <line class="wire" x1="390" y1="266" x2="438" y2="266" marker-end="url(#em-arrow)"/>
+  <rect class="box-accent" x="440" y="240" width="240" height="52" rx="6"/>
+  <text x="560" y="261" text-anchor="middle">VM interprets it or</text>
+  <text x="560" y="278" text-anchor="middle">JIT-compiles it</text>
+</svg>

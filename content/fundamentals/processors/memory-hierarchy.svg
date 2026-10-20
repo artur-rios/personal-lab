@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 290" role="img" aria-labelledby="mem-title">
+  <title id="mem-title">The memory hierarchy, from small and fast to large and slow: registers, L1 cache, L2 cache, L3 cache, main memory and SSD storage, with typical sizes and access times for a current desktop or laptop processor.</title>
+
+  <text class="sm" x="525" y="14" text-anchor="middle">Typical size</text>
+  <text class="sm" x="680" y="14" text-anchor="end">Access time</text>
+
+  <rect class="solid" x="190" y="24" width="120" height="36" rx="6"/>
+  <text class="strong on-solid" x="250" y="47" text-anchor="middle">Registers</text>
+  <text class="sm" x="525" y="47" text-anchor="middle">a few KB</text>
+  <text class="sm" x="680" y="47" text-anchor="end">under 1 ns</text>
+
+  <rect class="box-accent" x="160" y="68" width="180" height="36" rx="6"/>
+  <text x="250" y="91" text-anchor="middle">L1 cache</text>
+  <text class="sm" x="525" y="91" text-anchor="middle">32–192 KB per core</text>
+  <text class="sm" x="680" y="91" text-anchor="end">~1 ns</text>
+
+  <rect class="box-accent" x="130" y="112" width="240" height="36" rx="6"/>
+  <text x="250" y="135" text-anchor="middle">L2 cache</text>
+  <text class="sm" x="525" y="135" text-anchor="middle">0.5–3 MB per core</text>
+  <text class="sm" x="680" y="135" text-anchor="end">~3–5 ns</text>
+
+  <rect class="box-accent" x="100" y="156" width="300" height="36" rx="6"/>
+  <text x="250" y="179" text-anchor="middle">L3 cache</text>
+  <text class="sm" x="525" y="179" text-anchor="middle">8–100+ MB, shared</text>
+  <text class="sm" x="680" y="179" text-anchor="end">~10–20 ns</text>
+
+  <rect class="box" x="60" y="200" width="380" height="36" rx="6"/>
+  <text x="250" y="223" text-anchor="middle">Main memory (DRAM)</text>
+  <text class="sm" x="525" y="223" text-anchor="middle">8–128 GB</text>
+  <text class="sm" x="680" y="223" text-anchor="end">~80–130 ns</text>
+
+  <rect class="box" x="20" y="244" width="460" height="36" rx="6"/>
+  <text x="250" y="267" text-anchor="middle">SSD storage</text>
+  <text class="sm" x="525" y="267" text-anchor="middle">0.5–4 TB</text>
+  <text class="sm" x="680" y="267" text-anchor="end">tens of µs</text>
+</svg>

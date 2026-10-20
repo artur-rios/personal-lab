@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" role="img" aria-labelledby="ooo-title">
+  <title id="ooo-title">An out-of-order core. The front end predicts branches, fetches and decodes instructions into micro-operations and renames their registers, all in program order. A scheduler then issues each micro-operation to an execution unit as soon as its inputs are ready, out of order. Results wait in the reorder buffer and retire in program order; work after a mispredicted branch is thrown away.</title>
+  <defs>
+    <marker id="ooo-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Front end -->
+  <text class="sm" x="0" y="14">Front end · in program order</text>
+  <rect class="box" x="0" y="24" width="200" height="60" rx="8"/>
+  <text class="strong" x="16" y="48">Predict and fetch</text>
+  <text class="sm" x="16" y="68">guess branches, read code</text>
+  <line class="wire" x1="200" y1="54" x2="238" y2="54" marker-end="url(#ooo-arrow)"/>
+
+  <rect class="box" x="240" y="24" width="200" height="60" rx="8"/>
+  <text class="strong" x="256" y="48">Decode</text>
+  <text class="sm" x="256" y="68">into micro-operations</text>
+  <line class="wire" x1="440" y1="54" x2="478" y2="54" marker-end="url(#ooo-arrow)"/>
+
+  <rect class="box" x="480" y="24" width="200" height="60" rx="8"/>
+  <text class="strong" x="496" y="48">Rename</text>
+  <text class="sm" x="496" y="68">map to physical registers</text>
+
+  <path class="wire" d="M580 84 V112 H100 V146" marker-end="url(#ooo-arrow)"/>
+
+  <!-- Out-of-order engine -->
+  <text class="sm" x="240" y="138">Execution · out of order</text>
+  <rect class="box-accent" x="0" y="148" width="200" height="72" rx="8"/>
+  <text class="strong" x="16" y="174">Scheduler</text>
+  <text class="sm" x="16" y="194">issues each op as soon</text>
+  <text class="sm" x="16" y="210">as its inputs are ready</text>
+  <line class="wire" x1="200" y1="184" x2="238" y2="184" marker-end="url(#ooo-arrow)"/>
+
+  <rect class="box-accent" x="240" y="148" width="100" height="72" rx="8"/>
+  <text x="290" y="188" text-anchor="middle">ALU</text>
+  <rect class="box-accent" x="350" y="148" width="100" height="72" rx="8"/>
+  <text x="400" y="188" text-anchor="middle">ALU</text>
+  <rect class="box-accent" x="460" y="148" width="100" height="72" rx="8"/>
+  <text x="510" y="182" text-anchor="middle">Load and</text>
+  <text x="510" y="200" text-anchor="middle">store</text>
+  <rect class="box-accent" x="570" y="148" width="110" height="72" rx="8"/>
+  <text x="625" y="182" text-anchor="middle">Floating</text>
+  <text x="625" y="200" text-anchor="middle">point, vector</text>
+
+  <line class="wire" x1="290" y1="220" x2="290" y2="262" marker-end="url(#ooo-arrow)"/>
+  <line class="wire" x1="400" y1="220" x2="400" y2="262" marker-end="url(#ooo-arrow)"/>
+  <line class="wire" x1="510" y1="220" x2="510" y2="262" marker-end="url(#ooo-arrow)"/>
+  <line class="wire" x1="625" y1="220" x2="625" y2="262" marker-end="url(#ooo-arrow)"/>
+
+  <!-- Retirement -->
+  <text class="sm" x="0" y="254">Retire · in program order</text>
+  <rect class="box" x="0" y="264" width="680" height="60" rx="8"/>
+  <text class="strong" x="16" y="289">Reorder buffer</text>
+  <text class="sm" x="16" y="309">results commit in program order; work after a wrong branch guess is thrown away</text>
+</svg>

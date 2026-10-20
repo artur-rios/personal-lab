@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 270" role="img" aria-labelledby="el-title">
+  <title id="el-title">The browser event loop on a page's main thread. In each turn the loop takes one task, such as a timer callback, an input event or a network response, from a task queue and runs it to completion. It then runs every microtask, such as promise callbacks, until the microtask queue is empty. If it is time for a new frame, it runs the rendering steps: animation frame callbacks, style, layout and paint. Then it starts the next turn.</title>
+  <defs>
+    <marker id="el-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Queues -->
+  <text class="sm" x="0" y="16">Task queues</text>
+  <rect class="box" x="0" y="24" width="190" height="96" rx="8"/>
+  <text class="sm" x="14" y="46">timers (setTimeout)</text>
+  <text class="sm" x="14" y="66">input and UI events</text>
+  <text class="sm" x="14" y="86">network responses</text>
+  <text class="sm" x="14" y="106">postMessage, …</text>
+
+  <text class="sm" x="0" y="160">Microtask queue</text>
+  <rect class="box" x="0" y="168" width="190" height="66" rx="8"/>
+  <text class="sm" x="14" y="188">promise callbacks</text>
+  <text class="sm" x="14" y="205">queueMicrotask</text>
+  <text class="sm" x="14" y="222">MutationObserver</text>
+
+  <!-- The loop -->
+  <text class="sm" x="260" y="16">One turn of the loop</text>
+  <rect class="box-accent" x="260" y="24" width="420" height="44" rx="8"/>
+  <text class="strong" x="276" y="44">1 · Run one task</text>
+  <text class="sm" x="276" y="60">to completion; nothing can interrupt it</text>
+  <line class="wire" x1="190" y1="60" x2="258" y2="46" marker-end="url(#el-arrow)"/>
+  <line class="wire" x1="470" y1="68" x2="470" y2="90" marker-end="url(#el-arrow)"/>
+
+  <rect class="box-accent" x="260" y="92" width="420" height="44" rx="8"/>
+  <text class="strong" x="276" y="112">2 · Run all microtasks</text>
+  <text class="sm" x="276" y="128">including any queued while doing so, until none are left</text>
+  <path class="wire" d="M190 196 H226 V114 H258" marker-end="url(#el-arrow)"/>
+  <line class="wire" x1="470" y1="136" x2="470" y2="158" marker-end="url(#el-arrow)"/>
+
+  <rect class="solid" x="260" y="160" width="420" height="58" rx="8"/>
+  <text class="strong on-solid" x="276" y="182">3 · Update the rendering, when a frame is due</text>
+  <text class="sm on-solid" x="276" y="200">requestAnimationFrame callbacks, then style, layout and</text>
+  <text class="sm on-solid" x="276" y="214">paint; about every 16.7 ms on a 60 Hz display</text>
+
+  <path class="wire" d="M470 218 V240 H246 V34 H258" marker-end="url(#el-arrow)"/>
+  <text class="sm" x="360" y="256" text-anchor="middle">then the next turn</text>
+</svg>

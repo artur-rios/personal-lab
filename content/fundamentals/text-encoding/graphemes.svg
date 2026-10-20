@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 236" role="img" aria-labelledby="gr-title">
+  <title id="gr-title">What a reader sees as one character can be several code points. The letter é can be stored as the single code point U+00E9, or as the letter e, U+0065, followed by the combining acute accent, U+0301; normalisation converts between the two forms. The family emoji is five code points: MAN, ZERO WIDTH JOINER, WOMAN, ZERO WIDTH JOINER and GIRL, which software that supports the sequence draws as one picture.</title>
+  <defs>
+    <marker id="gr-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- é two ways -->
+  <text class="sm" x="0" y="16">One letter, two encodings</text>
+  <rect class="box-accent" x="0" y="26" width="150" height="44" rx="6"/>
+  <text class="mono" x="75" y="44" text-anchor="middle">U+00E9</text>
+  <text class="sm" x="75" y="61" text-anchor="middle">é, precomposed</text>
+  <line class="wire" x1="152" y1="48" x2="252" y2="48" marker-start="url(#gr-arrow)" marker-end="url(#gr-arrow)"/>
+  <text class="sm" x="202" y="40" text-anchor="middle">NFC ↔ NFD</text>
+  <rect class="box-accent" x="254" y="26" width="110" height="44" rx="6"/>
+  <text class="mono" x="309" y="44" text-anchor="middle">U+0065</text>
+  <text class="sm" x="309" y="61" text-anchor="middle">e</text>
+  <text x="372" y="53">+</text>
+  <rect class="box-accent" x="386" y="26" width="140" height="44" rx="6"/>
+  <text class="mono" x="456" y="44" text-anchor="middle">U+0301</text>
+  <text class="sm" x="456" y="61" text-anchor="middle">combining acute</text>
+  <text class="sm" x="680" y="44" text-anchor="end">both display</text>
+  <text class="strong accent" x="680" y="64" text-anchor="end" style="font-size:20px">é</text>
+
+  <!-- family emoji -->
+  <text class="sm" x="0" y="112">One picture, five code points</text>
+  <rect class="box-accent" x="0" y="122" width="108" height="44" rx="6"/>
+  <text class="mono" x="54" y="140" text-anchor="middle">U+1F468</text>
+  <text class="sm" x="54" y="157" text-anchor="middle">MAN</text>
+  <rect class="box" x="116" y="122" width="96" height="44" rx="6"/>
+  <text class="mono" x="164" y="140" text-anchor="middle">U+200D</text>
+  <text class="sm" x="164" y="157" text-anchor="middle">joiner</text>
+  <rect class="box-accent" x="220" y="122" width="108" height="44" rx="6"/>
+  <text class="mono" x="274" y="140" text-anchor="middle">U+1F469</text>
+  <text class="sm" x="274" y="157" text-anchor="middle">WOMAN</text>
+  <rect class="box" x="336" y="122" width="96" height="44" rx="6"/>
+  <text class="mono" x="384" y="140" text-anchor="middle">U+200D</text>
+  <text class="sm" x="384" y="157" text-anchor="middle">joiner</text>
+  <rect class="box-accent" x="440" y="122" width="108" height="44" rx="6"/>
+  <text class="mono" x="494" y="140" text-anchor="middle">U+1F467</text>
+  <text class="sm" x="494" y="157" text-anchor="middle">GIRL</text>
+  <path class="wire" d="M0 172 V186 H548 V172"/>
+  <line class="wire" x1="274" y1="186" x2="274" y2="204" marker-end="url(#gr-arrow)"/>
+  <rect class="solid" x="184" y="206" width="180" height="28" rx="6"/>
+  <text class="sm on-solid" x="274" y="225" text-anchor="middle">one grapheme cluster</text>
+  <text class="sm" x="680" y="140" text-anchor="end">18 bytes in UTF-8,</text>
+  <text class="sm" x="680" y="156" text-anchor="end">8 units in UTF-16</text>
+</svg>

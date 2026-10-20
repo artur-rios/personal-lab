@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 318" role="img" aria-labelledby="pipe-title">
+  <title id="pipe-title">The phases of a compiler. The front end turns source text into tokens with the lexer, into a syntax tree with the parser, and checks names and types in semantic analysis. The middle end lowers the tree to an intermediate representation and optimises it. The back end selects instructions and allocates registers to produce assembly or machine code.</title>
+  <defs>
+    <marker id="cp-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Front end -->
+  <text class="sm" x="70" y="30">Front end · understands the source</text>
+  <text class="sm" x="0" y="74">source</text>
+  <text class="sm" x="0" y="90">text</text>
+  <line class="wire" x1="40" y1="80" x2="68" y2="80" marker-end="url(#cp-arrow)"/>
+
+  <rect class="box-accent" x="70" y="40" width="140" height="80" rx="8"/>
+  <text class="strong" x="140" y="70" text-anchor="middle">Lexer</text>
+  <text class="sm" x="140" y="90" text-anchor="middle">groups characters</text>
+  <text class="sm" x="140" y="106" text-anchor="middle">into tokens</text>
+  <line class="wire" x1="210" y1="80" x2="278" y2="80" marker-end="url(#cp-arrow)"/>
+  <text class="sm" x="245" y="72" text-anchor="middle">tokens</text>
+
+  <rect class="box-accent" x="280" y="40" width="140" height="80" rx="8"/>
+  <text class="strong" x="350" y="70" text-anchor="middle">Parser</text>
+  <text class="sm" x="350" y="90" text-anchor="middle">applies the</text>
+  <text class="sm" x="350" y="106" text-anchor="middle">grammar</text>
+  <line class="wire" x1="420" y1="80" x2="488" y2="80" marker-end="url(#cp-arrow)"/>
+  <text class="sm" x="455" y="72" text-anchor="middle">syntax tree</text>
+
+  <rect class="box-accent" x="490" y="40" width="140" height="80" rx="8"/>
+  <text class="strong" x="560" y="64" text-anchor="middle">Semantic</text>
+  <text class="strong" x="560" y="80" text-anchor="middle">analysis</text>
+  <text class="sm" x="560" y="100" text-anchor="middle">names, types, scopes</text>
+
+  <path class="wire" d="M560 120 V150 H140 V178" marker-end="url(#cp-arrow)"/>
+  <text class="sm" x="350" y="144" text-anchor="middle">checked tree</text>
+
+  <!-- Middle and back end -->
+  <text class="sm" x="152" y="172">Middle end · improves it</text>
+  <text class="sm" x="490" y="172">Back end · targets a CPU</text>
+
+  <rect class="box" x="70" y="180" width="140" height="80" rx="8"/>
+  <text class="strong" x="140" y="210" text-anchor="middle">IR generator</text>
+  <text class="sm" x="140" y="230" text-anchor="middle">lowers the tree to</text>
+  <text class="sm" x="140" y="246" text-anchor="middle">simple instructions</text>
+  <line class="wire" x1="210" y1="220" x2="278" y2="220" marker-end="url(#cp-arrow)"/>
+  <text class="sm" x="245" y="212" text-anchor="middle">IR</text>
+
+  <rect class="box" x="280" y="180" width="140" height="80" rx="8"/>
+  <text class="strong" x="350" y="210" text-anchor="middle">Optimiser</text>
+  <text class="sm" x="350" y="230" text-anchor="middle">many passes, each</text>
+  <text class="sm" x="350" y="246" text-anchor="middle">IR in, IR out</text>
+  <line class="wire" x1="420" y1="220" x2="488" y2="220" marker-end="url(#cp-arrow)"/>
+  <text class="sm" x="455" y="212" text-anchor="middle">better IR</text>
+
+  <rect class="solid" x="490" y="180" width="140" height="80" rx="8"/>
+  <text class="strong on-solid" x="560" y="204" text-anchor="middle">Code generator</text>
+  <text class="sm on-solid" x="560" y="224" text-anchor="middle">selects instructions,</text>
+  <text class="sm on-solid" x="560" y="240" text-anchor="middle">allocates registers,</text>
+  <text class="sm on-solid" x="560" y="256" text-anchor="middle">orders them</text>
+
+  <line class="wire" x1="560" y1="260" x2="560" y2="288" marker-end="url(#cp-arrow)"/>
+  <text class="sm" x="560" y="308" text-anchor="middle">assembly or machine code</text>
+</svg>
