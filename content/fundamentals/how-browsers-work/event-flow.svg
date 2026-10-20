@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 270" role="img" aria-labelledby="ef-title">
+  <title id="ef-title">How a click on a button travels through the DOM. In the capture phase the event goes down from the window through document, html, body and the div to the button. At the target, the button's own listeners run. In the bubble phase the event goes back up from the button through the div, body, html and document to the window.</title>
+  <defs>
+    <marker id="ef-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="ef-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="270" y="0" width="140" height="30" rx="6"/>
+  <text class="mono" x="340" y="20" text-anchor="middle">window</text>
+  <rect class="box" x="270" y="42" width="140" height="30" rx="6"/>
+  <text class="mono" x="340" y="62" text-anchor="middle">document</text>
+  <rect class="box" x="270" y="84" width="140" height="30" rx="6"/>
+  <text class="mono" x="340" y="104" text-anchor="middle">html</text>
+  <rect class="box" x="270" y="126" width="140" height="30" rx="6"/>
+  <text class="mono" x="340" y="146" text-anchor="middle">body</text>
+  <rect class="box-accent" x="270" y="168" width="140" height="30" rx="6"/>
+  <text class="mono" x="340" y="188" text-anchor="middle">div#outer</text>
+  <rect class="solid" x="270" y="210" width="140" height="30" rx="6"/>
+  <text class="mono on-solid" x="340" y="230" text-anchor="middle">button#inner</text>
+
+  <line class="wire" x1="240" y1="10" x2="240" y2="222" marker-end="url(#ef-arrow)"/>
+  <text class="strong" x="226" y="96" text-anchor="end">1 · Capture</text>
+  <text class="sm" x="226" y="114" text-anchor="end">down from the window,</text>
+  <text class="sm" x="226" y="130" text-anchor="end">capture listeners run</text>
+
+  <line class="wire-accent" x1="440" y1="222" x2="440" y2="10" marker-end="url(#ef-arrow-accent)"/>
+  <text class="strong" x="454" y="96">3 · Bubble</text>
+  <text class="sm" x="454" y="114">back up to the window,</text>
+  <text class="sm" x="454" y="130">ordinary listeners run</text>
+
+  <text class="strong" x="340" y="262" text-anchor="middle">2 · At the target: the button's own listeners</text>
+</svg>
