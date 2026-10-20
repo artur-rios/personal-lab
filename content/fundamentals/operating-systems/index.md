@@ -60,8 +60,9 @@ The words are often used loosely, so it is worth separating them:
 | **Operating system** | The kernel plus the system libraries, utilities, shell and services that programs and people rely on | GNU/Linux, Windows, macOS, Android |
 | **Distribution or edition** | An operating system packaged with an installer, applications, defaults and an update channel | Ubuntu, Fedora, Debian; Windows 11 Pro |
 
-Silberschatz, Galvin and Gagne call the kernel "the one program running at all
-times on the computer".[^silberschatz] Everything else, including the shell you
+The slides that accompany Silberschatz, Galvin and Gagne's textbook call the
+kernel "the one program running at all times on the
+computer".[^silberschatz][^silberschatz-slides] Everything else, including the shell you
 type into and the window system you click on, is an ordinary program running
 with ordinary privileges. That is why one kernel can sit under very different
 systems: Linux runs both Ubuntu desktops and Android phones.
@@ -157,8 +158,11 @@ work.[^ctss] Its successor, **Multics** (1965, a joint project of MIT, General
 Electric and Bell Labs), aimed to be a computing utility, as reliable as the
 electricity supply.[^multics] Multics was only a modest commercial success, but
 it introduced or refined an extraordinary number of lasting ideas: a
-hierarchical file system, protection **rings**, dynamic linking, memory-mapped
-files, and an operating system written mostly in a high-level language (PL/I).
+hierarchical file system, protection **rings**, dynamic linking, and an
+operating system written almost entirely in a high-level language
+(PL/I).[^multicsfeatures][^rings] It also had no separate file I/O in the usual
+sense: a program used a stored file by mapping it into its address space as a
+*segment*, the idea behind today's memory-mapped files.[^multicsvm]
 
 At the same time IBM announced **OS/360** (1964), one operating system for an
 entire family of compatible machines. It worked, but late and at great cost;
@@ -224,8 +228,8 @@ reaching home users with Windows XP (2001), and with **Mac OS X** (2001).
 
 The 1980s also brought a revival of the small-nucleus idea. **Mach** (Carnegie
 Mellon, from 1985) moved much of Unix out of the kernel into user-space
-servers.[^mach] **QNX** (1982) made a commercial success of a real-time
-microkernel, and Andrew Tanenbaum's **MINIX** (1987) was written to teach
+servers.[^mach] **QNX**, from a company founded in Canada in 1980 by Dan Dodge
+and Gordon Bell, made a commercial success of a real-time microkernel,[^qnx] and Andrew Tanenbaum's **MINIX** (1987) was written to teach
 operating systems with readable source code.
 
 Meanwhile, in 1983, Richard Stallman announced the **GNU** project to build a
@@ -948,6 +952,8 @@ machine down.
 
 [^silberschatz]: Silberschatz, A., Galvin, P. B., & Gagne, G. (2018). *Operating System Concepts* (10th ed.). Wiley. Chapter 1.
 
+[^silberschatz-slides]: Silberschatz, A., Galvin, P. B., & Gagne, G. (2018). *Operating System Concepts* (10th ed.), Chapter 1: Introduction [Lecture slides]. <https://www.os-book.com/OS10/slide-dir/index.html>
+
 [^brinch2001]: Brinch Hansen, P. (Ed.). (2001). *Classic Operating Systems: From Batch Processing to Distributed Systems*. Springer. <https://doi.org/10.1007/978-1-4757-3510-9>
 
 [^atlas]: Kilburn, T., Edwards, D. B. G., Lanigan, M. J., & Sumner, F. H. (1962). One-level storage system. *IRE Transactions on Electronic Computers*, EC-11(2), 223–235. <https://doi.org/10.1109/TEC.1962.5219356>
@@ -955,6 +961,12 @@ machine down.
 [^ctss]: Corbató, F. J., Merwin-Daggett, M., & Daley, R. C. (1962). An experimental time-sharing system. *Proceedings of the Spring Joint Computer Conference*, 335–344. <https://doi.org/10.1145/1460833.1460871>
 
 [^multics]: Corbató, F. J., & Vyssotsky, V. A. (1965). Introduction and overview of the Multics system. *Proceedings of the Fall Joint Computer Conference*, 185–196. <https://doi.org/10.1145/1463891.1463912>
+
+[^multicsfeatures]: Multicians.org. (n.d.). Multics features. Retrieved October 20, 2026, from <https://multicians.org/features.html>
+
+[^rings]: Schroeder, M. D., & Saltzer, J. H. (1972). A hardware architecture for implementing protection rings. *Communications of the ACM*, 15(3), 157–170. <https://doi.org/10.1145/361268.361275>
+
+[^multicsvm]: Bensoussan, A., Clingen, C. T., & Daley, R. C. (1972). The Multics virtual memory: Concepts and design. *Communications of the ACM*, 15(5), 308–318. <https://doi.org/10.1145/355602.361306>
 
 [^brooks]: Brooks, F. P., Jr. (1975). *The Mythical Man-Month: Essays on Software Engineering*. Addison-Wesley.
 
@@ -966,7 +978,9 @@ machine down.
 
 [^unix74]: Ritchie, D. M., & Thompson, K. (1974). The UNIX time-sharing system. *Communications of the ACM*, 17(7), 365–375. <https://doi.org/10.1145/361011.361061>
 
-[^ritchie84]: Ritchie, D. M. (1984). The evolution of the Unix time-sharing system. *AT&T Bell Laboratories Technical Journal*, 63(8, Part 2), 1577–1593.
+[^ritchie84]: Ritchie, D. M. (1984). The evolution of the Unix time-sharing system. *AT&T Bell Laboratories Technical Journal*, 63(8), 1577–1593. <https://doi.org/10.1002/j.1538-7305.1984.tb00054.x>
+
+[^qnx]: QNX Software Systems. (n.d.). A little history. In *Getting Started with QNX Neutrino* (QNX SDP 7.0 documentation). <https://get.qnx.com/developers/docs/7.0.0/com.qnx.doc.neutrino.getting_started/topic/preface_History.html>
 
 [^custer]: Custer, H. (1993). *Inside Windows NT*. Microsoft Press.
 
