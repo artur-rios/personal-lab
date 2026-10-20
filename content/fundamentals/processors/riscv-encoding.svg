@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 168" role="img" aria-labelledby="enc-title">
+  <title id="enc-title">The 32-bit RISC-V encoding of add x5, x6, x7. From the most significant bit: funct7 is 0000000, rs2 is 00111 for register x7, rs1 is 00110 for x6, funct3 is 000, rd is 00101 for x5, and the opcode 0110011 marks a register-to-register operation. Together the bits are 0x007302B3.</title>
+
+  <text class="mono" x="20" y="18">add x5, x6, x7</text>
+  <text class="sm" x="660" y="18" text-anchor="end">x5 ← x6 + x7</text>
+
+  <text class="sm" x="90" y="44" text-anchor="middle">31–25</text>
+  <text class="sm" x="210" y="44" text-anchor="middle">24–20</text>
+  <text class="sm" x="310" y="44" text-anchor="middle">19–15</text>
+  <text class="sm" x="390" y="44" text-anchor="middle">14–12</text>
+  <text class="sm" x="470" y="44" text-anchor="middle">11–7</text>
+  <text class="sm" x="590" y="44" text-anchor="middle">6–0</text>
+
+  <rect class="box" x="20" y="52" width="140" height="48"/>
+  <rect class="box" x="160" y="52" width="100" height="48"/>
+  <rect class="box" x="260" y="52" width="100" height="48"/>
+  <rect class="box" x="360" y="52" width="60" height="48"/>
+  <rect class="box" x="420" y="52" width="100" height="48"/>
+  <rect class="box-accent" x="520" y="52" width="140" height="48"/>
+
+  <text x="90" y="72" text-anchor="middle">funct7</text>
+  <text x="210" y="72" text-anchor="middle">rs2</text>
+  <text x="310" y="72" text-anchor="middle">rs1</text>
+  <text x="390" y="72" text-anchor="middle">funct3</text>
+  <text x="470" y="72" text-anchor="middle">rd</text>
+  <text x="590" y="72" text-anchor="middle">opcode</text>
+
+  <text class="mono" x="90" y="91" text-anchor="middle">0000000</text>
+  <text class="mono" x="210" y="91" text-anchor="middle">00111</text>
+  <text class="mono" x="310" y="91" text-anchor="middle">00110</text>
+  <text class="mono" x="390" y="91" text-anchor="middle">000</text>
+  <text class="mono" x="470" y="91" text-anchor="middle">00101</text>
+  <text class="mono" x="590" y="91" text-anchor="middle">0110011</text>
+
+  <text class="sm" x="90" y="120" text-anchor="middle">add, not sub</text>
+  <text class="sm" x="210" y="120" text-anchor="middle">source x7</text>
+  <text class="sm" x="310" y="120" text-anchor="middle">source x6</text>
+  <text class="sm" x="390" y="120" text-anchor="middle">add</text>
+  <text class="sm" x="470" y="120" text-anchor="middle">destination x5</text>
+  <text class="sm" x="590" y="120" text-anchor="middle">register–register op</text>
+
+  <text class="accent" x="340" y="154" text-anchor="middle">= 0000 0000 0111 0011 0000 0010 1011 0011 = 0x007302B3</text>
+</svg>

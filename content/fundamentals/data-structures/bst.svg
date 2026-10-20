@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 246" role="img" aria-labelledby="bst-title">
+  <title id="bst-title">A balanced binary search tree holding 2, 4, 6, 8, 10, 12 and 14, with 8 at the root. Every key in a node's left subtree is smaller and every key in its right subtree is larger. Searching for 6 visits only 8, then 4, then 6: one node per level.</title>
+
+  <line class="wire-accent" x1="340" y1="40" x2="200" y2="110"/>
+  <line class="wire" x1="340" y1="40" x2="480" y2="110"/>
+  <line class="wire" x1="200" y1="110" x2="130" y2="180"/>
+  <line class="wire-accent" x1="200" y1="110" x2="270" y2="180"/>
+  <line class="wire" x1="480" y1="110" x2="410" y2="180"/>
+  <line class="wire" x1="480" y1="110" x2="550" y2="180"/>
+
+  <circle class="solid" cx="340" cy="40" r="20"/>
+  <text class="strong on-solid" x="340" y="45" text-anchor="middle">8</text>
+  <circle class="solid" cx="200" cy="110" r="20"/>
+  <text class="strong on-solid" x="200" y="115" text-anchor="middle">4</text>
+  <circle class="box" cx="480" cy="110" r="20"/>
+  <text x="480" y="115" text-anchor="middle">12</text>
+  <circle class="box" cx="130" cy="180" r="20"/>
+  <text x="130" y="185" text-anchor="middle">2</text>
+  <circle class="solid" cx="270" cy="180" r="20"/>
+  <text class="strong on-solid" x="270" y="185" text-anchor="middle">6</text>
+  <circle class="box" cx="410" cy="180" r="20"/>
+  <text x="410" y="185" text-anchor="middle">10</text>
+  <circle class="box" cx="550" cy="180" r="20"/>
+  <text x="550" y="185" text-anchor="middle">14</text>
+
+  <text class="sm accent" x="258" y="68" text-anchor="end">6 &lt; 8: go left</text>
+  <text class="sm accent" x="250" y="140">6 &gt; 4: go right</text>
+  <text class="sm accent" x="300" y="210">found</text>
+  <text class="sm" x="340" y="240" text-anchor="middle">a search visits one node per level: about log₂ n nodes for n keys</text>
+</svg>

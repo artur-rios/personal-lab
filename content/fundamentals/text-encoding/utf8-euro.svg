@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 236" role="img" aria-labelledby="eu-title">
+  <title id="eu-title">Encoding the euro sign, U+20AC, in UTF-8. In binary the code point is 0010 000010 101100. Because it is between U+0800 and U+FFFF it takes three bytes. The first 4 bits go into 1110xxxx, giving 11100010, hex E2. The next 6 bits go into 10xxxxxx, giving 10000010, hex 82. The last 6 bits go into 10xxxxxx, giving 10101100, hex AC.</title>
+  <defs>
+    <marker id="eu-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="sm" x="0" y="16">U+20AC in binary, 16 bits, split 4 + 6 + 6</text>
+  <rect class="box" x="100" y="26" width="100" height="40" rx="4"/>
+  <text class="mono" x="150" y="51" text-anchor="middle">0010</text>
+  <rect class="box" x="230" y="26" width="140" height="40" rx="4"/>
+  <text class="mono" x="300" y="51" text-anchor="middle">000010</text>
+  <rect class="box" x="400" y="26" width="140" height="40" rx="4"/>
+  <text class="mono" x="470" y="51" text-anchor="middle">101100</text>
+
+  <line class="wire" x1="150" y1="66" x2="150" y2="112" marker-end="url(#eu-arrow)"/>
+  <line class="wire" x1="300" y1="66" x2="300" y2="112" marker-end="url(#eu-arrow)"/>
+  <line class="wire" x1="470" y1="66" x2="470" y2="112" marker-end="url(#eu-arrow)"/>
+
+  <text class="sm" x="0" y="106">Three bytes</text>
+  <rect class="box-accent" x="80" y="114" width="140" height="44" rx="4"/>
+  <text class="mono" x="150" y="141" text-anchor="middle"><tspan class="accent">1110</tspan> 0010</text>
+  <rect class="box-accent" x="230" y="114" width="140" height="44" rx="4"/>
+  <text class="mono" x="300" y="141" text-anchor="middle"><tspan class="accent">10</tspan> 000010</text>
+  <rect class="box-accent" x="400" y="114" width="140" height="44" rx="4"/>
+  <text class="mono" x="470" y="141" text-anchor="middle"><tspan class="accent">10</tspan> 101100</text>
+
+  <line class="wire" x1="150" y1="158" x2="150" y2="182" marker-end="url(#eu-arrow)"/>
+  <line class="wire" x1="300" y1="158" x2="300" y2="182" marker-end="url(#eu-arrow)"/>
+  <line class="wire" x1="470" y1="158" x2="470" y2="182" marker-end="url(#eu-arrow)"/>
+
+  <text class="sm" x="0" y="206">In hex</text>
+  <rect class="solid" x="110" y="184" width="80" height="36" rx="4"/>
+  <text class="strong on-solid" x="150" y="207" text-anchor="middle">E2</text>
+  <rect class="solid" x="260" y="184" width="80" height="36" rx="4"/>
+  <text class="strong on-solid" x="300" y="207" text-anchor="middle">82</text>
+  <rect class="solid" x="430" y="184" width="80" height="36" rx="4"/>
+  <text class="strong on-solid" x="470" y="207" text-anchor="middle">AC</text>
+
+  <text class="sm accent" x="560" y="137">marker bits</text>
+  <text class="sm" x="560" y="153">say which byte</text>
+  <text class="sm" x="560" y="169">is which</text>
+</svg>

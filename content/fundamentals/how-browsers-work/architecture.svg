@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" role="img" aria-labelledby="ar-title">
+  <title id="ar-title">The process architecture of a modern browser such as Chrome. A privileged browser process runs the user interface and coordinates everything else. Separate sandboxed renderer processes, typically one per site, each contain the HTML parser, the DOM, style and layout, paint, and a JavaScript engine. A GPU process draws to the screen and a network service fetches resources. The processes talk to each other by inter-process communication.</title>
+  <defs>
+    <marker id="ar-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <rect class="solid" x="0" y="0" width="680" height="62" rx="8"/>
+  <text class="strong on-solid" x="16" y="26">Browser process</text>
+  <text class="sm on-solid" x="16" y="46">address bar, tabs, bookmarks; decides which process does what; full privileges</text>
+
+  <line class="wire" x1="110" y1="64" x2="110" y2="96" marker-start="url(#ar-arrow)" marker-end="url(#ar-arrow)"/>
+  <line class="wire" x1="330" y1="64" x2="330" y2="96" marker-start="url(#ar-arrow)" marker-end="url(#ar-arrow)"/>
+  <line class="wire" x1="530" y1="64" x2="530" y2="96" marker-start="url(#ar-arrow)" marker-end="url(#ar-arrow)"/>
+  <line class="wire" x1="630" y1="64" x2="630" y2="96" marker-start="url(#ar-arrow)" marker-end="url(#ar-arrow)"/>
+  <text class="sm" x="122" y="86">messages between processes (IPC)</text>
+
+  <!-- Renderer processes -->
+  <rect class="box-accent" x="0" y="98" width="215" height="196" rx="8"/>
+  <text class="strong" x="14" y="122">Renderer · site A</text>
+  <text class="sm" x="14" y="140">sandboxed</text>
+  <rect class="box" x="14" y="150" width="187" height="26" rx="4"/>
+  <text class="sm" x="24" y="168">HTML parser → DOM</text>
+  <rect class="box" x="14" y="182" width="187" height="26" rx="4"/>
+  <text class="sm" x="24" y="200">CSS → style → layout</text>
+  <rect class="box" x="14" y="214" width="187" height="26" rx="4"/>
+  <text class="sm" x="24" y="232">paint → compositor</text>
+  <rect class="box" x="14" y="246" width="187" height="34" rx="4"/>
+  <text class="sm" x="24" y="268">JavaScript engine (V8)</text>
+
+  <rect class="box-accent" x="225" y="98" width="215" height="196" rx="8"/>
+  <text class="strong" x="239" y="122">Renderer · site B</text>
+  <text class="sm" x="239" y="140">sandboxed</text>
+  <rect class="box" x="239" y="150" width="187" height="26" rx="4"/>
+  <text class="sm" x="249" y="168">HTML parser → DOM</text>
+  <rect class="box" x="239" y="182" width="187" height="26" rx="4"/>
+  <text class="sm" x="249" y="200">CSS → style → layout</text>
+  <rect class="box" x="239" y="214" width="187" height="26" rx="4"/>
+  <text class="sm" x="249" y="232">paint → compositor</text>
+  <rect class="box" x="239" y="246" width="187" height="34" rx="4"/>
+  <text class="sm" x="249" y="268">JavaScript engine (V8)</text>
+
+  <rect class="box" x="450" y="98" width="140" height="196" rx="8"/>
+  <text class="strong" x="464" y="122">GPU process</text>
+  <text class="sm" x="464" y="146">rasterises and</text>
+  <text class="sm" x="464" y="162">draws every tab's</text>
+  <text class="sm" x="464" y="178">output to the screen</text>
+
+  <rect class="box" x="600" y="98" width="80" height="196" rx="8"/>
+  <text class="strong" x="612" y="122">Network</text>
+  <text class="sm" x="612" y="146">DNS, TLS,</text>
+  <text class="sm" x="612" y="162">HTTP,</text>
+  <text class="sm" x="612" y="178">cache</text>
+</svg>

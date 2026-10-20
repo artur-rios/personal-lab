@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 262" role="img" aria-labelledby="srv-title">
+  <title id="srv-title">Three ways to structure a network server. Process per connection: each client is served by its own process. Thread per connection: one process, one thread per client. Event loop: one thread in one process waits on all connections at once through an event notification interface such as epoll and handles whichever is ready.</title>
+
+  <!-- Process per connection -->
+  <text class="strong" x="105" y="20" text-anchor="middle">Process per connection</text>
+  <text class="sm" x="105" y="38" text-anchor="middle">Apache prefork</text>
+  <circle class="box" cx="45" cy="80" r="12"/>
+  <circle class="box" cx="105" cy="80" r="12"/>
+  <circle class="box" cx="165" cy="80" r="12"/>
+  <line class="wire" x1="45" y1="92" x2="45" y2="148"/>
+  <line class="wire" x1="105" y1="92" x2="105" y2="148"/>
+  <line class="wire" x1="165" y1="92" x2="165" y2="148"/>
+  <rect class="box-accent" x="17" y="148" width="56" height="84" rx="6"/>
+  <rect class="box-accent" x="77" y="148" width="56" height="84" rx="6"/>
+  <rect class="box-accent" x="137" y="148" width="56" height="84" rx="6"/>
+  <text class="sm" x="45" y="172" text-anchor="middle">process</text>
+  <text class="sm" x="105" y="172" text-anchor="middle">process</text>
+  <text class="sm" x="165" y="172" text-anchor="middle">process</text>
+  <rect class="solid" x="29" y="190" width="32" height="30" rx="4"/>
+  <rect class="solid" x="89" y="190" width="32" height="30" rx="4"/>
+  <rect class="solid" x="149" y="190" width="32" height="30" rx="4"/>
+  <text class="sm" x="105" y="254" text-anchor="middle">isolated, but heavy</text>
+
+  <!-- Thread per connection -->
+  <text class="strong" x="340" y="20" text-anchor="middle">Thread per connection</text>
+  <text class="sm" x="340" y="38" text-anchor="middle">Apache worker, classic Java servers</text>
+  <circle class="box" cx="280" cy="80" r="12"/>
+  <circle class="box" cx="340" cy="80" r="12"/>
+  <circle class="box" cx="400" cy="80" r="12"/>
+  <line class="wire" x1="280" y1="92" x2="280" y2="190"/>
+  <line class="wire" x1="340" y1="92" x2="340" y2="190"/>
+  <line class="wire" x1="400" y1="92" x2="400" y2="190"/>
+  <rect class="box-accent" x="245" y="148" width="190" height="84" rx="6"/>
+  <text class="sm" x="310" y="172" text-anchor="middle">process</text>
+  <rect class="solid" x="264" y="190" width="32" height="30" rx="4"/>
+  <rect class="solid" x="324" y="190" width="32" height="30" rx="4"/>
+  <rect class="solid" x="384" y="190" width="32" height="30" rx="4"/>
+  <text class="sm" x="340" y="254" text-anchor="middle">shared memory, one stack each</text>
+
+  <!-- Event loop -->
+  <text class="strong" x="575" y="20" text-anchor="middle">Event loop</text>
+  <text class="sm" x="575" y="38" text-anchor="middle">nginx, Node.js, Redis</text>
+  <circle class="box" cx="495" cy="80" r="12"/>
+  <circle class="box" cx="535" cy="80" r="12"/>
+  <circle class="box" cx="575" cy="80" r="12"/>
+  <circle class="box" cx="615" cy="80" r="12"/>
+  <circle class="box" cx="655" cy="80" r="12"/>
+  <line class="wire" x1="495" y1="92" x2="575" y2="148"/>
+  <line class="wire" x1="535" y1="92" x2="575" y2="148"/>
+  <line class="wire" x1="575" y1="92" x2="575" y2="148"/>
+  <line class="wire" x1="615" y1="92" x2="575" y2="148"/>
+  <line class="wire" x1="655" y1="92" x2="575" y2="148"/>
+  <rect class="box-accent" x="480" y="148" width="190" height="84" rx="6"/>
+  <line class="wire" x1="575" y1="148" x2="575" y2="190"/>
+  <text class="sm" x="492" y="172">process</text>
+  <rect class="solid" x="559" y="190" width="32" height="30" rx="4"/>
+  <text class="sm" x="575" y="254" text-anchor="middle">one thread juggles all clients</text>
+</svg>

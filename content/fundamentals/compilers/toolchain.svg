@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 534" role="img" aria-labelledby="tc-title">
+  <title id="tc-title">How gcc turns hello.c into a running program. The preprocessor expands includes and macros into hello.i. The compiler proper translates it into assembly, hello.s. The assembler encodes the instructions into the relocatable object file hello.o. The linker combines it with the C library and start-up files into the executable hello. The loader, the kernel together with the dynamic linker, maps it into memory as a running process.</title>
+  <defs>
+    <marker id="tc-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="sm" x="180" y="14" text-anchor="end">command</text>
+  <text class="sm" x="420" y="14">what it holds</text>
+
+  <rect class="box" x="200" y="20" width="200" height="30" rx="6"/>
+  <text class="mono" x="300" y="40" text-anchor="middle">hello.c</text>
+  <text class="sm" x="420" y="40">83 bytes of C source</text>
+  <line class="wire" x1="300" y1="50" x2="300" y2="66" marker-end="url(#tc-arrow)"/>
+
+  <rect class="box-accent" x="200" y="68" width="200" height="30" rx="6"/>
+  <text x="300" y="88" text-anchor="middle">Preprocessor</text>
+  <text class="mono" x="180" y="88" text-anchor="end">gcc -E</text>
+  <line class="wire" x1="300" y1="98" x2="300" y2="114" marker-end="url(#tc-arrow)"/>
+
+  <rect class="box" x="200" y="116" width="200" height="30" rx="6"/>
+  <text class="mono" x="300" y="136" text-anchor="middle">hello.i</text>
+  <text class="sm" x="420" y="136">744 lines: the headers pasted in</text>
+  <line class="wire" x1="300" y1="146" x2="300" y2="162" marker-end="url(#tc-arrow)"/>
+
+  <rect class="box-accent" x="200" y="164" width="200" height="30" rx="6"/>
+  <text x="300" y="184" text-anchor="middle">Compiler proper</text>
+  <text class="mono" x="180" y="184" text-anchor="end">gcc -S</text>
+  <line class="wire" x1="300" y1="194" x2="300" y2="210" marker-end="url(#tc-arrow)"/>
+
+  <rect class="box" x="200" y="212" width="200" height="30" rx="6"/>
+  <text class="mono" x="300" y="232" text-anchor="middle">hello.s</text>
+  <text class="sm" x="420" y="232">assembly language, as text</text>
+  <line class="wire" x1="300" y1="242" x2="300" y2="258" marker-end="url(#tc-arrow)"/>
+
+  <rect class="box-accent" x="200" y="260" width="200" height="30" rx="6"/>
+  <text x="300" y="280" text-anchor="middle">Assembler</text>
+  <text class="mono" x="180" y="280" text-anchor="end">gcc -c</text>
+  <line class="wire" x1="300" y1="290" x2="300" y2="306" marker-end="url(#tc-arrow)"/>
+
+  <rect class="box" x="200" y="308" width="200" height="30" rx="6"/>
+  <text class="mono" x="300" y="328" text-anchor="middle">hello.o</text>
+  <text class="sm" x="420" y="320">machine code with symbols and</text>
+  <text class="sm" x="420" y="334">relocations; puts still missing</text>
+  <line class="wire" x1="300" y1="338" x2="300" y2="354" marker-end="url(#tc-arrow)"/>
+
+  <rect class="box-accent" x="200" y="356" width="200" height="30" rx="6"/>
+  <text x="300" y="376" text-anchor="middle">Linker</text>
+  <text class="mono" x="180" y="376" text-anchor="end">gcc hello.o</text>
+  <rect class="box" x="460" y="356" width="200" height="30" rx="6"/>
+  <text class="sm" x="560" y="375" text-anchor="middle">C library, start-up files</text>
+  <line class="wire" x1="460" y1="371" x2="402" y2="371" marker-end="url(#tc-arrow)"/>
+  <line class="wire" x1="300" y1="386" x2="300" y2="402" marker-end="url(#tc-arrow)"/>
+
+  <rect class="box" x="200" y="404" width="200" height="30" rx="6"/>
+  <text class="mono" x="300" y="424" text-anchor="middle">hello</text>
+  <text class="sm" x="420" y="424">ELF executable (PIE)</text>
+  <line class="wire" x1="300" y1="434" x2="300" y2="450" marker-end="url(#tc-arrow)"/>
+
+  <rect class="box-accent" x="200" y="452" width="200" height="30" rx="6"/>
+  <text x="300" y="472" text-anchor="middle">Loader</text>
+  <text class="mono" x="180" y="472" text-anchor="end">./hello</text>
+  <text class="sm" x="420" y="472">kernel + dynamic linker</text>
+  <line class="wire" x1="300" y1="482" x2="300" y2="498" marker-end="url(#tc-arrow)"/>
+
+  <rect class="solid" x="200" y="500" width="200" height="30" rx="6"/>
+  <text class="strong on-solid" x="300" y="520" text-anchor="middle">Running process</text>
+</svg>

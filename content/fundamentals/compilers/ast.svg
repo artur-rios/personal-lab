@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 270" role="img" aria-labelledby="ast-title">
+  <title id="ast-title">The statement x = a + b * 2 as the lexer and the parser see it. The lexer produces seven tokens: identifier x, the equals sign, identifier a, plus, identifier b, star and the number 2. The parser builds a tree with an assignment at the root; its left child is x and its right child is an addition of a and a multiplication of b by 2, because multiplication binds more tightly than addition.</title>
+
+  <!-- Tokens -->
+  <text class="sm" x="0" y="16">Tokens</text>
+  <rect class="box" x="0" y="26" width="180" height="26" rx="4"/>
+  <text class="mono" x="12" y="43">x</text><text class="sm" x="168" y="43" text-anchor="end">identifier</text>
+  <rect class="box" x="0" y="58" width="180" height="26" rx="4"/>
+  <text class="mono" x="12" y="75">=</text><text class="sm" x="168" y="75" text-anchor="end">assignment</text>
+  <rect class="box" x="0" y="90" width="180" height="26" rx="4"/>
+  <text class="mono" x="12" y="107">a</text><text class="sm" x="168" y="107" text-anchor="end">identifier</text>
+  <rect class="box" x="0" y="122" width="180" height="26" rx="4"/>
+  <text class="mono" x="12" y="139">+</text><text class="sm" x="168" y="139" text-anchor="end">operator</text>
+  <rect class="box" x="0" y="154" width="180" height="26" rx="4"/>
+  <text class="mono" x="12" y="171">b</text><text class="sm" x="168" y="171" text-anchor="end">identifier</text>
+  <rect class="box" x="0" y="186" width="180" height="26" rx="4"/>
+  <text class="mono" x="12" y="203">*</text><text class="sm" x="168" y="203" text-anchor="end">operator</text>
+  <rect class="box" x="0" y="218" width="180" height="26" rx="4"/>
+  <text class="mono" x="12" y="235">2</text><text class="sm" x="168" y="235" text-anchor="end">integer literal</text>
+
+  <!-- Tree edges -->
+  <text class="sm" x="230" y="16">Syntax tree</text>
+  <line class="wire" x1="420" y1="48" x2="320" y2="106"/>
+  <line class="wire" x1="420" y1="48" x2="520" y2="106"/>
+  <line class="wire" x1="520" y1="124" x2="450" y2="176"/>
+  <line class="wire" x1="520" y1="124" x2="600" y2="176"/>
+  <line class="wire" x1="600" y1="194" x2="540" y2="236"/>
+  <line class="wire" x1="600" y1="194" x2="650" y2="236"/>
+
+  <!-- Tree nodes -->
+  <rect class="solid" x="380" y="26" width="80" height="34" rx="17"/>
+  <text class="strong on-solid" x="420" y="48" text-anchor="middle">=</text>
+  <rect class="box" x="290" y="102" width="60" height="34" rx="17"/>
+  <text class="mono" x="320" y="123" text-anchor="middle">x</text>
+  <rect class="box-accent" x="490" y="102" width="60" height="34" rx="17"/>
+  <text class="strong" x="520" y="124" text-anchor="middle">+</text>
+  <rect class="box" x="420" y="172" width="60" height="34" rx="17"/>
+  <text class="mono" x="450" y="193" text-anchor="middle">a</text>
+  <rect class="box-accent" x="570" y="172" width="60" height="34" rx="17"/>
+  <text class="strong" x="600" y="194" text-anchor="middle">*</text>
+  <rect class="box" x="510" y="232" width="60" height="34" rx="17"/>
+  <text class="mono" x="540" y="253" text-anchor="middle">b</text>
+  <rect class="box" x="620" y="232" width="60" height="34" rx="17"/>
+  <text class="mono" x="650" y="253" text-anchor="middle">2</text>
+</svg>

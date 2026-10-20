@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 246" role="img" aria-labelledby="vnh-title">
+  <title id="vnh-title">Two memory organisations. In the von Neumann architecture, instructions and data share one memory and one bus. In the Harvard architecture, instructions and data live in separate memories reached over separate paths, so an instruction fetch and a data access can happen at the same time.</title>
+  <defs>
+    <marker id="vnh-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- von Neumann -->
+  <text class="strong" x="160" y="20" text-anchor="middle">von Neumann</text>
+  <text class="sm" x="160" y="38" text-anchor="middle">one memory, one path</text>
+  <rect class="box-accent" x="60" y="56" width="200" height="56" rx="8"/>
+  <text x="160" y="89" text-anchor="middle">Processor</text>
+  <line class="wire" x1="160" y1="114" x2="160" y2="170" marker-start="url(#vnh-arrow)" marker-end="url(#vnh-arrow)"/>
+  <text class="sm" x="170" y="146">instructions and data</text>
+  <text class="sm" x="170" y="162">take turns</text>
+  <rect class="box" x="20" y="172" width="280" height="64" rx="8"/>
+  <text x="160" y="200" text-anchor="middle">Memory</text>
+  <text class="sm" x="160" y="220" text-anchor="middle">program code and variables together</text>
+
+  <!-- Harvard -->
+  <text class="strong" x="520" y="20" text-anchor="middle">Harvard</text>
+  <text class="sm" x="520" y="38" text-anchor="middle">separate memories, separate paths</text>
+  <rect class="box-accent" x="420" y="56" width="200" height="56" rx="8"/>
+  <text x="520" y="89" text-anchor="middle">Processor</text>
+  <line class="wire" x1="435" y1="170" x2="435" y2="114" marker-end="url(#vnh-arrow)"/>
+  <text class="sm" x="443" y="146">fetch</text>
+  <line class="wire" x1="605" y1="114" x2="605" y2="170" marker-start="url(#vnh-arrow)" marker-end="url(#vnh-arrow)"/>
+  <text class="sm" x="597" y="146" text-anchor="end">load, store</text>
+  <rect class="box" x="360" y="172" width="150" height="64" rx="8"/>
+  <text x="435" y="200" text-anchor="middle">Instructions</text>
+  <text class="sm" x="435" y="220" text-anchor="middle">program code</text>
+  <rect class="box" x="530" y="172" width="150" height="64" rx="8"/>
+  <text x="605" y="200" text-anchor="middle">Data</text>
+  <text class="sm" x="605" y="220" text-anchor="middle">variables, arrays</text>
+</svg>

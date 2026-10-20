@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 290" role="img" aria-labelledby="pl-title">
+  <title id="pl-title">The rendering pipeline. HTML is parsed into the DOM and CSS into the CSS object model. Style resolution combines them into a computed style for every element. Layout computes the size and position of every box. Paint records drawing commands. Compositing combines painted layers on the GPU into the frame on screen. Changing an element's geometry reruns layout and everything after it; changing only its colour reruns paint and compositing; changing only transform or opacity can be handled by the compositor alone.</title>
+  <defs>
+    <marker id="pl-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="0" y="0" width="100" height="40" rx="6"/>
+  <text class="mono" x="50" y="25" text-anchor="middle">HTML</text>
+  <line class="wire" x1="100" y1="20" x2="128" y2="20" marker-end="url(#pl-arrow)"/>
+  <rect class="box-accent" x="130" y="0" width="100" height="40" rx="6"/>
+  <text x="180" y="25" text-anchor="middle">DOM</text>
+
+  <rect class="box" x="0" y="56" width="100" height="40" rx="6"/>
+  <text class="mono" x="50" y="81" text-anchor="middle">CSS</text>
+  <line class="wire" x1="100" y1="76" x2="128" y2="76" marker-end="url(#pl-arrow)"/>
+  <rect class="box-accent" x="130" y="56" width="100" height="40" rx="6"/>
+  <text x="180" y="81" text-anchor="middle">CSSOM</text>
+
+  <path class="wire" d="M230 20 H250 V48 H262 M230 76 H250 V48" marker-end="url(#pl-arrow)"/>
+
+  <rect class="box-accent" x="264" y="28" width="96" height="40" rx="6"/>
+  <text x="312" y="53" text-anchor="middle">Style</text>
+  <line class="wire" x1="360" y1="48" x2="374" y2="48" marker-end="url(#pl-arrow)"/>
+  <rect class="box-accent" x="376" y="28" width="96" height="40" rx="6"/>
+  <text x="424" y="53" text-anchor="middle">Layout</text>
+  <line class="wire" x1="472" y1="48" x2="486" y2="48" marker-end="url(#pl-arrow)"/>
+  <rect class="box-accent" x="488" y="28" width="86" height="40" rx="6"/>
+  <text x="531" y="53" text-anchor="middle">Paint</text>
+  <line class="wire" x1="574" y1="48" x2="588" y2="48" marker-end="url(#pl-arrow)"/>
+  <rect class="solid" x="590" y="28" width="90" height="40" rx="6"/>
+  <text class="on-solid" x="635" y="53" text-anchor="middle">Composite</text>
+
+  <text class="sm" x="312" y="88" text-anchor="middle">computed values</text>
+  <text class="sm" x="312" y="102" text-anchor="middle">for every element</text>
+  <text class="sm" x="424" y="88" text-anchor="middle">size and position</text>
+  <text class="sm" x="424" y="102" text-anchor="middle">of every box</text>
+  <text class="sm" x="531" y="88" text-anchor="middle">drawing</text>
+  <text class="sm" x="531" y="102" text-anchor="middle">commands</text>
+  <text class="sm" x="635" y="88" text-anchor="middle">layers → frame,</text>
+  <text class="sm" x="635" y="102" text-anchor="middle">on the GPU</text>
+
+  <!-- What a change costs -->
+  <text class="sm" x="0" y="146">What a change makes the browser redo</text>
+
+  <text class="sm" x="0" y="180">geometry: width, top, font-size</text>
+  <rect class="box-accent" x="376" y="164" width="304" height="26" rx="4"/>
+  <text class="sm accent" x="528" y="181" text-anchor="middle">layout → paint → composite</text>
+
+  <text class="sm" x="0" y="216">appearance: color, background</text>
+  <rect class="box-accent" x="488" y="200" width="192" height="26" rx="4"/>
+  <text class="sm accent" x="584" y="217" text-anchor="middle">paint → composite</text>
+
+  <text class="sm" x="0" y="252">transform, opacity (on their own layer)</text>
+  <rect class="solid" x="590" y="236" width="90" height="26" rx="4"/>
+  <text class="sm on-solid" x="635" y="253" text-anchor="middle">composite</text>
+  <text class="sm" x="0" y="282">cheaper to the right: animate transform and opacity when you can</text>
+</svg>

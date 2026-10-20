@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 320" role="img" aria-labelledby="cpu-title">
+  <title id="cpu-title">The main parts of a processor: a control unit that fetches and decodes instructions, registers that hold the values being worked on, execution units such as the ALU, and caches. The caches connect to main memory over the memory bus, and the processor reaches devices over an I/O interconnect.</title>
+  <defs>
+    <marker id="cpu-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- The processor -->
+  <rect class="box-accent" x="0" y="0" width="430" height="314" rx="10"/>
+  <text class="strong" x="16" y="28">Processor</text>
+
+  <rect class="box" x="16" y="44" width="190" height="80" rx="8"/>
+  <text class="strong" x="32" y="70">Control unit</text>
+  <text class="sm" x="32" y="90">fetches and decodes</text>
+  <text class="sm" x="32" y="108">instructions, steers data</text>
+
+  <rect class="box" x="224" y="44" width="190" height="80" rx="8"/>
+  <text class="strong" x="240" y="70">Registers</text>
+  <text class="sm" x="240" y="90">program counter and a few</text>
+  <text class="sm" x="240" y="108">dozen fast storage slots</text>
+
+  <line class="wire" x1="111" y1="124" x2="111" y2="146" marker-end="url(#cpu-arrow)"/>
+  <line class="wire" x1="319" y1="126" x2="319" y2="146" marker-start="url(#cpu-arrow)" marker-end="url(#cpu-arrow)"/>
+
+  <rect class="box" x="16" y="148" width="398" height="70" rx="8"/>
+  <text class="strong" x="32" y="176">Execution units</text>
+  <text class="sm" x="32" y="196">integer ALUs, multiplier, floating point, vector, load/store</text>
+
+  <line class="wire" x1="215" y1="220" x2="215" y2="246" marker-start="url(#cpu-arrow)" marker-end="url(#cpu-arrow)"/>
+
+  <rect class="box" x="16" y="248" width="398" height="56" rx="8"/>
+  <text class="strong" x="32" y="272">Caches · L1, L2, L3</text>
+  <text class="sm" x="32" y="292">small, fast copies of recently used memory</text>
+
+  <!-- Outside the processor -->
+  <rect class="box" x="500" y="44" width="180" height="80" rx="8"/>
+  <text class="strong" x="516" y="70">I/O devices</text>
+  <text class="sm" x="516" y="90">storage, network, display,</text>
+  <text class="sm" x="516" y="108">reached through controllers</text>
+  <line class="wire" x1="432" y1="84" x2="498" y2="84" marker-start="url(#cpu-arrow)" marker-end="url(#cpu-arrow)"/>
+  <text class="sm" x="465" y="62" text-anchor="middle">PCIe,</text>
+  <text class="sm" x="465" y="76" text-anchor="middle">chipset</text>
+
+  <rect class="box" x="500" y="220" width="180" height="80" rx="8"/>
+  <text class="strong" x="516" y="246">Main memory</text>
+  <text class="sm" x="516" y="266">DRAM: instructions and</text>
+  <text class="sm" x="516" y="284">data side by side</text>
+  <line class="wire" x1="416" y1="276" x2="498" y2="276" marker-start="url(#cpu-arrow)" marker-end="url(#cpu-arrow)"/>
+  <text class="sm" x="465" y="268" text-anchor="middle">memory bus</text>
+</svg>

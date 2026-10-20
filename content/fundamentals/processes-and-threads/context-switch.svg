@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 222" role="img" aria-labelledby="cs-title">
+  <title id="cs-title">A context switch on one CPU core. Thread A runs until a timer interrupt or system call enters the kernel. The kernel saves A's registers, the scheduler picks thread B, and the kernel restores B's registers and returns to user mode, where B runs. A is now either ready and waiting for a CPU, or asleep if it entered the kernel through a blocking call.</title>
+  <defs>
+    <marker id="cs-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="sm" x="0" y="64">Thread A</text>
+  <text class="sm" x="0" y="119">Kernel</text>
+  <text class="sm" x="0" y="174">Thread B</text>
+
+  <!-- Thread A -->
+  <rect class="solid" x="80" y="48" width="180" height="24" rx="4"/>
+  <text class="sm on-solid" x="170" y="64" text-anchor="middle">running</text>
+  <line class="zone" x1="260" y1="60" x2="676" y2="60"/>
+  <text class="sm" x="560" y="50" text-anchor="middle">ready, or asleep if it blocked</text>
+
+  <!-- Kernel -->
+  <line class="wire" x1="260" y1="72" x2="260" y2="103" marker-end="url(#cs-arrow)"/>
+  <text class="sm" x="268" y="92">interrupt or system call</text>
+  <rect class="box-accent" x="260" y="105" width="60" height="24" rx="4"/>
+  <text class="sm" x="290" y="121" text-anchor="middle">save A</text>
+  <rect class="box-accent" x="320" y="105" width="60" height="24" rx="4"/>
+  <text class="sm" x="350" y="121" text-anchor="middle">schedule</text>
+  <rect class="box-accent" x="380" y="105" width="60" height="24" rx="4"/>
+  <text class="sm" x="410" y="121" text-anchor="middle">restore B</text>
+  <line class="wire" x1="440" y1="129" x2="440" y2="156" marker-end="url(#cs-arrow)"/>
+  <text class="sm" x="448" y="148">return to user mode</text>
+
+  <!-- Thread B -->
+  <line class="zone" x1="80" y1="170" x2="440" y2="170"/>
+  <text class="sm" x="170" y="192" text-anchor="middle">ready</text>
+  <rect class="solid" x="440" y="158" width="236" height="24" rx="4"/>
+  <text class="sm on-solid" x="558" y="174" text-anchor="middle">running</text>
+
+  <text class="sm accent" x="350" y="214" text-anchor="middle">the switch itself: microseconds; refilling caches afterwards can cost more</text>
+</svg>

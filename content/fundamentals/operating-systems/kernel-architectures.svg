@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 480" role="img" aria-labelledby="arch-title">
+  <title id="arch-title">Three kernel designs side by side. Monolithic: every operating system service runs inside one large kernel. Microkernel: only IPC, threads and address spaces run in the kernel, and file systems, drivers and networking run as user-mode servers. Hybrid: most services run in the kernel but are structured around a small core.</title>
+
+  <!-- Monolithic -->
+  <text class="strong" x="105" y="20" text-anchor="middle">Monolithic</text>
+  <text class="sm" x="105" y="38" text-anchor="middle">Linux, the BSDs, classic Unix</text>
+  <rect class="box" x="0" y="56" width="210" height="56" rx="8"/>
+  <text x="105" y="89" text-anchor="middle">Applications</text>
+  <rect class="box" x="0" y="124" width="210" height="56" rx="8"/>
+  <text x="105" y="157" text-anchor="middle">System libraries</text>
+  <line class="zone" x1="0" y1="196" x2="210" y2="196"/>
+  <rect class="box-accent" x="0" y="206" width="210" height="216" rx="8"/>
+  <text x="105" y="229" text-anchor="middle">System call interface</text>
+  <line class="sep" x1="12" y1="242" x2="198" y2="242"/>
+  <text x="105" y="265" text-anchor="middle">Scheduler · IPC</text>
+  <line class="sep" x1="12" y1="278" x2="198" y2="278"/>
+  <text x="105" y="301" text-anchor="middle">Memory manager</text>
+  <line class="sep" x1="12" y1="314" x2="198" y2="314"/>
+  <text x="105" y="337" text-anchor="middle">VFS · file systems</text>
+  <line class="sep" x1="12" y1="350" x2="198" y2="350"/>
+  <text x="105" y="373" text-anchor="middle">Network stack</text>
+  <line class="sep" x1="12" y1="386" x2="198" y2="386"/>
+  <text x="105" y="409" text-anchor="middle">Device drivers</text>
+
+  <!-- Microkernel -->
+  <text class="strong" x="340" y="20" text-anchor="middle">Microkernel</text>
+  <text class="sm" x="340" y="38" text-anchor="middle">MINIX 3, QNX, seL4</text>
+  <rect class="box" x="235" y="56" width="210" height="56" rx="8"/>
+  <text x="340" y="89" text-anchor="middle">Applications</text>
+  <rect class="box-accent" x="235" y="124" width="64" height="56" rx="6"/>
+  <text x="267" y="148" text-anchor="middle">File</text>
+  <text x="267" y="166" text-anchor="middle">server</text>
+  <rect class="box-accent" x="308" y="124" width="64" height="56" rx="6"/>
+  <text x="340" y="148" text-anchor="middle">Device</text>
+  <text x="340" y="166" text-anchor="middle">drivers</text>
+  <rect class="box-accent" x="381" y="124" width="64" height="56" rx="6"/>
+  <text x="413" y="148" text-anchor="middle">Network</text>
+  <text x="413" y="166" text-anchor="middle">server</text>
+  <line class="zone" x1="235" y1="196" x2="445" y2="196"/>
+  <rect class="box" x="235" y="206" width="210" height="80" rx="8"/>
+  <text class="strong" x="340" y="232" text-anchor="middle">Microkernel</text>
+  <text class="sm" x="340" y="252" text-anchor="middle">IPC · threads</text>
+  <text class="sm" x="340" y="270" text-anchor="middle">address spaces · interrupts</text>
+  <text class="sm" x="340" y="330" text-anchor="middle">services are ordinary processes</text>
+  <text class="sm" x="340" y="348" text-anchor="middle">that talk by message passing</text>
+
+  <!-- Hybrid -->
+  <text class="strong" x="575" y="20" text-anchor="middle">Hybrid</text>
+  <text class="sm" x="575" y="38" text-anchor="middle">Windows NT, XNU (macOS, iOS)</text>
+  <rect class="box" x="470" y="56" width="210" height="56" rx="8"/>
+  <text x="575" y="89" text-anchor="middle">Applications</text>
+  <rect class="box" x="470" y="124" width="210" height="56" rx="8"/>
+  <text x="575" y="157" text-anchor="middle">Libraries and subsystems</text>
+  <line class="zone" x1="470" y1="196" x2="680" y2="196"/>
+  <rect class="box-accent" x="470" y="206" width="210" height="216" rx="8"/>
+  <text x="575" y="229" text-anchor="middle">System call interface</text>
+  <line class="sep" x1="482" y1="242" x2="668" y2="242"/>
+  <text x="575" y="265" text-anchor="middle">Executive services</text>
+  <line class="sep" x1="482" y1="278" x2="668" y2="278"/>
+  <text x="575" y="301" text-anchor="middle">File systems · network</text>
+  <line class="sep" x1="482" y1="314" x2="668" y2="314"/>
+  <text x="575" y="337" text-anchor="middle">Driver framework</text>
+  <rect class="box" x="482" y="352" width="186" height="58" rx="6"/>
+  <text class="strong" x="575" y="376" text-anchor="middle">Core kernel</text>
+  <text class="sm" x="575" y="396" text-anchor="middle">threads · IPC · interrupts</text>
+
+  <!-- Hardware -->
+  <rect class="box" x="0" y="440" width="680" height="34" rx="8"/>
+  <text x="340" y="462" text-anchor="middle">Hardware</text>
+</svg>

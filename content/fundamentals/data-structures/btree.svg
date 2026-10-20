@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 210" role="img" aria-labelledby="bt-title">
+  <title id="bt-title">A small B-tree. The root node holds two keys, 30 and 60, and three child pointers. Its children hold the keys below 30 (10 and 20), between 30 and 60 (40 and 50), and above 60 (70, 80 and 90). Each node holds several sorted keys, so the tree is wide and shallow.</title>
+
+  <line class="wire" x1="284" y1="60" x2="100" y2="130"/>
+  <line class="wire" x1="340" y1="60" x2="340" y2="130"/>
+  <line class="wire" x1="396" y1="60" x2="575" y2="130"/>
+  <text class="sm" x="176" y="88" text-anchor="middle">keys &lt; 30</text>
+  <text class="sm" x="348" y="100">30 to 60</text>
+  <text class="sm" x="508" y="88" text-anchor="middle">keys &gt; 60</text>
+
+  <rect class="solid" x="270" y="20" width="140" height="40" rx="6"/>
+  <line class="sep" x1="340" y1="24" x2="340" y2="56"/>
+  <text class="strong on-solid" x="305" y="45" text-anchor="middle">30</text>
+  <text class="strong on-solid" x="375" y="45" text-anchor="middle">60</text>
+
+  <rect class="box-accent" x="40" y="130" width="120" height="40" rx="6"/>
+  <line class="sep" x1="100" y1="134" x2="100" y2="166"/>
+  <text x="70" y="155" text-anchor="middle">10</text>
+  <text x="130" y="155" text-anchor="middle">20</text>
+
+  <rect class="box-accent" x="280" y="130" width="120" height="40" rx="6"/>
+  <line class="sep" x1="340" y1="134" x2="340" y2="166"/>
+  <text x="310" y="155" text-anchor="middle">40</text>
+  <text x="370" y="155" text-anchor="middle">50</text>
+
+  <rect class="box-accent" x="485" y="130" width="180" height="40" rx="6"/>
+  <line class="sep" x1="545" y1="134" x2="545" y2="166"/>
+  <line class="sep" x1="605" y1="134" x2="605" y2="166"/>
+  <text x="515" y="155" text-anchor="middle">70</text>
+  <text x="575" y="155" text-anchor="middle">80</text>
+  <text x="635" y="155" text-anchor="middle">90</text>
+
+  <text class="sm" x="340" y="202" text-anchor="middle">real nodes are sized to a disk page and hold hundreds of keys, so trees stay a few levels deep</text>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 44 680 214" role="img" aria-labelledby="states-title">
+  <title id="states-title">The five-state process model. A new process is admitted to Ready. The scheduler dispatches it to Running, and preemption sends it back to Ready. A running process that waits for I/O or an event moves to Waiting, and returns to Ready when the event completes. A running process that exits becomes Terminated.</title>
+  <defs>
+    <marker id="states-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- States -->
+  <rect class="box" x="0" y="60" width="96" height="48" rx="24"/>
+  <text x="48" y="89" text-anchor="middle">New</text>
+
+  <rect class="box" x="176" y="60" width="112" height="48" rx="24"/>
+  <text x="232" y="89" text-anchor="middle">Ready</text>
+
+  <rect class="solid" x="392" y="60" width="112" height="48" rx="24"/>
+  <text class="strong on-solid" x="448" y="89" text-anchor="middle">Running</text>
+
+  <rect class="box" x="572" y="60" width="108" height="48" rx="24"/>
+  <text x="626" y="89" text-anchor="middle">Terminated</text>
+
+  <rect class="box" x="284" y="200" width="112" height="48" rx="24"/>
+  <text x="340" y="229" text-anchor="middle">Waiting</text>
+
+  <!-- Transitions -->
+  <line class="wire" x1="96" y1="84" x2="174" y2="84" marker-end="url(#states-arrow)"/>
+  <text class="sm" x="136" y="76" text-anchor="middle">admitted</text>
+
+  <line class="wire" x1="288" y1="74" x2="390" y2="74" marker-end="url(#states-arrow)"/>
+  <text class="sm" x="340" y="64" text-anchor="middle">dispatch</text>
+
+  <line class="wire" x1="392" y1="94" x2="290" y2="94" marker-end="url(#states-arrow)"/>
+  <text class="sm" x="340" y="112" text-anchor="middle">preempted</text>
+
+  <line class="wire" x1="504" y1="84" x2="570" y2="84" marker-end="url(#states-arrow)"/>
+  <text class="sm" x="538" y="76" text-anchor="middle">exit</text>
+
+  <path class="wire" d="M448 108 V224 H398" marker-end="url(#states-arrow)"/>
+  <text class="sm" x="458" y="168">waits for I/O</text>
+  <text class="sm" x="458" y="184">or an event</text>
+
+  <path class="wire" d="M284 224 H232 V110" marker-end="url(#states-arrow)"/>
+  <text class="sm" x="222" y="168" text-anchor="end">I/O or event</text>
+  <text class="sm" x="222" y="184" text-anchor="end">completes</text>
+</svg>
