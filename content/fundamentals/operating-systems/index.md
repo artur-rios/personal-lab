@@ -163,10 +163,11 @@ files, and an operating system written mostly in a high-level language (PL/I).
 At the same time IBM announced **OS/360** (1964), one operating system for an
 entire family of compatible machines. It worked, but late and at great cost;
 Fred Brooks, who managed the project, distilled the lessons into *The Mythical
-Man-Month*.[^brooks] IBM's **CP-67/CMS** (1967) took a different path: rather
-than share one operating system, it gave each user a *virtual copy of the
-hardware*, the first practical **virtual machine** system, which became VM/370
-in 1972.
+Man-Month*.[^brooks] IBM's virtual machine work took a different path:
+rather than share one operating system, it gave each user a *virtual copy of
+the hardware*. The CP-40 research system came first; its successor **CP-67/CMS**
+(1967–68) was the first widely available **virtual machine** system and led to
+VM/370 in 1972.
 
 ### Structure becomes a research subject
 
@@ -189,7 +190,8 @@ on a handful of simple, powerful choices:
 - a single hierarchical file system, in which devices also appear as files;
 - processes created by `fork` and given a new program by `exec`;
 - a shell that is just an ordinary user program;
-- **pipes** (1973, proposed by Doug McIlroy), so small programs can be composed.
+- **pipes** (1972, added at Doug McIlroy's urging), so small programs can be
+  composed.
 
 In 1973 the kernel was rewritten in C, which made Unix portable to new hardware
 in a way that assembly-language systems were not. Because a 1956 antitrust
@@ -277,10 +279,11 @@ an operating system's job at a larger scale.
 | 1962 | Atlas Supervisor introduces paged virtual memory |
 | 1964 | IBM announces OS/360 |
 | 1965 | Multics project begins |
-| 1967 | IBM CP-67/CMS: virtual machines |
+| 1967 | IBM CP-40 and CP-67: virtual machines |
 | 1968 | Dijkstra's layered THE system |
 | 1969 | RC 4000 nucleus; Unix begins on a PDP-7 |
-| 1973 | Unix rewritten in C; pipes |
+| 1972 | Pipes added to Unix |
+| 1973 | Unix rewritten in C |
 | 1974 | CP/M; Popek and Goldberg's virtualisation requirements |
 | 1981 | MS-DOS |
 | 1983 | 4.2BSD with TCP/IP; GNU project announced |
@@ -314,8 +317,9 @@ early PCs, built without them, were so fragile.
 
 Processor families name their privilege levels differently. x86 has four
 **rings**, of which mainstream systems use two: ring 0 for the kernel and ring 3
-for applications. ARM defines **exception levels**: EL0 for applications, EL1
-for the kernel, EL2 for a hypervisor and EL3 for secure firmware. RISC-V has
+for applications. ARM defines **exception levels**, typically used as EL0 for
+applications, EL1 for the kernel, EL2 for a hypervisor and EL3 for secure
+firmware. RISC-V has
 user, supervisor and machine modes. The idea is the same in all of them.
 
 ## Kernel architectures
@@ -387,8 +391,8 @@ the messages.
   design could make IPC cheap.[^l4]
 
 Microkernels are common where reliability matters most: QNX runs in cars and
-industrial controllers, the seL4 family in security-critical systems, and
-MINIX 3 was used inside Intel's Management Engine firmware.
+industrial controllers, the seL4 family in security-critical systems, and a
+modified MINIX 3 runs inside Intel's Management Engine firmware (ME 11 onward).
 
 ### Hybrid kernels
 
@@ -470,8 +474,9 @@ chain in which each stage loads a slightly larger and more capable next stage.
    On Unix-like systems this is process number 1, **init**: systemd on most
    Linux distributions, launchd on macOS. Every later process descends from it.
    Windows has no PID 1 in the same sense; its kernel starts the Session
-   Manager (`smss.exe`), which in turn starts `wininit.exe` and the service
-   control manager.
+   Manager (`smss.exe`), which, through a copy of itself for session 0, starts
+   `wininit.exe`, which in turn starts the service control manager
+   (`services.exe`).
 5. **Services.** Init starts the system's background services, such as logging,
    networking, device management and scheduled jobs, ordered by their
    dependencies.
@@ -527,9 +532,9 @@ msg: .ascii "hi\n"
 
 System call numbers differ between operating systems and even between
 processor architectures on the same system, and Windows does not document its
-numbers at all, which is one reason programs go through libraries such as libc
-or the Windows API rather than issuing system calls themselves. A typical
-Linux system has between 300 and 400 system calls, covering processes (`fork`,
+numbers at all and they change between builds, which is one reason programs go
+through libraries such as libc or the Windows API rather than issuing system
+calls themselves. Linux on x86-64 has close to 400 system calls today, covering processes (`fork`,
 `execve`, `exit`, `wait4`), files (`openat`, `read`, `write`, `close`), memory
 (`mmap`, `brk`), communication (`pipe`, `socket`, `connect`) and more.
 
@@ -637,9 +642,11 @@ preemption and temporary priority boosts for threads that have just finished
 waiting. Linux's **Completely Fair Scheduler** (2007) gave each thread a
 *virtual runtime* that grows as it runs, weighted by priority, and always ran
 the thread with the least, kept in a red-black tree.[^love] In Linux 6.6 (2023)
-it was replaced by **EEVDF** (earliest eligible virtual deadline first), which
-keeps the fairness and also gives latency-sensitive tasks earlier
-deadlines.[^eevdf] Real-time threads sit above all of this in strict priority
+it was replaced by **EEVDF** (earliest eligible virtual deadline first). EEVDF
+tracks each task's *lag*, how much CPU time it is owed, and runs the eligible
+task with the earliest virtual deadline. Because the deadline depends on the
+task's time slice, tasks with shorter slices run sooner, and newer kernels let
+a latency-sensitive task ask for a shorter slice.[^eevdf] Real-time threads sit above all of this in strict priority
 classes, because for them predictability matters more than fairness.
 
 ### Concurrency and synchronisation
@@ -768,9 +775,9 @@ for the longest time (Belady's optimal algorithm), but that requires knowing the
 future.[^belady] Real kernels approximate **least recently used (LRU)** with the
 **clock** algorithm and its descendants, using the *accessed* bit the MMU sets in
 each page-table entry. If the pages a set of processes actively uses (their
-**working set**, in Peter Denning's term) no longer fit in memory, the system
+**working set**, in Peter Denning's term)[^denning] no longer fit in memory, the system
 spends its time moving pages instead of computing. That collapse is called
-**thrashing**.[^denning]
+**thrashing**.[^thrashing]
 
 ### Files and storage
 
@@ -892,13 +899,14 @@ Following one ordinary command shows almost every part of the system at work.
    maps the C library, and `main` runs.
 5. **Reading the file.** `cat` opens the file and reads it. Run under `strace`,
    the core of what it asks the kernel for looks like this (abridged; the exact
-   calls vary by system):
+   calls vary by system, and coreutils before 9.5 read 128 KiB at a time
+   rather than 256 KiB):
 
    ```txt
    openat(AT_FDCWD, "notes.txt", O_RDONLY) = 3
-   read(3, "buy milk\n", 131072)           = 9
+   read(3, "buy milk\n", 262144)           = 9
    write(1, "buy milk\n", 9)               = 9
-   read(3, "", 131072)                     = 0
+   read(3, "", 262144)                     = 0
    close(3)                                = 0
    exit_group(0)                           = ?
    ```
@@ -934,13 +942,13 @@ machine down.
 
 ## References
 
-[^tanenbaum]: Tanenbaum, A. S., & Bos, H. (2014). *Modern Operating Systems* (4th ed.). Pearson. Chapter 1.
+[^tanenbaum]: Tanenbaum, A. S., & Bos, H. (2015). *Modern Operating Systems* (4th ed.). Pearson. Chapter 1.
 
 [^ostep]: Arpaci-Dusseau, R. H., & Arpaci-Dusseau, A. C. (2018). *Operating Systems: Three Easy Pieces* (Version 1.00). Arpaci-Dusseau Books. <https://pages.cs.wisc.edu/~remzi/OSTEP/>
 
 [^silberschatz]: Silberschatz, A., Galvin, P. B., & Gagne, G. (2018). *Operating System Concepts* (10th ed.). Wiley. Chapter 1.
 
-[^brinch2001]: Brinch Hansen, P. (Ed.). (2001). *Classic Operating Systems: From Batch Processing to Distributed Systems*. Springer.
+[^brinch2001]: Brinch Hansen, P. (Ed.). (2001). *Classic Operating Systems: From Batch Processing to Distributed Systems*. Springer. <https://doi.org/10.1007/978-1-4757-3510-9>
 
 [^atlas]: Kilburn, T., Edwards, D. B. G., Lanigan, M. J., & Sumner, F. H. (1962). One-level storage system. *IRE Transactions on Electronic Computers*, EC-11(2), 223–235. <https://doi.org/10.1109/TEC.1962.5219356>
 
@@ -952,13 +960,13 @@ machine down.
 
 [^the]: Dijkstra, E. W. (1968). The structure of the "THE"-multiprogramming system. *Communications of the ACM*, 11(5), 341–346. <https://doi.org/10.1145/363095.363143>
 
-[^ewd123]: Dijkstra, E. W. (1965). *Cooperating Sequential Processes* (EWD 123). Technological University, Eindhoven. <https://www.cs.utexas.edu/~EWD/transcriptions/EWD01xx/EWD123.html>
+[^ewd123]: Dijkstra, E. W. (1965). *Cooperating Sequential Processes* (EWD 123). Department of Mathematics, Technological University, Eindhoven. <https://www.cs.utexas.edu/~EWD/transcriptions/EWD01xx/EWD123.html>
 
 [^rc4000]: Brinch Hansen, P. (1970). The nucleus of a multiprogramming system. *Communications of the ACM*, 13(4), 238–241. <https://doi.org/10.1145/362258.362278>
 
 [^unix74]: Ritchie, D. M., & Thompson, K. (1974). The UNIX time-sharing system. *Communications of the ACM*, 17(7), 365–375. <https://doi.org/10.1145/361011.361061>
 
-[^ritchie84]: Ritchie, D. M. (1984). The evolution of the Unix time-sharing system. *AT&T Bell Laboratories Technical Journal*, 63(8), 1577–1593.
+[^ritchie84]: Ritchie, D. M. (1984). The evolution of the Unix time-sharing system. *AT&T Bell Laboratories Technical Journal*, 63(8, Part 2), 1577–1593.
 
 [^custer]: Custer, H. (1993). *Inside Windows NT*. Microsoft Press.
 
@@ -966,11 +974,11 @@ machine down.
 
 [^gnu]: Stallman, R. (1983, September 27). Initial announcement of the GNU project. <https://www.gnu.org/gnu/initial-announcement.html>
 
-[^torvalds]: Torvalds, L. (1991, August 25). What would you like to see most in minix? [Usenet post]. comp.os.minix.
+[^torvalds]: Torvalds, L. (1991, August 25). What would you like to see most in minix? [Usenet post]. comp.os.minix. <https://groups.google.com/g/comp.os.minix/c/dlNtH7RRrGA>
 
 [^debate]: DiBona, C., Ockman, S., & Stone, M. (Eds.). (1999). *Open Sources: Voices from the Open Source Revolution*. O'Reilly. Appendix A: The Tanenbaum–Torvalds debate.
 
-[^top500]: TOP500. (n.d.). Operating system family: List statistics. <https://www.top500.org/statistics/list/>
+[^top500]: TOP500. (n.d.). Operating system family: Linux. Retrieved October 20, 2026, from <https://www.top500.org/statistics/details/osfam/1/>
 
 [^l4]: Liedtke, J. (1995). On micro-kernel construction. *Proceedings of the 15th ACM Symposium on Operating Systems Principles*, 237–250. <https://doi.org/10.1145/224056.224075>
 
@@ -994,8 +1002,10 @@ machine down.
 
 [^coffman]: Coffman, E. G., Jr., Elphick, M., & Shoshani, A. (1971). System deadlocks. *ACM Computing Surveys*, 3(2), 67–78. <https://doi.org/10.1145/356586.356588>
 
-[^intel]: Intel Corporation. (2024). *Intel 64 and IA-32 Architectures Software Developer's Manual, Volume 3A: System Programming Guide*. Chapter 4, Paging.
+[^intel]: Intel Corporation. (2026). *Intel 64 and IA-32 Architectures Software Developer's Manual, Volume 3A: System Programming Guide, Part 1* (Order No. 253668-093US). Chapter 5, Paging. <https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html>
 
 [^belady]: Belady, L. A. (1966). A study of replacement algorithms for a virtual-storage computer. *IBM Systems Journal*, 5(2), 78–101. <https://doi.org/10.1147/sj.52.0078>
 
 [^denning]: Denning, P. J. (1968). The working set model for program behavior. *Communications of the ACM*, 11(5), 323–333. <https://doi.org/10.1145/363095.363141>
+
+[^thrashing]: Denning, P. J. (1968). Thrashing: Its causes and prevention. *Proceedings of the Fall Joint Computer Conference, Part I*, 915–922. <https://doi.org/10.1145/1476589.1476705>
