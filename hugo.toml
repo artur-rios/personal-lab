@@ -17,7 +17,18 @@ theme = 'nuno'
 
 [params]
   brand = 'Artur Rios Lab'
+  description = 'Study notes, brainstorms and project tracking by Artur Rios, written in the open.'
+  tagline = 'Study notes, brainstorms and projects.'
+  masthead = 'Study<span class="accent">,</span><br>think<span class="accent">,</span><br>build.'
   mainSections = ['fundamentals']
+
+  [params.author]
+    name = 'Artur Rios'
+
+  # The theme appends an RSS link itself, so RSS is not listed here.
+  [[params.socialIcons]]
+    name = 'github'
+    url = 'https://github.com/artur-rios'
 
 [menu]
   [[menu.main]]
