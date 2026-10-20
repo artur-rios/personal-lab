@@ -11,8 +11,8 @@ GitHub Pages at **<https://artur-rios.github.io/personal-lab/>**.
 | Kind | What it is |
 | --- | --- |
 | **Study notes** | What I learn, written up properly, with references. [Fundamentals](content/fundamentals/) is the first section: the core ideas of computing and programming. |
-| **Brainstorms** | Ideas while they are still rough: questions, sketches and options before anything is decided. |
-| **Projects** | The things I am building: what each one is, where it stands and what comes next. |
+| **Brainstorms** | Ideas while they are still rough: questions, sketches and options before anything is decided. They live in [Brainstorms](content/brainstorms/). |
+| **Projects** | The things I am building: what each one is, where it stands and what comes next. They live in [Projects](content/projects/). |
 
 Everything is plain Markdown under [`content/`](content/), one folder per
 section.
@@ -22,6 +22,8 @@ section.
 ```txt
 content/          site content, one folder per section
   fundamentals/   study notes on the fundamentals of computing
+  brainstorms/    rough ideas, questions and options before anything is decided
+  projects/       the things being built: what, status and what comes next
 data/             site data (the lines the home page masthead cycles through)
 archetypes/       front matter templates for new pages
 themes/nuno/      the nuno theme, as a git submodule
@@ -54,6 +56,13 @@ matter of
 [`what-is-programming.md`](content/fundamentals/what-is-programming.md) as a
 model: a `description`, a `categories` entry (shown as the kicker above the
 title) and a few `tags`.
+
+Brainstorms and projects have their own archetypes, so
+`hugo new content brainstorms/my-idea.md` and
+`hugo new content projects/my-project.md` start with the category and a few
+section headings already filled in. A project also gets a `status` (idea,
+active, paused or done); the theme does not show it, so say the status in the
+text too.
 
 ## Publishing
 
