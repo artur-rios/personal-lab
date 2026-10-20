@@ -1,0 +1,15 @@
+# Lines cycled by the typed masthead on the home page. This file replaces the
+# theme's data/quotes.yaml wholesale.
+#
+# `pre`    renders in the body text colour
+# `accent` renders in the accent colour
+# "\n"     forces a line break; a trailing space keeps the line running on
+lines:
+  - pre: "Learn it slowly.\n"
+    accent: "Then write it down."
+  - pre: "Every project starts\n"
+    accent: "as a brainstorm."
+  - pre: "Notes for future me, "
+    accent: "kept in the open."
+  - pre: "Fundamentals first.\n"
+    accent: "Everything else builds on them."
