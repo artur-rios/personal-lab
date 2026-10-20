@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 280" role="img" aria-labelledby="tm-title">
+  <title id="tm-title">Three threading models. One-to-one: each user thread is a kernel thread, as on Linux, Windows and macOS. Many-to-one: all user threads of a process share one kernel thread, so one blocking call stops them all. Many-to-many: a runtime multiplexes many user threads over a smaller pool of kernel threads, as Go and Java virtual threads do.</title>
+
+  <!-- 1:1 -->
+  <text class="strong" x="105" y="20" text-anchor="middle">One-to-one</text>
+  <text class="sm" x="105" y="38" text-anchor="middle">Linux, Windows, macOS threads</text>
+  <text class="sm" x="105" y="76" text-anchor="middle">user threads</text>
+  <circle class="box" cx="45" cy="110" r="14"/>
+  <circle class="box" cx="105" cy="110" r="14"/>
+  <circle class="box" cx="165" cy="110" r="14"/>
+  <line class="zone" x1="0" y1="160" x2="210" y2="160"/>
+  <line class="wire" x1="45" y1="124" x2="45" y2="198"/>
+  <line class="wire" x1="105" y1="124" x2="105" y2="198"/>
+  <line class="wire" x1="165" y1="124" x2="165" y2="198"/>
+  <rect class="box-accent" x="30" y="198" width="30" height="24" rx="4"/>
+  <rect class="box-accent" x="90" y="198" width="30" height="24" rx="4"/>
+  <rect class="box-accent" x="150" y="198" width="30" height="24" rx="4"/>
+  <text class="sm" x="105" y="246" text-anchor="middle">kernel threads</text>
+  <text class="sm" x="105" y="268" text-anchor="middle">the kernel schedules every thread</text>
+
+  <!-- N:1 -->
+  <text class="strong" x="340" y="20" text-anchor="middle">Many-to-one</text>
+  <text class="sm" x="340" y="38" text-anchor="middle">early Java green threads, GNU Pth</text>
+  <text class="sm" x="340" y="76" text-anchor="middle">user threads</text>
+  <circle class="box" cx="280" cy="110" r="14"/>
+  <circle class="box" cx="340" cy="110" r="14"/>
+  <circle class="box" cx="400" cy="110" r="14"/>
+  <line class="zone" x1="235" y1="160" x2="445" y2="160"/>
+  <line class="wire" x1="280" y1="124" x2="334" y2="198"/>
+  <line class="wire" x1="340" y1="124" x2="340" y2="198"/>
+  <line class="wire" x1="400" y1="124" x2="346" y2="198"/>
+  <rect class="box-accent" x="325" y="198" width="30" height="24" rx="4"/>
+  <text class="sm" x="340" y="246" text-anchor="middle">one kernel thread</text>
+  <text class="sm" x="340" y="268" text-anchor="middle">one blocking call stops them all</text>
+
+  <!-- M:N -->
+  <text class="strong" x="575" y="20" text-anchor="middle">Many-to-many</text>
+  <text class="sm" x="575" y="38" text-anchor="middle">Go goroutines, Java virtual threads</text>
+  <text class="sm" x="575" y="76" text-anchor="middle">user threads</text>
+  <circle class="box" cx="500" cy="110" r="14"/>
+  <circle class="box" cx="550" cy="110" r="14"/>
+  <circle class="box" cx="600" cy="110" r="14"/>
+  <circle class="box" cx="650" cy="110" r="14"/>
+  <line class="zone" x1="470" y1="160" x2="680" y2="160"/>
+  <line class="wire" x1="500" y1="124" x2="520" y2="198"/>
+  <line class="wire" x1="550" y1="124" x2="530" y2="198"/>
+  <line class="wire" x1="600" y1="124" x2="620" y2="198"/>
+  <line class="wire" x1="650" y1="124" x2="630" y2="198"/>
+  <rect class="box-accent" x="510" y="198" width="30" height="24" rx="4"/>
+  <rect class="box-accent" x="610" y="198" width="30" height="24" rx="4"/>
+  <text class="sm" x="575" y="246" text-anchor="middle">fewer kernel threads</text>
+  <text class="sm" x="575" y="268" text-anchor="middle">a runtime multiplexes them</text>
+</svg>

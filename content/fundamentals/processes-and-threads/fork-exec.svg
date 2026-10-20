@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 218" role="img" aria-labelledby="fork-title">
+  <title id="fork-title">The life of a child process on Unix. The parent calls fork, creating a child that shares the parent's memory copy-on-write, and carries on with its own work. The child calls execve to replace its program with ls, which runs and then exits. The finished child remains a zombie until the parent calls waitpid and collects its exit status.</title>
+  <defs>
+    <marker id="fork-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Parent -->
+  <text class="sm" x="0" y="74">Parent</text>
+  <line class="wire-accent" x1="60" y1="70" x2="676" y2="70"/>
+  <circle class="solid" cx="120" cy="70" r="5"/>
+  <text class="mono" x="120" y="52" text-anchor="middle">fork()</text>
+  <text class="sm" x="330" y="52" text-anchor="middle">carries on with its own work</text>
+  <circle class="solid" cx="560" cy="70" r="5"/>
+  <text class="mono" x="560" y="52" text-anchor="middle">waitpid()</text>
+
+  <!-- Child -->
+  <text class="sm" x="0" y="174">Child</text>
+  <path class="wire" d="M120 75 V170 H260"/>
+  <circle class="solid" cx="260" cy="170" r="5"/>
+  <text class="mono" x="260" y="152" text-anchor="middle">execve("/bin/ls")</text>
+  <text class="sm" x="190" y="194" text-anchor="middle">copy of the parent,</text>
+  <text class="sm" x="190" y="208" text-anchor="middle">copy-on-write</text>
+  <line class="wire-accent" x1="260" y1="170" x2="440" y2="170"/>
+  <text class="sm" x="350" y="194" text-anchor="middle">new program runs</text>
+  <circle class="solid" cx="440" cy="170" r="5"/>
+  <text class="mono" x="440" y="152" text-anchor="middle">exit(0)</text>
+  <line class="zone" x1="440" y1="170" x2="560" y2="170"/>
+  <text class="sm" x="500" y="194" text-anchor="middle">zombie</text>
+
+  <line class="wire" x1="560" y1="170" x2="560" y2="78" marker-end="url(#fork-arrow)"/>
+  <text class="sm" x="568" y="126">exit status</text>
+  <text class="sm" x="568" y="140">collected</text>
+</svg>
