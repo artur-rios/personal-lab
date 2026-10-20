@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" role="img" aria-labelledby="en-title">
+  <title id="en-title">Encapsulation. An HTTP request is the application's data. The transport layer puts a TCP header of at least 20 bytes in front of it to make a segment. The internet layer puts an IPv4 header of at least 20 bytes in front of that to make a packet. The link layer adds an Ethernet header with the destination and source MAC addresses and a type field, and a frame check sequence after the data, to make a frame. Each layer treats everything from the layer above as opaque payload.</title>
+
+  <!-- Guides: the payload keeps the same position on every row -->
+  <line class="zone" x1="420" y1="20" x2="420" y2="248"/>
+  <line class="zone" x1="600" y1="20" x2="600" y2="248"/>
+
+  <!-- Application -->
+  <text class="strong" x="0" y="45">Application</text>
+  <text class="sm" x="0" y="62">message</text>
+  <rect class="solid" x="420" y="28" width="180" height="40" rx="4"/>
+  <text class="mono on-solid" x="510" y="53" text-anchor="middle">GET / HTTP/1.1 …</text>
+
+  <!-- Transport -->
+  <text class="strong" x="0" y="105">Transport</text>
+  <text class="sm" x="0" y="122">segment</text>
+  <rect class="box-accent" x="320" y="88" width="100" height="40" rx="4"/>
+  <text x="370" y="106" text-anchor="middle">TCP header</text>
+  <text class="sm" x="370" y="121" text-anchor="middle">20+ bytes</text>
+  <rect class="box" x="420" y="88" width="180" height="40" rx="4"/>
+  <text class="sm" x="510" y="113" text-anchor="middle">data</text>
+
+  <!-- Internet -->
+  <text class="strong" x="0" y="165">Internet</text>
+  <text class="sm" x="0" y="182">packet</text>
+  <rect class="box-accent" x="220" y="148" width="100" height="40" rx="4"/>
+  <text x="270" y="166" text-anchor="middle">IP header</text>
+  <text class="sm" x="270" y="181" text-anchor="middle">20+ bytes</text>
+  <rect class="box" x="320" y="148" width="280" height="40" rx="4"/>
+  <text class="sm" x="460" y="173" text-anchor="middle">TCP header + data</text>
+
+  <!-- Link -->
+  <text class="strong" x="0" y="225">Link</text>
+  <text class="sm" x="0" y="242">frame</text>
+  <rect class="box-accent" x="100" y="208" width="120" height="40" rx="4"/>
+  <text x="160" y="226" text-anchor="middle">Ethernet header</text>
+  <text class="sm" x="160" y="241" text-anchor="middle">MACs · type</text>
+  <rect class="box" x="220" y="208" width="380" height="40" rx="4"/>
+  <text class="sm" x="410" y="233" text-anchor="middle">IP header + TCP header + data</text>
+  <rect class="box-accent" x="600" y="208" width="80" height="40" rx="4"/>
+  <text x="640" y="226" text-anchor="middle">FCS</text>
+  <text class="sm" x="640" y="241" text-anchor="middle">checksum</text>
+
+  <line class="sep" x1="0" y1="268" x2="680" y2="268"/>
+  <text class="sm" x="0" y="290">Sending adds a header at each layer on the way down; receiving strips them on the way up.</text>
+</svg>

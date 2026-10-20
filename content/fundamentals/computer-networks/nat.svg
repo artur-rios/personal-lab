@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 320" role="img" aria-labelledby="nat-title">
+  <title id="nat-title">Network address and port translation. A laptop at 192.168.1.10 and a phone at 192.168.1.11 on a private home network both connect from port 51000 to a server at 198.51.100.20 port 443. The NAT router has the inside address 192.168.1.1 and the single public address 203.0.113.7. It rewrites the laptop's connection to come from 203.0.113.7 port 40001 and the phone's from 203.0.113.7 port 40002, and records both mappings in its translation table so it can send the replies back to the right device.</title>
+  <defs>
+    <marker id="nat-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Private side -->
+  <rect class="zone" x="0" y="8" width="250" height="172" rx="8"/>
+  <text class="sm" x="14" y="28">private network</text>
+
+  <rect class="box" x="16" y="42" width="218" height="52" rx="6"/>
+  <text class="strong" x="30" y="64">Laptop</text>
+  <text class="mono" x="30" y="83">192.168.1.10</text>
+
+  <rect class="box" x="16" y="112" width="218" height="52" rx="6"/>
+  <text class="strong" x="30" y="134">Phone</text>
+  <text class="mono" x="30" y="153">192.168.1.11</text>
+
+  <!-- NAT -->
+  <rect class="box-accent" x="290" y="52" width="150" height="102" rx="6"/>
+  <text class="strong" x="365" y="78" text-anchor="middle">NAT router</text>
+  <text class="sm" x="365" y="100" text-anchor="middle">inside</text>
+  <text class="mono" x="365" y="115" text-anchor="middle">192.168.1.1</text>
+  <text class="sm" x="365" y="132" text-anchor="middle">outside</text>
+  <text class="mono" x="365" y="147" text-anchor="middle">203.0.113.7</text>
+
+  <!-- Public side -->
+  <rect class="box" x="500" y="77" width="180" height="52" rx="6"/>
+  <text class="strong" x="514" y="99">Server</text>
+  <text class="mono" x="514" y="118">198.51.100.20</text>
+  <text class="sm" x="590" y="160" text-anchor="middle">the public Internet</text>
+
+  <line class="wire" x1="234" y1="68" x2="288" y2="90" marker-end="url(#nat-arrow)"/>
+  <line class="wire" x1="234" y1="138" x2="288" y2="116" marker-end="url(#nat-arrow)"/>
+  <line class="wire-accent" x1="440" y1="103" x2="498" y2="103" marker-end="url(#nat-arrow)"/>
+
+  <!-- Translation table -->
+  <text class="strong" x="0" y="214">Translation table</text>
+  <text class="sm" x="0" y="238">inside address : port</text>
+  <text class="sm" x="230" y="238">outside address : port</text>
+  <text class="sm" x="460" y="238">remote address : port</text>
+  <line class="sep" x1="0" y1="248" x2="680" y2="248"/>
+  <text class="mono" x="0" y="270">192.168.1.10:51000</text>
+  <text class="mono accent" x="230" y="270">203.0.113.7:40001</text>
+  <text class="mono" x="460" y="270">198.51.100.20:443</text>
+  <line class="sep" x1="0" y1="282" x2="680" y2="282"/>
+  <text class="mono" x="0" y="304">192.168.1.11:51000</text>
+  <text class="mono accent" x="230" y="304">203.0.113.7:40002</text>
+  <text class="mono" x="460" y="304">198.51.100.20:443</text>
+</svg>
