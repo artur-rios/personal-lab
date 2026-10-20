@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 250" role="img" aria-labelledby="ir-title">
+  <title id="ir-title">A shared intermediate representation as a hub. Front ends for C and C++ (Clang), Rust and Swift all produce LLVM IR; one optimiser improves it; back ends turn it into code for x86-64, AArch64, RISC-V and WebAssembly. Supporting M languages on N targets takes M front ends plus N back ends, not M times N compilers.</title>
+
+  <text class="sm" x="70" y="14" text-anchor="middle">Front ends</text>
+  <text class="sm" x="340" y="14" text-anchor="middle">Shared middle</text>
+  <text class="sm" x="610" y="14" text-anchor="middle">Back ends</text>
+
+  <line class="wire" x1="140" y1="45" x2="260" y2="125"/>
+  <line class="wire" x1="140" y1="100" x2="260" y2="125"/>
+  <line class="wire" x1="140" y1="155" x2="260" y2="125"/>
+  <line class="wire" x1="140" y1="210" x2="260" y2="125"/>
+  <line class="wire" x1="420" y1="125" x2="540" y2="45"/>
+  <line class="wire" x1="420" y1="125" x2="540" y2="100"/>
+  <line class="wire" x1="420" y1="125" x2="540" y2="155"/>
+  <line class="wire" x1="420" y1="125" x2="540" y2="210"/>
+
+  <rect class="box" x="0" y="28" width="140" height="34" rx="6"/>
+  <text x="70" y="50" text-anchor="middle">C, C++ (Clang)</text>
+  <rect class="box" x="0" y="83" width="140" height="34" rx="6"/>
+  <text x="70" y="105" text-anchor="middle">Rust</text>
+  <rect class="box" x="0" y="138" width="140" height="34" rx="6"/>
+  <text x="70" y="160" text-anchor="middle">Swift</text>
+  <rect class="box" x="0" y="193" width="140" height="34" rx="6"/>
+  <text x="70" y="215" text-anchor="middle">…and others</text>
+
+  <rect class="solid" x="260" y="88" width="160" height="74" rx="10"/>
+  <text class="strong on-solid" x="340" y="118" text-anchor="middle">LLVM IR</text>
+  <text class="sm on-solid" x="340" y="138" text-anchor="middle">one optimiser</text>
+  <text class="sm on-solid" x="340" y="152" text-anchor="middle">for every language</text>
+
+  <rect class="box-accent" x="540" y="28" width="140" height="34" rx="6"/>
+  <text x="610" y="50" text-anchor="middle">x86-64</text>
+  <rect class="box-accent" x="540" y="83" width="140" height="34" rx="6"/>
+  <text x="610" y="105" text-anchor="middle">AArch64</text>
+  <rect class="box-accent" x="540" y="138" width="140" height="34" rx="6"/>
+  <text x="610" y="160" text-anchor="middle">RISC-V</text>
+  <rect class="box-accent" x="540" y="193" width="140" height="34" rx="6"/>
+  <text x="610" y="215" text-anchor="middle">WebAssembly</text>
+
+  <text class="sm accent" x="340" y="244" text-anchor="middle">M × N translators become M front ends + N back ends</text>
+</svg>
