@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 312" role="img" aria-labelledby="fb-title">
+  <title id="fb-title">A fiber tree. Each fiber is a unit of work for one component or element. A fiber points to its first child, its next sibling, and through its return pointer to its parent: App's child is main, main's child is h1, h1's sibling is List, List's child is the first li and that li's sibling is the second. React keeps two versions of each fiber, linked by an alternate pointer: the current fiber, already flushed to the screen, and the work-in-progress fiber being built for the next render.</title>
+  <defs>
+    <marker id="fb-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- The tree -->
+  <rect class="box-accent" x="20" y="24" width="110" height="36" rx="6"/>
+  <text x="75" y="47" text-anchor="middle">App</text>
+  <rect class="box" x="20" y="104" width="110" height="36" rx="6"/>
+  <text class="mono" x="75" y="126" text-anchor="middle">main</text>
+  <rect class="box" x="20" y="184" width="110" height="36" rx="6"/>
+  <text class="mono" x="75" y="206" text-anchor="middle">h1</text>
+  <rect class="box-accent" x="190" y="184" width="110" height="36" rx="6"/>
+  <text x="245" y="207" text-anchor="middle">List</text>
+  <rect class="box" x="190" y="264" width="110" height="36" rx="6"/>
+  <text class="mono" x="245" y="286" text-anchor="middle">li</text>
+  <rect class="box" x="360" y="264" width="110" height="36" rx="6"/>
+  <text class="mono" x="415" y="286" text-anchor="middle">li</text>
+
+  <!-- child -->
+  <line class="wire" x1="90" y1="60" x2="90" y2="102" marker-end="url(#fb-arrow)"/>
+  <line class="wire" x1="90" y1="140" x2="90" y2="182" marker-end="url(#fb-arrow)"/>
+  <line class="wire" x1="260" y1="220" x2="260" y2="262" marker-end="url(#fb-arrow)"/>
+  <text class="sm" x="98" y="86">child</text>
+  <text class="sm" x="98" y="166">child</text>
+  <text class="sm" x="268" y="246">child</text>
+
+  <!-- sibling -->
+  <line class="wire" x1="130" y1="202" x2="188" y2="202" marker-end="url(#fb-arrow)"/>
+  <line class="wire" x1="300" y1="282" x2="358" y2="282" marker-end="url(#fb-arrow)"/>
+  <text class="sm" x="159" y="196" text-anchor="middle">sibling</text>
+  <text class="sm" x="329" y="276" text-anchor="middle">sibling</text>
+
+  <!-- return -->
+  <line class="zone" x1="50" y1="104" x2="50" y2="64"/>
+  <path class="head" d="M46 66 L50 60 L54 66 z"/>
+  <line class="zone" x1="50" y1="184" x2="50" y2="144"/>
+  <path class="head" d="M46 146 L50 140 L54 146 z"/>
+  <path class="zone" d="M215 184 V122 H136"/>
+  <path class="head" d="M136 118 L130 122 L136 126 z"/>
+  <line class="zone" x1="215" y1="264" x2="215" y2="226"/>
+  <path class="head" d="M211 226 L215 220 L219 226 z"/>
+  <path class="zone" d="M415 264 V202 H306"/>
+  <path class="head" d="M306 198 L300 202 L306 206 z"/>
+  <text class="sm" x="148" y="116">return</text>
+  <text class="sm" x="44" y="88" text-anchor="end">return</text>
+
+  <!-- current / work in progress -->
+  <text class="sm" x="500" y="20">Two versions of every fiber</text>
+  <rect class="box" x="500" y="32" width="180" height="52" rx="6"/>
+  <text class="strong" x="590" y="54" text-anchor="middle">current</text>
+  <text class="sm" x="590" y="72" text-anchor="middle">already on the screen</text>
+  <line class="wire" x1="572" y1="86" x2="572" y2="136" marker-start="url(#fb-arrow)" marker-end="url(#fb-arrow)"/>
+  <text class="sm" x="582" y="115">alternate</text>
+  <rect class="box-accent" x="500" y="138" width="180" height="52" rx="6"/>
+  <text class="strong" x="590" y="160" text-anchor="middle">work-in-progress</text>
+  <text class="sm" x="590" y="178" text-anchor="middle">built for the next render</text>
+  <text class="sm" x="500" y="222">If a fiber's new props equal</text>
+  <text class="sm" x="500" y="238">the ones it finished with last</text>
+  <text class="sm" x="500" y="254">time, React can reuse its</text>
+  <text class="sm" x="500" y="270">earlier output.</text>
+</svg>
