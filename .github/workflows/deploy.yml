@@ -1,0 +1,135 @@
+name: Deploy
+
+# Builds the site on every pull request and every push to develop, and publishes it to GitHub Pages
+# only from main. Under the branching model (CONTRIBUTING.md) main changes only when a
+# release/<major>.<minor>.<patch> pull request is merged, so publishing from main is publishing a
+# release. Once the deploy succeeds, the deployed commit is tagged v<version> and a GitHub release of
+# that name is created.
+#
+# A push to main that did not come from a release pull request (an owner's bypass) is deployed but
+# not tagged. Run the workflow by hand on main to redeploy the current commit.
+
+on:
+  push:
+    branches: [develop, main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Let a running deployment finish rather than cancelling it mid-publish. Everything else gets a group
+# per ref, so validating a pull request never queues behind a publish, and a new push to a branch
+# supersedes its own earlier build.
+concurrency:
+  group: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && 'pages' || format('build-{0}', github.ref) }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' || github.ref != 'refs/heads/main' }}
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    env:
+      HUGO_VERSION: 0.165.0
+      PUBLISH: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
+    steps:
+      # The nuno theme is a git submodule; without it Hugo has no layouts and builds nothing.
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true
+
+      - name: Configure Pages
+        id: pages
+        if: env.PUBLISH == 'true'
+        uses: actions/configure-pages@v6
+
+      # The published site needs the Pages base URL, which only exists for a deploy. Everywhere else
+      # the check that matters is the same: does Hugo build the site.
+      - name: Build
+        env:
+          BASE_URL: ${{ steps.pages.outputs.base_url }}
+        run: |
+          set -euo pipefail
+          if [[ "$PUBLISH" == "true" ]]; then
+            hugo --gc --minify --baseURL "$BASE_URL/"
+          else
+            hugo --gc --minify
+          fi
+
+      # A missing theme makes Hugo warn and write an empty site rather than fail.
+      - name: Verify the build produced a site
+        run: test -s public/index.html
+
+      - name: Upload the artifact
+        if: env.PUBLISH == 'true'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ./public
+
+  deploy:
+    name: Deploy
+    needs: build
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
+
+  release:
+    name: Tag release
+    needs: deploy
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+    concurrency:
+      group: release
+      cancel-in-progress: false
+    steps:
+      - name: Tag and publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          # The pull request merged into main as this commit names the release.
+          head_ref="$(gh api "repos/$GH_REPO/commits/$SHA/pulls" \
+            --jq '[.[] | select(.merged_at != null and .base.ref == "main")][0].head.ref // ""')"
+
+          if [[ ! "$head_ref" =~ ^release/[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "$SHA did not come from a release/<major>.<minor>.<patch> pull request; nothing to tag."
+            exit 0
+          fi
+
+          tag="v${head_ref#release/}"
+          if gh api "repos/$GH_REPO/git/ref/tags/$tag" >/dev/null 2>&1; then
+            echo "$tag was already released; nothing to do."
+            exit 0
+          fi
+
+          gh release create "$tag" --target "$SHA" --title "$tag" --generate-notes
+          echo "Released $tag at $SHA."

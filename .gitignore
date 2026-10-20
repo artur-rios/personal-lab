@@ -1,0 +1,4 @@
+# Hugo build output; the Deploy workflow builds the site itself.
+/public/
+/resources/_gen/
+.hugo_build.lock

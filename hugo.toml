@@ -1,0 +1,27 @@
+baseURL = 'https://artur-rios.github.io/personal-lab/'
+locale = 'en-us'
+title = 'Artur Rios Lab'
+theme = 'nuno'
+
+# JSON is the search index the theme needs on the home page.
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+
+[markup]
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+  [markup.highlight]
+    # Class-based highlighting, so the theme's palettes drive the colours.
+    noClasses = false
+
+[params]
+  brand = 'Artur Rios Lab'
+  mainSections = ['fundamentals']
+
+[menu]
+  [[menu.main]]
+    identifier = 'fundamentals'
+    name = 'Fundamentals'
+    url = '/fundamentals/'
+    weight = 10
