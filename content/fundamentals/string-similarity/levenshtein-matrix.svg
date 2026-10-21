@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" role="img" aria-labelledby="lm-title">
+  <title id="lm-title">The Levenshtein dynamic programming table for kitten and sitting. Each cell holds the distance between a prefix of kitten and a prefix of sitting. The first row and column count up from 0. The bottom-right cell holds 3, the distance. One cheapest path runs down the diagonal from the top-left corner, substituting k with s and e with i, keeping the matching letters, and ends with one step right, inserting g.</title>
+  <text class="mono sm" x="70" y="30" text-anchor="middle">ε</text>
+  <text class="mono strong" x="110" y="30" text-anchor="middle">s</text>
+  <text class="mono strong" x="150" y="30" text-anchor="middle">i</text>
+  <text class="mono strong" x="190" y="30" text-anchor="middle">t</text>
+  <text class="mono strong" x="230" y="30" text-anchor="middle">t</text>
+  <text class="mono strong" x="270" y="30" text-anchor="middle">i</text>
+  <text class="mono strong" x="310" y="30" text-anchor="middle">n</text>
+  <text class="mono strong" x="350" y="30" text-anchor="middle">g</text>
+  <text class="mono sm" x="34" y="64" text-anchor="middle">ε</text>
+  <text class="mono strong" x="34" y="104" text-anchor="middle">k</text>
+  <text class="mono strong" x="34" y="144" text-anchor="middle">i</text>
+  <text class="mono strong" x="34" y="184" text-anchor="middle">t</text>
+  <text class="mono strong" x="34" y="224" text-anchor="middle">t</text>
+  <text class="mono strong" x="34" y="264" text-anchor="middle">e</text>
+  <text class="mono strong" x="34" y="304" text-anchor="middle">n</text>
+  <rect class="solid" x="52" y="42" width="36" height="36" rx="3"/>
+  <text class="mono strong on-solid" x="70" y="64" text-anchor="middle">0</text>
+  <rect class="box" x="92" y="42" width="36" height="36" rx="3"/>
+  <text class="mono" x="110" y="64" text-anchor="middle">1</text>
+  <rect class="box" x="132" y="42" width="36" height="36" rx="3"/>
+  <text class="mono" x="150" y="64" text-anchor="middle">2</text>
+  <rect class="box" x="172" y="42" width="36" height="36" rx="3"/>
+  <text class="mono" x="190" y="64" text-anchor="middle">3</text>
+  <rect class="box" x="212" y="42" width="36" height="36" rx="3"/>
+  <text class="mono" x="230" y="64" text-anchor="middle">4</text>
+  <rect class="box" x="252" y="42" width="36" height="36" rx="3"/>
+  <text class="mono" x="270" y="64" text-anchor="middle">5</text>
+  <rect class="box" x="292" y="42" width="36" height="36" rx="3"/>
+  <text class="mono" x="310" y="64" text-anchor="middle">6</text>
+  <rect class="box" x="332" y="42" width="36" height="36" rx="3"/>
+  <text class="mono" x="350" y="64" text-anchor="middle">7</text>
+  <rect class="box" x="52" y="82" width="36" height="36" rx="3"/>
+  <text class="mono" x="70" y="104" text-anchor="middle">1</text>
+  <rect class="solid" x="92" y="82" width="36" height="36" rx="3"/>
+  <text class="mono strong on-solid" x="110" y="104" text-anchor="middle">1</text>
+  <rect class="box" x="132" y="82" width="36" height="36" rx="3"/>
+  <text class="mono" x="150" y="104" text-anchor="middle">2</text>
+  <rect class="box" x="172" y="82" width="36" height="36" rx="3"/>
+  <text class="mono" x="190" y="104" text-anchor="middle">3</text>
+  <rect class="box" x="212" y="82" width="36" height="36" rx="3"/>
+  <text class="mono" x="230" y="104" text-anchor="middle">4</text>
+  <rect class="box" x="252" y="82" width="36" height="36" rx="3"/>
+  <text class="mono" x="270" y="104" text-anchor="middle">5</text>
+  <rect class="box" x="292" y="82" width="36" height="36" rx="3"/>
+  <text class="mono" x="310" y="104" text-anchor="middle">6</text>
+  <rect class="box" x="332" y="82" width="36" height="36" rx="3"/>
+  <text class="mono" x="350" y="104" text-anchor="middle">7</text>
+  <rect class="box" x="52" y="122" width="36" height="36" rx="3"/>
+  <text class="mono" x="70" y="144" text-anchor="middle">2</text>
+  <rect class="box" x="92" y="122" width="36" height="36" rx="3"/>
+  <text class="mono" x="110" y="144" text-anchor="middle">2</text>
+  <rect class="solid" x="132" y="122" width="36" height="36" rx="3"/>
+  <text class="mono strong on-solid" x="150" y="144" text-anchor="middle">1</text>
+  <rect class="box" x="172" y="122" width="36" height="36" rx="3"/>
+  <text class="mono" x="190" y="144" text-anchor="middle">2</text>
+  <rect class="box" x="212" y="122" width="36" height="36" rx="3"/>
+  <text class="mono" x="230" y="144" text-anchor="middle">3</text>
+  <rect class="box" x="252" y="122" width="36" height="36" rx="3"/>
+  <text class="mono" x="270" y="144" text-anchor="middle">4</text>
+  <rect class="box" x="292" y="122" width="36" height="36" rx="3"/>
+  <text class="mono" x="310" y="144" text-anchor="middle">5</text>
+  <rect class="box" x="332" y="122" width="36" height="36" rx="3"/>
+  <text class="mono" x="350" y="144" text-anchor="middle">6</text>
+  <rect class="box" x="52" y="162" width="36" height="36" rx="3"/>
+  <text class="mono" x="70" y="184" text-anchor="middle">3</text>
+  <rect class="box" x="92" y="162" width="36" height="36" rx="3"/>
+  <text class="mono" x="110" y="184" text-anchor="middle">3</text>
+  <rect class="box" x="132" y="162" width="36" height="36" rx="3"/>
+  <text class="mono" x="150" y="184" text-anchor="middle">2</text>
+  <rect class="solid" x="172" y="162" width="36" height="36" rx="3"/>
+  <text class="mono strong on-solid" x="190" y="184" text-anchor="middle">1</text>
+  <rect class="box" x="212" y="162" width="36" height="36" rx="3"/>
+  <text class="mono" x="230" y="184" text-anchor="middle">2</text>
+  <rect class="box" x="252" y="162" width="36" height="36" rx="3"/>
+  <text class="mono" x="270" y="184" text-anchor="middle">3</text>
+  <rect class="box" x="292" y="162" width="36" height="36" rx="3"/>
+  <text class="mono" x="310" y="184" text-anchor="middle">4</text>
+  <rect class="box" x="332" y="162" width="36" height="36" rx="3"/>
+  <text class="mono" x="350" y="184" text-anchor="middle">5</text>
+  <rect class="box" x="52" y="202" width="36" height="36" rx="3"/>
+  <text class="mono" x="70" y="224" text-anchor="middle">4</text>
+  <rect class="box" x="92" y="202" width="36" height="36" rx="3"/>
+  <text class="mono" x="110" y="224" text-anchor="middle">4</text>
+  <rect class="box" x="132" y="202" width="36" height="36" rx="3"/>
+  <text class="mono" x="150" y="224" text-anchor="middle">3</text>
+  <rect class="box" x="172" y="202" width="36" height="36" rx="3"/>
+  <text class="mono" x="190" y="224" text-anchor="middle">2</text>
+  <rect class="solid" x="212" y="202" width="36" height="36" rx="3"/>
+  <text class="mono strong on-solid" x="230" y="224" text-anchor="middle">1</text>
+  <rect class="box" x="252" y="202" width="36" height="36" rx="3"/>
+  <text class="mono" x="270" y="224" text-anchor="middle">2</text>
+  <rect class="box" x="292" y="202" width="36" height="36" rx="3"/>
+  <text class="mono" x="310" y="224" text-anchor="middle">3</text>
+  <rect class="box" x="332" y="202" width="36" height="36" rx="3"/>
+  <text class="mono" x="350" y="224" text-anchor="middle">4</text>
+  <rect class="box" x="52" y="242" width="36" height="36" rx="3"/>
+  <text class="mono" x="70" y="264" text-anchor="middle">5</text>
+  <rect class="box" x="92" y="242" width="36" height="36" rx="3"/>
+  <text class="mono" x="110" y="264" text-anchor="middle">5</text>
+  <rect class="box" x="132" y="242" width="36" height="36" rx="3"/>
+  <text class="mono" x="150" y="264" text-anchor="middle">4</text>
+  <rect class="box" x="172" y="242" width="36" height="36" rx="3"/>
+  <text class="mono" x="190" y="264" text-anchor="middle">3</text>
+  <rect class="box" x="212" y="242" width="36" height="36" rx="3"/>
+  <text class="mono" x="230" y="264" text-anchor="middle">2</text>
+  <rect class="solid" x="252" y="242" width="36" height="36" rx="3"/>
+  <text class="mono strong on-solid" x="270" y="264" text-anchor="middle">2</text>
+  <rect class="box" x="292" y="242" width="36" height="36" rx="3"/>
+  <text class="mono" x="310" y="264" text-anchor="middle">3</text>
+  <rect class="box" x="332" y="242" width="36" height="36" rx="3"/>
+  <text class="mono" x="350" y="264" text-anchor="middle">4</text>
+  <rect class="box" x="52" y="282" width="36" height="36" rx="3"/>
+  <text class="mono" x="70" y="304" text-anchor="middle">6</text>
+  <rect class="box" x="92" y="282" width="36" height="36" rx="3"/>
+  <text class="mono" x="110" y="304" text-anchor="middle">6</text>
+  <rect class="box" x="132" y="282" width="36" height="36" rx="3"/>
+  <text class="mono" x="150" y="304" text-anchor="middle">5</text>
+  <rect class="box" x="172" y="282" width="36" height="36" rx="3"/>
+  <text class="mono" x="190" y="304" text-anchor="middle">4</text>
+  <rect class="box" x="212" y="282" width="36" height="36" rx="3"/>
+  <text class="mono" x="230" y="304" text-anchor="middle">3</text>
+  <rect class="box" x="252" y="282" width="36" height="36" rx="3"/>
+  <text class="mono" x="270" y="304" text-anchor="middle">3</text>
+  <rect class="solid" x="292" y="282" width="36" height="36" rx="3"/>
+  <text class="mono strong on-solid" x="310" y="304" text-anchor="middle">2</text>
+  <rect class="solid" x="332" y="282" width="36" height="36" rx="3"/>
+  <text class="mono strong on-solid" x="350" y="304" text-anchor="middle">3</text>
+  <text class="strong" x="410" y="50">One cheapest path</text>
+  <text class="sm" x="410" y="72">Diagonal, number unchanged: letters match</text>
+  <text class="sm" x="410" y="94">Diagonal, +1: substitute</text>
+  <text class="sm" x="410" y="116">Right, +1: insert   ·   Down, +1: delete</text>
+  <text class="strong" x="410" y="160">The three edits</text>
+  <text class="mono" x="410" y="182">k → s   substitute</text>
+  <text class="mono" x="410" y="204">e → i   substitute</text>
+  <text class="mono" x="410" y="226">+ g     insert</text>
+  <text class="strong accent" x="410" y="270">Distance: 3</text>
+</svg>
