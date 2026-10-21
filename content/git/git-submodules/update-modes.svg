@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="white-space: pre" viewBox="0 0 680 320" role="img" aria-labelledby="update-title">
+  <title id="update-title">Two ways to update a submodule. The theme's upstream history has three commits, 714a917, 22bc5dc and 4b2c2b5, the last being the tip of main. The superproject's commit records 22bc5dc. git submodule update, and git pull with --recurse-submodules, check out the recorded commit, 22bc5dc. git submodule update --remote checks out the tip of the branch the submodule tracks, 4b2c2b5, after which the superproject reports the submodule as modified, with new commits, until the new pointer is committed.</title>
+  <defs>
+    <marker id="update-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="update-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="strong" x="0" y="20">The submodule's upstream history</text>
+  <text class="sm accent" x="340" y="46" text-anchor="middle">recorded in the superproject</text>
+  <text class="sm" x="570" y="46" text-anchor="middle">tip of main</text>
+
+  <rect class="box" x="50" y="56" width="120" height="36" rx="6"/>
+  <text class="mono" x="110" y="79" text-anchor="middle">714a917</text>
+  <rect class="box-accent" x="280" y="56" width="120" height="36" rx="6"/>
+  <text class="mono" x="340" y="79" text-anchor="middle">22bc5dc</text>
+  <rect class="solid" x="510" y="56" width="120" height="36" rx="6"/>
+  <text class="mono on-solid" x="570" y="79" text-anchor="middle">4b2c2b5</text>
+  <line class="wire" x1="170" y1="74" x2="278" y2="74" marker-end="url(#update-arrow)"/>
+  <line class="wire" x1="400" y1="74" x2="508" y2="74" marker-end="url(#update-arrow)"/>
+
+  <rect class="box-accent" x="226" y="150" width="224" height="96" rx="8"/>
+  <text class="mono strong" x="338" y="176" text-anchor="middle">git submodule update</text>
+  <text class="sm" x="338" y="198" text-anchor="middle">and git pull --recurse-submodules</text>
+  <text class="sm" x="338" y="216" text-anchor="middle">check out the commit</text>
+  <text class="sm" x="338" y="234" text-anchor="middle">the superproject recorded</text>
+  <line class="wire-accent" x1="340" y1="150" x2="340" y2="95" marker-end="url(#update-arrow-accent)"/>
+
+  <rect class="box" x="456" y="150" width="224" height="96" rx="8"/>
+  <text class="mono strong" x="568" y="176" text-anchor="middle">git submodule update --remote</text>
+  <text class="sm" x="568" y="198" text-anchor="middle">checks out the tip of the</text>
+  <text class="sm" x="568" y="216" text-anchor="middle">branch the submodule tracks</text>
+  <text class="sm" x="568" y="234" text-anchor="middle">(the remote HEAD by default)</text>
+  <line class="wire" x1="570" y1="150" x2="570" y2="95" marker-end="url(#update-arrow)"/>
+
+  <line class="wire" x1="568" y1="246" x2="568" y2="262" marker-end="url(#update-arrow)"/>
+  <rect class="zone" x="456" y="264" width="224" height="52" rx="8"/>
+  <text class="sm" x="568" y="286" text-anchor="middle">status: modified (new commits)</text>
+  <text class="sm" x="568" y="304" text-anchor="middle">until you commit the new pointer</text>
+</svg>

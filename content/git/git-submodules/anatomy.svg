@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="white-space: pre" viewBox="0 0 680 320" role="img" aria-labelledby="anatomy-title">
+  <title id="anatomy-title">What a submodule is made of. The superproject's commit records a tree with a normal blob for .gitmodules and README.md, and a gitlink entry of mode 160000 for themes/nuno that holds commit 4b2c2b5. The .gitmodules file maps the path themes/nuno to the theme's URL. The commit itself lives in the submodule's own repository under .git/modules/themes/nuno, where 4b2c2b5 is the tip of main. The working tree at themes/nuno has a one-line .git file that points to that repository.</title>
+  <defs>
+    <marker id="anatomy-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="anatomy-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <rect class="zone" x="0" y="10" width="334" height="300" rx="8"/>
+  <text class="strong" x="16" y="36">Superproject: personal-lab</text>
+  <text class="sm" x="16" y="56">what one of its commits records</text>
+
+  <rect class="box" x="16" y="72" width="302" height="96" rx="8"/>
+  <text class="mono" x="30" y="98">100644 blob   .gitmodules</text>
+  <text class="mono" x="30" y="122">100644 blob   README.md</text>
+  <rect class="box-accent" x="22" y="132" width="290" height="26" rx="6"/>
+  <text class="mono accent" x="30" y="150">160000 commit 4b2c2b5 themes/nuno</text>
+
+  <rect class="box" x="16" y="186" width="302" height="108" rx="8"/>
+  <text class="sm" x="30" y="208">.gitmodules, an ordinary tracked file</text>
+  <text class="mono" x="30" y="234">[submodule "themes/nuno"]</text>
+  <text class="mono" x="30" y="254">    path = themes/nuno</text>
+  <text class="mono" x="30" y="274">    url = …/hugo-theme-nuno.git</text>
+
+  <rect class="box" x="370" y="10" width="310" height="150" rx="8"/>
+  <text class="strong" x="525" y="36" text-anchor="middle">Submodule repository</text>
+  <text class="sm mono" x="525" y="56" text-anchor="middle">.git/modules/themes/nuno</text>
+  <text class="sm" x="630" y="84" text-anchor="middle">main</text>
+
+  <rect class="box" x="386" y="92" width="72" height="32" rx="6"/>
+  <text class="mono" x="422" y="112" text-anchor="middle">714a917</text>
+  <rect class="box" x="490" y="92" width="72" height="32" rx="6"/>
+  <text class="mono" x="526" y="112" text-anchor="middle">22bc5dc</text>
+  <rect class="solid" x="594" y="92" width="72" height="32" rx="6"/>
+  <text class="mono on-solid" x="630" y="112" text-anchor="middle">4b2c2b5</text>
+  <line class="wire" x1="458" y1="108" x2="488" y2="108" marker-end="url(#anatomy-arrow)"/>
+  <line class="wire" x1="562" y1="108" x2="592" y2="108" marker-end="url(#anatomy-arrow)"/>
+
+  <path class="wire-accent" d="M312 145 H630 V127" marker-end="url(#anatomy-arrow-accent)"/>
+
+  <rect class="box" x="370" y="196" width="310" height="104" rx="8"/>
+  <text class="strong" x="525" y="220" text-anchor="middle">Working tree: themes/nuno/</text>
+  <text class="sm" x="525" y="240" text-anchor="middle">the theme's files, at the pinned commit</text>
+  <text class="sm" x="525" y="262" text-anchor="middle">its .git is a one-line file:</text>
+  <text class="mono" x="525" y="284" text-anchor="middle">gitdir: ../../.git/modules/themes/nuno</text>
+
+  <line class="wire" x1="525" y1="196" x2="525" y2="163" marker-end="url(#anatomy-arrow)"/>
+</svg>
