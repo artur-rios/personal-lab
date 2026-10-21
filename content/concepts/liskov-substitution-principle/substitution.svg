@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 288" role="img" aria-labelledby="lsp-sub-title">
+  <title id="lsp-sub-title">One caller, one contract, many implementations. A caller, the make_banner function, is written against the Rectangle type and relies on what Rectangle promises: setting the width leaves the height unchanged, and the area is width times height. Two classes sit behind that contract. Rectangle keeps every promise, so the caller works with it. Square inherits from Rectangle and has the same methods, but setting its width also changes its height, so it breaks a promise the caller relies on, and the caller fails when it is handed a Square. Substitution is safe only when every implementation keeps every promise.</title>
+  <defs>
+    <marker id="lsp-sub-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="lsp-sub-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Caller -->
+  <rect class="box" x="0" y="52" width="186" height="96" rx="6"/>
+  <text class="strong" x="14" y="78">Caller</text>
+  <text class="mono" x="14" y="100">make_banner(shape)</text>
+  <text class="sm" x="14" y="122">written against the base,</text>
+  <text class="sm" x="14" y="138">never told which class</text>
+
+  <line class="wire" x1="188" y1="100" x2="258" y2="100" marker-end="url(#lsp-sub-arrow)"/>
+  <text class="sm" x="223" y="90" text-anchor="middle">relies on</text>
+
+  <!-- Contract -->
+  <rect class="box-accent" x="262" y="40" width="210" height="120" rx="6"/>
+  <text class="strong" x="276" y="66">Rectangle's contract</text>
+  <text class="sm" x="276" y="90">setting the width leaves</text>
+  <text class="sm" x="276" y="106">the height unchanged</text>
+  <text class="sm" x="276" y="130">area is width × height</text>
+
+  <!-- Implementations -->
+  <rect class="box" x="516" y="40" width="164" height="52" rx="6"/>
+  <text class="mono" x="530" y="62">Rectangle</text>
+  <text class="sm accent" x="530" y="80">keeps every promise</text>
+  <line class="wire-accent" x1="514" y1="66" x2="476" y2="80" marker-end="url(#lsp-sub-arrow-accent)"/>
+
+  <rect class="box" x="516" y="108" width="164" height="52" rx="6"/>
+  <text class="mono" x="530" y="130">Square</text>
+  <text class="sm" x="530" y="148">width also sets height</text>
+  <line class="zone" x1="514" y1="134" x2="474" y2="122"/>
+  <text class="sm" x="494" y="186" text-anchor="middle">same methods,</text>
+  <text class="sm" x="494" y="202" text-anchor="middle">broken promise</text>
+
+  <line class="sep" x1="0" y1="226" x2="680" y2="226"/>
+  <text class="sm" x="0" y="252">The caller works with Rectangle and fails with Square.</text>
+  <text class="sm" x="0" y="270">Matching signatures were not enough.</text>
+</svg>

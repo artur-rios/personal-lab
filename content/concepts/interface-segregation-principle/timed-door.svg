@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" role="img" aria-labelledby="isp-td-title">
+  <title id="isp-td-title">Martin's 1996 timed door example, in three designs. First, polluted: to let a timed door receive timeouts, the Door base class is made to inherit from TimerClient, so every kind of door, timed or not, carries the TimeOut method, and a change to TimerClient reaches every client of Door. Second, an adapter: TimedDoor inherits only from Door, and a separate DoorTimerAdapter object inherits from TimerClient and delegates each timeout to the door, so clients of Door never see TimerClient. Third, multiple inheritance: TimedDoor inherits from both Door and TimerClient, and each client uses the object through the base class it needs, never through TimedDoor itself.</title>
+  <defs>
+    <marker id="isp-td-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="isp-td-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Polluted -->
+  <rect class="zone" x="0" y="0" width="216" height="298" rx="8"/>
+  <text class="strong" x="14" y="24">Polluted</text>
+  <text class="sm" x="14" y="42">Door must be a TimerClient</text>
+  <rect class="box-accent" x="38" y="60" width="140" height="36" rx="6"/>
+  <text class="strong" x="108" y="83" text-anchor="middle">TimerClient</text>
+  <rect class="box" x="38" y="130" width="140" height="36" rx="6"/>
+  <text class="strong" x="108" y="153" text-anchor="middle">Door</text>
+  <rect class="box" x="38" y="200" width="140" height="36" rx="6"/>
+  <text class="strong" x="108" y="223" text-anchor="middle">TimedDoor</text>
+  <line class="wire" x1="108" y1="130" x2="108" y2="100" marker-end="url(#isp-td-arrow)"/>
+  <line class="wire" x1="108" y1="200" x2="108" y2="170" marker-end="url(#isp-td-arrow)"/>
+  <text class="sm" x="116" y="120">inherits</text>
+  <text class="sm" x="14" y="264">a change to TimerClient</text>
+  <text class="sm" x="14" y="282">reaches every Door client</text>
+
+  <!-- Adapter -->
+  <rect class="zone" x="232" y="0" width="216" height="298" rx="8"/>
+  <text class="strong" x="246" y="24">Adapter</text>
+  <text class="sm" x="246" y="42">a separate object delegates</text>
+  <rect class="box" x="246" y="60" width="84" height="36" rx="6"/>
+  <text class="strong" x="288" y="83" text-anchor="middle">Door</text>
+  <rect class="box" x="340" y="60" width="102" height="36" rx="6"/>
+  <text class="strong" x="391" y="83" text-anchor="middle">TimerClient</text>
+  <rect class="box" x="246" y="150" width="84" height="48" rx="6"/>
+  <text class="strong" x="288" y="179" text-anchor="middle">TimedDoor</text>
+  <rect class="box-accent" x="354" y="150" width="88" height="48" rx="6"/>
+  <text class="strong" x="398" y="170" text-anchor="middle">DoorTimer</text>
+  <text class="strong" x="398" y="188" text-anchor="middle">Adapter</text>
+  <line class="wire" x1="288" y1="150" x2="288" y2="100" marker-end="url(#isp-td-arrow)"/>
+  <line class="wire" x1="398" y1="150" x2="398" y2="100" marker-end="url(#isp-td-arrow)"/>
+  <line class="wire-accent" x1="354" y1="174" x2="334" y2="174" marker-end="url(#isp-td-arrow-accent)"/>
+  <text class="sm" x="386" y="216" text-anchor="middle">delegates TimeOut</text>
+  <text class="sm" x="246" y="264">Door clients never see</text>
+  <text class="sm" x="246" y="282">TimerClient at all</text>
+
+  <!-- Multiple inheritance -->
+  <rect class="zone" x="464" y="0" width="216" height="298" rx="8"/>
+  <text class="strong" x="478" y="24">Multiple inheritance</text>
+  <text class="sm" x="478" y="42">one object, two interfaces</text>
+  <rect class="box" x="478" y="60" width="84" height="36" rx="6"/>
+  <text class="strong" x="520" y="83" text-anchor="middle">Door</text>
+  <rect class="box" x="572" y="60" width="102" height="36" rx="6"/>
+  <text class="strong" x="623" y="83" text-anchor="middle">TimerClient</text>
+  <rect class="box" x="526" y="160" width="100" height="36" rx="6"/>
+  <text class="strong" x="576" y="183" text-anchor="middle">TimedDoor</text>
+  <line class="wire" x1="556" y1="160" x2="526" y2="100" marker-end="url(#isp-td-arrow)"/>
+  <line class="wire" x1="596" y1="160" x2="620" y2="100" marker-end="url(#isp-td-arrow)"/>
+  <text class="sm" x="478" y="264">each client uses the base</text>
+  <text class="sm" x="478" y="282">it needs, not TimedDoor</text>
+</svg>

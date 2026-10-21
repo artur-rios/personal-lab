@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" role="img" aria-labelledby="lsp-con-title">
+  <title id="lsp-con-title">The contract rules, drawn as regions. On the left, preconditions: the set of calls the base type accepts sits inside the set of calls the subtype accepts, so a subtype may accept more calls than its base, but never fewer. On the right, postconditions: the set of results the subtype produces sits inside the set of results the base allows, so a subtype may promise more than its base, but never less. Underneath, three further rules: keep every invariant of the base, allow no change of state the base forbids, and raise only the errors the base declares.</title>
+
+  <!-- Preconditions -->
+  <rect class="zone" x="0" y="0" width="330" height="236" rx="8"/>
+  <text class="strong" x="14" y="24">Preconditions</text>
+  <text class="sm" x="14" y="42">what a call must satisfy</text>
+
+  <rect class="box" x="20" y="58" width="290" height="140" rx="6"/>
+  <text class="sm" x="34" y="80">calls the subtype accepts</text>
+  <rect class="box-accent" x="60" y="98" width="210" height="80" rx="6"/>
+  <text class="sm" x="74" y="122">calls the base accepts</text>
+  <text class="sm" x="74" y="140">(what callers were</text>
+  <text class="sm" x="74" y="156">promised they may send)</text>
+  <text class="sm strong" x="14" y="222">may be weakened, never strengthened</text>
+
+  <!-- Postconditions -->
+  <rect class="zone" x="350" y="0" width="330" height="236" rx="8"/>
+  <text class="strong" x="364" y="24">Postconditions</text>
+  <text class="sm" x="364" y="42">what a call guarantees</text>
+
+  <rect class="box-accent" x="370" y="58" width="290" height="140" rx="6"/>
+  <text class="sm" x="384" y="80">results the base allows</text>
+  <rect class="box" x="410" y="98" width="210" height="80" rx="6"/>
+  <text class="sm" x="424" y="122">results the subtype</text>
+  <text class="sm" x="424" y="140">actually produces</text>
+  <text class="sm strong" x="364" y="222">may be strengthened, never weakened</text>
+
+  <!-- Further rules -->
+  <line class="sep" x1="0" y1="256" x2="680" y2="256"/>
+  <text class="strong" x="0" y="282">Invariants</text>
+  <text class="sm" x="0" y="302">keep every one the base has</text>
+  <text class="strong" x="220" y="282">History</text>
+  <text class="sm" x="220" y="302">allow no change the base forbids</text>
+  <text class="strong" x="450" y="282">Errors</text>
+  <text class="sm" x="450" y="302">raise only what the base declares</text>
+</svg>

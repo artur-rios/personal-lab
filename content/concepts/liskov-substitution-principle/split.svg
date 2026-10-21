@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" role="img" aria-labelledby="lsp-split-title">
+  <title id="lsp-split-title">Two ways to model a collection that cannot be changed. On the left, one wide promise: the .NET interface IList of T promises reading, Add and Insert. List implements all of it, but ReadOnlyCollection implements the same interface and throws NotSupportedException from Add, so a caller written against IList cannot trust Add without first asking IsReadOnly. On the right, the promise is split: Python's Sequence promises only reading, and MutableSequence extends it with writing. A tuple is a Sequence and nothing more, a list is a MutableSequence, and each type is only asked to keep the promises it can keep.</title>
+  <defs>
+    <marker id="lsp-split-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="lsp-split-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- One wide promise -->
+  <rect class="zone" x="0" y="0" width="326" height="298" rx="8"/>
+  <text class="strong" x="14" y="24">One wide promise</text>
+  <text class="sm" x="14" y="42">.NET: read-only behind a writable interface</text>
+
+  <rect class="box" x="58" y="60" width="210" height="72" rx="6"/>
+  <text class="mono" x="72" y="84">IList&lt;T&gt;</text>
+  <text class="sm" x="72" y="104">read: this[i], Count</text>
+  <text class="sm" x="72" y="122">write: Add, Insert, Remove</text>
+
+  <rect class="box" x="18" y="196" width="130" height="52" rx="6"/>
+  <text class="mono" x="32" y="218">List&lt;T&gt;</text>
+  <text class="sm accent" x="32" y="236">keeps all of it</text>
+
+  <rect class="box" x="166" y="196" width="146" height="52" rx="6"/>
+  <text class="mono" x="180" y="218">ReadOnlyCollection</text>
+  <text class="sm" x="180" y="236">Add throws</text>
+
+  <line class="wire-accent" x1="83" y1="194" x2="120" y2="136" marker-end="url(#lsp-split-arrow-accent)"/>
+  <line class="zone" x1="239" y1="194" x2="206" y2="136"/>
+  <text class="sm" x="14" y="276">callers must ask IsReadOnly first</text>
+
+  <!-- Split promises -->
+  <rect class="zone" x="354" y="0" width="326" height="298" rx="8"/>
+  <text class="strong" x="368" y="24">Split promises</text>
+  <text class="sm" x="368" y="42">Python: each type keeps what it can</text>
+
+  <rect class="box-accent" x="372" y="60" width="140" height="52" rx="6"/>
+  <text class="mono" x="386" y="82">Sequence</text>
+  <text class="sm" x="386" y="100">read only</text>
+
+  <rect class="box-accent" x="372" y="150" width="140" height="52" rx="6"/>
+  <text class="mono" x="386" y="172">MutableSequence</text>
+  <text class="sm" x="386" y="190">read and write</text>
+  <line class="wire" x1="442" y1="148" x2="442" y2="116" marker-end="url(#lsp-split-arrow)"/>
+  <text class="sm" x="452" y="136">extends</text>
+
+  <rect class="box" x="548" y="60" width="116" height="52" rx="6"/>
+  <text class="mono" x="562" y="82">tuple, str</text>
+  <text class="sm accent" x="562" y="100">keep it</text>
+  <line class="wire-accent" x1="546" y1="86" x2="516" y2="86" marker-end="url(#lsp-split-arrow-accent)"/>
+
+  <rect class="box" x="548" y="150" width="116" height="52" rx="6"/>
+  <text class="mono" x="562" y="172">list</text>
+  <text class="sm accent" x="562" y="190">keeps it</text>
+  <line class="wire-accent" x1="546" y1="176" x2="516" y2="176" marker-end="url(#lsp-split-arrow-accent)"/>
+
+  <text class="sm" x="368" y="276">no method that some types must refuse</text>
+</svg>

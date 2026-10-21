@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" role="img" aria-labelledby="srp-split-title">
+  <title id="srp-split-title">The same order code after separating the actors. Finance's code lives in a revenue calculator, the storefront's in a receipt printer and the platform team's in an order repository. Each class has its own private helpers and answers to one actor only. All three read a plain order data structure that none of them owns. An optional Orders facade, drawn as a dashed outline around the three classes, delegates to them for callers that want a single object.</title>
+  <defs>
+    <marker id="srps-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Actors -->
+  <text class="strong" x="110" y="18" text-anchor="middle">Finance</text>
+  <text class="strong" x="340" y="18" text-anchor="middle">Storefront</text>
+  <text class="strong" x="570" y="18" text-anchor="middle">Platform team</text>
+  <line class="wire" x1="110" y1="26" x2="110" y2="50" marker-end="url(#srps-arrow)"/>
+  <line class="wire" x1="340" y1="26" x2="340" y2="50" marker-end="url(#srps-arrow)"/>
+  <line class="wire" x1="570" y1="26" x2="570" y2="50" marker-end="url(#srps-arrow)"/>
+
+  <!-- Optional facade -->
+  <rect class="zone" x="0" y="40" width="680" height="104" rx="8"/>
+
+  <!-- One class per actor -->
+  <rect class="box" x="10" y="54" width="200" height="76" rx="6"/>
+  <text class="strong" x="24" y="78">RevenueCalculator</text>
+  <text class="mono" x="24" y="100">revenue(order)</text>
+  <text class="mono" x="24" y="118">_net(line)</text>
+
+  <rect class="box" x="240" y="54" width="200" height="76" rx="6"/>
+  <text class="strong" x="254" y="78">ReceiptPrinter</text>
+  <text class="mono" x="254" y="100">receipt(order)</text>
+  <text class="mono" x="254" y="118">_shown(line)</text>
+
+  <rect class="box" x="470" y="54" width="200" height="76" rx="6"/>
+  <text class="strong" x="484" y="78">OrderRepository</text>
+  <text class="mono" x="484" y="100">save(order)</text>
+
+  <!-- Shared data -->
+  <rect class="box-accent" x="240" y="200" width="200" height="56" rx="6"/>
+  <text class="strong" x="340" y="224" text-anchor="middle">OrderData</text>
+  <text class="sm" x="340" y="244" text-anchor="middle">plain data, owned by none</text>
+
+  <line class="wire" x1="110" y1="130" x2="236" y2="214" marker-end="url(#srps-arrow)"/>
+  <line class="wire" x1="340" y1="130" x2="340" y2="196" marker-end="url(#srps-arrow)"/>
+  <line class="wire" x1="570" y1="130" x2="444" y2="214" marker-end="url(#srps-arrow)"/>
+  <text class="sm" x="350" y="170">read</text>
+
+  <text class="sm" x="0" y="290">Dashed: an optional Orders facade that delegates to all three.</text>
+</svg>
