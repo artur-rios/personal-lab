@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="white-space: pre" viewBox="0 0 680 300" role="img" aria-labelledby="lvb-title">
+  <title id="lvb-title">Line coverage and branch coverage of Pricing.Total after one test, Total of 200 for a member. Line 9, the check for a negative subtotal, runs, but only one of its two branches is taken. Line 10, which throws, never runs. Line 12, the member discount, runs, but only the member branch is taken. Line 13, the shipping rule, runs, but only the free-shipping branch is taken. Line 14 runs. Counting the braces on lines 8 and 15, six of seven lines run, 85.7 percent, while only three of six branches are taken, 50 percent.</title>
+
+  <text class="strong" x="0" y="18">One test: Total(200m, isMember: true)</text>
+
+  <rect class="box-accent" x="0" y="34" width="456" height="32" rx="6"/>
+  <text class="sm mono" x="12" y="55">9</text>
+  <text class="mono" x="44" y="55">if (subtotal &lt; 0)</text>
+  <text class="sm accent" x="472" y="55">runs · branches 1 of 2</text>
+
+  <rect class="zone" x="0" y="74" width="456" height="32" rx="6"/>
+  <text class="sm mono" x="12" y="95">10</text>
+  <text class="mono" x="44" y="95">    throw new ArgumentOutOfRangeException(…);</text>
+  <text class="sm" x="472" y="95">never runs</text>
+
+  <rect class="box-accent" x="0" y="114" width="456" height="32" rx="6"/>
+  <text class="sm mono" x="12" y="135">12</text>
+  <text class="mono" x="44" y="135">var discounted = isMember ? subtotal * 0.9m : subtotal;</text>
+  <text class="sm accent" x="472" y="135">runs · branches 1 of 2</text>
+
+  <rect class="box-accent" x="0" y="154" width="456" height="32" rx="6"/>
+  <text class="sm mono" x="12" y="175">13</text>
+  <text class="mono" x="44" y="175">var shipping = subtotal &gt;= 100m ? 0m : 7.50m;</text>
+  <text class="sm accent" x="472" y="175">runs · branches 1 of 2</text>
+
+  <rect class="box" x="0" y="194" width="456" height="32" rx="6"/>
+  <text class="sm mono" x="12" y="215">14</text>
+  <text class="mono" x="44" y="215">return discounted + shipping;</text>
+  <text class="sm" x="472" y="215">runs</text>
+
+  <rect class="solid" x="0" y="244" width="680" height="52" rx="8"/>
+  <text class="strong on-solid" x="340" y="266" text-anchor="middle">Lines: 6 of 7 run (85.7%)     Branches: 3 of 6 taken (50%)</text>
+  <text class="sm on-solid" x="340" y="285" text-anchor="middle">a line with a branch counts as covered even when half of its paths never ran</text>
+</svg>

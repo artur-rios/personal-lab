@@ -1,0 +1,143 @@
+{{- /* Overrides the nuno theme's nav to add one level of dropdown: a main menu
+       entry with children (parent = '<identifier>' in hugo.toml) renders as a
+       button that opens a panel listing them, each with its params.blurb.
+       Everything else is the theme's nav, unchanged. On mobile the dropdown is
+       hidden like the theme's other links, and footer.html lists the children
+       instead. */ -}}
+{{- $brand := .Site.Params.brand | default (replaceRE "^https?://" "" (trim .Site.BaseURL "/")) -}}
+<nav class="nav">
+  <a class="nav__brand" href="{{ "" | relURL }}">{{ $brand }}</a>
+
+  {{- range .Site.Menus.main }}
+    {{- if .HasChildren }}
+      {{- $open := false -}}
+      {{- range .Children }}
+        {{- if partial "nav-current.html" (dict "page" $ "entry" .) }}{{ $open = true }}{{ end -}}
+      {{- end }}
+    <div class="nav__menu nav__desktop-only" data-nav-menu>
+      <button class="nav__link nav__menu-button" type="button" aria-expanded="false"
+              aria-controls="nav-menu-{{ .Identifier }}"{{ if $open }} aria-current="page"{{ end }}>
+        {{- .Name }}<span class="nav__caret" aria-hidden="true">▾</span>
+      </button>
+      <div class="nav__dropdown" id="nav-menu-{{ .Identifier }}">
+        {{- range .Children }}
+        <a class="nav__item" href="{{ .URL | relURL }}"
+           {{- if partial "nav-current.html" (dict "page" $ "entry" .) }} aria-current="page"{{ end }}>
+          <span class="nav__item-name">{{ .Name }}</span>
+          {{- with .Params.blurb }}<span class="nav__item-blurb">{{ . }}</span>{{ end }}
+        </a>
+        {{- end }}
+      </div>
+    </div>
+    {{- else }}
+      {{- $current := partial "nav-current.html" (dict "page" $ "entry" .) -}}
+      {{- $mobile := eq (lower .Identifier) "about" -}}
+    <a class="nav__link {{ if not $mobile }}nav__desktop-only{{ end }}"
+       href="{{ .URL | relURL }}"{{ if $current }} aria-current="page"{{ end }}>{{ .Name }}</a>
+    {{- end }}
+  {{- end }}
+
+  {{- /* Language switcher. Only on a multilingual build, and only listing the
+         languages this page actually exists in — offering a link to a page that
+         is not translated sends the reader to a 404 rather than to a
+         translation. Plain links, not a dropdown: with two or three languages a
+         menu is more machinery than the job needs. */ -}}
+  {{- with .Translations }}
+    <span class="nav__langs">
+      {{- range . }}
+        <a class="nav__lang" href="{{ .Permalink }}" lang="{{ .Language.Locale }}"
+           hreflang="{{ .Language.Locale }}">{{ .Language.Label | default .Language.Lang }}</a>
+      {{- end }}
+    </span>
+  {{- end }}
+
+  <button class="nav__icon" type="button" data-nuno-theme-toggle aria-label="{{ i18n "switchColourTheme" }}">
+    <span data-nuno-theme-glyph aria-hidden="true">☾</span>
+  </button>
+
+  {{- /* Desktop: a search pill. Mobile: a round icon. Both open the overlay. */}}
+  <button class="nav__search nav__desktop-only" type="button" data-nuno-search-open>
+    <span aria-hidden="true">⌕</span>
+    <span class="nav__search-fake">{{ i18n "searchPosts" }}</span>
+    <span class="nav__kbd" data-nuno-kbd>⌘K</span>
+  </button>
+  <button class="nav__icon nav__mobile-only" type="button" data-nuno-search-open aria-label="{{ i18n "searchPosts" }}">
+    <span aria-hidden="true">⌕</span>
+  </button>
+</nav>
+
+<style>
+  .nav__menu { position: relative; }
+  .nav__menu-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-weight: inherit;
+    color: var(--muted);
+  }
+  .nav__menu-button:hover { color: var(--accent); }
+  .nav__menu-button[aria-current='page'] { color: var(--ink); }
+  .nav__caret { font-size: 11px; transition: transform 0.15s; }
+  .nav__menu.is-open .nav__caret { transform: rotate(180deg); }
+  /* The panel hangs below the button; its transparent top padding bridges the
+     gap so the pointer can travel from the button into it without closing. */
+  .nav__dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -14px;
+    z-index: 60;
+    padding-top: 12px;
+  }
+  .nav__menu.is-open .nav__dropdown { display: block; }
+  @media (hover: hover) {
+    .nav__menu:hover .nav__dropdown { display: block; }
+    .nav__menu:hover .nav__caret { transform: rotate(180deg); }
+  }
+  .nav__dropdown::before {
+    content: '';
+    position: absolute;
+    inset: 12px 0 0;
+    z-index: -1;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--bg);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  }
+  .nav__item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 340px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    margin: 6px;
+  }
+  .nav__item + .nav__item { margin-top: -4px; }
+  .nav__item:hover, .nav__item:focus-visible { background: var(--surface); color: inherit; }
+  .nav__item-name { color: var(--ink); font-weight: 800; }
+  .nav__item:hover .nav__item-name, .nav__item[aria-current='page'] .nav__item-name { color: var(--accent); }
+  .nav__item-blurb { color: var(--muted); font-size: 13px; font-weight: 400; line-height: 1.4; }
+</style>
+
+<script>
+  (function () {
+    document.querySelectorAll('[data-nav-menu]').forEach(function (menu) {
+      var button = menu.querySelector('button');
+      function set(open) {
+        menu.classList.toggle('is-open', open);
+        button.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      button.addEventListener('click', function () { set(!menu.classList.contains('is-open')); });
+      document.addEventListener('click', function (e) { if (!menu.contains(e.target)) set(false); });
+      menu.addEventListener('focusout', function (e) { if (!menu.contains(e.relatedTarget)) set(false); });
+      menu.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') set(false); });
+      menu.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) { set(false); button.focus(); }
+      });
+    });
+  })();
+</script>

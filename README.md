@@ -10,7 +10,7 @@ GitHub Pages at **<https://artur-rios.github.io/personal-lab/>**.
 
 | Kind | What it is |
 | --- | --- |
-| **Study notes** | What I learn, written up properly, with references. [Fundamentals](content/fundamentals/) covers the core ideas of computing and programming; [Front-end](content/front-end/) covers the frameworks behind web and mobile interfaces; [Concepts](content/concepts/) covers the design principles and patterns that decide how software is put together; [Security](content/security/) covers how vulnerabilities and weaknesses are named, tracked and prevented. |
+| **Study notes** | What I learn, written up properly, with references. [Fundamentals](content/fundamentals/) covers the core ideas of computing and programming; [Front-end](content/front-end/) covers the frameworks behind web and mobile interfaces; [.NET](content/dotnet/) covers how C# and .NET work, data access, test coverage and the libraries I recommend; [Concepts](content/concepts/) covers the design principles and patterns that decide how software is put together; [Security](content/security/) covers how vulnerabilities and weaknesses are named, tracked and prevented; [Git](content/git/) covers my Git setup, everyday commands and features such as submodules and tags. All six sit under one *Study notes* dropdown in the nav. |
 | **Brainstorms** | Ideas while they are still rough: questions, sketches and options before anything is decided. They live in [Brainstorms](content/brainstorms/). |
 | **Projects** | The things I am building: what each one is, where it stands and what comes next. They live in [Projects](content/projects/). |
 
@@ -23,12 +23,15 @@ section.
 content/          site content, one folder per section
   fundamentals/   study notes on the fundamentals of computing
   front-end/      study notes on front-end frameworks: Angular, React, Flutter
+  dotnet/         study notes on .NET and C#: compilation, collections, delegates, data access, coverage, libraries
   concepts/       study notes on software design concepts: SOLID, inversion of control
   security/       study notes on software security: CVE and CWE
+  git/            study notes on Git: config and commands, submodules, tags
   brainstorms/    rough ideas, questions and options before anything is decided
   projects/       the things being built: what, status and what comes next
   series/         one page per multi-part series, with its description
 data/             site data (the lines the home page masthead cycles through)
+layouts/          the diagram shortcode, and overrides of the theme's nav and footer
 archetypes/       front matter templates for new pages
 themes/nuno/      the nuno theme, as a git submodule
 hugo.toml         site configuration

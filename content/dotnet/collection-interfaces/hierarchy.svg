@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="white-space: pre" viewBox="0 0 680 400" role="img" aria-labelledby="hierarchy-title">
+  <title id="hierarchy-title">The generic collection interfaces. IEnumerable of T, with its single GetEnumerator method, is the root. Three branches extend it. IQueryable of T adds an expression tree and a query provider. ICollection of T adds Count, Add, Remove, Clear and Contains, and is extended by IList of T, IDictionary of K and V, and ISet of T. IReadOnlyCollection of T adds only Count, and is extended by IReadOnlyList of T, IReadOnlyDictionary of K and V, and IReadOnlySet of T. The mutable and read-only branches do not extend each other; List of T and arrays implement both.</title>
+  <defs>
+    <marker id="hierarchy-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="hierarchy-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <rect class="solid" x="230" y="6" width="220" height="50" rx="8"/>
+  <text class="mono strong on-solid" x="340" y="28" text-anchor="middle">IEnumerable&lt;T&gt;</text>
+  <text class="sm on-solid" x="340" y="46" text-anchor="middle">GetEnumerator()</text>
+
+  <rect class="box" x="0" y="100" width="210" height="56" rx="8"/>
+  <text class="mono strong" x="105" y="124" text-anchor="middle">IQueryable&lt;T&gt;</text>
+  <text class="sm" x="105" y="144" text-anchor="middle">Expression, Provider</text>
+
+  <rect class="box-accent" x="235" y="100" width="210" height="56" rx="8"/>
+  <text class="mono strong" x="340" y="124" text-anchor="middle">ICollection&lt;T&gt;</text>
+  <text class="sm" x="340" y="144" text-anchor="middle">Count, Add, Remove, Contains</text>
+
+  <rect class="box" x="470" y="100" width="210" height="56" rx="8"/>
+  <text class="mono strong" x="575" y="124" text-anchor="middle">IReadOnlyCollection&lt;T&gt;</text>
+  <text class="sm" x="575" y="144" text-anchor="middle">Count</text>
+
+  <path class="wire" d="M105 100 V78 H300 V58" marker-end="url(#hierarchy-arrow)"/>
+  <line class="wire-accent" x1="340" y1="100" x2="340" y2="58" marker-end="url(#hierarchy-arrow-accent)"/>
+  <path class="wire" d="M575 100 V78 H380 V58" marker-end="url(#hierarchy-arrow)"/>
+
+  <rect class="zone" x="0" y="180" width="210" height="140" rx="8"/>
+  <text class="sm" x="105" y="214" text-anchor="middle">a query, not a collection:</text>
+  <text class="sm" x="105" y="234" text-anchor="middle">the expression tree is</text>
+  <text class="sm" x="105" y="254" text-anchor="middle">translated and run by a</text>
+  <text class="sm" x="105" y="274" text-anchor="middle">provider (EF Core: SQL)</text>
+  <text class="sm" x="105" y="300" text-anchor="middle">when it is enumerated</text>
+
+  <line class="wire-accent" x1="250" y1="156" x2="250" y2="300"/>
+  <rect class="box" x="264" y="180" width="181" height="36" rx="6"/>
+  <text class="mono" x="354" y="203" text-anchor="middle">IList&lt;T&gt;</text>
+  <rect class="box" x="264" y="224" width="181" height="36" rx="6"/>
+  <text class="mono" x="354" y="247" text-anchor="middle">IDictionary&lt;K,V&gt;</text>
+  <rect class="box" x="264" y="268" width="181" height="36" rx="6"/>
+  <text class="mono" x="354" y="291" text-anchor="middle">ISet&lt;T&gt;</text>
+  <line class="wire-accent" x1="250" y1="198" x2="262" y2="198"/>
+  <line class="wire-accent" x1="250" y1="242" x2="262" y2="242"/>
+  <line class="wire-accent" x1="250" y1="286" x2="262" y2="286"/>
+
+  <line class="wire" x1="485" y1="156" x2="485" y2="300"/>
+  <rect class="box" x="499" y="180" width="181" height="36" rx="6"/>
+  <text class="mono" x="589" y="203" text-anchor="middle">IReadOnlyList&lt;T&gt;</text>
+  <rect class="box" x="499" y="224" width="181" height="36" rx="6"/>
+  <text class="mono" x="589" y="247" text-anchor="middle">IReadOnlyDictionary&lt;K,V&gt;</text>
+  <rect class="box" x="499" y="268" width="181" height="36" rx="6"/>
+  <text class="mono" x="589" y="291" text-anchor="middle">IReadOnlySet&lt;T&gt;</text>
+  <line class="wire" x1="485" y1="198" x2="497" y2="198"/>
+  <line class="wire" x1="485" y1="242" x2="497" y2="242"/>
+  <line class="wire" x1="485" y1="286" x2="497" y2="286"/>
+
+  <text class="sm accent" x="340" y="336" text-anchor="middle">mutable branch</text>
+  <text class="sm" x="575" y="336" text-anchor="middle">read-only branch</text>
+
+  <rect class="zone" x="235" y="350" width="445" height="44" rx="8"/>
+  <text class="sm" x="457" y="368" text-anchor="middle">neither branch extends the other:</text>
+  <text class="sm" x="457" y="386" text-anchor="middle">List&lt;T&gt; and T[] implement both</text>
+</svg>

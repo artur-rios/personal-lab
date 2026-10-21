@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="white-space: pre" viewBox="0 0 680 290" role="img" aria-labelledby="closures-title">
+  <title id="closures-title">What lambdas created in a loop capture. On the left, a for loop declares one variable i for the whole loop, so the three lambdas share one closure object, and once the loop ends that shared i is 3: they return 3, 3 and 3. On the right, since C# 5 a foreach loop declares a fresh variable i on each iteration, so each lambda gets its own closure object holding 0, 1 and 2, and they return 0, 1 and 2.</title>
+  <defs>
+    <marker id="closures-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="closures-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <rect class="zone" x="0" y="6" width="330" height="278" rx="8"/>
+  <text class="mono strong" x="165" y="34" text-anchor="middle">for (int i = 0; i &lt; 3; i++)</text>
+  <rect class="box" x="14" y="58" width="90" height="34" rx="6"/>
+  <text class="mono" x="59" y="80" text-anchor="middle">() =&gt; i</text>
+  <rect class="box" x="120" y="58" width="90" height="34" rx="6"/>
+  <text class="mono" x="165" y="80" text-anchor="middle">() =&gt; i</text>
+  <rect class="box" x="226" y="58" width="90" height="34" rx="6"/>
+  <text class="mono" x="271" y="80" text-anchor="middle">() =&gt; i</text>
+  <line class="wire-accent" x1="59" y1="92" x2="120" y2="166" marker-end="url(#closures-arrow-accent)"/>
+  <line class="wire-accent" x1="165" y1="92" x2="165" y2="166" marker-end="url(#closures-arrow-accent)"/>
+  <line class="wire-accent" x1="271" y1="92" x2="210" y2="166" marker-end="url(#closures-arrow-accent)"/>
+  <rect class="box-accent" x="70" y="168" width="190" height="60" rx="8"/>
+  <text class="mono" x="165" y="194" text-anchor="middle">one closure object</text>
+  <text class="mono accent" x="165" y="214" text-anchor="middle">i = 3</text>
+  <text class="sm" x="165" y="260" text-anchor="middle">one variable, shared: 3, 3, 3</text>
+
+  <rect class="zone" x="350" y="6" width="330" height="278" rx="8"/>
+  <text class="mono strong" x="515" y="34" text-anchor="middle">foreach (int i in [0, 1, 2])</text>
+  <rect class="box" x="364" y="58" width="90" height="34" rx="6"/>
+  <text class="mono" x="409" y="80" text-anchor="middle">() =&gt; i</text>
+  <rect class="box" x="470" y="58" width="90" height="34" rx="6"/>
+  <text class="mono" x="515" y="80" text-anchor="middle">() =&gt; i</text>
+  <rect class="box" x="576" y="58" width="90" height="34" rx="6"/>
+  <text class="mono" x="621" y="80" text-anchor="middle">() =&gt; i</text>
+  <line class="wire" x1="409" y1="92" x2="409" y2="166" marker-end="url(#closures-arrow)"/>
+  <line class="wire" x1="515" y1="92" x2="515" y2="166" marker-end="url(#closures-arrow)"/>
+  <line class="wire" x1="621" y1="92" x2="621" y2="166" marker-end="url(#closures-arrow)"/>
+  <rect class="box" x="364" y="168" width="90" height="60" rx="8"/>
+  <text class="mono" x="409" y="194" text-anchor="middle">closure</text>
+  <text class="mono" x="409" y="214" text-anchor="middle">i = 0</text>
+  <rect class="box" x="470" y="168" width="90" height="60" rx="8"/>
+  <text class="mono" x="515" y="194" text-anchor="middle">closure</text>
+  <text class="mono" x="515" y="214" text-anchor="middle">i = 1</text>
+  <rect class="box" x="576" y="168" width="90" height="60" rx="8"/>
+  <text class="mono" x="621" y="194" text-anchor="middle">closure</text>
+  <text class="mono" x="621" y="214" text-anchor="middle">i = 2</text>
+  <text class="sm" x="515" y="260" text-anchor="middle">a fresh variable per iteration: 0, 1, 2</text>
+</svg>
