@@ -26,7 +26,11 @@ window and in a terminal. If the window and the terminal are two programs, every
 feature is built twice. So the design starts from one **core** that owns
 everything an editor does, such as buffers, cursors, syntax trees, language
 servers, commands, keymaps and modules, and two thin **front ends** that only
-draw what the core describes and send it the user's input.
+draw what the core describes and send it the user's input. The core and the
+front ends talk only through typed messages: input events go in, view updates
+come out. Neither side calls into the other, so a front end can be replaced,
+and the core could later run in a separate process, for example on a remote
+machine over SSH.
 
 ```txt
               modules: .NET, Angular, ...
@@ -53,13 +57,17 @@ window.
 | Concern | Choice | Why |
 | --- | --- | --- |
 | Language | Rust | Fast start-up and low memory with no runtime, and the language the editors closest to this idea are written in: Helix, Zed and Lapce. |
+| Async runtime | Tokio | Language servers, debug adapters, builds and searches all run in the background, and the core waits on all of them at once. |
+| Core and front ends | Typed messages over channels | Input events in, view updates out, so both front ends share one core and neither depends on the other's libraries. |
 | Text buffer | Ropey | A rope keeps edits fast in large files and makes undo history cheap. |
 | Syntax | Tree-sitter | Incremental parsing for highlighting, folding, indentation and selecting by syntax node, from one grammar per language. |
 | Language features | Language Server Protocol | Completion, diagnostics, go to definition and refactoring come from each language's own server, so a module wraps a server instead of reimplementing a language. |
 | Debugging | Debug Adapter Protocol | The same idea for debuggers: one client in the core, one adapter per language. |
 | Terminal front end | ratatui with crossterm | The standard Rust terminal UI library, and crossterm drives both Linux terminals and the Windows console. |
-| Window front end | Iced | A cross-platform GPU UI library with an Elm-like model that fits a core sending view updates; it runs on Windows, X11 and Wayland. |
+| Window front end | GPUI | The GPU UI framework Zed is built on, made for a code editor, with fast text rendering; it runs on Windows and Linux. |
+| Modules | Rust crates with declarative manifests | A manifest says what a module handles before any of its code runs, so modules activate on demand. |
 | Search and files | `ignore`, `grep-searcher`, nucleo | The crates behind ripgrep for walking and searching the workspace, and Helix's fuzzy matcher for the file and command pickers. |
+| File watching | notify | Cross-platform file system events, so files changed outside Thoth, by Git or a build, are reloaded. |
 | Git | gitoxide (`gix`) | A Git implementation in Rust, without a C library to build and ship. |
 | Built-in terminal panel | `alacritty_terminal` with `portable-pty` | The terminal emulator Zed embeds, and a pseudo-terminal that works on Windows too. |
 | Configuration | TOML | One file for settings, keymaps and which modules are active. |
@@ -78,7 +86,7 @@ Thoth's stance on extensions too.
 
 | Option | Window | Terminal | Weight | Trade-off |
 | --- | --- | --- | --- | --- |
-| **Rust core + Iced + ratatui** | Iced | ratatui | Lightest | Rust has a steep start, and Iced has no ready-made code editor widget, so the editor surface is drawn on a canvas. |
+| **Rust core + GPUI + ratatui** | GPUI | ratatui | Lightest | Rust has a steep start, and GPUI changes along with Zed and is documented mostly by Zed's own code. |
 | .NET core + Avalonia + Terminal.Gui | Avalonia with AvaloniaEdit | Terminal.Gui | Light with Native AOT; see [How C# Runs]({{< ref "/dotnet/compilation-and-execution" >}}) | Familiar language, and the .NET module could use Roslyn directly, but Tree-sitter is only reachable through native bindings, and the two UI libraries each bring their own text model. |
 | Tauri or Electron with Monaco | Monaco, VS Code's editor | A second editor | Heaviest | The window would look like VS Code quickly, but Monaco owns the text model, so the terminal mode would be another editor with every feature built twice. |
 | A Neovim distribution | A Neovim GUI such as Neovide | Neovim | Light | The fastest route to the terminal half, but modules become Lua plugins, which is the extension system Thoth wants to avoid, and the window would feel like Vim, not VS Code. |
@@ -87,12 +95,29 @@ If Rust is too much to learn alongside building an IDE, the .NET row is the
 honest second choice: the architecture stays the same, one core and two front
 ends, only the libraries change.
 
+### Why GPUI
+
+Most Rust UI libraries are general purpose, so an editor built on them draws
+its text area by hand on a canvas. GPUI was written for Zed, a code editor, so
+fast text rendering, many panes and an editor-style layout are what it does
+best, which is what a VS Code-like window needs. It comes with three costs:
+
+- **Its API moves with Zed.** There is little documentation outside Zed's own
+  code, so Thoth should pin one version and plan its upgrades.
+- **Zed's editor is not GPUI.** GPUI is licensed under Apache 2.0, but most of
+  Zed's other crates, its editor included, are GPL. Reading them is fine;
+  copying code from them would make Thoth GPL too.
+- **GPUI has its own async executors.** The core runs on Tokio and never
+  depends on GPUI; the window front end receives the core's messages and
+  turns them into GPUI views. This is also what keeps the terminal build free
+  of GPUI.
+
 ### Modules instead of extensions
 
 A module is first-party code compiled into Thoth, not a package downloaded from
 a marketplace. Inactive modules cost nothing at run time: they register no
 commands, start no processes and add no menu items. Activating one does three
-things:
+things, each driven by the module's manifest:
 
 1. **Fetches its tools**, such as a language server or a debug adapter, into
    Thoth's own data folder, pinned to a version Thoth was tested with. This is
@@ -102,9 +127,35 @@ things:
 3. **Registers its commands, keymaps and panels** with the core, such as "Run
    tests" or a project tree.
 
-In Rust, each module is a crate that implements one `Module` trait, so the core
-stays ignorant of every language. Because the set of modules is fixed at build
-time, the core can test every combination, which a marketplace never can.
+Each module is a Rust crate with two parts. A declarative manifest in TOML
+lists what the module handles and needs: the file types and project files that
+activate it, the language servers and debug adapters with their versions, and
+the commands it adds. The core reads every manifest at start-up without running
+any module code, so it knows when to offer or activate a module at no cost.
+The crate itself implements a `Module` trait for the behaviour a manifest
+cannot describe, such as parsing a solution file, so the core stays ignorant of
+every language. Because the set of modules is fixed at build time, the core can
+test every combination, which a marketplace never can.
+
+```toml
+[module]
+id = "dotnet"
+name = ".NET"
+
+[activation]
+files = ["*.cs", "*.csproj", "*.sln", "*.slnx"]
+
+[[language-server]]
+id = "roslyn"
+languages = ["csharp"]
+
+[[debug-adapter]]
+id = "netcoredbg"
+
+[[command]]
+id = "dotnet.test"
+title = "Run tests"
+```
 
 The two modules from the features would start as:
 
