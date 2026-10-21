@@ -225,3 +225,7 @@ The questions this brainstorm raised, and how they were settled:
   Minecraft mod.
 - **The kernel is hybrid**, as in Windows and macOS, and POSIX-compatible, as
   macOS is.
+- **Anvil OS starts in Rust and moves to Craft.** Once
+  [Craft]({{< ref "/brainstorms/craft" >}}), the programming language, can
+  build code that runs without an operating system, Anvil is rewritten in it
+  one layer at a time.
