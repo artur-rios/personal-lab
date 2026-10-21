@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 210" role="img" aria-labelledby="tdd-title">
+  <title id="tdd-title">The test-driven development cycle. Red: write a small test for behaviour that does not exist yet and watch it fail. Green: write the simplest code that makes it pass. Refactor: clean up the code and the tests while every test stays green. Then repeat with the next small behaviour, in cycles of a few minutes each.</title>
+  <defs>
+    <marker id="tdd-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <rect class="box-accent" x="20" y="20" width="180" height="76" rx="8"/>
+  <text class="strong accent" x="110" y="48" text-anchor="middle">Red</text>
+  <text class="sm" x="110" y="68" text-anchor="middle">write a failing test</text>
+  <text class="sm" x="110" y="84" text-anchor="middle">for the next behaviour</text>
+
+  <rect class="solid" x="250" y="20" width="180" height="76" rx="8"/>
+  <text class="strong on-solid" x="340" y="48" text-anchor="middle">Green</text>
+  <text class="sm on-solid" x="340" y="68" text-anchor="middle">write the simplest code</text>
+  <text class="sm on-solid" x="340" y="84" text-anchor="middle">that makes it pass</text>
+
+  <rect class="box" x="480" y="20" width="180" height="76" rx="8"/>
+  <text class="strong" x="570" y="48" text-anchor="middle">Refactor</text>
+  <text class="sm" x="570" y="68" text-anchor="middle">clean up code and tests,</text>
+  <text class="sm" x="570" y="84" text-anchor="middle">keeping every test green</text>
+
+  <line class="wire" x1="200" y1="58" x2="248" y2="58" marker-end="url(#tdd-arrow)"/>
+  <line class="wire" x1="430" y1="58" x2="478" y2="58" marker-end="url(#tdd-arrow)"/>
+  <path class="wire" d="M570 96 L570 140 L110 140 L110 98" marker-end="url(#tdd-arrow)"/>
+  <text class="sm" x="340" y="160" text-anchor="middle">then the next small behaviour; one turn takes minutes</text>
+
+  <text class="sm accent" x="340" y="196" text-anchor="middle">every line of production code was asked for by a test that failed first</text>
+</svg>
