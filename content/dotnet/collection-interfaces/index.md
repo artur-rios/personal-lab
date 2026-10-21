@@ -63,7 +63,7 @@ non-generic families meet only at the root.
 `IEnumerable<T>` "exposes the enumerator, which supports a simple iteration
 over a collection of a specified type". It declares one method, and the Remarks
 put it plainly: it "contains a single method that you must implement when
-implementing this interface; GetEnumerator, which returns an IEnumerator<T>
+implementing this interface; GetEnumerator, which returns an `IEnumerator<T>`
 object".[^ienumerable] It is "the base interface for collections in the
 System.Collections.Generic namespace", and anything that implements it can be
 used in a `foreach`.
@@ -344,12 +344,12 @@ therefore does not guarantee you can add to it.
 
 The main reason code checks for `ICollection<T>` is `Count`. `Enumerable.Count()`
 is an extension method on `IEnumerable<T>`, and its documentation says: "If the
-type of `source` implements ICollection<T>, that implementation is used to
+type of `source` implements `ICollection<T>`, that implementation is used to
 obtain the count of elements. Otherwise, this method determines the
 count", by enumerating.[^count] Since .NET 6, `TryGetNonEnumeratedCount` asks
 the question without ever enumerating. It "performs a series of type tests,
 identifying common subtypes whose count can be determined without enumerating.
-This includes ICollection<T>, ICollection, and internal types used in the LINQ
+This includes `ICollection<T>`, ICollection, and internal types used in the LINQ
 implementation."[^trycount]
 
 ```csharp
@@ -509,13 +509,13 @@ it.[^iset][^icollection] Each has a read-only counterpart.
 "intended for implementation by query providers", and has three properties:
 the `Expression` it represents, its `ElementType`, and the `Provider` that will
 run it. "Enumeration forces the expression tree associated with an
-IQueryable<T> object to be executed."[^iqueryable]
+`IQueryable<T>` object to be executed."[^iqueryable]
 
 The difference is in how lambdas arrive. The LINQ operators on
 `IEnumerable<T>`, in `System.Linq.Enumerable`, take `Func<T,bool>` delegates:
 compiled code. The same-named operators on `IQueryable<T>`, in
 `System.Linq.Queryable`, take `Expression<Func<T,bool>>`. "When a lambda
-expression is assigned to a variable of type Expression<TDelegate>, the
+expression is assigned to a variable of type `Expression<TDelegate>`, the
 compiler emits code to build an expression tree that represents the lambda
 expression", a data structure describing the code rather than the code
 itself.[^expressiontrees] A provider can read that tree and translate it into
@@ -625,13 +625,13 @@ evaluation on purpose, after the database has filtered as much as it can.
 The .NET Framework Design Guidelines give a clear rule for inputs: "DO use the
 least-specialized type possible as a parameter type. Most members taking
 collections as parameters use the `IEnumerable<T>` interface." They add: "AVOID
-using ICollection<T> or ICollection as a parameter just to access the `Count`
+using `ICollection<T>` or ICollection as a parameter just to access the `Count`
 property", and instead check for those interfaces at run time, which is exactly
 what `TryGetNonEnumeratedCount` does for you.[^guidelines]
 
 For outputs the same guidelines recommend `Collection<T>` or
 `ReadOnlyCollection<T>` for properties and return values, and say "DO NOT use
-ArrayList or List<T> in public APIs", because `List<T>` "is optimized for
+ArrayList or `List<T>` in public APIs", because `List<T>` "is optimized for
 performance and power at the cost of cleanness of the APIs and flexibility". And
 "DO NOT return null values from collection properties or from methods
 returning collections. Return an empty collection or an empty array
@@ -692,11 +692,11 @@ In practice that comes down to a few rules of thumb:
 
 ## References
 
-[^ienumerable]: Microsoft. (n.d.). *IEnumerable<T> interface*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1>
+[^ienumerable]: Microsoft. (n.d.). *`IEnumerable<T>` interface*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1>
 
-[^ienumerator]: Microsoft. (n.d.). *IEnumerator<T> interface*. .NET API reference. Remarks. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerator-1>
+[^ienumerator]: Microsoft. (n.d.). *`IEnumerator<T>` interface*. .NET API reference. Remarks. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerator-1>
 
-[^listenumerator]: Microsoft. (n.d.). *List<T>.GetEnumerator method*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.getenumerator>
+[^listenumerator]: Microsoft. (n.d.). *`List<T>.GetEnumerator` method*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.getenumerator>
 
 [^spec]: Microsoft. (n.d.). Statements: The foreach statement (§13.9.5). In *C# language specification*. <https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/statements#1395-the-foreach-statement>
 
@@ -708,37 +708,37 @@ In practice that comes down to a few rules of thumb:
 
 [^deferred]: Microsoft. (n.d.). *Deferred execution and lazy evaluation*. .NET documentation. <https://learn.microsoft.com/en-us/dotnet/standard/linq/deferred-execution-lazy-evaluation>
 
-[^icollection]: Microsoft. (n.d.). *ICollection<T> interface*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1>
+[^icollection]: Microsoft. (n.d.). *`ICollection<T>` interface*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.icollection-1>
 
 [^ilistnongeneric]: Microsoft. (n.d.). *IList interface*. .NET API reference. Remarks. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.ilist>
 
 [^count]: Microsoft. (n.d.). *Enumerable.Count method*. .NET API reference. Remarks. <https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.count>
 
-[^trycount]: Microsoft. (n.d.). *Enumerable.TryGetNonEnumeratedCount<TSource> method*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.trygetnonenumeratedcount>
+[^trycount]: Microsoft. (n.d.). *`Enumerable.TryGetNonEnumeratedCount<TSource>` method*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.trygetnonenumeratedcount>
 
-[^ilist]: Microsoft. (n.d.). *IList<T> interface*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ilist-1>
+[^ilist]: Microsoft. (n.d.). *`IList<T>` interface*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ilist-1>
 
-[^irocollection]: Microsoft. (n.d.). *IReadOnlyCollection<T> interface*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlycollection-1>
+[^irocollection]: Microsoft. (n.d.). *`IReadOnlyCollection<T>` interface*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlycollection-1>
 
-[^irolist]: Microsoft. (n.d.). *IReadOnlyList<T> interface*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlylist-1>
+[^irolist]: Microsoft. (n.d.). *`IReadOnlyList<T>` interface*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlylist-1>
 
-[^irodictionary]: Microsoft. (n.d.). *IReadOnlyDictionary<TKey,TValue> interface*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlydictionary-2>
+[^irodictionary]: Microsoft. (n.d.). *`IReadOnlyDictionary<TKey,TValue>` interface*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlydictionary-2>
 
-[^iroset]: Microsoft. (n.d.). *IReadOnlySet<T> interface*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlyset-1>
+[^iroset]: Microsoft. (n.d.). *`IReadOnlySet<T>` interface*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlyset-1>
 
 [^variance]: Microsoft. (2026). *Covariance and contravariance in generics*. .NET documentation. <https://learn.microsoft.com/en-us/dotnet/standard/generics/covariance-and-contravariance>
 
-[^readonlycollection]: Microsoft. (n.d.). *ReadOnlyCollection<T> class*. .NET API reference. Remarks. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.objectmodel.readonlycollection-1>
+[^readonlycollection]: Microsoft. (n.d.). *`ReadOnlyCollection<T>` class*. .NET API reference. Remarks. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.objectmodel.readonlycollection-1>
 
-[^immutablearray]: Microsoft. (n.d.). *ImmutableArray<T> struct*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutablearray-1>
+[^immutablearray]: Microsoft. (n.d.). *`ImmutableArray<T>` struct*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutablearray-1>
 
-[^frozenset]: Microsoft. (n.d.). *FrozenSet<T> class*. .NET API reference. Remarks. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.frozen.frozenset-1>
+[^frozenset]: Microsoft. (n.d.). *`FrozenSet<T>` class*. .NET API reference. Remarks. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.frozen.frozenset-1>
 
 [^net8]: Microsoft. (2023, November 14). *What's new in .NET 8 runtime*. .NET documentation. Section "Performance-focused types". <https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-8/runtime>
 
-[^iset]: Microsoft. (n.d.). *ISet<T> interface*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1>
+[^iset]: Microsoft. (n.d.). *`ISet<T>` interface*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.iset-1>
 
-[^iqueryable]: Microsoft. (n.d.). *IQueryable<T> interface*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.linq.iqueryable-1>
+[^iqueryable]: Microsoft. (n.d.). *`IQueryable<T>` interface*. .NET API reference. <https://learn.microsoft.com/en-us/dotnet/api/system.linq.iqueryable-1>
 
 [^expressiontrees]: Microsoft. (2025). *Expression trees*. C# documentation. <https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/expression-trees/>
 
