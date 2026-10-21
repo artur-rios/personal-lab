@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="white-space: pre" viewBox="0 0 680 290" role="img" aria-labelledby="request-flow-title">
+  <title id="request-flow-title">The path of a write request. An HTTP request such as POST /api/scopes reaches the controller, which binds the command and adds the acting identity. The command mediator finds the handler registered for the command type, which is an auditing decorator wrapping the real handler. The handler validates the input, checks the business rules and writes, then returns a DataOutput carrying data and messages, or errors. ToActionResult looks the first message or error up in the area's message map, ScopeMessageMap, and answers with that status: 201 Created, or 400, 403, 404 or 409.</title>
+  <defs>
+    <marker id="request-flow-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="request-flow-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="0" y="10" width="155" height="84" rx="8"/>
+  <text class="strong" x="77" y="40" text-anchor="middle">HTTP request</text>
+  <text class="mono" x="77" y="62" text-anchor="middle">POST /api/scopes</text>
+  <text class="sm" x="77" y="80" text-anchor="middle">JSON body + bearer</text>
+
+  <rect class="box" x="175" y="10" width="155" height="84" rx="8"/>
+  <text class="strong" x="252" y="40" text-anchor="middle">Controller</text>
+  <text class="sm" x="252" y="62" text-anchor="middle">binds the command,</text>
+  <text class="sm" x="252" y="80" text-anchor="middle">adds the actor</text>
+
+  <rect class="box" x="350" y="10" width="155" height="84" rx="8"/>
+  <text class="strong" x="427" y="40" text-anchor="middle">Mediator</text>
+  <text class="sm" x="427" y="62" text-anchor="middle">finds the handler</text>
+  <text class="sm" x="427" y="80" text-anchor="middle">for the command type</text>
+
+  <rect class="box-accent" x="525" y="10" width="155" height="84" rx="8"/>
+  <text class="strong" x="602" y="40" text-anchor="middle">Auditing</text>
+  <text class="sm" x="602" y="62" text-anchor="middle">decorator: audits</text>
+  <text class="sm" x="602" y="80" text-anchor="middle">every success</text>
+
+  <line class="wire" x1="155" y1="52" x2="173" y2="52" marker-end="url(#request-flow-arrow)"/>
+  <line class="wire" x1="330" y1="52" x2="348" y2="52" marker-end="url(#request-flow-arrow)"/>
+  <line class="wire" x1="505" y1="52" x2="523" y2="52" marker-end="url(#request-flow-arrow)"/>
+  <line class="wire-accent" x1="602" y1="94" x2="602" y2="148" marker-end="url(#request-flow-arrow-accent)"/>
+
+  <rect class="solid" x="525" y="150" width="155" height="84" rx="8"/>
+  <text class="strong on-solid" x="602" y="180" text-anchor="middle">Handler</text>
+  <text class="sm on-solid" x="602" y="202" text-anchor="middle">validates, checks</text>
+  <text class="sm on-solid" x="602" y="220" text-anchor="middle">the rules, writes</text>
+
+  <rect class="box-accent" x="350" y="150" width="155" height="84" rx="8"/>
+  <text class="strong mono" x="427" y="180" text-anchor="middle">DataOutput&lt;T&gt;</text>
+  <text class="sm" x="427" y="202" text-anchor="middle">data and messages,</text>
+  <text class="sm" x="427" y="220" text-anchor="middle">or errors</text>
+
+  <rect class="box" x="175" y="150" width="155" height="84" rx="8"/>
+  <text class="strong" x="252" y="180" text-anchor="middle">ToActionResult</text>
+  <text class="mono" x="252" y="202" text-anchor="middle">ScopeMessageMap</text>
+  <text class="sm" x="252" y="220" text-anchor="middle">message → status</text>
+
+  <rect class="box" x="0" y="150" width="155" height="84" rx="8"/>
+  <text class="strong" x="77" y="180" text-anchor="middle">HTTP response</text>
+  <text class="mono" x="77" y="202" text-anchor="middle">201 Created</text>
+  <text class="sm" x="77" y="220" text-anchor="middle">or 400, 403, 404, 409</text>
+
+  <line class="wire-accent" x1="525" y1="192" x2="507" y2="192" marker-end="url(#request-flow-arrow-accent)"/>
+  <line class="wire" x1="350" y1="192" x2="332" y2="192" marker-end="url(#request-flow-arrow)"/>
+  <line class="wire" x1="175" y1="192" x2="157" y2="192" marker-end="url(#request-flow-arrow)"/>
+
+  <text class="sm" x="340" y="272" text-anchor="middle">a business outcome is returned, never thrown; the map turns its message into a status</text>
+</svg>
