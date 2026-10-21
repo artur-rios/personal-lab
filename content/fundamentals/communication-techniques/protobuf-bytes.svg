@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 232" role="img" aria-labelledby="pb-title">
+  <title id="pb-title">The 24 bytes of the encoded Book message, one field per row. Row one: bytes 08 96 01. 08 is the key, field 1 with wire type 0, a varint; 96 01 is 150 written in 7-bit groups. Row two: bytes 12 04 44 75 6e 65. 12 is the key for field 2, length-delimited; 04 is the length; the next four bytes spell Dune. Row three: 1a 02 73 66, field 3, two bytes, sf. Row four: 1a 07 followed by the seven bytes of classic; the repeated field simply appears again. Row five: 20 01, field 4, a varint, 1 for true. Field names never appear on the wire, only field numbers.</title>
+
+  <!-- Row 1: id = 150 -->
+  <rect class="solid" x="0" y="0" width="24" height="26" rx="3"/><text class="mono on-solid" x="12" y="17" text-anchor="middle">08</text>
+  <rect class="box" x="27" y="0" width="24" height="26" rx="3"/><text class="mono" x="39" y="17" text-anchor="middle">96</text>
+  <rect class="box" x="54" y="0" width="24" height="26" rx="3"/><text class="mono" x="66" y="17" text-anchor="middle">01</text>
+  <text class="strong" x="262" y="12">id = 150</text>
+  <text class="sm" x="262" y="28">key 0x08: field 1, varint; 96 01 is 150 in 7-bit groups</text>
+
+  <!-- Row 2: title = "Dune" -->
+  <rect class="solid" x="0" y="38" width="24" height="26" rx="3"/><text class="mono on-solid" x="12" y="55" text-anchor="middle">12</text>
+  <rect class="box-accent" x="27" y="38" width="24" height="26" rx="3"/><text class="mono" x="39" y="55" text-anchor="middle">04</text>
+  <rect class="box" x="54" y="38" width="24" height="26" rx="3"/><text class="mono" x="66" y="55" text-anchor="middle">44</text>
+  <rect class="box" x="81" y="38" width="24" height="26" rx="3"/><text class="mono" x="93" y="55" text-anchor="middle">75</text>
+  <rect class="box" x="108" y="38" width="24" height="26" rx="3"/><text class="mono" x="120" y="55" text-anchor="middle">6e</text>
+  <rect class="box" x="135" y="38" width="24" height="26" rx="3"/><text class="mono" x="147" y="55" text-anchor="middle">65</text>
+  <text class="strong" x="262" y="50">title = "Dune"</text>
+  <text class="sm" x="262" y="66">key 0x12: field 2, length-delimited; 4 bytes follow</text>
+
+  <!-- Row 3: tags = "sf" -->
+  <rect class="solid" x="0" y="76" width="24" height="26" rx="3"/><text class="mono on-solid" x="12" y="93" text-anchor="middle">1a</text>
+  <rect class="box-accent" x="27" y="76" width="24" height="26" rx="3"/><text class="mono" x="39" y="93" text-anchor="middle">02</text>
+  <rect class="box" x="54" y="76" width="24" height="26" rx="3"/><text class="mono" x="66" y="93" text-anchor="middle">73</text>
+  <rect class="box" x="81" y="76" width="24" height="26" rx="3"/><text class="mono" x="93" y="93" text-anchor="middle">66</text>
+  <text class="strong" x="262" y="88">tags = "sf"</text>
+  <text class="sm" x="262" y="104">key 0x1a: field 3, length-delimited; 2 bytes follow</text>
+
+  <!-- Row 4: tags = "classic" -->
+  <rect class="solid" x="0" y="114" width="24" height="26" rx="3"/><text class="mono on-solid" x="12" y="131" text-anchor="middle">1a</text>
+  <rect class="box-accent" x="27" y="114" width="24" height="26" rx="3"/><text class="mono" x="39" y="131" text-anchor="middle">07</text>
+  <rect class="box" x="54" y="114" width="24" height="26" rx="3"/><text class="mono" x="66" y="131" text-anchor="middle">63</text>
+  <rect class="box" x="81" y="114" width="24" height="26" rx="3"/><text class="mono" x="93" y="131" text-anchor="middle">6c</text>
+  <rect class="box" x="108" y="114" width="24" height="26" rx="3"/><text class="mono" x="120" y="131" text-anchor="middle">61</text>
+  <rect class="box" x="135" y="114" width="24" height="26" rx="3"/><text class="mono" x="147" y="131" text-anchor="middle">73</text>
+  <rect class="box" x="162" y="114" width="24" height="26" rx="3"/><text class="mono" x="174" y="131" text-anchor="middle">73</text>
+  <rect class="box" x="189" y="114" width="24" height="26" rx="3"/><text class="mono" x="201" y="131" text-anchor="middle">69</text>
+  <rect class="box" x="216" y="114" width="24" height="26" rx="3"/><text class="mono" x="228" y="131" text-anchor="middle">63</text>
+  <text class="strong" x="262" y="126">tags = "classic"</text>
+  <text class="sm" x="262" y="142">the repeated field simply appears again</text>
+
+  <!-- Row 5: in_stock = true -->
+  <rect class="solid" x="0" y="152" width="24" height="26" rx="3"/><text class="mono on-solid" x="12" y="169" text-anchor="middle">20</text>
+  <rect class="box" x="27" y="152" width="24" height="26" rx="3"/><text class="mono" x="39" y="169" text-anchor="middle">01</text>
+  <text class="strong" x="262" y="164">in_stock = true</text>
+  <text class="sm" x="262" y="180">key 0x20: field 4, varint; 1 means true</text>
+
+  <!-- Legend -->
+  <rect class="solid" x="0" y="204" width="14" height="14" rx="2"/>
+  <text class="sm" x="20" y="216">key: field number × 8 + wire type</text>
+  <rect class="box-accent" x="250" y="204" width="14" height="14" rx="2"/>
+  <text class="sm" x="270" y="216">length</text>
+  <rect class="box" x="330" y="204" width="14" height="14" rx="2"/>
+  <text class="sm" x="350" y="216">value</text>
+  <text class="sm" x="410" y="216">Names never appear, only numbers.</text>
+</svg>

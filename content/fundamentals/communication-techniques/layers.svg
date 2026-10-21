@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 258" role="img" aria-labelledby="ly-title">
+  <title id="ly-title">The three choices behind every conversation between programs, stacked. At the top, the interaction style: REST, remote procedure calls such as gRPC and JSON-RPC, GraphQL, push channels such as server-sent events and WebSocket, and messaging through queues and logs. In the middle, the data format: JSON, XML, Protocol Buffers, and others such as Avro, CBOR and MessagePack. Below that, the transport: HTTP versions 1.1, 2 and 3, WebSocket, and broker protocols such as AMQP, MQTT and Kafka's. At the bottom, the network: TCP or QUIC, usually with TLS. The layers combine freely: REST can carry XML, RPC can carry JSON, and a message queue can carry Protocol Buffers.</title>
+
+  <!-- Interaction style -->
+  <text class="strong" x="0" y="24">Interaction</text>
+  <text class="sm" x="0" y="42">how they talk</text>
+  <rect class="solid" x="140" y="0" width="100" height="52" rx="6"/>
+  <text class="strong on-solid" x="190" y="31" text-anchor="middle">REST</text>
+  <rect class="solid" x="250" y="0" width="100" height="52" rx="6"/>
+  <text class="strong on-solid" x="300" y="22" text-anchor="middle">RPC</text>
+  <text class="sm on-solid" x="300" y="40" text-anchor="middle">gRPC, JSON-RPC</text>
+  <rect class="solid" x="360" y="0" width="100" height="52" rx="6"/>
+  <text class="strong on-solid" x="410" y="31" text-anchor="middle">GraphQL</text>
+  <rect class="solid" x="470" y="0" width="100" height="52" rx="6"/>
+  <text class="strong on-solid" x="520" y="22" text-anchor="middle">Push</text>
+  <text class="sm on-solid" x="520" y="40" text-anchor="middle">SSE, WebSocket</text>
+  <rect class="solid" x="580" y="0" width="100" height="52" rx="6"/>
+  <text class="strong on-solid" x="630" y="22" text-anchor="middle">Messaging</text>
+  <text class="sm on-solid" x="630" y="40" text-anchor="middle">queues, logs</text>
+
+  <!-- Data format -->
+  <text class="strong" x="0" y="92">Data format</text>
+  <text class="sm" x="0" y="110">what the bytes mean</text>
+  <rect class="box-accent" x="140" y="68" width="127" height="52" rx="6"/>
+  <text class="strong" x="203" y="90" text-anchor="middle">JSON</text>
+  <text class="sm" x="203" y="108" text-anchor="middle">text</text>
+  <rect class="box-accent" x="277" y="68" width="127" height="52" rx="6"/>
+  <text class="strong" x="340" y="90" text-anchor="middle">XML</text>
+  <text class="sm" x="340" y="108" text-anchor="middle">text</text>
+  <rect class="box-accent" x="414" y="68" width="127" height="52" rx="6"/>
+  <text class="strong" x="477" y="90" text-anchor="middle">Protobuf</text>
+  <text class="sm" x="477" y="108" text-anchor="middle">binary, schema</text>
+  <rect class="box-accent" x="551" y="68" width="129" height="52" rx="6"/>
+  <text class="strong" x="615" y="90" text-anchor="middle">Others</text>
+  <text class="sm" x="615" y="108" text-anchor="middle">Avro, CBOR, …</text>
+
+  <!-- Transport -->
+  <text class="strong" x="0" y="160">Transport</text>
+  <text class="sm" x="0" y="178">how bytes move</text>
+  <rect class="box" x="140" y="136" width="173" height="52" rx="6"/>
+  <text class="strong" x="226" y="158" text-anchor="middle">HTTP</text>
+  <text class="sm" x="226" y="176" text-anchor="middle">1.1, 2, 3</text>
+  <rect class="box" x="323" y="136" width="173" height="52" rx="6"/>
+  <text class="strong" x="409" y="158" text-anchor="middle">WebSocket</text>
+  <text class="sm" x="409" y="176" text-anchor="middle">starts as HTTP</text>
+  <rect class="box" x="506" y="136" width="174" height="52" rx="6"/>
+  <text class="strong" x="593" y="158" text-anchor="middle">Broker protocols</text>
+  <text class="sm" x="593" y="176" text-anchor="middle">AMQP, MQTT, Kafka</text>
+
+  <!-- Network -->
+  <text class="strong" x="0" y="228">Network</text>
+  <text class="sm" x="0" y="246">see the networks article</text>
+  <rect class="box" x="140" y="204" width="540" height="52" rx="6"/>
+  <text class="strong" x="410" y="226" text-anchor="middle">TCP or QUIC</text>
+  <text class="sm" x="410" y="244" text-anchor="middle">usually encrypted with TLS</text>
+</svg>

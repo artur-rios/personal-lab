@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 318" role="img" aria-labelledby="push-title">
+  <title id="push-title">Four ways for a server to tell a client that something happened, as sequence diagrams of a client and a server. Polling: the client asks repeatedly; most answers say nothing new, and the event is seen only at the next poll. Long polling: the client asks, the server holds the request open until an event happens and then answers, and the client immediately asks again. Server-sent events: the client makes one request, and the server keeps the response open, sending each event down it as it happens. WebSocket: after an HTTP upgrade handshake, either side can send a message at any time.</title>
+  <defs>
+    <marker id="push-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="push-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Polling -->
+  <text class="strong" x="80" y="16" text-anchor="middle">Polling</text>
+  <text class="sm" x="30" y="38" text-anchor="middle">client</text>
+  <text class="sm" x="130" y="38" text-anchor="middle">server</text>
+  <line class="sep" x1="30" y1="46" x2="30" y2="272"/>
+  <line class="sep" x1="130" y1="46" x2="130" y2="272"/>
+  <line class="wire" x1="30" y1="60" x2="128" y2="70" marker-end="url(#push-arrow)"/>
+  <line class="wire" x1="130" y1="78" x2="32" y2="88" marker-end="url(#push-arrow)"/>
+  <text class="sm" x="80" y="104" text-anchor="middle">nothing new</text>
+  <line class="wire" x1="30" y1="126" x2="128" y2="136" marker-end="url(#push-arrow)"/>
+  <line class="wire" x1="130" y1="144" x2="32" y2="154" marker-end="url(#push-arrow)"/>
+  <text class="sm" x="80" y="170" text-anchor="middle">nothing new</text>
+  <line class="wire" x1="30" y1="192" x2="128" y2="202" marker-end="url(#push-arrow)"/>
+  <line class="wire-accent" x1="130" y1="210" x2="32" y2="220" marker-end="url(#push-arrow-accent)"/>
+  <text class="sm accent" x="80" y="236" text-anchor="middle">event</text>
+  <text class="sm" x="80" y="292" text-anchor="middle">asks again and again</text>
+
+  <!-- Long polling -->
+  <text class="strong" x="253" y="16" text-anchor="middle">Long polling</text>
+  <text class="sm" x="203" y="38" text-anchor="middle">client</text>
+  <text class="sm" x="303" y="38" text-anchor="middle">server</text>
+  <line class="sep" x1="203" y1="46" x2="203" y2="272"/>
+  <line class="sep" x1="303" y1="46" x2="303" y2="272"/>
+  <line class="wire" x1="203" y1="60" x2="301" y2="70" marker-end="url(#push-arrow)"/>
+  <rect class="box" x="297" y="72" width="12" height="70" rx="3"/>
+  <text class="sm" x="292" y="110" text-anchor="end">holds</text>
+  <line class="wire-accent" x1="303" y1="142" x2="205" y2="152" marker-end="url(#push-arrow-accent)"/>
+  <text class="sm accent" x="253" y="140" text-anchor="middle">event</text>
+  <line class="wire" x1="203" y1="160" x2="301" y2="170" marker-end="url(#push-arrow)"/>
+  <rect class="box" x="297" y="172" width="12" height="62" rx="3"/>
+  <line class="wire-accent" x1="303" y1="234" x2="205" y2="244" marker-end="url(#push-arrow-accent)"/>
+  <text class="sm accent" x="253" y="232" text-anchor="middle">event</text>
+  <text class="sm" x="253" y="292" text-anchor="middle">server holds each request</text>
+
+  <!-- SSE -->
+  <text class="strong" x="426" y="16" text-anchor="middle">Server-sent events</text>
+  <text class="sm" x="376" y="38" text-anchor="middle">client</text>
+  <text class="sm" x="476" y="38" text-anchor="middle">server</text>
+  <line class="sep" x1="376" y1="46" x2="376" y2="272"/>
+  <line class="sep" x1="476" y1="46" x2="476" y2="272"/>
+  <line class="wire" x1="376" y1="60" x2="474" y2="70" marker-end="url(#push-arrow)"/>
+  <rect class="box" x="470" y="72" width="12" height="188" rx="3"/>
+  <line class="wire-accent" x1="470" y1="104" x2="378" y2="114" marker-end="url(#push-arrow-accent)"/>
+  <line class="wire-accent" x1="470" y1="150" x2="378" y2="160" marker-end="url(#push-arrow-accent)"/>
+  <line class="wire-accent" x1="470" y1="176" x2="378" y2="186" marker-end="url(#push-arrow-accent)"/>
+  <line class="wire-accent" x1="470" y1="236" x2="378" y2="246" marker-end="url(#push-arrow-accent)"/>
+  <text class="sm" x="426" y="292" text-anchor="middle">one response, many events</text>
+
+  <!-- WebSocket -->
+  <text class="strong" x="599" y="16" text-anchor="middle">WebSocket</text>
+  <text class="sm" x="549" y="38" text-anchor="middle">client</text>
+  <text class="sm" x="649" y="38" text-anchor="middle">server</text>
+  <line class="sep" x1="549" y1="46" x2="549" y2="272"/>
+  <line class="sep" x1="649" y1="46" x2="649" y2="272"/>
+  <line class="wire" x1="549" y1="60" x2="647" y2="70" marker-end="url(#push-arrow)"/>
+  <line class="wire" x1="649" y1="78" x2="551" y2="88" marker-end="url(#push-arrow)"/>
+  <text class="sm" x="599" y="104" text-anchor="middle">upgraded</text>
+  <line class="wire-accent" x1="549" y1="126" x2="647" y2="136" marker-end="url(#push-arrow-accent)"/>
+  <line class="wire-accent" x1="649" y1="160" x2="551" y2="170" marker-end="url(#push-arrow-accent)"/>
+  <line class="wire-accent" x1="649" y1="186" x2="551" y2="196" marker-end="url(#push-arrow-accent)"/>
+  <line class="wire-accent" x1="549" y1="226" x2="647" y2="236" marker-end="url(#push-arrow-accent)"/>
+  <text class="sm" x="599" y="292" text-anchor="middle">both sides, any time</text>
+
+  <text class="sm" x="0" y="314">Accent arrows carry the data the client is waiting for; grey arrows are requests and empty replies.</text>
+</svg>

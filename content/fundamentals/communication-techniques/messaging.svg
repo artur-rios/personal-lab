@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 374" role="img" aria-labelledby="msg-title">
+  <title id="msg-title">Three shapes of asynchronous messaging. A queue, point to point: a producer puts messages on a queue, and each message is taken by exactly one of the competing workers, which spreads the work between them. Publish-subscribe: a publisher sends a message to a topic, and every subscriber, here billing, email and analytics, receives its own copy. A log: a producer appends messages to the end of a log, where each has a numbered offset; messages are kept after they are read, and each consumer group keeps its own position, so group A can be at offset 6 while group B, slower or replaying history, is at offset 3.</title>
+  <defs>
+    <marker id="msg-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="msg-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Queue -->
+  <text class="strong" x="0" y="14">Queue (point to point)</text>
+  <rect class="box" x="0" y="34" width="100" height="40" rx="6"/>
+  <text x="50" y="59" text-anchor="middle">Producer</text>
+  <line class="wire" x1="100" y1="54" x2="148" y2="54" marker-end="url(#msg-arrow)"/>
+  <rect class="box-accent" x="150" y="34" width="168" height="40" rx="6"/>
+  <rect class="solid" x="160" y="42" width="30" height="24" rx="3"/>
+  <rect class="solid" x="198" y="42" width="30" height="24" rx="3"/>
+  <rect class="solid" x="236" y="42" width="30" height="24" rx="3"/>
+  <rect class="solid" x="274" y="42" width="30" height="24" rx="3"/>
+  <path class="wire-accent" d="M318 48 L368 30" marker-end="url(#msg-arrow-accent)"/>
+  <path class="wire-accent" d="M318 60 L368 78" marker-end="url(#msg-arrow-accent)"/>
+  <rect class="box" x="370" y="12" width="100" height="34" rx="6"/>
+  <text x="420" y="34" text-anchor="middle">Worker 1</text>
+  <rect class="box" x="370" y="62" width="100" height="34" rx="6"/>
+  <text x="420" y="84" text-anchor="middle">Worker 2</text>
+  <text class="sm" x="492" y="50">each message goes to</text>
+  <text class="sm" x="492" y="66">exactly one worker</text>
+
+  <line class="sep" x1="0" y1="114" x2="680" y2="114"/>
+
+  <!-- Publish-subscribe -->
+  <text class="strong" x="0" y="140">Publish-subscribe</text>
+  <rect class="box" x="0" y="168" width="100" height="40" rx="6"/>
+  <text x="50" y="193" text-anchor="middle">Publisher</text>
+  <line class="wire" x1="100" y1="188" x2="148" y2="188" marker-end="url(#msg-arrow)"/>
+  <rect class="box-accent" x="150" y="168" width="168" height="40" rx="6"/>
+  <text class="strong" x="234" y="193" text-anchor="middle">Topic</text>
+  <path class="wire-accent" d="M318 180 L368 152" marker-end="url(#msg-arrow-accent)"/>
+  <path class="wire-accent" d="M318 188 L368 188" marker-end="url(#msg-arrow-accent)"/>
+  <path class="wire-accent" d="M318 196 L368 224" marker-end="url(#msg-arrow-accent)"/>
+  <rect class="box" x="370" y="134" width="100" height="32" rx="6"/>
+  <text x="420" y="155" text-anchor="middle">Billing</text>
+  <rect class="box" x="370" y="172" width="100" height="32" rx="6"/>
+  <text x="420" y="193" text-anchor="middle">Email</text>
+  <rect class="box" x="370" y="210" width="100" height="32" rx="6"/>
+  <text x="420" y="231" text-anchor="middle">Analytics</text>
+  <text class="sm" x="492" y="184">every subscriber gets</text>
+  <text class="sm" x="492" y="200">its own copy</text>
+
+  <line class="sep" x1="0" y1="258" x2="680" y2="258"/>
+
+  <!-- Log -->
+  <text class="strong" x="0" y="284">Log (Kafka-style)</text>
+  <rect class="box" x="0" y="300" width="100" height="36" rx="6"/>
+  <text x="50" y="323" text-anchor="middle">Producer</text>
+  <path class="wire" d="M100 318 H120 V306 H486" fill="none"/>
+  <line class="wire" x1="486" y1="306" x2="486" y2="314" marker-end="url(#msg-arrow)"/>
+  <rect class="box" x="150" y="318" width="40" height="28" rx="3"/><text class="mono" x="170" y="337" text-anchor="middle">0</text>
+  <rect class="box" x="194" y="318" width="40" height="28" rx="3"/><text class="mono" x="214" y="337" text-anchor="middle">1</text>
+  <rect class="box" x="238" y="318" width="40" height="28" rx="3"/><text class="mono" x="258" y="337" text-anchor="middle">2</text>
+  <rect class="box-accent" x="282" y="318" width="40" height="28" rx="3"/><text class="mono accent" x="302" y="337" text-anchor="middle">3</text>
+  <rect class="box" x="326" y="318" width="40" height="28" rx="3"/><text class="mono" x="346" y="337" text-anchor="middle">4</text>
+  <rect class="box" x="370" y="318" width="40" height="28" rx="3"/><text class="mono" x="390" y="337" text-anchor="middle">5</text>
+  <rect class="box-accent" x="414" y="318" width="40" height="28" rx="3"/><text class="mono accent" x="434" y="337" text-anchor="middle">6</text>
+  <rect class="solid" x="458" y="318" width="56" height="28" rx="3"/><text class="sm on-solid" x="486" y="337" text-anchor="middle">append</text>
+  <text class="sm" x="302" y="364" text-anchor="middle">group B</text>
+  <text class="sm" x="434" y="364" text-anchor="middle">group A</text>
+  <text class="sm" x="532" y="326">messages stay;</text>
+  <text class="sm" x="532" y="342">each group keeps</text>
+  <text class="sm" x="532" y="358">its own offset</text>
+</svg>
