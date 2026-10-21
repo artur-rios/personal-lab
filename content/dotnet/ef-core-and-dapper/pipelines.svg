@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="white-space: pre" viewBox="0 0 680 310" role="img" aria-labelledby="pipes-title">
+  <title id="pipes-title">How a query travels in EF Core and in Dapper. In EF Core, a LINQ query is captured as an expression tree, which the database provider translates into SQL and caches; the SQL runs through an ADO.NET command against the database. The rows come back through a data reader to the materialiser, which turns them into entities, and the change tracker snapshots them and resolves identities before your code receives tracked entities. In Dapper, you write the SQL, pass parameters as an object, Dapper runs it through an ADO.NET command against the database, and a mapper generated and cached per query turns the rows into objects.</title>
+  <defs>
+    <marker id="pipes-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="pipes-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="strong" x="0" y="16">EF Core</text>
+
+  <rect class="box" x="0" y="28" width="120" height="56" rx="8"/>
+  <text class="strong" x="60" y="52" text-anchor="middle">LINQ query</text>
+  <text class="sm mono" x="60" y="72" text-anchor="middle">db.Blogs.Where(…)</text>
+
+  <rect class="box" x="140" y="28" width="120" height="56" rx="8"/>
+  <text class="strong" x="200" y="52" text-anchor="middle">Expression tree</text>
+  <text class="sm" x="200" y="72" text-anchor="middle">code as data</text>
+
+  <rect class="box-accent" x="280" y="28" width="120" height="56" rx="8"/>
+  <text class="strong" x="340" y="52" text-anchor="middle">Provider</text>
+  <text class="sm" x="340" y="72" text-anchor="middle">translates, caches</text>
+
+  <rect class="box" x="420" y="28" width="120" height="56" rx="8"/>
+  <text class="strong" x="480" y="52" text-anchor="middle">SQL command</text>
+  <text class="sm" x="480" y="72" text-anchor="middle">through ADO.NET</text>
+
+  <rect class="solid" x="560" y="28" width="120" height="56" rx="8"/>
+  <text class="strong on-solid" x="620" y="61" text-anchor="middle">Database</text>
+
+  <line class="wire" x1="120" y1="56" x2="138" y2="56" marker-end="url(#pipes-arrow)"/>
+  <line class="wire" x1="260" y1="56" x2="278" y2="56" marker-end="url(#pipes-arrow)"/>
+  <line class="wire" x1="400" y1="56" x2="418" y2="56" marker-end="url(#pipes-arrow)"/>
+  <line class="wire" x1="540" y1="56" x2="558" y2="56" marker-end="url(#pipes-arrow)"/>
+
+  <rect class="box" x="560" y="112" width="120" height="56" rx="8"/>
+  <text class="strong" x="620" y="136" text-anchor="middle">Rows</text>
+  <text class="sm" x="620" y="156" text-anchor="middle">a data reader</text>
+
+  <rect class="box" x="420" y="112" width="120" height="56" rx="8"/>
+  <text class="strong" x="480" y="136" text-anchor="middle">Materialiser</text>
+  <text class="sm" x="480" y="156" text-anchor="middle">rows → entities</text>
+
+  <rect class="box-accent" x="280" y="112" width="120" height="56" rx="8"/>
+  <text class="strong" x="340" y="136" text-anchor="middle">Change tracker</text>
+  <text class="sm" x="340" y="156" text-anchor="middle">snapshot, identity</text>
+
+  <rect class="box" x="140" y="112" width="120" height="56" rx="8"/>
+  <text class="strong" x="200" y="136" text-anchor="middle">Your entities</text>
+  <text class="sm" x="200" y="156" text-anchor="middle">tracked by default</text>
+
+  <line class="wire" x1="620" y1="84" x2="620" y2="110" marker-end="url(#pipes-arrow)"/>
+  <line class="wire" x1="560" y1="140" x2="542" y2="140" marker-end="url(#pipes-arrow)"/>
+  <line class="wire" x1="420" y1="140" x2="402" y2="140" marker-end="url(#pipes-arrow)"/>
+  <line class="wire" x1="280" y1="140" x2="262" y2="140" marker-end="url(#pipes-arrow)"/>
+
+  <line class="sep" x1="0" y1="196" x2="680" y2="196"/>
+
+  <text class="strong" x="0" y="222">Dapper</text>
+
+  <rect class="box" x="0" y="234" width="120" height="56" rx="8"/>
+  <text class="strong" x="60" y="258" text-anchor="middle">SQL you write</text>
+  <text class="sm mono" x="60" y="278" text-anchor="middle">"SELECT … @id"</text>
+
+  <rect class="box" x="140" y="234" width="120" height="56" rx="8"/>
+  <text class="strong" x="200" y="258" text-anchor="middle">Parameters</text>
+  <text class="sm mono" x="200" y="278" text-anchor="middle">new { id = 1 }</text>
+
+  <rect class="box" x="280" y="234" width="120" height="56" rx="8"/>
+  <text class="strong" x="340" y="258" text-anchor="middle">SQL command</text>
+  <text class="sm" x="340" y="278" text-anchor="middle">through ADO.NET</text>
+
+  <rect class="solid" x="420" y="234" width="120" height="56" rx="8"/>
+  <text class="strong on-solid" x="480" y="267" text-anchor="middle">Database</text>
+
+  <rect class="box-accent" x="560" y="234" width="120" height="56" rx="8"/>
+  <text class="strong" x="620" y="258" text-anchor="middle">Mapper</text>
+  <text class="sm" x="620" y="278" text-anchor="middle">cached per query</text>
+
+  <line class="wire" x1="120" y1="262" x2="138" y2="262" marker-end="url(#pipes-arrow)"/>
+  <line class="wire" x1="260" y1="262" x2="278" y2="262" marker-end="url(#pipes-arrow)"/>
+  <line class="wire" x1="400" y1="262" x2="418" y2="262" marker-end="url(#pipes-arrow)"/>
+  <line class="wire-accent" x1="540" y1="262" x2="558" y2="262" marker-end="url(#pipes-arrow-accent)"/>
+</svg>

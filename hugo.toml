@@ -27,7 +27,7 @@ theme = 'nuno'
   description = 'Study notes, brainstorms and project tracking by Artur Rios, written in the open.'
   tagline = 'Study notes, brainstorms and projects.'
   masthead = 'Study<span class="accent">,</span><br>think<span class="accent">,</span><br>build.'
-  mainSections = ['fundamentals', 'front-end', 'concepts', 'security', 'brainstorms', 'projects']
+  mainSections = ['fundamentals', 'front-end', 'dotnet', 'concepts', 'security', 'git', 'brainstorms', 'projects']
 
   [params.author]
     name = 'Artur Rios'
@@ -38,33 +38,68 @@ theme = 'nuno'
     url = 'https://github.com/artur-rios'
 
 [menu]
+  # The study-note sections sit under one dropdown entry; the overridden
+  # layouts/partials/nav.html renders an entry with children as a menu, and
+  # each child's params.blurb as the line under its name.
   [[menu.main]]
-    identifier = 'fundamentals'
-    name = 'Fundamentals'
-    url = '/fundamentals/'
+    identifier = 'study-notes'
+    name = 'Study notes'
     weight = 10
   [[menu.main]]
+    identifier = 'fundamentals'
+    parent = 'study-notes'
+    name = 'Fundamentals'
+    pageRef = '/fundamentals'
+    weight = 10
+    [menu.main.params]
+      blurb = 'The core ideas of computing and programming'
+  [[menu.main]]
     identifier = 'front-end'
+    parent = 'study-notes'
     name = 'Front-end'
-    url = '/front-end/'
+    pageRef = '/front-end'
     weight = 15
+    [menu.main.params]
+      blurb = 'The frameworks behind web and mobile interfaces'
   [[menu.main]]
     identifier = 'concepts'
+    parent = 'study-notes'
     name = 'Concepts'
-    url = '/concepts/'
+    pageRef = '/concepts'
     weight = 17
+    [menu.main.params]
+      blurb = 'The principles and patterns behind software design'
   [[menu.main]]
     identifier = 'security'
+    parent = 'study-notes'
     name = 'Security'
-    url = '/security/'
+    pageRef = '/security'
     weight = 18
+    [menu.main.params]
+      blurb = 'How vulnerabilities are named, tracked and prevented'
+  [[menu.main]]
+    identifier = 'git'
+    parent = 'study-notes'
+    name = 'Git'
+    pageRef = '/git'
+    weight = 19
+    [menu.main.params]
+      blurb = 'My config, everyday commands, submodules and tags'
+  [[menu.main]]
+    identifier = 'dotnet'
+    parent = 'study-notes'
+    name = '.NET'
+    pageRef = '/dotnet'
+    weight = 16
+    [menu.main.params]
+      blurb = 'How C# and .NET work, data access, testing and libraries'
   [[menu.main]]
     identifier = 'brainstorms'
     name = 'Brainstorms'
-    url = '/brainstorms/'
+    pageRef = '/brainstorms'
     weight = 20
   [[menu.main]]
     identifier = 'projects'
     name = 'Projects'
-    url = '/projects/'
+    pageRef = '/projects'
     weight = 30

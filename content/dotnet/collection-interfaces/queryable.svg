@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="white-space: pre" viewBox="0 0 680 300" role="img" aria-labelledby="queryable-title">
+  <title id="queryable-title">Where the filter runs. With IQueryable of Product, the lambda p.Price greater than 100 becomes an expression tree; EF Core translates it into SQL, the database filters, and only the two matching rows come back. With IEnumerable of Product, after AsEnumerable, EF Core sends a SELECT with no WHERE clause, all three rows come back, and the lambda runs as a compiled delegate in the application's memory, keeping two.</title>
+  <defs>
+    <marker id="queryable-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="queryable-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="strong" x="0" y="20">Application</text>
+  <text class="strong" x="680" y="20" text-anchor="end">Database</text>
+  <line class="sep" x1="470" y1="30" x2="470" y2="290"/>
+
+  <text class="sm accent" x="0" y="50">IQueryable&lt;Product&gt;: the filter is data</text>
+  <rect class="box-accent" x="0" y="60" width="190" height="56" rx="8"/>
+  <text class="mono" x="95" y="84" text-anchor="middle">p.Price &gt; 100</text>
+  <text class="sm" x="95" y="104" text-anchor="middle">an expression tree</text>
+  <rect class="box-accent" x="230" y="60" width="200" height="56" rx="8"/>
+  <text class="strong" x="330" y="84" text-anchor="middle">EF Core provider</text>
+  <text class="sm" x="330" y="104" text-anchor="middle">translates the tree to SQL</text>
+  <rect class="solid" x="500" y="60" width="180" height="56" rx="8"/>
+  <text class="mono on-solid" x="590" y="84" text-anchor="middle">WHERE Price &gt; 100.0</text>
+  <text class="sm on-solid" x="590" y="104" text-anchor="middle">filters 3 rows to 2</text>
+  <line class="wire-accent" x1="190" y1="88" x2="228" y2="88" marker-end="url(#queryable-arrow-accent)"/>
+  <line class="wire-accent" x1="430" y1="88" x2="498" y2="88" marker-end="url(#queryable-arrow-accent)"/>
+  <path class="wire-accent" d="M590 116 V134 H330 V118" marker-end="url(#queryable-arrow-accent)"/>
+  <text class="sm accent" x="530" y="152" text-anchor="middle">2 rows come back</text>
+
+  <text class="sm" x="0" y="186">IEnumerable&lt;Product&gt; after AsEnumerable(): the filter is code</text>
+  <rect class="box" x="500" y="196" width="180" height="56" rx="8"/>
+  <text class="mono" x="590" y="220" text-anchor="middle">SELECT … FROM Products</text>
+  <text class="sm" x="590" y="240" text-anchor="middle">no WHERE: all 3 rows</text>
+  <rect class="box" x="230" y="196" width="200" height="56" rx="8"/>
+  <text class="strong" x="330" y="220" text-anchor="middle">3 materialised rows</text>
+  <text class="sm" x="330" y="240" text-anchor="middle">in application memory</text>
+  <rect class="box" x="0" y="196" width="190" height="56" rx="8"/>
+  <text class="mono" x="95" y="220" text-anchor="middle">p.Price &gt; 100</text>
+  <text class="sm" x="95" y="240" text-anchor="middle">a compiled delegate: 2 kept</text>
+  <line class="wire" x1="500" y1="224" x2="432" y2="224" marker-end="url(#queryable-arrow)"/>
+  <line class="wire" x1="230" y1="224" x2="192" y2="224" marker-end="url(#queryable-arrow)"/>
+  <text class="sm" x="590" y="274" text-anchor="middle">3 rows come back</text>
+</svg>

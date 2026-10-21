@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="white-space: pre" viewBox="0 0 680 280" role="img" aria-labelledby="deferred-title">
+  <title id="deferred-title">How a deferred LINQ query runs. Building numbers.Where(...) only creates a Where iterator that remembers the source list and the predicate; nothing is read. When foreach calls MoveNext on the Where iterator, it pulls the next item from the list, runs the predicate, and either hands the item back as Current or pulls again. Items flow one at a time from the source, through the filter, to the loop body, and the source is read at that moment, so an item added after the query was built is still seen.</title>
+  <defs>
+    <marker id="deferred-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="deferred-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="strong" x="0" y="20">1. Building the query reads nothing</text>
+  <rect class="box" x="0" y="34" width="680" height="44" rx="8"/>
+  <text class="mono" x="20" y="61">var query = numbers.Where(n =&gt; n % 2 == 0);</text>
+  <text class="sm" x="660" y="61" text-anchor="end">stores source + predicate</text>
+
+  <text class="strong" x="0" y="116">2. foreach pulls one item at a time</text>
+
+  <rect class="box" x="0" y="136" width="170" height="64" rx="8"/>
+  <text class="strong" x="85" y="162" text-anchor="middle">Source</text>
+  <text class="mono" x="85" y="184" text-anchor="middle">List&lt;int&gt;</text>
+
+  <rect class="box-accent" x="255" y="136" width="170" height="64" rx="8"/>
+  <text class="strong" x="340" y="162" text-anchor="middle">Where iterator</text>
+  <text class="mono" x="340" y="184" text-anchor="middle">n % 2 == 0</text>
+
+  <rect class="solid" x="510" y="136" width="170" height="64" rx="8"/>
+  <text class="strong on-solid" x="595" y="162" text-anchor="middle">foreach body</text>
+  <text class="mono on-solid" x="595" y="184" text-anchor="middle">uses n</text>
+
+  <line class="wire-accent" x1="510" y1="150" x2="427" y2="150" marker-end="url(#deferred-arrow-accent)"/>
+  <text class="sm accent" x="468" y="132" text-anchor="middle">MoveNext()</text>
+  <line class="wire-accent" x1="255" y1="150" x2="172" y2="150" marker-end="url(#deferred-arrow-accent)"/>
+  <text class="sm accent" x="213" y="132" text-anchor="middle">MoveNext()</text>
+
+  <line class="wire" x1="170" y1="186" x2="253" y2="186" marker-end="url(#deferred-arrow)"/>
+  <text class="sm" x="213" y="218" text-anchor="middle">next item</text>
+  <line class="wire" x1="425" y1="186" x2="508" y2="186" marker-end="url(#deferred-arrow)"/>
+  <text class="sm" x="468" y="218" text-anchor="middle">Current, if it passes</text>
+
+  <rect class="zone" x="0" y="236" width="680" height="40" rx="8"/>
+  <text class="sm" x="340" y="261" text-anchor="middle">The source is read during the loop, and read again by every new loop.</text>
+</svg>

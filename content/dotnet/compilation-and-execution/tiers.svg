@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="white-space: pre" viewBox="0 0 680 250" role="img" aria-labelledby="tiers-title">
+  <title id="tiers-title">How MathOps.SumOfSquares moved through the tiers in one run. First the JIT compiled it as Instrumented Tier0: fast to produce, unoptimised, counting how the code runs, 148 bytes. A patchpoint in the loop counts down from 0x3E8, which is 1,000 iterations; when it reaches zero, on-stack replacement swaps the running loop for an optimised Tier1-OSR version of 57 bytes. Separately, call counting promotes the method after 30 calls, once 100 milliseconds have passed with no new Tier0 compilation, and the JIT builds a Tier1 version with dynamic profile-guided optimisation on a background thread: 28 bytes.</title>
+  <defs>
+    <marker id="tiers-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="strong" x="0" y="18">MathOps.SumOfSquares during one run</text>
+
+  <rect class="box" x="0" y="36" width="200" height="100" rx="8"/>
+  <text class="strong" x="100" y="60" text-anchor="middle">Instrumented Tier0</text>
+  <text class="sm" x="100" y="80" text-anchor="middle">compiled fast, not optimised</text>
+  <text class="sm" x="100" y="98" text-anchor="middle">counts how the code runs</text>
+  <text class="mono" x="100" y="122" text-anchor="middle">148 bytes</text>
+
+  <rect class="box-accent" x="240" y="36" width="200" height="100" rx="8"/>
+  <text class="strong" x="340" y="60" text-anchor="middle">Tier1-OSR</text>
+  <text class="sm" x="340" y="80" text-anchor="middle">optimised loop swapped in</text>
+  <text class="sm" x="340" y="98" text-anchor="middle">while the method is running</text>
+  <text class="mono" x="340" y="122" text-anchor="middle">57 bytes</text>
+
+  <rect class="solid" x="480" y="36" width="200" height="100" rx="8"/>
+  <text class="strong on-solid" x="580" y="60" text-anchor="middle">Tier1, Dynamic PGO</text>
+  <text class="sm on-solid" x="580" y="80" text-anchor="middle">fully optimised using</text>
+  <text class="sm on-solid" x="580" y="98" text-anchor="middle">the counts from Tier0</text>
+  <text class="mono on-solid" x="580" y="122" text-anchor="middle">28 bytes</text>
+
+  <line class="wire" x1="200" y1="86" x2="238" y2="86" marker-end="url(#tiers-arrow)"/>
+  <line class="wire" x1="440" y1="86" x2="478" y2="86" marker-end="url(#tiers-arrow)"/>
+
+  <rect class="zone" x="0" y="168" width="330" height="76" rx="8"/>
+  <text class="sm" x="165" y="192" text-anchor="middle">patchpoint in the Tier0 loop</text>
+  <text class="mono" x="165" y="212" text-anchor="middle">mov dword ptr [rbp-0x50], 0x3E8</text>
+  <text class="sm" x="165" y="232" text-anchor="middle">counts down 1,000 iterations</text>
+
+  <rect class="zone" x="350" y="168" width="330" height="76" rx="8"/>
+  <text class="sm" x="515" y="192" text-anchor="middle">call counting</text>
+  <text class="sm" x="515" y="212" text-anchor="middle">30 calls, after 100 ms with no new Tier0 JIT</text>
+  <text class="sm" x="515" y="232" text-anchor="middle">Tier1 is compiled on a background thread</text>
+
+  <line class="wire" x1="219" y1="168" x2="219" y2="92" marker-end="url(#tiers-arrow)"/>
+  <line class="wire" x1="459" y1="168" x2="459" y2="92" marker-end="url(#tiers-arrow)"/>
+</svg>

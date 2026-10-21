@@ -1,0 +1,10 @@
+{{- /* Whether a main menu entry is the current page or one of its ancestors.
+       Takes (dict "page" <page> "entry" <menu entry>). The theme's test, plus
+       a section check for entries that set pageRef, so an article lights up
+       the section it lives in. */ -}}
+{{- $page := .page -}}
+{{- $current := or ($page.IsMenuCurrent "main" .entry) ($page.HasMenuCurrent "main" .entry) -}}
+{{- with .entry.Page }}
+  {{- if not .IsHome }}{{ $current = or $current (eq $page .) ($page.IsDescendant .) }}{{ end -}}
+{{- end -}}
+{{- return $current -}}
