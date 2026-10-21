@@ -2,14 +2,16 @@
 title: "Sizing the Server"
 description: "A sizing model for my self-hosted stack: a reservation and a limit for every service, from Traefik and Jenkins to each API and web app per environment, a formula with headroom, the numbers worked through on a 4 vCPU, 16 GB server, and the signals that say it is time to grow."
 date: 2026-10-21T17:55:00Z
-categories: ["Projects"]
+categories: ["Infrastructure"]
+# The pages lived under /projects/ until the section was renamed.
+aliases: ["/projects/infrastructure-sizing/"]
 tags: ["Infrastructure", "Capacity Planning", "Docker", "PostgreSQL", "Monitoring"]
 series: ["Infrastructure"]
 seriesOrder: 5
 seriesGroup: "The self-hosted platform"
 ---
 
-Before an application goes on [the server]({{< ref "/projects/infrastructure-server" >}}),
+Before an application goes on [the server]({{< ref "/infrastructure/infrastructure-server" >}}),
 it should be clear that it fits. This is the model I size the server with: one
 figure per service for what it needs, a formula that adds headroom, and the
 signals that say the model has stopped being true.

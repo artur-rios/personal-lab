@@ -2,7 +2,9 @@
 title: "How I Host My Projects"
 description: "Each kind of project I build has one place it lives: anything with a backend runs in containers on a self-hosted server deployed by yggdrasil, and everything static is published on free hosting. Here is the decision table, the rule behind it and a map of the series."
 date: 2026-10-21T17:55:00Z
-categories: ["Projects"]
+categories: ["Infrastructure"]
+# The pages lived under /projects/ until the section was renamed.
+aliases: ["/projects/infrastructure-overview/"]
 tags: ["Infrastructure", "Hosting", "Self-Hosting", "Docker", "Deployment"]
 series: ["Infrastructure"]
 seriesOrder: 1
@@ -69,26 +71,26 @@ finance.
 
 The self-hosted platform, from the bottom up:
 
-1. [The Server]({{< ref "/projects/infrastructure-server" >}}): the VPS, how it
+1. [The Server]({{< ref "/infrastructure/infrastructure-server" >}}): the VPS, how it
    is prepared, and PostgreSQL.
-2. [The Platform]({{< ref "/projects/infrastructure-platform" >}}): Traefik,
+2. [The Platform]({{< ref "/infrastructure/infrastructure-platform" >}}): Traefik,
    certificates, DNS, monitoring and the console.
-3. [Deploying With Yggdrasil]({{< ref "/projects/infrastructure-deploys" >}}):
+3. [Deploying With Yggdrasil]({{< ref "/infrastructure/infrastructure-deploys" >}}):
    from a push on GitHub to a container running, and rolling back when it does
    not start.
-4. [Sizing the Server]({{< ref "/projects/infrastructure-sizing" >}}): how much
+4. [Sizing the Server]({{< ref "/infrastructure/infrastructure-sizing" >}}): how much
    of the server each piece takes, and when to grow.
-5. [Web APIs]({{< ref "/projects/infrastructure-web-apis" >}}) and
-   [Web Apps]({{< ref "/projects/infrastructure-web-apps" >}}): what an
+5. [Web APIs]({{< ref "/infrastructure/infrastructure-web-apis" >}}) and
+   [Web Apps]({{< ref "/infrastructure/infrastructure-web-apps" >}}): what an
    application looks like to the platform.
 
 The projects that need no server:
 
-6. [Landing Pages]({{< ref "/projects/infrastructure-landing-pages" >}}),
-   [Static Sites]({{< ref "/projects/infrastructure-static-sites" >}}) and
-   [Documentation Sites]({{< ref "/projects/infrastructure-documentation-sites" >}}).
-7. [Libraries]({{< ref "/projects/infrastructure-libraries" >}}): publishing
+6. [Landing Pages]({{< ref "/infrastructure/infrastructure-landing-pages" >}}),
+   [Static Sites]({{< ref "/infrastructure/infrastructure-static-sites" >}}) and
+   [Documentation Sites]({{< ref "/infrastructure/infrastructure-documentation-sites" >}}).
+7. [Libraries]({{< ref "/infrastructure/infrastructure-libraries" >}}): publishing
    packages on a version tag.
 
 The way each project starts, before any of this, is in
-[How I Start a Project From Scratch]({{< ref "/projects/starting-a-project-from-scratch" >}}).
+[How I Start a Project From Scratch]({{< ref "/engineering/starting-a-project-from-scratch" >}}).

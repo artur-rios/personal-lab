@@ -2,7 +2,9 @@
 title: "How I Start a Project From Scratch"
 description: "The ten steps I follow to take a project from a first idea to a working system: a brainstorm, informal documents, formal specifications reviewed until they are right, a GitHub backlog of use cases, and an implementation that finishes one use case, tests included, before starting the next."
 date: 2026-10-21T17:30:00Z
-categories: ["Projects"]
+categories: ["Engineering"]
+# The page lived under /projects/ until the Engineering section was created.
+aliases: ["/projects/starting-a-project-from-scratch/"]
 tags: ["Process", "Requirements", "Use Cases", "GitHub", "Testing", "Project Management"]
 ---
 

@@ -27,7 +27,7 @@ theme = 'nuno'
   description = 'Study notes, brainstorms and project tracking by Artur Rios, written in the open.'
   tagline = 'Study notes, brainstorms and projects.'
   masthead = 'Study<span class="accent">,</span><br>think<span class="accent">,</span><br>build.'
-  mainSections = ['fundamentals', 'front-end', 'dotnet', 'concepts', 'security', 'git', 'brainstorms', 'projects']
+  mainSections = ['fundamentals', 'front-end', 'dotnet', 'concepts', 'security', 'git', 'brainstorms', 'engineering', 'infrastructure']
 
   [params.author]
     name = 'Artur Rios'
@@ -99,7 +99,12 @@ theme = 'nuno'
     pageRef = '/brainstorms'
     weight = 20
   [[menu.main]]
-    identifier = 'projects'
-    name = 'Projects'
-    pageRef = '/projects'
+    identifier = 'engineering'
+    name = 'Engineering'
+    pageRef = '/engineering'
+    weight = 25
+  [[menu.main]]
+    identifier = 'infrastructure'
+    name = 'Infrastructure'
+    pageRef = '/infrastructure'
     weight = 30
