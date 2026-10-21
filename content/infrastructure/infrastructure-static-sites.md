@@ -2,7 +2,9 @@
 title: "Static Sites"
 description: "How I build and host sites with no server at all, such as portfolios and brochure sites: Astro, or Next.js with a static export, published on Cloudflare Pages, or on GitHub Pages through GitHub Actions."
 date: 2026-10-21T17:55:00Z
-categories: ["Projects"]
+categories: ["Infrastructure"]
+# The pages lived under /projects/ until the section was renamed.
+aliases: ["/projects/infrastructure-static-sites/"]
 tags: ["Infrastructure", "Static Sites", "Astro", "Next.js", "Cloudflare Pages", "GitHub Pages"]
 series: ["Infrastructure"]
 seriesOrder: 9
@@ -22,9 +24,9 @@ will never go down for want of a patch.
 | Deploys | The host's Git integration, or GitHub Actions |
 
 Its neighbours in this series draw the line: a page that needs a form or a
-server function is a [landing page]({{< ref "/projects/infrastructure-landing-pages" >}}),
+server function is a [landing page]({{< ref "/infrastructure/infrastructure-landing-pages" >}}),
 on Vercel, and reference documentation is a
-[documentation site]({{< ref "/projects/infrastructure-documentation-sites" >}}),
+[documentation site]({{< ref "/infrastructure/infrastructure-documentation-sites" >}}),
 in Hugo.
 
 ## Building one

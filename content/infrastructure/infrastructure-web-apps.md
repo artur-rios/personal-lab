@@ -2,7 +2,9 @@
 title: "Web Apps"
 description: "What a Flutter web app looks like to my server: a Flutter SDK pinned by checksum in the build stage, settings compiled into the bundle per environment, an unprivileged nginx with a read-only file system serving it, a health endpoint, and the cache rule a Flutter build needs behind a CDN."
 date: 2026-10-21T17:55:00Z
-categories: ["Projects"]
+categories: ["Infrastructure"]
+# The pages lived under /projects/ until the section was renamed.
+aliases: ["/projects/infrastructure-web-apps/"]
 tags: ["Infrastructure", "Flutter", "Docker", "nginx", "Cloudflare"]
 series: ["Infrastructure"]
 seriesOrder: 7
@@ -68,7 +70,7 @@ falling back to the developer's `localhost`.
 
 The address is the app's own origin, such as `https://heimdall.example.com`.
 Traefik routes `/api/` on that origin to the API, as described in
-[Web APIs]({{< ref "/projects/infrastructure-web-apis" >}}), so the browser
+[Web APIs]({{< ref "/infrastructure/infrastructure-web-apis" >}}), so the browser
 never makes a cross-origin request.
 
 ## nginx

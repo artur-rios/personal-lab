@@ -2,14 +2,16 @@
 title: "The Platform: Traefik, Monitoring and the Console"
 description: "The shared stack every application on my server sits behind: Traefik with a Let's Encrypt wildcard certificate obtained over DNS, Cloudflare DNS, least-privilege Docker socket proxies, Prometheus, Loki, Alloy and Grafana for monitoring, and yggdrasil's status API and console."
 date: 2026-10-21T17:55:00Z
-categories: ["Projects"]
+categories: ["Infrastructure"]
+# The pages lived under /projects/ until the section was renamed.
+aliases: ["/projects/infrastructure-platform/"]
 tags: ["Infrastructure", "Traefik", "Let's Encrypt", "Cloudflare", "Prometheus", "Grafana", "Docker"]
 series: ["Infrastructure"]
 seriesOrder: 3
 seriesGroup: "The self-hosted platform"
 ---
 
-On top of [the server]({{< ref "/projects/infrastructure-server" >}}) runs one
+On top of [the server]({{< ref "/infrastructure/infrastructure-server" >}}) runs one
 Compose project, `yggdrasil`, that every application shares: the reverse proxy,
 the monitoring, and a status API with its console. It is started once per host,
 and serves every environment on that host.
@@ -28,7 +30,7 @@ scripts/platform.sh up
 | Loki | 3.5 | Logs, kept 31 days |
 | Alloy | v1.10 | Ships every container's logs to Loki |
 | Grafana | 12.1 | Dashboards over Prometheus and Loki |
-| Jenkins | LTS | Deploys, covered in [Deploying With Yggdrasil]({{< ref "/projects/infrastructure-deploys" >}}) |
+| Jenkins | LTS | Deploys, covered in [Deploying With Yggdrasil]({{< ref "/infrastructure/infrastructure-deploys" >}}) |
 
 ## Traefik and one wildcard certificate
 

@@ -2,8 +2,8 @@
 
 [![Deploy](https://github.com/artur-rios/personal-lab/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/artur-rios/personal-lab/actions/workflows/deploy.yml)
 
-My lab notebook, kept in the open: study notes, brainstorms, and a record of the
-projects I am working on. It is a [Hugo](https://gohugo.io) site published to
+My lab notebook, kept in the open: study notes, brainstorms, how I build
+software and how I host it. It is a [Hugo](https://gohugo.io) site published to
 GitHub Pages at **<https://artur-rios.github.io/personal-lab/>**.
 
 ## What lives here
@@ -12,7 +12,8 @@ GitHub Pages at **<https://artur-rios.github.io/personal-lab/>**.
 | --- | --- |
 | **Study notes** | What I learn, written up properly, with references. [Fundamentals](content/fundamentals/) covers the core ideas of computing and programming; [Front-end](content/front-end/) covers the frameworks behind web and mobile interfaces; [.NET](content/dotnet/) covers how C# and .NET work, data access, test coverage, the libraries I recommend and how I develop APIs; [Concepts](content/concepts/) covers the design principles and patterns that decide how software is put together; [Security](content/security/) covers how vulnerabilities and weaknesses are named, tracked and prevented; [Git](content/git/) covers my Git setup, everyday commands and features such as submodules and tags. All six sit under one *Study notes* dropdown in the nav. |
 | **Brainstorms** | Ideas while they are still rough: questions, sketches and options before anything is decided. They live in [Brainstorms](content/brainstorms/). |
-| **Projects** | The things I am building: what each one is, where it stands and what comes next. They live in [Projects](content/projects/). |
+| **Engineering** | How I take software from an idea to a working system: the documents, the backlog and the order things are built and tested in. It lives in [Engineering](content/engineering/). |
+| **Infrastructure** | How I host and ship what I build: the self-hosted server, its platform and deploys, and the free hosting for everything static. It lives in [Infrastructure](content/infrastructure/). |
 
 Everything is plain Markdown under [`content/`](content/), one folder per
 section.
@@ -28,7 +29,8 @@ content/          site content, one folder per section
   security/       study notes on software security: CVE and CWE
   git/            study notes on Git: config and commands, submodules, tags
   brainstorms/    rough ideas, questions and options before anything is decided
-  projects/       the things being built: what, status and what comes next
+  engineering/    how software goes from an idea to a working system
+  infrastructure/ how everything is hosted and shipped
   series/         one page per multi-part series, with its description
 data/             site data (the lines the home page masthead cycles through)
 layouts/          the diagram shortcode, and overrides of the theme's nav and footer
@@ -64,12 +66,13 @@ matter of
 model: a `description`, a `categories` entry (shown as the kicker above the
 title) and a few `tags`.
 
-Brainstorms and projects have their own archetypes, so
-`hugo new content brainstorms/my-idea.md` and
-`hugo new content projects/my-project.md` start with the category and a few
-section headings already filled in. A project also gets a `status` (idea,
-active, paused or done); the theme does not show it, so say the status in the
-text too.
+Brainstorms, engineering and infrastructure pages have their own archetypes,
+so `hugo new content brainstorms/my-idea.md`,
+`hugo new content engineering/my-topic.md` and
+`hugo new content infrastructure/my-topic.md` start with the right category
+already filled in, and a brainstorm with a few section headings too. Pages
+that moved keep their old address working through an `aliases` entry in their
+front matter.
 
 Articles that belong together form a series: give each part the same
 `series` name, a `seriesOrder` number (all parts or none, otherwise they are

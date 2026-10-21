@@ -24,10 +24,10 @@ here has been tested against a real use case rather than a toy one. All code
 on this page is taken from it, trimmed only where noted.
 
 Two other pages cover what comes before and after the code.
-[How I Start a Project From Scratch]({{< ref "/projects/starting-a-project-from-scratch" >}})
+[How I Start a Project From Scratch]({{< ref "/engineering/starting-a-project-from-scratch" >}})
 explains the documents and use cases a project starts with; this page picks up
 when the first use case is implemented.
-[Web APIs]({{< ref "/projects/infrastructure-web-apis" >}}) in the
+[Web APIs]({{< ref "/infrastructure/infrastructure-web-apis" >}}) in the
 infrastructure series explains how the finished API is packaged and deployed.
 
 | Concern | Choice |

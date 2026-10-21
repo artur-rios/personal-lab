@@ -2,7 +2,9 @@
 title: "Libraries"
 description: "How I publish reusable .NET packages: package metadata in the project file, a release flow that ends in a version tag on main, and a workflow that packs the library and pushes it to nuget.org and GitHub Packages, for one package per repository or several."
 date: 2026-10-21T17:55:00Z
-categories: ["Projects"]
+categories: ["Infrastructure"]
+# The pages lived under /projects/ until the section was renamed.
+aliases: ["/projects/infrastructure-libraries/"]
 tags: ["Infrastructure", ".NET", "NuGet", "GitHub Packages", "GitHub Actions", "Versioning"]
 series: ["Infrastructure"]
 seriesOrder: 11
