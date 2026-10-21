@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 370" role="img" aria-labelledby="isp-rp-title">
+  <title id="isp-rp-title">What one change reaches. The monthly revenue method gains a parameter. On the left, where it is part of the fat OrderStore interface, all six pieces of code that depend on OrderStore are affected: the three clients, the invoice printer, the checkout and the month-end report, and the three implementers, the database store, the archive and the test fake. On the right, where the method belongs to the small RevenueSource interface, only the month-end report, which calls it, and the database store, which implements it, are affected. The invoice printer, the checkout, the archive and the fake reader are untouched.</title>
+
+  <!-- Fat interface -->
+  <rect class="zone" x="0" y="0" width="330" height="368" rx="8"/>
+  <text class="strong" x="14" y="24">Fat interface</text>
+  <text class="sm" x="14" y="42">monthly_revenue gains a parameter</text>
+  <rect class="solid" x="14" y="56" width="302" height="36" rx="6"/>
+  <text class="strong on-solid" x="165" y="79" text-anchor="middle">OrderStore changes</text>
+
+  <rect class="box-accent" x="14" y="108" width="302" height="30" rx="6"/>
+  <text class="mono" x="26" y="127">InvoicePrinter</text>
+  <text class="sm" x="150" y="127">client</text>
+  <text class="sm accent" x="304" y="127" text-anchor="end">affected</text>
+  <rect class="box-accent" x="14" y="146" width="302" height="30" rx="6"/>
+  <text class="mono" x="26" y="165">Checkout</text>
+  <text class="sm" x="150" y="165">client</text>
+  <text class="sm accent" x="304" y="165" text-anchor="end">affected</text>
+  <rect class="box-accent" x="14" y="184" width="302" height="30" rx="6"/>
+  <text class="mono" x="26" y="203">MonthEndReport</text>
+  <text class="sm" x="150" y="203">client</text>
+  <text class="sm accent" x="304" y="203" text-anchor="end">affected</text>
+  <rect class="box-accent" x="14" y="222" width="302" height="30" rx="6"/>
+  <text class="mono" x="26" y="241">DatabaseOrders</text>
+  <text class="sm" x="150" y="241">implementer</text>
+  <text class="sm accent" x="304" y="241" text-anchor="end">affected</text>
+  <rect class="box-accent" x="14" y="260" width="302" height="30" rx="6"/>
+  <text class="mono" x="26" y="279">ArchivedOrders</text>
+  <text class="sm" x="150" y="279">implementer</text>
+  <text class="sm accent" x="304" y="279" text-anchor="end">affected</text>
+  <rect class="box-accent" x="14" y="298" width="302" height="30" rx="6"/>
+  <text class="mono" x="26" y="317">FakeStore</text>
+  <text class="sm" x="150" y="317">test double</text>
+  <text class="sm accent" x="304" y="317" text-anchor="end">affected</text>
+  <text class="strong" x="165" y="354" text-anchor="middle">6 of 6 to revisit</text>
+
+  <!-- Role interfaces -->
+  <rect class="zone" x="350" y="0" width="330" height="368" rx="8"/>
+  <text class="strong" x="364" y="24">Role interfaces</text>
+  <text class="sm" x="364" y="42">the same change, made to one role</text>
+  <rect class="solid" x="364" y="56" width="302" height="36" rx="6"/>
+  <text class="strong on-solid" x="515" y="79" text-anchor="middle">RevenueSource changes</text>
+
+  <rect class="box" x="364" y="108" width="302" height="30" rx="6"/>
+  <text class="mono" x="376" y="127">InvoicePrinter</text>
+  <text class="sm" x="500" y="127">client</text>
+  <text class="sm" x="654" y="127" text-anchor="end">untouched</text>
+  <rect class="box" x="364" y="146" width="302" height="30" rx="6"/>
+  <text class="mono" x="376" y="165">Checkout</text>
+  <text class="sm" x="500" y="165">client</text>
+  <text class="sm" x="654" y="165" text-anchor="end">untouched</text>
+  <rect class="box-accent" x="364" y="184" width="302" height="30" rx="6"/>
+  <text class="mono" x="376" y="203">MonthEndReport</text>
+  <text class="sm" x="500" y="203">client</text>
+  <text class="sm accent" x="654" y="203" text-anchor="end">affected</text>
+  <rect class="box-accent" x="364" y="222" width="302" height="30" rx="6"/>
+  <text class="mono" x="376" y="241">DatabaseOrders</text>
+  <text class="sm" x="500" y="241">implementer</text>
+  <text class="sm accent" x="654" y="241" text-anchor="end">affected</text>
+  <rect class="box" x="364" y="260" width="302" height="30" rx="6"/>
+  <text class="mono" x="376" y="279">ArchivedOrders</text>
+  <text class="sm" x="500" y="279">implementer</text>
+  <text class="sm" x="654" y="279" text-anchor="end">untouched</text>
+  <rect class="box" x="364" y="298" width="302" height="30" rx="6"/>
+  <text class="mono" x="376" y="317">FakeReader</text>
+  <text class="sm" x="500" y="317">test double</text>
+  <text class="sm" x="654" y="317" text-anchor="end">untouched</text>
+  <text class="strong" x="515" y="354" text-anchor="middle">2 of 6 to revisit</text>
+</svg>

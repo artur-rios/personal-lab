@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 232" role="img" aria-labelledby="fvd-title">
+  <title id="fvd-title">Flow of control and source-code dependency in the inverted checkout. At run time control flows left to right: Checkout calls charge on the PaymentGateway interface, the call lands in CardCoGateway in the adapters package, and that calls the CardCo SDK. The source-code dependencies, what each module imports, do not all follow it. Checkout depends on PaymentGateway in its own package and CardCoGateway depends on the CardCo SDK, but at the boundary between shop and adapters the dependency points right to left: the adapter imports the interface from shop, against the flow of control.</title>
+  <defs>
+    <marker id="fvd-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="fvd-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <rect class="zone" x="0" y="0" width="330" height="230" rx="8"/>
+  <text class="strong" x="14" y="24">shop: the policy</text>
+  <rect class="zone" x="346" y="0" width="160" height="230" rx="8"/>
+  <text class="strong" x="360" y="24">adapters</text>
+  <rect class="zone" x="522" y="0" width="158" height="230" rx="8"/>
+  <text class="strong" x="536" y="24">vendor SDK</text>
+
+  <text class="sm" x="16" y="56">flow of control at run time</text>
+  <line class="wire" x1="16" y1="72" x2="660" y2="72" marker-end="url(#fvd-arrow)"/>
+
+  <rect class="box" x="16" y="100" width="140" height="44" rx="6"/>
+  <text class="mono" x="86" y="127" text-anchor="middle">Checkout</text>
+  <rect class="box-accent" x="174" y="100" width="140" height="44" rx="6"/>
+  <text class="mono" x="244" y="127" text-anchor="middle">PaymentGateway</text>
+  <rect class="box" x="356" y="100" width="140" height="44" rx="6"/>
+  <text class="mono" x="426" y="127" text-anchor="middle">CardCoGateway</text>
+  <rect class="box" x="532" y="100" width="136" height="44" rx="6"/>
+  <text class="mono" x="600" y="127" text-anchor="middle">CardCoClient</text>
+
+  <line class="wire" x1="156" y1="122" x2="170" y2="122" marker-end="url(#fvd-arrow)"/>
+  <line class="wire-accent" x1="356" y1="122" x2="318" y2="122" marker-end="url(#fvd-arrow-accent)"/>
+  <line class="wire" x1="496" y1="122" x2="528" y2="122" marker-end="url(#fvd-arrow)"/>
+
+  <text class="sm" x="16" y="172">arrows between boxes: what each module imports</text>
+  <text class="sm accent" x="16" y="196">at the boundary, the import points</text>
+  <text class="sm accent" x="16" y="212">against the flow of control</text>
+</svg>

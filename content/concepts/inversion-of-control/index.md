@@ -4,6 +4,9 @@ description: "Inversion of control is what happens when someone else's code deci
 date: 2026-10-20T23:00:00Z
 categories: ["Concepts"]
 tags: ["Inversion of Control", "Dependency Injection", "Design Patterns", "Software Design", "Frameworks", "Concepts"]
+series: ["SOLID"]
+seriesOrder: 6
+seriesGroup: "Putting it to work"
 # The diagrams are inlined by the diagram shortcode, so the SVG files
 # themselves need not be published.
 build:
@@ -19,7 +22,10 @@ That reversal has a name, **inversion of control**, and it is one of the ideas
 most of modern software is quietly built on. This article explains what it
 means, where the term came from, the forms it takes, how dependency injection
 and IoC containers work inside, and when the indirection is worth paying for.
-Every output shown here was produced by running the code on Windows 11, with
+It closes a series on [SOLID](../../series/solid/): where the
+[dependency inversion principle](../dependency-inversion-principle/) says which
+way dependencies should point, this is the mechanism that makes them point
+that way at run time. Every output shown here was produced by running the code on Windows 11, with
 Python 3.14.6 and with the .NET 10 SDK and Microsoft.Extensions.DependencyInjection
 10.0.13, not written by hand.
 
@@ -151,7 +157,8 @@ that subclasses fill in: inversion of control within a single class
 hierarchy.[^gof] In 1996 Robert C. Martin published the **dependency inversion
 principle** in his column for *The C++ Report*, a rule about which way
 dependencies between modules should point.[^martin] Despite the similar name it
-is a different idea, and the two are compared [below](#ioc-dependency-injection-and-dependency-inversion).
+is a different idea, with [an article of its own](../dependency-inversion-principle/),
+and the two are compared [below](#ioc-dependency-injection-and-dependency-inversion).
 
 ### The 2000s: containers and dependency injection
 
@@ -731,7 +738,8 @@ thing.
   dependencies point. In Martin's words it has two parts: high-level modules
   should not depend on low-level modules, both should depend on abstractions;
   and abstractions should not depend on details, details should depend on
-  abstractions.[^martin]
+  abstractions.[^martin] It is the fifth of the SOLID principles, and
+  [its own article](../dependency-inversion-principle/) covers it in full.
 
 The principle and the mechanism meet in practice. In the signup example,
 `SignupService`, the high-level policy, depends only on the `Mailer`

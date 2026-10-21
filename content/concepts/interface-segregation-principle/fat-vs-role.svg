@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 592" role="img" aria-labelledby="isp-fr-title">
+  <title id="isp-fr-title">One fat interface compared with one interface per role. Above: three clients, the invoice printer, the checkout and the month-end report, all depend on a single OrderStore interface with five methods, get, save, cancel, monthly revenue and export to CSV, although each calls only one or two of them. Two classes implement it: the live database store, and the archive of old orders, which can only read and so has to refuse the other four methods. Below: the same three clients each depend on a small interface for the role they need: OrderReader with get, OrderWriter with save and cancel, and RevenueSource with monthly revenue. The archive implements only OrderReader, with nothing to refuse, and the live database store implements all three roles.</title>
+  <defs>
+    <marker id="isp-fr-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="isp-fr-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Before: one fat interface -->
+  <rect class="zone" x="0" y="0" width="680" height="272" rx="8"/>
+  <text class="strong" x="14" y="24">One fat interface</text>
+  <text class="sm" x="14" y="42">every client depends on all five methods, whichever it calls</text>
+
+  <rect class="box" x="18" y="60" width="190" height="36" rx="6"/>
+  <text class="mono" x="113" y="83" text-anchor="middle">InvoicePrinter</text>
+  <rect class="box" x="245" y="60" width="190" height="36" rx="6"/>
+  <text class="mono" x="340" y="83" text-anchor="middle">Checkout</text>
+  <rect class="box" x="472" y="60" width="190" height="36" rx="6"/>
+  <text class="mono" x="567" y="83" text-anchor="middle">MonthEndReport</text>
+
+  <line class="wire" x1="113" y1="96" x2="196" y2="122" marker-end="url(#isp-fr-arrow)"/>
+  <line class="wire" x1="340" y1="96" x2="340" y2="122" marker-end="url(#isp-fr-arrow)"/>
+  <line class="wire" x1="567" y1="96" x2="484" y2="122" marker-end="url(#isp-fr-arrow)"/>
+
+  <rect class="box" x="140" y="124" width="400" height="56" rx="6"/>
+  <text class="strong" x="340" y="146" text-anchor="middle">OrderStore</text>
+  <text class="mono" x="340" y="168" text-anchor="middle">get · save · cancel · monthly_revenue · export_csv</text>
+
+  <rect class="box" x="140" y="214" width="180" height="40" rx="6"/>
+  <text class="mono" x="230" y="239" text-anchor="middle">DatabaseOrders</text>
+  <rect class="box" x="360" y="214" width="180" height="40" rx="6"/>
+  <text class="mono" x="450" y="239" text-anchor="middle">ArchivedOrders</text>
+  <line class="wire" x1="230" y1="214" x2="230" y2="184" marker-end="url(#isp-fr-arrow)"/>
+  <line class="wire" x1="450" y1="214" x2="450" y2="184" marker-end="url(#isp-fr-arrow)"/>
+  <text class="sm" x="552" y="232">must refuse four</text>
+  <text class="sm" x="552" y="248">of five methods</text>
+
+  <!-- After: one interface per role -->
+  <rect class="zone" x="0" y="290" width="680" height="300" rx="8"/>
+  <text class="strong" x="14" y="314">One interface per role</text>
+  <text class="sm" x="14" y="332">each client depends only on the methods it calls</text>
+
+  <rect class="box" x="18" y="350" width="190" height="36" rx="6"/>
+  <text class="mono" x="113" y="373" text-anchor="middle">InvoicePrinter</text>
+  <rect class="box" x="245" y="350" width="190" height="36" rx="6"/>
+  <text class="mono" x="340" y="373" text-anchor="middle">Checkout</text>
+  <rect class="box" x="472" y="350" width="190" height="36" rx="6"/>
+  <text class="mono" x="567" y="373" text-anchor="middle">MonthEndReport</text>
+
+  <line class="wire-accent" x1="113" y1="386" x2="113" y2="416" marker-end="url(#isp-fr-arrow-accent)"/>
+  <line class="wire-accent" x1="340" y1="386" x2="340" y2="416" marker-end="url(#isp-fr-arrow-accent)"/>
+  <line class="wire-accent" x1="567" y1="386" x2="567" y2="416" marker-end="url(#isp-fr-arrow-accent)"/>
+
+  <rect class="box-accent" x="18" y="418" width="190" height="52" rx="6"/>
+  <text class="strong" x="113" y="440" text-anchor="middle">OrderReader</text>
+  <text class="mono" x="113" y="460" text-anchor="middle">get</text>
+  <rect class="box-accent" x="245" y="418" width="190" height="52" rx="6"/>
+  <text class="strong" x="340" y="440" text-anchor="middle">OrderWriter</text>
+  <text class="mono" x="340" y="460" text-anchor="middle">save · cancel</text>
+  <rect class="box-accent" x="472" y="418" width="190" height="52" rx="6"/>
+  <text class="strong" x="567" y="440" text-anchor="middle">RevenueSource</text>
+  <text class="mono" x="567" y="460" text-anchor="middle">monthly_revenue</text>
+
+  <rect class="box" x="18" y="520" width="190" height="40" rx="6"/>
+  <text class="mono" x="113" y="545" text-anchor="middle">ArchivedOrders</text>
+  <rect class="box" x="300" y="520" width="190" height="40" rx="6"/>
+  <text class="mono" x="395" y="545" text-anchor="middle">DatabaseOrders</text>
+  <line class="wire" x1="113" y1="520" x2="113" y2="474" marker-end="url(#isp-fr-arrow)"/>
+  <line class="wire" x1="320" y1="520" x2="170" y2="474" marker-end="url(#isp-fr-arrow)"/>
+  <line class="wire" x1="395" y1="520" x2="350" y2="474" marker-end="url(#isp-fr-arrow)"/>
+  <line class="wire" x1="470" y1="520" x2="530" y2="474" marker-end="url(#isp-fr-arrow)"/>
+  <text class="sm" x="113" y="578" text-anchor="middle">one role, nothing to refuse</text>
+  <text class="sm" x="506" y="545">plays all three roles</text>
+</svg>
