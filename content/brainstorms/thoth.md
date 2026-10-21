@@ -58,11 +58,12 @@ machine over SSH.
    └─────────────┘           └─────────────┘
 ```
 
-The two experiences then differ where they should, in drawing and in keymaps:
-the window uses VS Code's shortcuts, mouse and panels, and the terminal uses
-modal, Vim-style editing with a leader key, as LunarVim does on top of Neovim.
-Both are keymap profiles in the core, so a user could also pick Vim keys in the
-window.
+The two experiences then differ where they should, in drawing and in keymaps.
+By default the window uses VS Code's shortcuts, mouse and panels, and the
+terminal uses modal, Vim-style editing with a leader key, as LunarVim does on
+top of Neovim. Both keymaps are profiles in the core rather than features of a
+front end, so the user can choose either one in each front end: Vim keys in the
+window, or VS Code keys in the terminal.
 
 ### The suggestion at a glance
 
@@ -127,7 +128,11 @@ best, which is what a VS Code-like window needs. It comes with three costs:
 ### Modules instead of extensions
 
 A module is first-party code compiled into Thoth, not a package downloaded from
-a marketplace. Inactive modules cost nothing at run time: they register no
+a marketplace, and Thoth never loads modules from outside its own binary. That
+does not close the set of languages: Thoth is open source, so anyone can build
+a new module or change an existing one and open a pull request. Once it is
+reviewed and merged, it ships with the next release, tested with every other
+module. Inactive modules cost nothing at run time: they register no
 commands, start no processes and add no menu items. Activating one does three
 things, each driven by the module's manifest:
 
@@ -223,19 +228,30 @@ not once per module, and it can be changed later in the settings.
 
 ### Building toward the first release
 
-Nine modules is a lot to build at once, so the order matters. The first
-milestone is the core and the terminal front end with one module: open a
-folder, edit with Vim keys, find files, search, and get completion and
-diagnostics for C#. The terminal is the quicker front end to build and the
-easier one to test, and it proves the core's design before the window is
-started. The window front end comes next, then the other modules, starting with
-JavaScript/TypeScript and HTML/CSS, since Angular and React are built on them.
+The first release ships both front ends, the window and the terminal, with all
+nine modules. That is a lot to build at once, so the order of the milestones
+before it matters:
 
-## Open questions
+1. **The core and the terminal front end with one module:** open a folder,
+   edit with Vim keys, find files, search, and get completion and diagnostics
+   for C#. The terminal is the quicker front end to build and the easier one to
+   test, and it proves the core's design before the window is started.
+2. **The window front end** on the same core, with VS Code keys, which proves
+   that the core really is shared.
+3. **The other modules**, starting with JavaScript/TypeScript and HTML/CSS,
+   since Angular and React are built on them.
 
-- Is the window a requirement for the first release, or can Thoth ship as a
-  terminal IDE first?
-- Should a user be able to choose Vim keys in the window and VS Code keys in
-  the terminal, or does each front end keep one keymap?
-- Should modules ever load from outside the binary, for languages Thoth does
-  not ship, or does that make them extensions after all?
+## Decisions
+
+The questions this brainstorm raised, and how they were settled:
+
+- **The first release ships both front ends.** The window is a requirement,
+  not a later addition to a terminal IDE.
+- **Keymaps are the user's choice in each front end.** Vim keys are the
+  default in the terminal and VS Code keys the default in the window.
+- **Modules build on other modules.** A manifest can require other modules, so
+  Angular and React build on the JavaScript/TypeScript and HTML/CSS modules.
+- **Thoth only uses its own modules.** New or changed modules come in as pull
+  requests to the open-source project, not as extensions loaded at run time.
+- **Runtimes are asked about once.** An installed Node.js or Java is offered
+  to the user; a missing one is explained and installed for Thoth alone.
