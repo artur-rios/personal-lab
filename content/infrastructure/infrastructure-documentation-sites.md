@@ -2,7 +2,9 @@
 title: "Documentation Sites"
 description: "How I build and publish documentation: Hugo with the Docsy theme as a Hugo module, built and checked by GitHub Actions, and published on GitHub Pages, the same way this site is."
 date: 2026-10-21T17:55:00Z
-categories: ["Projects"]
+categories: ["Infrastructure"]
+# The pages lived under /projects/ until the section was renamed.
+aliases: ["/projects/infrastructure-documentation-sites/"]
 tags: ["Infrastructure", "Documentation", "Hugo", "Docsy", "GitHub Pages", "GitHub Actions"]
 series: ["Infrastructure"]
 seriesOrder: 10

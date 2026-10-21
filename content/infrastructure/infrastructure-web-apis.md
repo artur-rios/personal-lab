@@ -2,7 +2,9 @@
 title: "Web APIs"
 description: "What an ASP.NET Core API looks like to my server: a multi-stage Docker image running as a non-root user, configuration from the environment, migrations applied on start, a health check, OpenTelemetry metrics on a private port, and Traefik routing it under its own host and under the web app's origin."
 date: 2026-10-21T17:55:00Z
-categories: ["Projects"]
+categories: ["Infrastructure"]
+# The pages lived under /projects/ until the section was renamed.
+aliases: ["/projects/infrastructure-web-apis/"]
 tags: ["Infrastructure", ".NET", "ASP.NET Core", "Docker", "PostgreSQL", "OpenTelemetry"]
 series: ["Infrastructure"]
 seriesOrder: 6
@@ -76,7 +78,7 @@ secrets and allowed origins come from environment variables, which yggdrasil
 writes from the application's env file or variables store for each
 environment. The database host is `host.docker.internal`, the host's
 PostgreSQL, with one database and login per environment, as described in
-[The Server]({{< ref "/projects/infrastructure-server" >}}).
+[The Server]({{< ref "/infrastructure/infrastructure-server" >}}).
 
 ## Health and metrics
 

@@ -2,7 +2,9 @@
 title: "Deploying With Yggdrasil"
 description: "How a push on GitHub becomes a running container on my server: one catalog file describing systems, applications and environments, a release flow enforced on GitHub, a self-hosted Jenkins that deploys on the host, automatic rollback, on-demand environments and an encrypted store for secrets."
 date: 2026-10-21T17:55:00Z
-categories: ["Projects"]
+categories: ["Infrastructure"]
+# The pages lived under /projects/ until the section was renamed.
+aliases: ["/projects/infrastructure-deploys/"]
 tags: ["Infrastructure", "Deployment", "Jenkins", "GitHub", "Docker Compose", "CI/CD"]
 series: ["Infrastructure"]
 seriesOrder: 4
@@ -149,7 +151,7 @@ checkout and its version:
 Building on the host means no registry to run or pay for, and a web app's
 settings can be compiled into its bundle per environment. The cost is CPU on
 the server during a build, which is part of
-[Sizing the Server]({{< ref "/projects/infrastructure-sizing" >}}).
+[Sizing the Server]({{< ref "/infrastructure/infrastructure-sizing" >}}).
 
 ### The overlays
 

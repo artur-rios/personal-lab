@@ -2,7 +2,9 @@
 title: "Landing Pages"
 description: "How I build and host marketing and product pages: Next.js with shadcn/ui and Tailwind CSS, deployed by Vercel on every push with a preview for every pull request, behind Cloudflare, and kept off my own server on purpose."
 date: 2026-10-21T17:55:00Z
-categories: ["Projects"]
+categories: ["Infrastructure"]
+# The pages lived under /projects/ until the section was renamed.
+aliases: ["/projects/infrastructure-landing-pages/"]
 tags: ["Infrastructure", "Next.js", "Vercel", "Cloudflare", "Landing Pages"]
 series: ["Infrastructure"]
 seriesOrder: 8
@@ -12,7 +14,7 @@ seriesGroup: "Off the server"
 A landing page sells something: a hero section, a grid of features, pricing,
 a contact or waiting-list form. It has to look polished, load fast everywhere,
 and occasionally do something dynamic, such as accept a form. That last part is
-why landing pages are not plain [static sites]({{< ref "/projects/infrastructure-static-sites" >}}).
+why landing pages are not plain [static sites]({{< ref "/infrastructure/infrastructure-static-sites" >}}).
 
 | Concern | Choice |
 | --- | --- |
@@ -58,5 +60,5 @@ would put two CDNs in a row and get in the way of that certificate.
 Landing pages get traffic in spikes, from a launch or a link that spreads, and
 they are judged on how fast they load from anywhere in the world. A global CDN
 with no server to maintain does that better than one VPS, at no cost. Keeping
-them off [the server]({{< ref "/projects/infrastructure-server" >}}) also keeps
+them off [the server]({{< ref "/infrastructure/infrastructure-server" >}}) also keeps
 its capacity for the applications that need it.

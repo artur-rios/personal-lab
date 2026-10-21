@@ -2,7 +2,9 @@
 title: "The Server"
 description: "The single Ubuntu VPS that runs every self-hosted application: its size, how SSH is locked down, how yggdrasil's installer prepares it, where everything lives on disk, and the PostgreSQL instance installed on the host for all environments."
 date: 2026-10-21T17:55:00Z
-categories: ["Projects"]
+categories: ["Infrastructure"]
+# The pages lived under /projects/ until the section was renamed.
+aliases: ["/projects/infrastructure-server/"]
 tags: ["Infrastructure", "VPS", "Ubuntu", "Docker", "PostgreSQL", "Security"]
 series: ["Infrastructure"]
 seriesOrder: 2
@@ -27,7 +29,7 @@ itself and what is installed on it directly, outside any container.
 One machine is a single point of failure, and I accept that knowingly: these
 are my own projects, an outage costs me an evening, and one well-understood
 server is easier to keep healthy than three. Whether everything fits on it is
-the subject of [Sizing the Server]({{< ref "/projects/infrastructure-sizing" >}}).
+the subject of [Sizing the Server]({{< ref "/infrastructure/infrastructure-sizing" >}}).
 
 ## Lock down SSH first
 
@@ -90,7 +92,7 @@ with tab completion.
 Nothing secret is in a Git repository: the secrets directory is outside every
 checkout, and its files are readable only by their owner and the `docker`
 group. They can also live in yggdrasil's encrypted variables store instead,
-described in [Deploying With Yggdrasil]({{< ref "/projects/infrastructure-deploys" >}}).
+described in [Deploying With Yggdrasil]({{< ref "/infrastructure/infrastructure-deploys" >}}).
 
 ## PostgreSQL, on the host
 
