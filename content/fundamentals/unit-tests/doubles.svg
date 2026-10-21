@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 276" role="img" aria-labelledby="db-title">
+  <title id="db-title">Direct and indirect inputs and outputs of the system under test. The test passes direct inputs in as arguments and checks direct outputs, such as return values, with assertions. The system under test also receives indirect inputs from a dependency, such as today's date from a clock, and sends indirect outputs to a dependency, such as an email to a mailer. A stub controls indirect inputs; a spy or a mock observes indirect outputs; a fake is a lightweight working implementation; a dummy is passed only to fill a parameter and is never used.</title>
+  <defs>
+    <marker id="db-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="db-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="0" y="40" width="110" height="110" rx="6"/>
+  <text class="strong" x="55" y="100" text-anchor="middle">Test</text>
+
+  <rect class="solid" x="250" y="40" width="170" height="110" rx="6"/>
+  <text class="strong on-solid" x="335" y="92" text-anchor="middle">System under</text>
+  <text class="strong on-solid" x="335" y="110" text-anchor="middle">test</text>
+
+  <rect class="box-accent" x="560" y="40" width="118" height="110" rx="6"/>
+  <text class="strong" x="619" y="86" text-anchor="middle">Dependency</text>
+  <text class="sm" x="619" y="106" text-anchor="middle">replaced by</text>
+  <text class="sm" x="619" y="122" text-anchor="middle">a test double</text>
+
+  <!-- Direct -->
+  <line class="wire" x1="110" y1="72" x2="248" y2="72" marker-end="url(#db-arrow)"/>
+  <text class="sm" x="180" y="64" text-anchor="middle">direct input</text>
+  <line class="wire" x1="250" y1="118" x2="112" y2="118" marker-end="url(#db-arrow)"/>
+  <text class="sm" x="180" y="136" text-anchor="middle">direct output</text>
+
+  <!-- Indirect -->
+  <line class="wire-accent" x1="560" y1="72" x2="422" y2="72" marker-end="url(#db-arrow-accent)"/>
+  <text class="sm accent" x="490" y="64" text-anchor="middle">indirect input</text>
+  <line class="wire-accent" x1="420" y1="118" x2="558" y2="118" marker-end="url(#db-arrow-accent)"/>
+  <text class="sm accent" x="490" y="136" text-anchor="middle">indirect output</text>
+
+  <text class="sm" x="180" y="18" text-anchor="middle">arguments in, return values out</text>
+  <text class="sm accent" x="490" y="18" text-anchor="middle">calls the test cannot see directly</text>
+
+  <!-- Legend -->
+  <line class="sep" x1="0" y1="176" x2="678" y2="176"/>
+  <text class="mono" x="0" y="204">stub</text>
+  <text class="sm" x="70" y="204">supplies indirect inputs: "today is 20 October"</text>
+  <text class="mono" x="0" y="226">spy, mock</text>
+  <text class="sm" x="70" y="226">observe indirect outputs: "send was called once, with these arguments"</text>
+  <text class="mono" x="0" y="248">fake</text>
+  <text class="sm" x="70" y="248">a working but simplified implementation, such as an in-memory store</text>
+  <text class="mono" x="0" y="266">dummy</text>
+  <text class="sm" x="70" y="266">fills a parameter and is never used</text>
+</svg>

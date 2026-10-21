@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" role="img" aria-labelledby="py-title">
+  <title id="py-title">The test pyramid. A wide base of many unit tests, a narrower middle layer of integration tests, and a small top of end-to-end tests. Moving up, each test exercises more of the real system, so it gives more confidence that the parts work together, but it runs slower, costs more to write and maintain, and points less precisely at the cause when it fails. Moving down, tests get faster, cheaper and more precise.</title>
+  <defs>
+    <marker id="py-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="py-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Layers, drawn as trapezoids -->
+  <path class="box" d="M200 20 L280 20 L330 100 L150 100 Z"/>
+  <text class="strong" x="240" y="66" text-anchor="middle">End-to-end</text>
+  <text class="sm" x="240" y="84" text-anchor="middle">a few</text>
+
+  <path class="box" d="M150 104 L330 104 L380 184 L100 184 Z"/>
+  <text class="strong" x="240" y="140" text-anchor="middle">Integration</text>
+  <text class="sm" x="240" y="158" text-anchor="middle">some</text>
+
+  <path class="solid" d="M100 188 L380 188 L430 268 L50 268 Z"/>
+  <text class="strong on-solid" x="240" y="224" text-anchor="middle">Unit</text>
+  <text class="sm on-solid" x="240" y="242" text-anchor="middle">many</text>
+
+  <!-- Axis on the right -->
+  <line class="wire" x1="470" y1="262" x2="470" y2="26" marker-end="url(#py-arrow)"/>
+  <text class="sm" x="484" y="34">more of the real system</text>
+  <text class="sm" x="484" y="52">more confidence it fits together</text>
+  <text class="sm" x="484" y="70">slower, costlier, flakier</text>
+
+  <line class="wire-accent" x1="456" y1="26" x2="456" y2="262" marker-end="url(#py-arrow-accent)"/>
+  <text class="sm accent" x="484" y="228">faster and cheaper</text>
+  <text class="sm accent" x="484" y="246">a failure points at one place</text>
+  <text class="sm accent" x="484" y="264">run on every change</text>
+
+  <text class="sm" x="240" y="292" text-anchor="middle">the proportions are a guide, not a quota</text>
+</svg>
