@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" role="img" aria-labelledby="ocp-mod-title">
+  <title id="ocp-mod-title">Two ways to add a locker shipping method. On the left, modification: a single shipping_cost function holds an if and elif chain with a branch for standard, express and pickup, and the new locker branch has to be written into the middle of that released, tested function, so the old code is opened again. On the right, extension: a Checkout class depends only on a ShippingMethod protocol. Standard, Express and Pickup implement the protocol, and the new Locker class implements it too, in a new file. Checkout and the three existing methods are not touched.</title>
+  <defs>
+    <marker id="ocp-mod-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="ocp-mod-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Modify -->
+  <rect class="zone" x="0" y="0" width="246" height="298" rx="8"/>
+  <text class="strong" x="14" y="24">Modify</text>
+  <text class="sm" x="14" y="42">a new case edits old code</text>
+
+  <rect class="box" x="16" y="60" width="214" height="160" rx="6"/>
+  <text class="mono" x="30" y="84">def shipping_cost(...):</text>
+  <text class="mono" x="30" y="106">  if standard: ...</text>
+  <text class="mono" x="30" y="126">  elif express: ...</text>
+  <text class="mono" x="30" y="146">  elif pickup: ...</text>
+  <text class="mono accent" x="30" y="170">  elif locker: ...</text>
+  <text class="mono" x="30" y="194">  else: raise</text>
+  <text class="sm accent" x="30" y="240">edit inside the function</text>
+  <text class="sm" x="123" y="268" text-anchor="middle">released, tested code</text>
+  <text class="sm" x="123" y="286" text-anchor="middle">is opened again</text>
+
+  <!-- Extend -->
+  <rect class="zone" x="262" y="0" width="418" height="298" rx="8"/>
+  <text class="strong" x="276" y="24">Extend</text>
+  <text class="sm" x="276" y="42">a new case is new code</text>
+
+  <rect class="box" x="280" y="60" width="170" height="54" rx="6"/>
+  <text class="strong" x="294" y="84">Checkout</text>
+  <text class="sm" x="294" y="102">closed: never edited</text>
+
+  <rect class="box" x="488" y="60" width="176" height="54" rx="6"/>
+  <text class="mono" x="502" y="84">ShippingMethod</text>
+  <text class="sm" x="502" y="102">protocol: cost(total)</text>
+  <line class="wire" x1="450" y1="87" x2="484" y2="87" marker-end="url(#ocp-mod-arrow)"/>
+
+  <rect class="box" x="282" y="200" width="88" height="40" rx="6"/>
+  <text class="mono" x="326" y="225" text-anchor="middle">Standard</text>
+  <rect class="box" x="380" y="200" width="88" height="40" rx="6"/>
+  <text class="mono" x="424" y="225" text-anchor="middle">Express</text>
+  <rect class="box" x="478" y="200" width="88" height="40" rx="6"/>
+  <text class="mono" x="522" y="225" text-anchor="middle">Pickup</text>
+  <rect class="box-accent" x="576" y="200" width="88" height="40" rx="6"/>
+  <text class="mono" x="620" y="225" text-anchor="middle">Locker</text>
+
+  <line class="wire" x1="326" y1="200" x2="548" y2="118" marker-end="url(#ocp-mod-arrow)"/>
+  <line class="wire" x1="424" y1="200" x2="562" y2="118" marker-end="url(#ocp-mod-arrow)"/>
+  <line class="wire" x1="522" y1="200" x2="576" y2="118" marker-end="url(#ocp-mod-arrow)"/>
+  <line class="wire-accent" x1="620" y1="200" x2="590" y2="118" marker-end="url(#ocp-mod-arrow-accent)"/>
+  <text class="sm" x="290" y="152">implement</text>
+  <text class="sm accent" x="620" y="258" text-anchor="middle">new file</text>
+  <text class="sm" x="471" y="286" text-anchor="middle">Checkout and the three old methods are untouched</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 372" role="img" aria-labelledby="own-title">
+  <title id="own-title">Three ways to arrange a checkout and its payment adapter in two packages, shop and adapters. First, no abstraction: Checkout in shop imports CardCoGateway in adapters, so the policy depends on the detail. Second, an interface owned by the detail: the PaymentGateway interface sits in the adapters package beside CardCoGateway, so Checkout still imports from the adapters package and the dependency between the packages still points from policy to detail. Third, an interface owned by the policy: PaymentGateway sits in the shop package beside Checkout, and CardCoGateway in adapters imports it. Only in the third does the dependency between the packages point from the detail up to the policy, which is the inversion.</title>
+  <defs>
+    <marker id="own-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="own-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- 1. No abstraction -->
+  <rect class="zone" x="0" y="0" width="216" height="370" rx="8"/>
+  <text class="strong" x="12" y="24">No abstraction</text>
+  <text class="sm" x="12" y="42">the policy names the detail</text>
+  <rect class="box" x="12" y="60" width="192" height="116" rx="6"/>
+  <text class="sm" x="24" y="78">package shop</text>
+  <rect class="box" x="24" y="88" width="168" height="30" rx="5"/>
+  <text class="mono" x="108" y="108" text-anchor="middle">Checkout</text>
+  <rect class="box" x="12" y="212" width="192" height="116" rx="6"/>
+  <text class="sm" x="24" y="230">package adapters</text>
+  <rect class="box" x="24" y="240" width="168" height="30" rx="5"/>
+  <text class="mono" x="108" y="260" text-anchor="middle">CardCoGateway</text>
+  <line class="wire" x1="108" y1="118" x2="108" y2="236" marker-end="url(#own-arrow)"/>
+  <text class="sm" x="108" y="356" text-anchor="middle">shop depends on adapters</text>
+
+  <!-- 2. Interface owned by the detail -->
+  <rect class="zone" x="232" y="0" width="216" height="370" rx="8"/>
+  <text class="strong" x="244" y="24">Owned by the detail</text>
+  <text class="sm" x="244" y="42">an interface, misplaced</text>
+  <rect class="box" x="244" y="60" width="192" height="116" rx="6"/>
+  <text class="sm" x="256" y="78">package shop</text>
+  <rect class="box" x="256" y="88" width="168" height="30" rx="5"/>
+  <text class="mono" x="340" y="108" text-anchor="middle">Checkout</text>
+  <rect class="box" x="244" y="212" width="192" height="116" rx="6"/>
+  <text class="sm" x="256" y="230">package adapters</text>
+  <rect class="box-accent" x="256" y="240" width="168" height="30" rx="5"/>
+  <text class="mono" x="340" y="260" text-anchor="middle">PaymentGateway</text>
+  <rect class="box" x="256" y="284" width="168" height="30" rx="5"/>
+  <text class="mono" x="340" y="304" text-anchor="middle">CardCoGateway</text>
+  <line class="wire" x1="340" y1="118" x2="340" y2="236" marker-end="url(#own-arrow)"/>
+  <line class="wire" x1="340" y1="284" x2="340" y2="274" marker-end="url(#own-arrow)"/>
+  <text class="sm" x="340" y="356" text-anchor="middle">shop still depends on adapters</text>
+
+  <!-- 3. Interface owned by the policy -->
+  <rect class="zone" x="464" y="0" width="216" height="370" rx="8"/>
+  <text class="strong" x="476" y="24">Owned by the policy</text>
+  <text class="sm" x="476" y="42">the inversion</text>
+  <rect class="box" x="476" y="60" width="192" height="116" rx="6"/>
+  <text class="sm" x="488" y="78">package shop</text>
+  <rect class="box" x="488" y="88" width="168" height="30" rx="5"/>
+  <text class="mono" x="572" y="108" text-anchor="middle">Checkout</text>
+  <rect class="box-accent" x="488" y="132" width="168" height="30" rx="5"/>
+  <text class="mono" x="572" y="152" text-anchor="middle">PaymentGateway</text>
+  <line class="wire" x1="572" y1="118" x2="572" y2="128" marker-end="url(#own-arrow)"/>
+  <rect class="box" x="476" y="212" width="192" height="116" rx="6"/>
+  <text class="sm" x="488" y="230">package adapters</text>
+  <rect class="box" x="488" y="240" width="168" height="30" rx="5"/>
+  <text class="mono" x="572" y="260" text-anchor="middle">CardCoGateway</text>
+  <line class="wire-accent" x1="572" y1="240" x2="572" y2="166" marker-end="url(#own-arrow-accent)"/>
+  <text class="sm accent" x="572" y="356" text-anchor="middle">adapters depends on shop</text>
+</svg>

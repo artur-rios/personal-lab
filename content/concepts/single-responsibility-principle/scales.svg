@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 296" role="img" aria-labelledby="srp-scales-title">
+  <title id="srp-scales-title">The same idea at four nested scales. A function sits inside a class or module, which sits inside a component, which sits inside a service. For a function the rule is to do one thing, which is a rule about functions and not the single responsibility principle. For a class or module the rule is the single responsibility principle: one actor, one reason to change. For a component it is the common closure principle: what changes together is released together. For a service it is Conway's law: the structure of a system follows the structure of the teams that build it.</title>
+
+  <!-- Nested scales -->
+  <rect class="box" x="0" y="0" width="380" height="294" rx="8"/>
+  <text class="strong" x="16" y="24">Service</text>
+
+  <rect class="box" x="24" y="40" width="332" height="232" rx="8"/>
+  <text class="strong" x="40" y="64">Component</text>
+
+  <rect class="box-accent" x="48" y="80" width="284" height="170" rx="8"/>
+  <text class="strong accent" x="64" y="104">Class or module</text>
+
+  <rect class="box" x="72" y="120" width="236" height="106" rx="6"/>
+  <text class="strong" x="88" y="144">Function</text>
+  <text class="mono" x="88" y="176">_shown(line)</text>
+  <text class="sm" x="88" y="200">one step of one job</text>
+
+  <!-- Leaders -->
+  <line class="sep" x1="380" y1="19" x2="396" y2="19"/>
+  <line class="sep" x1="356" y1="59" x2="396" y2="59"/>
+  <line class="sep" x1="332" y1="99" x2="396" y2="99"/>
+  <line class="sep" x1="308" y1="139" x2="396" y2="139"/>
+
+  <!-- What each scale asks -->
+  <text class="strong" x="404" y="24">Conway's law</text>
+  <text class="sm" x="404" y="40">structure follows the teams</text>
+
+  <text class="strong" x="404" y="64">Common Closure Principle</text>
+  <text class="sm" x="404" y="80">what changes together ships together</text>
+
+  <text class="strong accent" x="404" y="104">Single Responsibility</text>
+  <text class="sm" x="404" y="120">one actor, one reason to change</text>
+
+  <text class="strong" x="404" y="144">Do one thing</text>
+  <text class="sm" x="404" y="160">a rule for functions, not SRP</text>
+</svg>

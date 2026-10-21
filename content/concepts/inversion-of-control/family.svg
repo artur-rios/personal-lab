@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" role="img" aria-labelledby="fam-title">
+  <title id="fam-title">The family of ideas around inversion of control. Inversion of control is the umbrella: someone else's code decides when yours runs. Under it sit callbacks and event handlers, event loops, the template method pattern, plug-ins and frameworks, and dependency injection, where someone else decides which objects yours works with. Dependency injection can be done by hand in a composition root or by an IoC container. A service locator also hands out dependencies, but the class still asks for them itself. Beside the umbrella, not under it, is the dependency inversion principle, a design rule about which way source code dependencies point; dependency injection is a common way to follow it.</title>
+  <defs>
+    <marker id="fam-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <rect class="solid" x="150" y="8" width="300" height="52" rx="6"/>
+  <text class="strong on-solid" x="300" y="31" text-anchor="middle">Inversion of control</text>
+  <text class="sm on-solid" x="300" y="49" text-anchor="middle">someone else decides when your code runs</text>
+
+  <rect class="box" x="0" y="100" width="124" height="52" rx="6"/>
+  <text class="strong" x="62" y="122" text-anchor="middle">Callbacks,</text>
+  <text class="strong" x="62" y="140" text-anchor="middle">event handlers</text>
+  <rect class="box" x="138" y="100" width="100" height="52" rx="6"/>
+  <text class="strong" x="188" y="131" text-anchor="middle">Event loops</text>
+  <rect class="box" x="252" y="100" width="100" height="52" rx="6"/>
+  <text class="strong" x="302" y="122" text-anchor="middle">Template</text>
+  <text class="strong" x="302" y="140" text-anchor="middle">method</text>
+  <rect class="box" x="366" y="100" width="110" height="52" rx="6"/>
+  <text class="strong" x="421" y="122" text-anchor="middle">Frameworks,</text>
+  <text class="strong" x="421" y="140" text-anchor="middle">plug-ins</text>
+  <rect class="box-accent" x="490" y="100" width="190" height="52" rx="6"/>
+  <text class="strong" x="585" y="122" text-anchor="middle">Dependency injection</text>
+  <text class="sm" x="585" y="140" text-anchor="middle">someone else decides what with</text>
+
+  <line class="wire" x1="200" y1="60" x2="62" y2="96" marker-end="url(#fam-arrow)"/>
+  <line class="wire" x1="250" y1="60" x2="188" y2="96" marker-end="url(#fam-arrow)"/>
+  <line class="wire" x1="300" y1="60" x2="302" y2="96" marker-end="url(#fam-arrow)"/>
+  <line class="wire" x1="350" y1="60" x2="421" y2="96" marker-end="url(#fam-arrow)"/>
+  <line class="wire" x1="400" y1="60" x2="585" y2="96" marker-end="url(#fam-arrow)"/>
+
+  <rect class="box" x="490" y="190" width="88" height="52" rx="6"/>
+  <text class="strong" x="534" y="212" text-anchor="middle">By hand</text>
+  <text class="sm" x="534" y="230" text-anchor="middle">composition root</text>
+  <rect class="box" x="592" y="190" width="88" height="52" rx="6"/>
+  <text class="strong" x="636" y="212" text-anchor="middle">Container</text>
+  <text class="sm" x="636" y="230" text-anchor="middle">auto-wiring</text>
+  <line class="wire" x1="560" y1="152" x2="534" y2="186" marker-end="url(#fam-arrow)"/>
+  <line class="wire" x1="610" y1="152" x2="636" y2="186" marker-end="url(#fam-arrow)"/>
+
+  <rect class="zone" x="300" y="190" width="170" height="52" rx="6"/>
+  <text class="strong" x="385" y="212" text-anchor="middle">Service locator</text>
+  <text class="sm" x="385" y="230" text-anchor="middle">the class still asks</text>
+
+  <rect class="zone" x="0" y="190" width="270" height="108" rx="6"/>
+  <text class="strong" x="14" y="214">Dependency inversion principle</text>
+  <text class="sm" x="14" y="234">not a mechanism but a design rule:</text>
+  <text class="sm" x="14" y="252">high- and low-level modules both</text>
+  <text class="sm" x="14" y="270">depend on abstractions</text>
+  <text class="sm accent" x="14" y="288">dependency injection often serves it</text>
+</svg>

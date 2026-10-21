@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" role="img" aria-labelledby="wcw-title">
+  <title id="wcw-title">Who calls whom. On the left, a program using a library: the program's own main loop is in charge and calls library functions such as parse, format and send whenever it decides to, and each call returns. On the right, a program built on a framework: the framework owns the main loop, and it calls the program's handlers, such as on request, on click and on test, when events happen. The arrows of control point the other way: that reversal is inversion of control.</title>
+  <defs>
+    <marker id="wcw-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="wcw-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Library -->
+  <rect class="zone" x="0" y="0" width="326" height="298" rx="8"/>
+  <text class="strong" x="14" y="24">Using a library</text>
+  <text class="sm" x="14" y="42">your code is in charge</text>
+
+  <rect class="box-accent" x="20" y="60" width="286" height="64" rx="6"/>
+  <text class="strong" x="34" y="84">Your program</text>
+  <text class="mono" x="34" y="106">while running: decide, call</text>
+
+  <rect class="box" x="20" y="214" width="84" height="56" rx="6"/>
+  <text class="mono" x="62" y="247" text-anchor="middle">parse()</text>
+  <rect class="box" x="121" y="214" width="84" height="56" rx="6"/>
+  <text class="mono" x="163" y="247" text-anchor="middle">format()</text>
+  <rect class="box" x="222" y="214" width="84" height="56" rx="6"/>
+  <text class="mono" x="264" y="247" text-anchor="middle">send()</text>
+  <text class="sm" x="163" y="290" text-anchor="middle">library functions</text>
+
+  <line class="wire-accent" x1="62" y1="124" x2="62" y2="210" marker-end="url(#wcw-arrow-accent)"/>
+  <line class="wire-accent" x1="163" y1="124" x2="163" y2="210" marker-end="url(#wcw-arrow-accent)"/>
+  <line class="wire-accent" x1="264" y1="124" x2="264" y2="210" marker-end="url(#wcw-arrow-accent)"/>
+  <text class="sm" x="72" y="172">calls</text>
+  <text class="sm" x="173" y="172">calls</text>
+  <text class="sm" x="274" y="172">calls</text>
+
+  <!-- Framework -->
+  <rect class="zone" x="354" y="0" width="326" height="298" rx="8"/>
+  <text class="strong" x="368" y="24">Building on a framework</text>
+  <text class="sm" x="368" y="42">the framework is in charge</text>
+
+  <rect class="box" x="374" y="60" width="286" height="64" rx="6"/>
+  <text class="strong" x="388" y="84">Framework</text>
+  <text class="mono" x="388" y="106">event loop, router, test runner</text>
+
+  <rect class="box-accent" x="374" y="214" width="84" height="56" rx="6"/>
+  <text class="mono" x="416" y="238" text-anchor="middle">on_</text>
+  <text class="mono" x="416" y="256" text-anchor="middle">request</text>
+  <rect class="box-accent" x="475" y="214" width="84" height="56" rx="6"/>
+  <text class="mono" x="517" y="238" text-anchor="middle">on_</text>
+  <text class="mono" x="517" y="256" text-anchor="middle">click</text>
+  <rect class="box-accent" x="576" y="214" width="84" height="56" rx="6"/>
+  <text class="mono" x="618" y="238" text-anchor="middle">test_</text>
+  <text class="mono" x="618" y="256" text-anchor="middle">total</text>
+  <text class="sm" x="517" y="290" text-anchor="middle">your handlers</text>
+
+  <line class="wire" x1="416" y1="124" x2="416" y2="210" marker-end="url(#wcw-arrow)"/>
+  <line class="wire" x1="517" y1="124" x2="517" y2="210" marker-end="url(#wcw-arrow)"/>
+  <line class="wire" x1="618" y1="124" x2="618" y2="210" marker-end="url(#wcw-arrow)"/>
+  <text class="sm" x="426" y="172">calls</text>
+  <text class="sm" x="527" y="172">calls</text>
+  <text class="sm" x="628" y="172">calls</text>
+</svg>

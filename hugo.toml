@@ -3,6 +3,13 @@ locale = 'en-us'
 title = 'Artur Rios Lab'
 theme = 'nuno'
 
+# Declaring taxonomies replaces Hugo's defaults, so categories and tags are
+# listed alongside series, which the theme uses to link multi-part articles.
+[taxonomies]
+  category = 'categories'
+  series = 'series'
+  tag = 'tags'
+
 # JSON is the search index the theme needs on the home page.
 [outputs]
   home = ['HTML', 'RSS', 'JSON']
@@ -20,7 +27,7 @@ theme = 'nuno'
   description = 'Study notes, brainstorms and project tracking by Artur Rios, written in the open.'
   tagline = 'Study notes, brainstorms and projects.'
   masthead = 'Study<span class="accent">,</span><br>think<span class="accent">,</span><br>build.'
-  mainSections = ['fundamentals', 'front-end', 'brainstorms', 'projects']
+  mainSections = ['fundamentals', 'front-end', 'concepts', 'brainstorms', 'projects']
 
   [params.author]
     name = 'Artur Rios'
@@ -41,6 +48,11 @@ theme = 'nuno'
     name = 'Front-end'
     url = '/front-end/'
     weight = 15
+  [[menu.main]]
+    identifier = 'concepts'
+    name = 'Concepts'
+    url = '/concepts/'
+    weight = 17
   [[menu.main]]
     identifier = 'brainstorms'
     name = 'Brainstorms'

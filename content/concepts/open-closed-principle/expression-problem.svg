@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 264" role="img" aria-labelledby="ocp-exp-title">
+  <title id="ocp-exp-title">The expression problem as a table, drawn twice. Rows are kinds of line item: Product, GiftCard and a new Subscription. Columns are operations: total, describe and a new tax. With objects, each row is a class, so the new Subscription row is one new class that adds all its cells, but the new tax column needs an edit to every existing class. With functions, each column is a function, so the new tax column is one new function, but the new Subscription row needs an edit to every existing function. Each style is open on one axis and closed on the other.</title>
+
+  <!-- Objects -->
+  <rect class="zone" x="0" y="0" width="330" height="262" rx="8"/>
+  <text class="strong" x="14" y="24">Objects</text>
+  <text class="sm" x="14" y="42">each row is a class</text>
+  <text class="mono" x="151" y="78" text-anchor="middle">total</text>
+  <text class="mono" x="215" y="78" text-anchor="middle">describe</text>
+  <text class="mono accent" x="279" y="78" text-anchor="middle">tax</text>
+  <text class="mono" x="14" y="110">Product</text>
+  <rect class="box" x="122" y="90" width="58" height="30" rx="4"/>
+  <rect class="box" x="186" y="90" width="58" height="30" rx="4"/>
+  <rect class="zone" x="250" y="90" width="58" height="30" rx="4"/>
+  <text class="sm" x="279" y="109" text-anchor="middle">edit</text>
+  <text class="mono" x="14" y="146">GiftCard</text>
+  <rect class="box" x="122" y="126" width="58" height="30" rx="4"/>
+  <rect class="box" x="186" y="126" width="58" height="30" rx="4"/>
+  <rect class="zone" x="250" y="126" width="58" height="30" rx="4"/>
+  <text class="sm" x="279" y="145" text-anchor="middle">edit</text>
+  <text class="mono accent" x="14" y="182">Subscription</text>
+  <rect class="solid" x="122" y="162" width="58" height="30" rx="4"/>
+  <text class="sm on-solid" x="151" y="181" text-anchor="middle">add</text>
+  <rect class="solid" x="186" y="162" width="58" height="30" rx="4"/>
+  <text class="sm on-solid" x="215" y="181" text-anchor="middle">add</text>
+  <rect class="solid" x="250" y="162" width="58" height="30" rx="4"/>
+  <text class="sm on-solid" x="279" y="181" text-anchor="middle">add</text>
+  <text class="sm" x="14" y="222">new kind: one new class</text>
+  <text class="sm" x="14" y="242">new operation: edit every class</text>
+
+  <!-- Functions -->
+  <rect class="zone" x="350" y="0" width="330" height="262" rx="8"/>
+  <text class="strong" x="364" y="24">Functions</text>
+  <text class="sm" x="364" y="42">each column is a function</text>
+  <text class="mono" x="501" y="78" text-anchor="middle">total</text>
+  <text class="mono" x="565" y="78" text-anchor="middle">describe</text>
+  <text class="mono accent" x="629" y="78" text-anchor="middle">tax</text>
+  <text class="mono" x="364" y="110">Product</text>
+  <rect class="box" x="472" y="90" width="58" height="30" rx="4"/>
+  <rect class="box" x="536" y="90" width="58" height="30" rx="4"/>
+  <rect class="solid" x="600" y="90" width="58" height="30" rx="4"/>
+  <text class="sm on-solid" x="629" y="109" text-anchor="middle">add</text>
+  <text class="mono" x="364" y="146">GiftCard</text>
+  <rect class="box" x="472" y="126" width="58" height="30" rx="4"/>
+  <rect class="box" x="536" y="126" width="58" height="30" rx="4"/>
+  <rect class="solid" x="600" y="126" width="58" height="30" rx="4"/>
+  <text class="sm on-solid" x="629" y="145" text-anchor="middle">add</text>
+  <text class="mono accent" x="364" y="182">Subscription</text>
+  <rect class="zone" x="472" y="162" width="58" height="30" rx="4"/>
+  <text class="sm" x="501" y="181" text-anchor="middle">edit</text>
+  <rect class="zone" x="536" y="162" width="58" height="30" rx="4"/>
+  <text class="sm" x="565" y="181" text-anchor="middle">edit</text>
+  <rect class="solid" x="600" y="162" width="58" height="30" rx="4"/>
+  <text class="sm on-solid" x="629" y="181" text-anchor="middle">add</text>
+  <text class="sm" x="364" y="222">new operation: one new function</text>
+  <text class="sm" x="364" y="242">new kind: edit every function</text>
+</svg>

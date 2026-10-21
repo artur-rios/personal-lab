@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 302" role="img" aria-labelledby="cp-title">
+  <title id="cp-title">Martin's Copy program, before and after inversion. Before, as a structure chart: the Copy module calls Read Keyboard and Write Printer, so the high-level policy depends on the two low-level details and cannot be reused with any other device. After: Copy depends only on two abstractions, Reader and Writer, and the details, a keyboard reader and a printer writer, depend on those same abstractions by implementing them. The arrows from the details now point up, towards the abstractions.</title>
+  <defs>
+    <marker id="cp-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="cp-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Before: the structure chart -->
+  <rect class="zone" x="0" y="0" width="236" height="300" rx="8"/>
+  <text class="strong" x="14" y="24">Structure chart</text>
+  <text class="sm" x="14" y="42">the policy calls the details,</text>
+  <text class="sm" x="14" y="58">and so depends on them</text>
+
+  <rect class="box" x="58" y="84" width="120" height="40" rx="6"/>
+  <text class="strong" x="118" y="109" text-anchor="middle">Copy</text>
+
+  <rect class="box" x="14" y="190" width="102" height="52" rx="6"/>
+  <text x="65" y="212" text-anchor="middle">Read</text>
+  <text x="65" y="230" text-anchor="middle">keyboard</text>
+  <rect class="box" x="122" y="190" width="102" height="52" rx="6"/>
+  <text x="173" y="212" text-anchor="middle">Write</text>
+  <text x="173" y="230" text-anchor="middle">printer</text>
+
+  <line class="wire" x1="100" y1="124" x2="70" y2="186" marker-end="url(#cp-arrow)"/>
+  <line class="wire" x1="136" y1="124" x2="168" y2="186" marker-end="url(#cp-arrow)"/>
+  <text class="sm" x="118" y="272" text-anchor="middle">Copy cannot be reused without</text>
+  <text class="sm" x="118" y="288" text-anchor="middle">a keyboard and a printer</text>
+
+  <!-- After: the inverted design -->
+  <rect class="zone" x="256" y="0" width="424" height="300" rx="8"/>
+  <text class="strong" x="270" y="24">Inverted</text>
+  <text class="sm" x="270" y="42">Copy and the details all depend on the abstractions</text>
+
+  <rect class="box" x="408" y="62" width="120" height="40" rx="6"/>
+  <text class="strong" x="468" y="87" text-anchor="middle">Copy</text>
+
+  <rect class="box-accent" x="290" y="146" width="160" height="48" rx="6"/>
+  <text class="mono" x="370" y="166" text-anchor="middle">Reader</text>
+  <text class="sm" x="370" y="184" text-anchor="middle">abstract</text>
+  <rect class="box-accent" x="486" y="146" width="160" height="48" rx="6"/>
+  <text class="mono" x="566" y="166" text-anchor="middle">Writer</text>
+  <text class="sm" x="566" y="184" text-anchor="middle">abstract</text>
+
+  <line class="wire" x1="446" y1="102" x2="382" y2="142" marker-end="url(#cp-arrow)"/>
+  <line class="wire" x1="490" y1="102" x2="554" y2="142" marker-end="url(#cp-arrow)"/>
+  <text class="sm" x="468" y="132" text-anchor="middle">uses</text>
+
+  <rect class="box" x="290" y="240" width="160" height="40" rx="6"/>
+  <text class="mono" x="370" y="265" text-anchor="middle">KeyboardReader</text>
+  <rect class="box" x="486" y="240" width="160" height="40" rx="6"/>
+  <text class="mono" x="566" y="265" text-anchor="middle">PrinterWriter</text>
+
+  <line class="wire-accent" x1="370" y1="240" x2="370" y2="198" marker-end="url(#cp-arrow-accent)"/>
+  <line class="wire-accent" x1="566" y1="240" x2="566" y2="198" marker-end="url(#cp-arrow-accent)"/>
+  <text class="sm accent" x="468" y="224" text-anchor="middle">implement</text>
+</svg>

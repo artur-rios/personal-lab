@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 452" role="img" aria-labelledby="dec-title">
+  <title id="dec-title">A decision flowchart, read from the top. First question: must the caller wait for the result before it can go on? If no, use messaging: a queue for jobs, a log such as Kafka for streams of events, MQTT for devices, and webhooks to notify other organisations. If yes, second question: must the server push updates as they happen? If yes, add server-sent events for one-way updates or WebSocket for two-way conversation. If no, third question: are the callers your own services, in code you control? If yes, use gRPC with Protocol Buffers; JSON-RPC suits tool protocols such as editors and agents. If no, fourth question: do many different clients need differently shaped views of the same connected data? If yes, consider GraphQL. If no, the default: REST over HTTP with JSON, described with OpenAPI. The answers combine: a REST API can also send webhooks, and services that talk gRPC can also publish events.</title>
+  <defs>
+    <marker id="dec-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Q1 -->
+  <rect class="box" x="0" y="0" width="330" height="56" rx="8"/>
+  <text class="strong" x="14" y="22">Must the caller wait for the result?</text>
+  <text class="sm" x="14" y="42">it cannot go on without the answer</text>
+  <line class="wire" x1="330" y1="28" x2="388" y2="28" marker-end="url(#dec-arrow)"/>
+  <text class="sm" x="348" y="20">no</text>
+  <rect class="solid" x="390" y="0" width="290" height="56" rx="8"/>
+  <text class="strong on-solid" x="404" y="22">Messaging</text>
+  <text class="sm on-solid" x="404" y="42">queue, Kafka log, MQTT, webhooks</text>
+  <line class="wire" x1="165" y1="56" x2="165" y2="94" marker-end="url(#dec-arrow)"/>
+  <text class="sm" x="173" y="80">yes</text>
+
+  <!-- Q2 -->
+  <rect class="box" x="0" y="96" width="330" height="56" rx="8"/>
+  <text class="strong" x="14" y="118">Must the server push updates?</text>
+  <text class="sm" x="14" y="138">as they happen, without being asked</text>
+  <line class="wire" x1="330" y1="124" x2="388" y2="124" marker-end="url(#dec-arrow)"/>
+  <text class="sm" x="348" y="116">yes</text>
+  <rect class="solid" x="390" y="96" width="290" height="56" rx="8"/>
+  <text class="strong on-solid" x="404" y="118">SSE or WebSocket</text>
+  <text class="sm on-solid" x="404" y="138">one way: SSE; both ways: WebSocket</text>
+  <line class="wire" x1="165" y1="152" x2="165" y2="190" marker-end="url(#dec-arrow)"/>
+  <text class="sm" x="173" y="176">no</text>
+
+  <!-- Q3 -->
+  <rect class="box" x="0" y="192" width="330" height="56" rx="8"/>
+  <text class="strong" x="14" y="214">Are the callers your own services?</text>
+  <text class="sm" x="14" y="234">both ends in code you control and deploy</text>
+  <line class="wire" x1="330" y1="220" x2="388" y2="220" marker-end="url(#dec-arrow)"/>
+  <text class="sm" x="348" y="212">yes</text>
+  <rect class="solid" x="390" y="192" width="290" height="56" rx="8"/>
+  <text class="strong on-solid" x="404" y="214">gRPC with Protobuf</text>
+  <text class="sm on-solid" x="404" y="234">JSON-RPC for editor and agent tools</text>
+  <line class="wire" x1="165" y1="248" x2="165" y2="286" marker-end="url(#dec-arrow)"/>
+  <text class="sm" x="173" y="272">no: browsers, partners, public</text>
+
+  <!-- Q4 -->
+  <rect class="box" x="0" y="288" width="330" height="56" rx="8"/>
+  <text class="strong" x="14" y="310">Many clients, many shapes of data?</text>
+  <text class="sm" x="14" y="330">each needs its own view of a data graph</text>
+  <line class="wire" x1="330" y1="316" x2="388" y2="316" marker-end="url(#dec-arrow)"/>
+  <text class="sm" x="348" y="308">yes</text>
+  <rect class="solid" x="390" y="288" width="290" height="56" rx="8"/>
+  <text class="strong on-solid" x="404" y="310">GraphQL</text>
+  <text class="sm on-solid" x="404" y="330">one schema, queries chosen by clients</text>
+  <line class="wire" x1="165" y1="344" x2="165" y2="382" marker-end="url(#dec-arrow)"/>
+  <text class="sm" x="173" y="368">no</text>
+
+  <!-- Default -->
+  <rect class="box-accent" x="0" y="384" width="330" height="56" rx="8"/>
+  <text class="strong accent" x="14" y="406">REST over HTTP with JSON</text>
+  <text class="sm" x="14" y="426">described with OpenAPI; the default</text>
+  <text class="sm" x="390" y="406">Answers combine: a REST API can also</text>
+  <text class="sm" x="390" y="424">send webhooks; gRPC services can also</text>
+  <text class="sm" x="390" y="442">publish events to a log.</text>
+</svg>

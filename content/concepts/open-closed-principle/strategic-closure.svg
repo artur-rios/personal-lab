@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 256" role="img" aria-labelledby="ocp-clo-title">
+  <title id="ocp-clo-title">Strategic closure. Checkout sits in the middle. On the left are the changes it has been closed against: a new shipping method, absorbed by the ShippingMethod protocol, and a new ordering policy, absorbed by the order parameter. Each arrow stops at a barrier before it reaches Checkout. On the right are changes it is not closed against: a shipping cost that depends on the destination, which means cost must receive more than the order total, and prices in two currencies, which changes every method. Those arrows go straight into Checkout. Closure is chosen, axis by axis, for the changes that are likely.</title>
+  <defs>
+    <marker id="ocp-clo-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="ocp-clo-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="strong" x="0" y="24">Closed against</text>
+  <text class="strong" x="460" y="24">Not closed against</text>
+
+  <!-- Closed: absorbed by an abstraction -->
+  <rect class="box-accent" x="0" y="50" width="200" height="56" rx="6"/>
+  <text class="strong" x="14" y="74">New shipping method</text>
+  <text class="sm" x="14" y="94">absorbed by the protocol</text>
+  <line class="wire-accent" x1="200" y1="78" x2="226" y2="78" marker-end="url(#ocp-clo-arrow-accent)"/>
+  <rect class="solid" x="230" y="54" width="8" height="48" rx="2"/>
+
+  <rect class="box-accent" x="0" y="150" width="200" height="56" rx="6"/>
+  <text class="strong" x="14" y="174">New ordering policy</text>
+  <text class="sm" x="14" y="194">absorbed by order=</text>
+  <line class="wire-accent" x1="200" y1="178" x2="226" y2="178" marker-end="url(#ocp-clo-arrow-accent)"/>
+  <rect class="solid" x="230" y="154" width="8" height="48" rx="2"/>
+
+  <line class="sep" x1="238" y1="78" x2="270" y2="112"/>
+  <line class="sep" x1="238" y1="178" x2="270" y2="148"/>
+
+  <!-- The module -->
+  <rect class="box" x="270" y="100" width="140" height="60" rx="6"/>
+  <text class="strong" x="340" y="128" text-anchor="middle">Checkout</text>
+  <text class="sm" x="340" y="146" text-anchor="middle">edited for these</text>
+
+  <!-- Open: goes straight in -->
+  <rect class="box" x="460" y="50" width="220" height="56" rx="6"/>
+  <text class="strong" x="474" y="74">Cost by destination</text>
+  <text class="sm" x="474" y="94">cost() must take more</text>
+  <line class="wire" x1="460" y1="78" x2="414" y2="112" marker-end="url(#ocp-clo-arrow)"/>
+
+  <rect class="box" x="460" y="150" width="220" height="56" rx="6"/>
+  <text class="strong" x="474" y="174">Prices in two currencies</text>
+  <text class="sm" x="474" y="194">every method changes</text>
+  <line class="wire" x1="460" y1="178" x2="414" y2="148" marker-end="url(#ocp-clo-arrow)"/>
+
+  <text class="sm" x="340" y="244" text-anchor="middle">Closure is chosen: protect the axes that are likely to change, and accept edits on the rest</text>
+</svg>
