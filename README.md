@@ -10,7 +10,7 @@ GitHub Pages at **<https://artur-rios.github.io/personal-lab/>**.
 
 | Kind | What it is |
 | --- | --- |
-| **Study notes** | What I learn, written up properly, with references. [Fundamentals](content/fundamentals/) covers the core ideas of computing and programming; [Front-end](content/front-end/) covers the frameworks behind web and mobile interfaces; [Concepts](content/concepts/) covers the design principles and patterns that decide how software is put together. |
+| **Study notes** | What I learn, written up properly, with references. [Fundamentals](content/fundamentals/) covers the core ideas of computing and programming; [Front-end](content/front-end/) covers the frameworks behind web and mobile interfaces; [Concepts](content/concepts/) covers the design principles and patterns that decide how software is put together; [Security](content/security/) covers how vulnerabilities and weaknesses are named, tracked and prevented. |
 | **Brainstorms** | Ideas while they are still rough: questions, sketches and options before anything is decided. They live in [Brainstorms](content/brainstorms/). |
 | **Projects** | The things I am building: what each one is, where it stands and what comes next. They live in [Projects](content/projects/). |
 
@@ -24,6 +24,7 @@ content/          site content, one folder per section
   fundamentals/   study notes on the fundamentals of computing
   front-end/      study notes on front-end frameworks: Angular, React, Flutter
   concepts/       study notes on software design concepts: SOLID, inversion of control
+  security/       study notes on software security: CVE and CWE
   brainstorms/    rough ideas, questions and options before anything is decided
   projects/       the things being built: what, status and what comes next
   series/         one page per multi-part series, with its description
