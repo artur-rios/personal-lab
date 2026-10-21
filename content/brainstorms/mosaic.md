@@ -59,7 +59,8 @@ extension point that outside code can hook into.
 | Kanban | dnd-kit | Accessible drag and drop for columns and cards, with keyboard support. |
 | State | Zustand | Small stores per feature, without a framework around them. |
 | Storage | Markdown files plus SQLite | Notes stay plain files; tasks, events, boards and sessions go in a database. |
-| Sync server | ASP.NET Core with PostgreSQL | Stores each user's vault and records, merges changes from every device, and serves the web companion. |
+| Sync server | ASP.NET Core with PostgreSQL | Stores each user's encrypted vault and records and relays changes between devices; one Docker image, hosted or self-hosted. |
+| Encryption | libsodium, through libsodium.js | End-to-end encryption with the same code on every platform: Argon2id for keys from the password, XChaCha20-Poly1305 for data. |
 | Testing | Vitest and Playwright | Unit tests for the logic, end-to-end tests against the web build. |
 
 ### Why Tauri
@@ -176,8 +177,8 @@ Sync ships in the first release, because the web build is a companion to the
 desktop and Android apps rather than a full app with a vault of its own. There
 are two ways to build it:
 
-- **Sync the files**, with a server that stores each vault and merges changes
-  per file.
+- **Sync the files**, with a server that stores each vault and devices that
+  merge changes per file.
 - **Sync the edits**, with a CRDT library such as Yjs or Automerge, which merges
   concurrent edits to the same note without conflicts, at the cost of storing
   each document's history.
@@ -197,10 +198,55 @@ files fits a vault that anything can edit:
 - **Drawings** are synced as whole files, with a conflict copy when both sides
   changed them.
 
-The server is an ASP.NET Core API with PostgreSQL. Each client sends what
-changed since the last revision it saw and receives what the others changed.
-The web companion talks to the same API directly, keeps a cache in the browser
-so recent notes open quickly, and needs the server to save its changes.
+Because everything is encrypted end to end, the server cannot read what it
+stores, so every merge above happens on the devices. The server only keeps
+encrypted items, each with a revision number. A device uploads a change
+together with the revision it was based on; if another device got there first,
+the server refuses the upload, and the device downloads the newer version,
+decrypts it, merges it with its own and tries again. Each device keeps the last
+version it synced of every note, which is the common base the three-way merge
+needs.
+
+### Privacy first: end-to-end encryption
+
+A second brain holds a person's most private writing, so Mosaic encrypts every
+note, record and drawing on the device before it leaves, and only the user's
+devices hold the keys. Neither the hosted service nor whoever runs a
+self-hosted server can read a note.
+
+- **One random vault key** encrypts all the data, with XChaCha20-Poly1305.
+- **The password never leaves the device as is.** Argon2id derives two keys
+  from it: one proves the user's identity to the server, and the other unlocks
+  the vault key, which the server stores only in its encrypted form. Changing
+  the password re-encrypts the vault key, not the whole vault.
+- **Names are encrypted too.** The server sees random IDs instead of note
+  titles and folder paths. What it can still see is how many items there are,
+  how large they are and when they change.
+- **A recovery key** is shown once when the vault is created. If the user
+  forgets the password and loses the recovery key, nobody can recover the
+  notes; that is the price of a server that cannot read them, and the app has
+  to say so plainly.
+- **A new device** joins by signing in with the password, or by scanning a QR
+  code shown on a device that is already signed in.
+
+libsodium provides every one of these primitives, and libsodium.js runs the
+same compiled code in the Tauri apps and in the browser, so there is one
+implementation of the encryption to review.
+
+Encryption changes what the web companion can do. It decrypts in the browser,
+so it searches only the notes it has downloaded and builds its own search index
+locally. It also has a weakness the installed apps do not: the browser loads
+its code from the server on every visit, so a compromised server could serve
+code that leaks the keys. Users who need the strongest guarantee should use
+the installed apps, or the web companion from a server they host themselves.
+
+### Hosted or self-hosted
+
+The sync server is published as one Docker image, with a Docker Compose file
+that runs it next to PostgreSQL. Users can run it themselves, or sign up to a
+hosted service that runs the same image; in the app, choosing between them is
+only a matter of the server address. End-to-end encryption is what makes the
+hosted option safe to offer: the service stores the vault but cannot read it.
 
 ## Decisions
 
@@ -213,12 +259,7 @@ The questions this brainstorm raised, and how they were settled:
 - **The web build is a companion** to the desktop and Android apps, and sync
   ships in the first release to make it possible.
 - **Mosaic supports no plugins.** Every feature is built into the app.
-
-## Open questions
-
-Shipping sync in the first release raises two questions of its own:
-
-- Is the sync server hosted for users, self-hosted by each user, or both?
-- Should notes be encrypted end to end, so the server stores only data it
-  cannot read? That would rule out merging on the server, and move the merge
-  to the clients.
+- **The sync server is both hosted and self-hostable**, from the same Docker
+  image.
+- **Everything is encrypted end to end, privacy first.** The server stores only
+  data it cannot read, and merging happens on the devices.
