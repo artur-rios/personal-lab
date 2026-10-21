@@ -129,6 +129,44 @@ FAT32 as the main file system. Programs written in Rust come later: Rust's
 standard library needs a target for Anvil OS in the Rust compiler, built on
 the same C library.
 
+### A hybrid kernel
+
+Kernels come in three designs:
+
+- **Monolithic**, as in Linux: the scheduler, memory manager, file systems
+  and drivers all run in kernel mode and call each other directly. The
+  quickest to get working, but a bug in any driver can bring the whole system
+  down.
+- **Microkernel**, as in Redox, MINIX 3 and seL4: the kernel keeps only
+  address spaces, threads and messages, and drivers and file systems run as
+  user processes. A crashed driver can be restarted, but every request becomes
+  messages between processes, which is slower and harder to get right.
+- **Hybrid**, as in Windows and macOS: a kernel designed in layers like a
+  microkernel, with most services moved back into kernel mode for speed.
+  Windows NT's executive, its drivers and, since NT 4.0, even its window and
+  graphics code run in kernel mode, while some drivers can run in user mode
+  through the User-Mode Driver Framework.
+
+Anvil OS is hybrid. macOS shows the combination works, since it is certified
+POSIX on a hybrid kernel, XNU, which joins the Mach microkernel to BSD code
+running in the same address space. For Anvil, hybrid means three rules from
+the first milestone on:
+
+- **Layers with narrow interfaces.** The architecture code, everything that
+  knows it runs on x86-64, sits in one layer at the bottom, as Windows' hardware
+  abstraction layer does. Memory management, scheduling, the virtual file
+  system and the drivers each sit above it as separate crates that talk
+  through defined interfaces, never through each other's internals.
+- **Kernel mode by default.** Drivers and file systems run inside the kernel,
+  so the first versions get a monolithic kernel's speed and simplicity.
+- **User mode where it pays.** The kernel offers messages between processes
+  and a way to map a device's memory into a process, so a driver whose crash
+  should not take the system down, such as USB, can later run as a user
+  process instead.
+
+Rust helps keep the layers honest: each layer is its own crate, and a crate
+can only use what another one makes public.
+
 ## Milestones
 
 The roadmap above, broken into steps that each end with something that boots
@@ -159,7 +197,8 @@ and can be shown:
 
 Beyond that, the order is open: multiple processors, networking with virtio-net
 and smoltcp, a Rust TCP/IP stack that runs without an OS, graphics and a window
-system, and USB, which is the hardest driver of all.
+system, and USB, which is the hardest driver of all and the first candidate to
+run as a user-mode driver.
 
 ## References
 
@@ -184,24 +223,5 @@ The questions this brainstorm raised, and how they were settled:
 - **The working name is Anvil OS.** The first name, Craft OS, was dropped
   because CraftOS is already the operating system in ComputerCraft, the
   Minecraft mod.
-
-## Open questions
-
-- Is the kernel monolithic, a microkernel, or a hybrid?
-  - **Monolithic**, as in Linux: the scheduler, memory manager, file systems
-    and drivers all run in kernel mode and call each other directly. The
-    quickest to get working, but a bug in any driver can bring the whole
-    system down.
-  - **Microkernel**, as in Redox, MINIX 3 and seL4: the kernel keeps only
-    address spaces, threads and messages, and drivers and file systems run as
-    user processes. A crashed driver can be restarted, but every request
-    becomes messages between processes, which is slower and harder to get
-    right.
-  - **Hybrid**, as in Windows and macOS: a kernel designed in layers like a
-    microkernel, with most services moved back into kernel mode for speed.
-    Windows NT's executive, its drivers and, since NT 4.0, even its window
-    and graphics code run in kernel mode, while some drivers can run in user
-    mode through the User-Mode Driver Framework.
-
-  A POSIX system can be built on any of the three: Linux is monolithic, MINIX 3
-  is a microkernel, and macOS is a hybrid.
+- **The kernel is hybrid**, as in Windows and macOS, and POSIX-compatible, as
+  macOS is.
