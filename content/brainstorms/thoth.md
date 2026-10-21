@@ -19,6 +19,18 @@ An IDE that adapts to your exact needs, nothing more, nothing less.
 - Linux
 - Windows
 
+## First release modules
+
+- .NET
+- Angular
+- React
+- Flutter
+- Python
+- Rust
+- HTML/CSS
+- JavaScript/TypeScript
+- Java
+
 ## Technology stack
 
 The feature that shapes the stack most is the second one: the same IDE in a
@@ -157,27 +169,54 @@ id = "dotnet.test"
 title = "Run tests"
 ```
 
-The two modules from the features would start as:
+A manifest can also require other modules. Angular and React are built on the
+web, so their manifests require the JavaScript/TypeScript and HTML/CSS modules
+instead of bringing their own copies of those servers:
+
+```toml
+[module]
+id = "angular"
+name = "Angular"
+requires = ["javascript-typescript", "html-css"]
+```
+
+The nine modules of the first release would start as:
 
 | Module | Language server | Debugger | Tasks |
 | --- | --- | --- | --- |
 | .NET | The Roslyn language server, or csharp-ls | netcoredbg | `dotnet build`, `dotnet test`, `dotnet new`, solution and project tree |
-| Angular | Angular Language Service, with a TypeScript language server and ESLint's | `js-debug` against Chrome or Edge | `ng serve`, `ng test`, `ng generate`; see [What Is Angular?]({{< ref "/front-end/angular" >}}) |
+| Angular | Angular Language Service, on top of JavaScript/TypeScript and HTML/CSS | `js-debug`, from JavaScript/TypeScript | `ng serve`, `ng test`, `ng generate`; see [What Is Angular?]({{< ref "/front-end/angular" >}}) |
+| React | None of its own: JSX and TSX are handled by the TypeScript server from JavaScript/TypeScript | `js-debug`, from JavaScript/TypeScript | The project's `dev`, `build` and `test` scripts, component snippets; see [What Is React?]({{< ref "/front-end/react" >}}) |
+| Flutter | The Dart analysis server, run as `dart language-server` | The Dart and Flutter debug adapters, which include hot reload | `flutter run`, `flutter test`, device picker; see [What Is Flutter?]({{< ref "/front-end/flutter" >}}) |
+| Python | Pyright for types, Ruff for linting and formatting | debugpy | Virtual environment picker, `pytest` |
+| Rust | rust-analyzer | CodeLLDB | `cargo build`, `cargo test`, `cargo run`, Clippy |
+| HTML/CSS | The HTML and CSS language servers extracted from VS Code | None, debugging runs in the browser | Emmet abbreviations, colour previews |
+| JavaScript/TypeScript | A TypeScript language server, and ESLint's | `js-debug`, for Node.js, Chrome and Edge | npm, pnpm and Yarn scripts, `package.json` awareness |
+| Java | Eclipse JDT Language Server | java-debug, which runs inside the JDT Language Server | Maven and Gradle tasks, test runner |
 
-{{< callout type="warning" title="Licence of the .NET debugger" >}}
+Several of these servers are programs for another runtime: the TypeScript,
+Angular, HTML, CSS, ESLint and Pyright servers run on Node.js, and the JDT
+Language Server runs on Java. Those modules need either the runtime the user
+already has installed, or one Thoth fetches and pins for itself.
+
+{{< callout type="warning" title="Licences of Microsoft's own tools" >}}
 Microsoft's .NET debugger, vsdbg, may only be used with Microsoft's own tools,
 such as Visual Studio and VS Code, so Thoth cannot ship it or download it. The
 .NET module has to use netcoredbg, Samsung's open-source debugger, which speaks
-the Debug Adapter Protocol.
+the Debug Adapter Protocol. Pylance, VS Code's Python language server, has the
+same restriction, which is why the Python module uses Pyright, the open-source
+project Pylance is built on.
 {{< /callout >}}
 
-### A first version
+### Building toward the first release
 
-The smallest Thoth worth using is the core and the terminal front end with one
-module: open a folder, edit with Vim keys, find files, search, and get
-completion and diagnostics for C#. The terminal is the quicker front end to
-build and the easier one to test, and it proves the core's design before the
-window is started. The window front end and the Angular module come next.
+Nine modules is a lot to build at once, so the order matters. The first
+milestone is the core and the terminal front end with one module: open a
+folder, edit with Vim keys, find files, search, and get completion and
+diagnostics for C#. The terminal is the quicker front end to build and the
+easier one to test, and it proves the core's design before the window is
+started. The window front end comes next, then the other modules, starting with
+JavaScript/TypeScript and HTML/CSS, since Angular and React are built on them.
 
 ## Open questions
 
@@ -185,7 +224,7 @@ window is started. The window front end and the Angular module come next.
   terminal IDE first?
 - Should a user be able to choose Vim keys in the window and VS Code keys in
   the terminal, or does each front end keep one keymap?
-- Where does a module's boundary lie? A web module that Angular builds on, or
-  an Angular module that brings TypeScript with it?
+- Should Thoth fetch its own Node.js and Java runtimes for the servers that
+  need them, or require the user to install them?
 - Should modules ever load from outside the binary, for languages Thoth does
   not ship, or does that make them extensions after all?
