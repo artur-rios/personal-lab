@@ -20,7 +20,7 @@ theme = 'nuno'
   description = 'Study notes, brainstorms and project tracking by Artur Rios, written in the open.'
   tagline = 'Study notes, brainstorms and projects.'
   masthead = 'Study<span class="accent">,</span><br>think<span class="accent">,</span><br>build.'
-  mainSections = ['fundamentals', 'front-end', 'brainstorms', 'projects']
+  mainSections = ['fundamentals', 'front-end', 'concepts', 'brainstorms', 'projects']
 
   [params.author]
     name = 'Artur Rios'
@@ -41,6 +41,11 @@ theme = 'nuno'
     name = 'Front-end'
     url = '/front-end/'
     weight = 15
+  [[menu.main]]
+    identifier = 'concepts'
+    name = 'Concepts'
+    url = '/concepts/'
+    weight = 17
   [[menu.main]]
     identifier = 'brainstorms'
     name = 'Brainstorms'
