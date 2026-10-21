@@ -1,0 +1,140 @@
+---
+title: "Thoth: An IDE That Grows With You"
+description: "An idea for an IDE that starts as a lightweight editor and grows through built-in modules instead of extensions, with a VS Code-like window and a LunarVim-like terminal mode, and a suggested technology stack to build it for Linux and Windows."
+date: 2026-10-21T12:00:00Z
+categories: ["Brainstorms"]
+tags: ["Thoth", "IDE", "Code Editor", "Rust", "Language Server Protocol", "Technology Stack"]
+---
+
+An IDE that adapts to your exact needs, nothing more, nothing less.
+
+## Features
+
+- Starts like a simple and lightweight code editor and the user can activate modules to add functionalities to fill their needs. For example a .NET module, an Angular module etc
+- Experience must be similar to Visual Studio Code on Linux and Windows and similar to LunarVim on terminal
+- Do not support extensions, the idea is to use the modules to extend the application on-demand
+
+## Platforms
+
+- Linux
+- Windows
+
+## Technology stack
+
+The feature that shapes the stack most is the second one: the same IDE in a
+window and in a terminal. If the window and the terminal are two programs, every
+feature is built twice. So the design starts from one **core** that owns
+everything an editor does, such as buffers, cursors, syntax trees, language
+servers, commands, keymaps and modules, and two thin **front ends** that only
+draw what the core describes and send it the user's input.
+
+```txt
+              modules: .NET, Angular, ...
+                       │
+                ┌──────┴───────┐
+                │  thoth-core  │
+                └──────┬───────┘
+          input ▲      │      ▼ view
+          ┌────────────┴────────────┐
+   ┌──────┴──────┐           ┌──────┴──────┐
+   │  thoth-gui  │           │ thoth-term  │
+   │ VS Code-like│           │LunarVim-like│
+   └─────────────┘           └─────────────┘
+```
+
+The two experiences then differ where they should, in drawing and in keymaps:
+the window uses VS Code's shortcuts, mouse and panels, and the terminal uses
+modal, Vim-style editing with a leader key, as LunarVim does on top of Neovim.
+Both are keymap profiles in the core, so a user could also pick Vim keys in the
+window.
+
+### The suggestion at a glance
+
+| Concern | Choice | Why |
+| --- | --- | --- |
+| Language | Rust | Fast start-up and low memory with no runtime, and the language the editors closest to this idea are written in: Helix, Zed and Lapce. |
+| Text buffer | Ropey | A rope keeps edits fast in large files and makes undo history cheap. |
+| Syntax | Tree-sitter | Incremental parsing for highlighting, folding, indentation and selecting by syntax node, from one grammar per language. |
+| Language features | Language Server Protocol | Completion, diagnostics, go to definition and refactoring come from each language's own server, so a module wraps a server instead of reimplementing a language. |
+| Debugging | Debug Adapter Protocol | The same idea for debuggers: one client in the core, one adapter per language. |
+| Terminal front end | ratatui with crossterm | The standard Rust terminal UI library, and crossterm drives both Linux terminals and the Windows console. |
+| Window front end | Iced | A cross-platform GPU UI library with an Elm-like model that fits a core sending view updates; it runs on Windows, X11 and Wayland. |
+| Search and files | `ignore`, `grep-searcher`, nucleo | The crates behind ripgrep for walking and searching the workspace, and Helix's fuzzy matcher for the file and command pickers. |
+| Git | gitoxide (`gix`) | A Git implementation in Rust, without a C library to build and ship. |
+| Built-in terminal panel | `alacritty_terminal` with `portable-pty` | The terminal emulator Zed embeds, and a pseudo-terminal that works on Windows too. |
+| Configuration | TOML | One file for settings, keymaps and which modules are active. |
+| Testing | `cargo test` with insta | Snapshot tests of what the core renders, using ratatui's test backend for the terminal. |
+| Packaging | cargo-dist | MSI and a winget manifest for Windows; archives, `.deb` and AppImage for Linux. |
+
+### Why Rust
+
+"Lightweight" is a requirement, not a wish, so the core should start in
+milliseconds and stay small with nothing open. Rust gives that without a
+garbage collector or a runtime to start, and it is the only ecosystem where
+every piece above already exists as a library and has been proven in a shipping
+editor. Helix is the closest reference: a terminal editor in Rust with
+Tree-sitter and language servers built in, and no plugin system, which is
+Thoth's stance on extensions too.
+
+| Option | Window | Terminal | Weight | Trade-off |
+| --- | --- | --- | --- | --- |
+| **Rust core + Iced + ratatui** | Iced | ratatui | Lightest | Rust has a steep start, and Iced has no ready-made code editor widget, so the editor surface is drawn on a canvas. |
+| .NET core + Avalonia + Terminal.Gui | Avalonia with AvaloniaEdit | Terminal.Gui | Light with Native AOT; see [How C# Runs]({{< ref "/dotnet/compilation-and-execution" >}}) | Familiar language, and the .NET module could use Roslyn directly, but Tree-sitter is only reachable through native bindings, and the two UI libraries each bring their own text model. |
+| Tauri or Electron with Monaco | Monaco, VS Code's editor | A second editor | Heaviest | The window would look like VS Code quickly, but Monaco owns the text model, so the terminal mode would be another editor with every feature built twice. |
+| A Neovim distribution | A Neovim GUI such as Neovide | Neovim | Light | The fastest route to the terminal half, but modules become Lua plugins, which is the extension system Thoth wants to avoid, and the window would feel like Vim, not VS Code. |
+
+If Rust is too much to learn alongside building an IDE, the .NET row is the
+honest second choice: the architecture stays the same, one core and two front
+ends, only the libraries change.
+
+### Modules instead of extensions
+
+A module is first-party code compiled into Thoth, not a package downloaded from
+a marketplace. Inactive modules cost nothing at run time: they register no
+commands, start no processes and add no menu items. Activating one does three
+things:
+
+1. **Fetches its tools**, such as a language server or a debug adapter, into
+   Thoth's own data folder, pinned to a version Thoth was tested with. This is
+   what mason.nvim does for LunarVim.
+2. **Starts its servers** when a file it handles is opened, and stops them when
+   the last one closes.
+3. **Registers its commands, keymaps and panels** with the core, such as "Run
+   tests" or a project tree.
+
+In Rust, each module is a crate that implements one `Module` trait, so the core
+stays ignorant of every language. Because the set of modules is fixed at build
+time, the core can test every combination, which a marketplace never can.
+
+The two modules from the features would start as:
+
+| Module | Language server | Debugger | Tasks |
+| --- | --- | --- | --- |
+| .NET | The Roslyn language server, or csharp-ls | netcoredbg | `dotnet build`, `dotnet test`, `dotnet new`, solution and project tree |
+| Angular | Angular Language Service, with a TypeScript language server and ESLint's | `js-debug` against Chrome or Edge | `ng serve`, `ng test`, `ng generate`; see [What Is Angular?]({{< ref "/front-end/angular" >}}) |
+
+{{< callout type="warning" title="Licence of the .NET debugger" >}}
+Microsoft's .NET debugger, vsdbg, may only be used with Microsoft's own tools,
+such as Visual Studio and VS Code, so Thoth cannot ship it or download it. The
+.NET module has to use netcoredbg, Samsung's open-source debugger, which speaks
+the Debug Adapter Protocol.
+{{< /callout >}}
+
+### A first version
+
+The smallest Thoth worth using is the core and the terminal front end with one
+module: open a folder, edit with Vim keys, find files, search, and get
+completion and diagnostics for C#. The terminal is the quicker front end to
+build and the easier one to test, and it proves the core's design before the
+window is started. The window front end and the Angular module come next.
+
+## Open questions
+
+- Is the window a requirement for the first release, or can Thoth ship as a
+  terminal IDE first?
+- Should a user be able to choose Vim keys in the window and VS Code keys in
+  the terminal, or does each front end keep one keymap?
+- Where does a module's boundary lie? A web module that Angular builds on, or
+  an Angular module that brings TypeScript with it?
+- Should modules ever load from outside the binary, for languages Thoth does
+  not ship, or does that make them extensions after all?
