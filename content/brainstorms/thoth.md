@@ -194,11 +194,6 @@ The nine modules of the first release would start as:
 | JavaScript/TypeScript | A TypeScript language server, and ESLint's | `js-debug`, for Node.js, Chrome and Edge | npm, pnpm and Yarn scripts, `package.json` awareness |
 | Java | Eclipse JDT Language Server | java-debug, which runs inside the JDT Language Server | Maven and Gradle tasks, test runner |
 
-Several of these servers are programs for another runtime: the TypeScript,
-Angular, HTML, CSS, ESLint and Pyright servers run on Node.js, and the JDT
-Language Server runs on Java. Those modules need either the runtime the user
-already has installed, or one Thoth fetches and pins for itself.
-
 {{< callout type="warning" title="Licences of Microsoft's own tools" >}}
 Microsoft's .NET debugger, vsdbg, may only be used with Microsoft's own tools,
 such as Visual Studio and VS Code, so Thoth cannot ship it or download it. The
@@ -207,6 +202,24 @@ the Debug Adapter Protocol. Pylance, VS Code's Python language server, has the
 same restriction, which is why the Python module uses Pyright, the open-source
 project Pylance is built on.
 {{< /callout >}}
+
+#### Node.js and Java
+
+Several of these servers are programs for another runtime: the TypeScript,
+Angular, HTML, CSS, ESLint and Pyright servers run on Node.js, and the JDT
+Language Server runs on Java. A manifest declares the runtime its servers need,
+and when a module that needs one is activated, Thoth looks for it on the
+machine first:
+
+- **The runtime is installed.** Thoth asks the user whether to use the
+  installed Node.js or Java, or to install its own copy for Thoth alone. If the
+  installed version is older than the module needs, the prompt says so.
+- **The runtime is not installed.** Thoth tells the user that the module needs
+  it, and that it will be installed into Thoth's own data folder, where it
+  changes nothing else on the machine.
+
+The answer is saved in the configuration, so each runtime is asked about once,
+not once per module, and it can be changed later in the settings.
 
 ### Building toward the first release
 
@@ -224,7 +237,5 @@ JavaScript/TypeScript and HTML/CSS, since Angular and React are built on them.
   terminal IDE first?
 - Should a user be able to choose Vim keys in the window and VS Code keys in
   the terminal, or does each front end keep one keymap?
-- Should Thoth fetch its own Node.js and Java runtimes for the servers that
-  need them, or require the user to install them?
 - Should modules ever load from outside the binary, for languages Thoth does
   not ship, or does that make them extensions after all?
