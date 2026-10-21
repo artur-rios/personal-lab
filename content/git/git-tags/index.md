@@ -49,24 +49,24 @@ commit
 $ git cat-file -t v1.0.0
 tag
 $ git cat-file -p v1.0.0
-object e4a41d2ce1297e54f23fff4e853c746289390d68
+object f9d0f72027d468d3c869ee9a50b1de4930590b90
 type commit
 tag v1.0.0
-tagger Artur Rios <artur.dev@duck.com> 1792576800 +0000
+tagger Artur Rios <arturdev@duck.com> 1792576800 +0000
 
 Release 1.0.0
 ```
 
 The lightweight tag resolves to the commit itself. The annotated one resolves
-to a tag object with a hash of its own, `3651dbb`, whose `object` line is the
+to a tag object with a hash of its own, `f09f2bf`, whose `object` line is the
 commit. Both are just entries under `refs/tags`:
 
 ```txt
 $ git show-ref --tags
-3651dbbb7f54a8965bafee6241e1bcc6e8e67190 refs/tags/v1.0.0
-e4a41d2ce1297e54f23fff4e853c746289390d68 refs/tags/v1.0.0-lw
+f09f2bf36bddbba603b64701bde2935545d2709e refs/tags/v1.0.0
+f9d0f72027d468d3c869ee9a50b1de4930590b90 refs/tags/v1.0.0-lw
 $ git rev-parse "v1.0.0^{}"
-e4a41d2ce1297e54f23fff4e853c746289390d68
+f9d0f72027d468d3c869ee9a50b1de4930590b90
 ```
 
 The `^{}` suffix *peels* a tag: it follows tag objects until it reaches
@@ -165,17 +165,17 @@ which makes a version string for builds between releases:
 
 ```txt
 $ git log --oneline
-3c474d4 Fix a bug
-55e5e8f Second feature
-e4a41d2 First feature
+729f95f Fix a bug
+62a7e12 Second feature
+f9d0f72 First feature
 $ git describe
-v1.0.0-2-g3c474d4
+v1.0.0-2-g729f95f
 $ git describe --dirty
-v1.0.0-2-g3c474d4-dirty
+v1.0.0-2-g729f95f-dirty
 ```
 
 Read it as three parts: the nearest tag, `v1.0.0`; the number of commits since
-it, `2`; and `g` followed by the abbreviated hash of the commit, `3c474d4`. The
+it, `2`; and `g` followed by the abbreviated hash of the commit, `729f95f`. The
 `g` "stands for 'git'".[^gitdescribe] `--dirty` appends `-dirty` when the
 working tree has uncommitted changes, `--abbrev=0` prints only the tag, and
 `--always` falls back to a bare hash when no tag is found.
@@ -216,10 +216,10 @@ $ git push --follow-tags origin main
  * [new tag]         v1.0.0 -> v1.0.0
  * [new tag]         v1.1.0 -> v1.1.0
 $ git ls-remote --tags origin
-3651dbbb7f54a8965bafee6241e1bcc6e8e67190	refs/tags/v1.0.0
-e4a41d2ce1297e54f23fff4e853c746289390d68	refs/tags/v1.0.0^{}
-6bf4b07fb0c9b3147264625b7f4afe33de4782eb	refs/tags/v1.1.0
-55e5e8f22c4b6669398eeb2e5a07435d5250cc2c	refs/tags/v1.1.0^{}
+f09f2bf36bddbba603b64701bde2935545d2709e	refs/tags/v1.0.0
+f9d0f72027d468d3c869ee9a50b1de4930590b90	refs/tags/v1.0.0^{}
+f56919b95c288480164add4dc91ccfb4426dc503	refs/tags/v1.1.0
+62a7e127d7df881789e46d52a20dbf245fff5b24	refs/tags/v1.1.0^{}
 ```
 
 `v1.0.0-lw` stayed local. The `^{}` lines are the remote showing each
@@ -280,7 +280,7 @@ of failing)":[^gittag]
 $ git tag -a v1.1.0 -m "Release 1.1.0"
 fatal: tag 'v1.1.0' already exists
 $ git tag -f -a v1.1.0 -m "Release 1.1.0, take two"
-Updated tag 'v1.1.0' (was 6bf4b07)
+Updated tag 'v1.1.0' (was f56919b)
 ```
 
 The remote refuses the moved tag, and forcing it through changes only the
@@ -291,7 +291,7 @@ $ git push origin v1.1.0
  ! [rejected]        v1.1.0 -> v1.1.0 (already exists)
 hint: Updates were rejected because the tag already exists in the remote.
 $ git push --force origin v1.1.0
- + 6bf4b07...9b356e4 v1.1.0 -> v1.1.0 (forced update)
+ + f56919b...544e5b9 v1.1.0 -> v1.1.0 (forced update)
 ```
 
 A teammate who already had `v1.1.0` keeps the old one. A plain fetch is silent,
@@ -299,16 +299,16 @@ and an explicit tag fetch refuses to overwrite it:
 
 ```txt
 $ git rev-parse --short "v1.1.0^{}"
-55e5e8f
+62a7e12
 $ git fetch
 $ git fetch --tags
  ! [rejected] v1.1.0     -> v1.1.0  (would clobber existing tag)
 $ git rev-parse --short "v1.1.0^{}"
-55e5e8f
+62a7e12
 $ git fetch --tags --force
  t [tag update]      v1.1.0     -> v1.1.0
 $ git rev-parse --short "v1.1.0^{}"
-3c474d4
+729f95f
 ```
 
 Now the same name means two different commits, depending on who you ask.
@@ -329,7 +329,7 @@ You are in 'detached HEAD' state. You can look around, make experimental
 changes and commit them, and you can discard any commits you make in this
 state without impacting any branches by switching back to a branch.
 …
-HEAD is now at e4a41d2 First feature
+HEAD is now at f9d0f72 First feature
 ```
 
 A tag is not a branch, so checking one out detaches `HEAD`. Commits made there

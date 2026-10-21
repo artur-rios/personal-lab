@@ -19,7 +19,7 @@ Three settings, written once to the global configuration file:
 
 ```bash
 git config --global user.name "Artur Rios"
-git config --global user.email artur.dev@duck.com
+git config --global user.email arturdev@duck.com
 git config --global init.defaultBranch main
 ```
 
@@ -45,7 +45,7 @@ The result in `~/.gitconfig`:
 ```ini
 [user]
 	name = Artur Rios
-	email = artur.dev@duck.com
+	email = arturdev@duck.com
 [init]
 	defaultBranch = main
 [alias]
@@ -73,15 +73,15 @@ adding a forgotten file or rewording the message, and committing again:
 
 ```txt
 $ git log --oneline
-68fc720 three
-5973151 two
-9079698 one
+4457f95 three
+7e88eff two
+6f2184a one
 $ git undo
 $ git status --short
 M  f
 $ git log --oneline
-5973151 two
-9079698 one
+7e88eff two
+6f2184a one
 ```
 
 {{< callout type="warning" >}}
@@ -116,8 +116,8 @@ belongs to the committer", meaning the identity now in your configuration. It
 
 ```txt
 $ git log --format='%h %an <%ae> %s' main..feature
-da828f5 Artur Rios <artur.dev@duck.com> three
-6b758ea Artur Rios <artur.dev@duck.com> two
+0058696 Artur Rios <arturdev@duck.com> three
+6273558 Artur Rios <arturdev@duck.com> two
 ```
 
 Only the commits after `main` change; `main` itself keeps its old author. Every
@@ -211,10 +211,10 @@ git log --all --decorate --oneline --graph
 ```
 
 ```txt
-* 220d5b8 (HEAD -> feature-renamed) Remove ignored files
-* ed43413 oops build
-* da828f5 (origin/feature-renamed) three
-* 6b758ea two
+* c239694 (HEAD -> feature-renamed) Remove ignored files
+* 8980526 oops build
+* 0058696 (origin/feature-renamed) three
+* 6273558 two
 * 42cb1d9 (origin/main, main) one
 ```
 
@@ -260,9 +260,9 @@ uncommitted changes are lost.[^reset]
 
 ```txt
 $ git push -f origin HEAD~2:feature-renamed
- + 220d5b8...da828f5 HEAD~2 -> feature-renamed (forced update)
+ + c239694...0058696 HEAD~2 -> feature-renamed (forced update)
 $ git reset --hard HEAD~2
-HEAD is now at da828f5 three
+HEAD is now at 0058696 three
 ```
 
 {{< callout type="warning" >}}
