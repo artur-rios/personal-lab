@@ -1,9 +1,9 @@
 ---
-title: "Craft OS: An Operating System From Scratch"
-description: "An idea for an open-source operating system built from scratch to learn how one works, starting from the simplest kernel and growing it into something usable, with a suggested technology stack and a roadmap of milestones."
+title: "Anvil OS: An Operating System From Scratch"
+description: "An idea for an operating system built from scratch to learn how one works, starting from the simplest kernel and growing it into something usable and POSIX-compatible, with a suggested technology stack and a roadmap of milestones."
 date: 2026-10-21T15:00:00Z
 categories: ["Brainstorms"]
-tags: ["Craft OS", "Operating Systems", "Kernel", "Rust", "x86-64", "Technology Stack"]
+tags: ["Anvil OS", "Operating Systems", "Kernel", "Rust", "x86-64", "POSIX", "Technology Stack"]
 ---
 
 An open source operating system built from scratch.
@@ -41,6 +41,8 @@ and [Processors]({{< ref "/fundamentals/processors" >}}).
 | Build tool | Cargo with an `xtask` | One `cargo xtask run` builds the kernel, makes the bootable image and starts QEMU, without Make or shell scripts. |
 | Testing | Host unit tests and QEMU integration tests | Pure logic is tested on the host with `cargo test`; anything that needs hardware boots in QEMU and reports over the serial port. |
 | CI | GitHub Actions on Linux | Builds the image and boots every test kernel in QEMU on each pull request. |
+| C library | mlibc | A portable C library written for hobby operating systems, which gives programs the POSIX interface on top of Anvil's own system calls. |
+| Ported programs | An Anvil target for GCC or Clang | Compiles existing POSIX programs, such as a shell and core utilities, for Anvil OS. |
 
 ### Why Rust
 
@@ -104,6 +106,29 @@ need one:
   writing to QEMU's `isa-debug-exit` device, which closes QEMU with an exit
   code CI can read.
 
+### POSIX compatibility
+
+POSIX describes an operating system from a program's side: the C functions,
+such as `open`, `read`, `fork` and `exec`, and how files, processes, signals
+and permissions behave. It does not prescribe the system calls underneath, so
+Anvil OS keeps its own system call interface and gets POSIX from a C library:
+
+- **mlibc** implements the C and POSIX functions once, and reaches the kernel
+  through a small layer of system-dependent functions that each operating
+  system writes for itself. Managarm and other hobby systems use it in the
+  same way.
+- **An Anvil target for the compiler** lets GCC or Clang build programs for
+  Anvil OS, linked against mlibc. With it, existing software, such as dash,
+  core utilities and later the compiler itself, is ported by building it
+  rather than rewriting it.
+
+POSIX also shapes the kernel early. The process model needs `fork`, `exec`
+and `wait`, every process needs a table of file descriptors that files, pipes
+and devices share, and files need owners and permission bits, which rules out
+FAT32 as the main file system. Programs written in Rust come later: Rust's
+standard library needs a target for Anvil OS in the Rust compiler, built on
+the same C library.
+
 ## Milestones
 
 The roadmap above, broken into steps that each end with something that boots
@@ -122,11 +147,14 @@ and can be shown:
    round-robin scheduler driven by the timer; see
    [Processes and Threads]({{< ref "/fundamentals/processes-and-threads" >}}).
 5. **Enter user mode.** Ring 3, system calls through `syscall` and `sysret`,
-   an ELF loader, and processes with their own address spaces.
-6. **Files.** A virtual file system, an initial RAM disk loaded by Limine, then
-   a disk driver, such as virtio-blk in QEMU, and a real file system, such as
-   FAT32 or ext2.
-7. **A shell.** A small system library for user programs, a shell and the
+   an ELF loader, and processes with their own address spaces, created with
+   `fork` and `exec` and collected with `wait`.
+6. **Files.** A virtual file system with file descriptors, pipes and
+   permissions, an initial RAM disk loaded by Limine, then a disk driver, such
+   as virtio-blk in QEMU, and ext2, which has the owners and permissions POSIX
+   expects.
+7. **A POSIX user space.** mlibc ported to Anvil's system calls, a compiler
+   target for Anvil OS, and the first ported programs: the dash shell and the
    basic commands to list, read and copy files.
 
 Beyond that, the order is open: multiple processors, networking with virtio-net
@@ -144,14 +172,36 @@ system, and USB, which is the hardest driver of all.
 | Intel and AMD architecture manuals | The final word on how an x86-64 processor behaves |
 | Redox OS and SerenityOS | Two from-scratch operating systems that became usable |
 
+## Decisions
+
+The questions this brainstorm raised, and how they were settled:
+
+- **Anvil OS is POSIX-compatible.** Existing programs are ported through a C
+  library rather than rewritten.
+- **The code is published under the author's own attribution licence.** Code
+  ported from other projects, such as the C library and the programs in user
+  space, keeps its own licence.
+- **The working name is Anvil OS.** The first name, Craft OS, was dropped
+  because CraftOS is already the operating system in ComputerCraft, the
+  Minecraft mod.
+
 ## Open questions
 
-- Is the kernel monolithic, with drivers inside it as in Linux, or a
-  microkernel, with drivers as user processes as in Redox? A monolithic kernel
-  is quicker to get working; a microkernel teaches more about isolation.
-- Does Craft OS aim for POSIX compatibility, so existing programs can be
-  ported, or design its own system calls?
-- Which open-source licence? Rust projects usually dual-license under MIT and
-  Apache 2.0; a GPL licence would keep derived systems open.
-- Is the name settled? CraftOS is already the name of the operating system in
-  ComputerCraft, the Minecraft mod.
+- Is the kernel monolithic, a microkernel, or a hybrid?
+  - **Monolithic**, as in Linux: the scheduler, memory manager, file systems
+    and drivers all run in kernel mode and call each other directly. The
+    quickest to get working, but a bug in any driver can bring the whole
+    system down.
+  - **Microkernel**, as in Redox, MINIX 3 and seL4: the kernel keeps only
+    address spaces, threads and messages, and drivers and file systems run as
+    user processes. A crashed driver can be restarted, but every request
+    becomes messages between processes, which is slower and harder to get
+    right.
+  - **Hybrid**, as in Windows and macOS: a kernel designed in layers like a
+    microkernel, with most services moved back into kernel mode for speed.
+    Windows NT's executive, its drivers and, since NT 4.0, even its window
+    and graphics code run in kernel mode, while some drivers can run in user
+    mode through the User-Mode Driver Framework.
+
+  A POSIX system can be built on any of the three: Linux is monolithic, MINIX 3
+  is a microkernel, and macOS is a hybrid.
