@@ -27,7 +27,7 @@ theme = 'nuno'
   description = 'Study notes, brainstorms and project tracking by Artur Rios, written in the open.'
   tagline = 'Study notes, brainstorms and projects.'
   masthead = 'Study<span class="accent">,</span><br>think<span class="accent">,</span><br>build.'
-  mainSections = ['fundamentals', 'front-end', 'concepts', 'security', 'git', 'brainstorms', 'projects']
+  mainSections = ['fundamentals', 'front-end', 'dotnet', 'concepts', 'security', 'git', 'brainstorms', 'projects']
 
   [params.author]
     name = 'Artur Rios'
@@ -85,6 +85,14 @@ theme = 'nuno'
     weight = 19
     [menu.main.params]
       blurb = 'My config, everyday commands, submodules and tags'
+  [[menu.main]]
+    identifier = 'dotnet'
+    parent = 'study-notes'
+    name = '.NET'
+    pageRef = '/dotnet'
+    weight = 16
+    [menu.main.params]
+      blurb = 'How C# and .NET work, data access, testing and libraries'
   [[menu.main]]
     identifier = 'brainstorms'
     name = 'Brainstorms'

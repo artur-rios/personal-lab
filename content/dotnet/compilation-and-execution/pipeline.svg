@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="white-space: pre" viewBox="0 0 680 320" role="img" aria-labelledby="pipeline-title">
+  <title id="pipeline-title">From C# source to machine code. Roslyn, run by dotnet build, compiles Program.cs into an assembly, Hello.dll: a PE file with a CLI header that holds CIL, metadata and a manifest. The CIL then reaches machine code in one of three ways. By default the JIT compiles it at run time, method by method on first call, moving hot methods from Tier0 to Tier1 with on-stack replacement and dynamic profile-guided optimisation. ReadyToRun adds precompiled native code at publish time, keeps the IL, and lets the JIT replace hot methods. Native AOT compiles everything at publish time with the ILC compiler, so there is no JIT and no IL at run time. In every case the native code runs with runtime services: garbage collection, type loading, exception handling and interop.</title>
+  <defs>
+    <marker id="pipeline-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="pipeline-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="0" y="20" width="130" height="60" rx="8"/>
+  <text class="strong" x="65" y="46" text-anchor="middle">C# source</text>
+  <text class="mono" x="65" y="66" text-anchor="middle">Program.cs</text>
+
+  <rect class="box-accent" x="170" y="20" width="150" height="60" rx="8"/>
+  <text class="strong" x="245" y="46" text-anchor="middle">Roslyn</text>
+  <text class="sm" x="245" y="66" text-anchor="middle">run by dotnet build</text>
+
+  <rect class="box" x="360" y="10" width="320" height="80" rx="8"/>
+  <text class="strong" x="520" y="34" text-anchor="middle">Assembly: Hello.dll</text>
+  <text class="sm" x="520" y="54" text-anchor="middle">a PE file with a CLI header</text>
+  <text class="sm" x="520" y="74" text-anchor="middle">CIL + metadata + manifest</text>
+
+  <line class="wire" x1="130" y1="50" x2="168" y2="50" marker-end="url(#pipeline-arrow)"/>
+  <line class="wire" x1="320" y1="50" x2="358" y2="50" marker-end="url(#pipeline-arrow)"/>
+
+  <path class="wire-accent" d="M520 90 V115 H105 V138" marker-end="url(#pipeline-arrow-accent)"/>
+  <path class="wire" d="M520 115 H340 V138" marker-end="url(#pipeline-arrow)"/>
+  <path class="wire" d="M520 115 H575 V138" marker-end="url(#pipeline-arrow)"/>
+
+  <rect class="box-accent" x="0" y="140" width="210" height="84" rx="8"/>
+  <text class="strong" x="105" y="164" text-anchor="middle">JIT at run time</text>
+  <text class="sm" x="105" y="184" text-anchor="middle">method by method, on first call</text>
+  <text class="sm" x="105" y="204" text-anchor="middle">Tier0, Tier1, OSR, PGO</text>
+
+  <rect class="box" x="235" y="140" width="210" height="84" rx="8"/>
+  <text class="strong" x="340" y="164" text-anchor="middle">ReadyToRun</text>
+  <text class="sm" x="340" y="184" text-anchor="middle">native code added at publish</text>
+  <text class="sm" x="340" y="204" text-anchor="middle">IL kept; hot code re-JITted</text>
+
+  <rect class="box" x="470" y="140" width="210" height="84" rx="8"/>
+  <text class="strong" x="575" y="164" text-anchor="middle">Native AOT</text>
+  <text class="sm" x="575" y="184" text-anchor="middle">everything compiled at publish</text>
+  <text class="sm" x="575" y="204" text-anchor="middle">no JIT and no IL at run time</text>
+
+  <line class="wire" x1="105" y1="224" x2="105" y2="256" marker-end="url(#pipeline-arrow)"/>
+  <line class="wire" x1="340" y1="224" x2="340" y2="256" marker-end="url(#pipeline-arrow)"/>
+  <line class="wire" x1="575" y1="224" x2="575" y2="256" marker-end="url(#pipeline-arrow)"/>
+
+  <rect class="solid" x="0" y="258" width="680" height="58" rx="8"/>
+  <text class="strong on-solid" x="340" y="282" text-anchor="middle">Native machine code for this CPU</text>
+  <text class="sm on-solid" x="340" y="302" text-anchor="middle">run with runtime services: GC, type loading, exceptions, interop</text>
+</svg>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="white-space: pre" viewBox="0 0 680 300" role="img" aria-labelledby="pipeline-title">
+  <title id="pipeline-title">How Coverlet measures coverage. The build produces Shop.dll and its Shop.pdb. Before the tests run, Coverlet uses the PDB to find the sequence points and rewrites the assembly's IL, inserting code that records a hit for each one. The tests then run against the instrumented assembly, and every sequence point that executes records a hit. After the run, Coverlet reads the hits and restores the original assembly, then writes a report such as coverage.cobertura.xml, or json, lcov or opencover. ReportGenerator turns that file into HTML pages, a text or Markdown summary and badges.</title>
+  <defs>
+    <marker id="pipeline-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="pipeline-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="0" y="10" width="200" height="88" rx="8"/>
+  <text class="strong" x="100" y="38" text-anchor="middle">Build</text>
+  <text class="mono" x="100" y="60" text-anchor="middle">Shop.dll + Shop.pdb</text>
+  <text class="sm" x="100" y="80" text-anchor="middle">IL, plus where each line is</text>
+
+  <rect class="box-accent" x="240" y="10" width="200" height="88" rx="8"/>
+  <text class="strong" x="340" y="38" text-anchor="middle">Instrument</text>
+  <text class="sm" x="340" y="60" text-anchor="middle">Coverlet rewrites the IL:</text>
+  <text class="sm" x="340" y="78" text-anchor="middle">a hit recorder per sequence point</text>
+
+  <rect class="box-accent" x="480" y="10" width="200" height="88" rx="8"/>
+  <text class="strong" x="580" y="38" text-anchor="middle">Run the tests</text>
+  <text class="sm" x="580" y="60" text-anchor="middle">every point that executes</text>
+  <text class="sm" x="580" y="78" text-anchor="middle">records a hit</text>
+
+  <line class="wire" x1="200" y1="54" x2="238" y2="54" marker-end="url(#pipeline-arrow)"/>
+  <line class="wire" x1="440" y1="54" x2="478" y2="54" marker-end="url(#pipeline-arrow)"/>
+  <path class="wire-accent" d="M580 98 V134 H100 V164" marker-end="url(#pipeline-arrow-accent)"/>
+
+  <rect class="box" x="0" y="166" width="200" height="88" rx="8"/>
+  <text class="strong" x="100" y="194" text-anchor="middle">Collect</text>
+  <text class="sm" x="100" y="216" text-anchor="middle">hits read back, original</text>
+  <text class="sm" x="100" y="234" text-anchor="middle">assembly restored</text>
+
+  <rect class="box" x="240" y="166" width="200" height="88" rx="8"/>
+  <text class="strong" x="340" y="194" text-anchor="middle">Coverage file</text>
+  <text class="mono" x="340" y="216" text-anchor="middle">coverage.cobertura.xml</text>
+  <text class="sm" x="340" y="234" text-anchor="middle">or json, lcov, opencover</text>
+
+  <rect class="solid" x="480" y="166" width="200" height="88" rx="8"/>
+  <text class="strong on-solid" x="580" y="194" text-anchor="middle">ReportGenerator</text>
+  <text class="sm on-solid" x="580" y="216" text-anchor="middle">HTML, text and Markdown</text>
+  <text class="sm on-solid" x="580" y="234" text-anchor="middle">summaries, badges</text>
+
+  <line class="wire" x1="200" y1="210" x2="238" y2="210" marker-end="url(#pipeline-arrow)"/>
+  <line class="wire" x1="440" y1="210" x2="478" y2="210" marker-end="url(#pipeline-arrow)"/>
+
+  <text class="sm" x="340" y="286" text-anchor="middle">the first two rows happen inside dotnet test; ReportGenerator is a separate tool</text>
+</svg>

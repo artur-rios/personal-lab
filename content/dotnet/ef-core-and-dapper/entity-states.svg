@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="white-space: pre" viewBox="0 0 680 300" role="img" aria-labelledby="states-title">
+  <title id="states-title">EF Core entity states and the transitions between them. A detached object becomes Added when passed to Add, and Unchanged when it is returned by a tracking query. SaveChanges inserts an Added entity and makes it Unchanged. Changing a property of an Unchanged entity makes it Modified, and SaveChanges updates the row and makes it Unchanged again. Remove marks an Unchanged entity as Deleted, and SaveChanges deletes the row and detaches the entity.</title>
+  <defs>
+    <marker id="states-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="states-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <rect class="zone" x="10" y="128" width="130" height="44" rx="8"/>
+  <text class="strong" x="75" y="155" text-anchor="middle">Detached</text>
+
+  <rect class="box" x="200" y="20" width="130" height="44" rx="8"/>
+  <text class="strong" x="265" y="47" text-anchor="middle">Added</text>
+
+  <rect class="solid" x="275" y="128" width="130" height="44" rx="8"/>
+  <text class="strong on-solid" x="340" y="155" text-anchor="middle">Unchanged</text>
+
+  <rect class="box-accent" x="540" y="20" width="130" height="44" rx="8"/>
+  <text class="strong" x="605" y="47" text-anchor="middle">Modified</text>
+
+  <rect class="box-accent" x="540" y="236" width="130" height="44" rx="8"/>
+  <text class="strong" x="605" y="263" text-anchor="middle">Deleted</text>
+
+  <path class="wire" d="M75 128 V42 H198" marker-end="url(#states-arrow)"/>
+  <text class="sm mono" x="84" y="34">Add()</text>
+
+  <line class="wire" x1="140" y1="150" x2="273" y2="150" marker-end="url(#states-arrow)"/>
+  <text class="sm" x="206" y="142" text-anchor="middle">tracking query</text>
+
+  <path class="wire-accent" d="M300 64 V126" marker-end="url(#states-arrow-accent)"/>
+  <text class="sm mono accent" x="294" y="100" text-anchor="end">SaveChanges</text>
+
+  <path class="wire" d="M405 140 H600 V66" marker-end="url(#states-arrow)"/>
+  <text class="sm" x="500" y="132" text-anchor="middle">property changed</text>
+
+  <path class="wire-accent" d="M540 42 H380 V126" marker-end="url(#states-arrow-accent)"/>
+  <text class="sm mono accent" x="460" y="34" text-anchor="middle">SaveChanges</text>
+
+  <path class="wire" d="M405 162 H610 V234" marker-end="url(#states-arrow)"/>
+  <text class="sm mono" x="500" y="180" text-anchor="middle">Remove()</text>
+
+  <path class="wire-accent" d="M540 258 H75 V174" marker-end="url(#states-arrow-accent)"/>
+  <text class="sm mono accent" x="300" y="250" text-anchor="middle">SaveChanges</text>
+</svg>
