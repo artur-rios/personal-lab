@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 250" role="img" aria-labelledby="jm-title">
+  <title id="jm-title">Jaro and Jaro–Winkler for MARTHA and MARHTA. The matching window is 2, so a letter may match the same letter up to two positions away. All six letters match. M, A, R and the final A line up, but T and H are matched across each other, so the two lines cross: two matched letters out of order, which is one transposition. Jaro similarity is (6/6 + 6/6 + 5/6) / 3, about 0.944. The strings share the prefix MAR, three letters, so Jaro–Winkler is 0.944 + 3 × 0.1 × (1 − 0.944), about 0.961.</title>
+
+  <rect class="zone" x="52" y="24" width="180" height="182" rx="6"/>
+  <text class="sm" x="142" y="226" text-anchor="middle">common prefix, ℓ = 3</text>
+
+  <text class="sm" x="20" y="65" text-anchor="middle">s₁</text>
+  <rect class="box" x="60" y="40" width="44" height="40" rx="4"/>
+  <text class="mono strong" x="82" y="65" text-anchor="middle">M</text>
+  <rect class="box" x="120" y="40" width="44" height="40" rx="4"/>
+  <text class="mono strong" x="142" y="65" text-anchor="middle">A</text>
+  <rect class="box" x="180" y="40" width="44" height="40" rx="4"/>
+  <text class="mono strong" x="202" y="65" text-anchor="middle">R</text>
+  <rect class="box-accent" x="240" y="40" width="44" height="40" rx="4"/>
+  <text class="mono strong accent" x="262" y="65" text-anchor="middle">T</text>
+  <rect class="box-accent" x="300" y="40" width="44" height="40" rx="4"/>
+  <text class="mono strong accent" x="322" y="65" text-anchor="middle">H</text>
+  <rect class="box" x="360" y="40" width="44" height="40" rx="4"/>
+  <text class="mono strong" x="382" y="65" text-anchor="middle">A</text>
+
+  <line class="wire" x1="82" y1="80" x2="82" y2="150"/>
+  <line class="wire" x1="142" y1="80" x2="142" y2="150"/>
+  <line class="wire" x1="202" y1="80" x2="202" y2="150"/>
+  <line class="wire-accent" x1="262" y1="80" x2="322" y2="150"/>
+  <line class="wire-accent" x1="322" y1="80" x2="262" y2="150"/>
+  <line class="wire" x1="382" y1="80" x2="382" y2="150"/>
+
+  <text class="sm" x="20" y="175" text-anchor="middle">s₂</text>
+  <rect class="box" x="60" y="150" width="44" height="40" rx="4"/>
+  <text class="mono strong" x="82" y="175" text-anchor="middle">M</text>
+  <rect class="box" x="120" y="150" width="44" height="40" rx="4"/>
+  <text class="mono strong" x="142" y="175" text-anchor="middle">A</text>
+  <rect class="box" x="180" y="150" width="44" height="40" rx="4"/>
+  <text class="mono strong" x="202" y="175" text-anchor="middle">R</text>
+  <rect class="box-accent" x="240" y="150" width="44" height="40" rx="4"/>
+  <text class="mono strong accent" x="262" y="175" text-anchor="middle">H</text>
+  <rect class="box-accent" x="300" y="150" width="44" height="40" rx="4"/>
+  <text class="mono strong accent" x="322" y="175" text-anchor="middle">T</text>
+  <rect class="box" x="360" y="150" width="44" height="40" rx="4"/>
+  <text class="mono strong" x="382" y="175" text-anchor="middle">A</text>
+
+  <text class="strong" x="440" y="50">Jaro</text>
+  <text class="sm" x="440" y="72">window = ⌊6 / 2⌋ − 1 = 2</text>
+  <text class="sm" x="440" y="92">matches m = 6</text>
+  <text class="sm accent" x="440" y="112">2 out of order → t = 1</text>
+  <text class="mono" x="440" y="134">(6/6 + 6/6 + 5/6) / 3</text>
+  <text class="mono strong" x="440" y="154">≈ 0.944</text>
+  <text class="strong" x="440" y="186">Jaro–Winkler</text>
+  <text class="mono" x="440" y="208">0.944 + 3 × 0.1 × 0.056</text>
+  <text class="mono strong accent" x="440" y="228">≈ 0.961</text>
+</svg>
