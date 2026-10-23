@@ -1,9 +1,10 @@
 {{- /* Overrides the nuno theme's nav to add one level of dropdown: a main menu
        entry with children (parent = '<identifier>' in hugo.toml) renders as a
        button that opens a panel listing them, each with its params.blurb.
-       Everything else is the theme's nav, unchanged. On mobile the dropdown is
-       hidden like the theme's other links, and footer.html lists the children
-       instead. */ -}}
+       On mobile the links and the dropdown are hidden like the theme's other
+       links, and a hamburger button opens a drawer below the nav that lists
+       every entry instead, children grouped under their parent's name.
+       Everything else is the theme's nav, unchanged. */ -}}
 {{- $brand := .Site.Params.brand | default (replaceRE "^https?://" "" (trim .Site.BaseURL "/")) -}}
 <nav class="nav">
   <a class="nav__brand" href="{{ "" | relURL }}">{{ $brand }}</a>
@@ -64,6 +65,30 @@
   <button class="nav__icon nav__mobile-only" type="button" data-nuno-search-open aria-label="{{ i18n "searchPosts" }}">
     <span aria-hidden="true">⌕</span>
   </button>
+
+  {{- /* Mobile: the hamburger and the drawer it opens. */}}
+  <button class="nav__icon nav__mobile-only nav__burger" type="button" data-nav-drawer-toggle
+          aria-expanded="false" aria-controls="nav-drawer" aria-label="Menu">
+    <span class="nav__burger-bars" aria-hidden="true"></span>
+  </button>
+  <div class="nav__drawer" id="nav-drawer" data-nav-drawer>
+    {{- range .Site.Menus.main }}
+      {{- if .HasChildren }}
+    <div class="nav__drawer-group">
+      <span class="nav__drawer-heading">{{ .Name }}</span>
+      <div class="nav__drawer-children">
+        {{- range .Children }}
+        <a class="nav__drawer-link" href="{{ .URL | relURL }}"
+           {{- if partial "nav-current.html" (dict "page" $ "entry" .) }} aria-current="page"{{ end }}>{{ .Name }}</a>
+        {{- end }}
+      </div>
+    </div>
+      {{- else }}
+    <a class="nav__drawer-link" href="{{ .URL | relURL }}"
+       {{- if partial "nav-current.html" (dict "page" $ "entry" .) }} aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{- end }}
+    {{- end }}
+  </div>
 </nav>
 
 <style>
@@ -121,6 +146,74 @@
   .nav__item-name { color: var(--ink); font-weight: 800; }
   .nav__item:hover .nav__item-name, .nav__item[aria-current='page'] .nav__item-name { color: var(--accent); }
   .nav__item-blurb { color: var(--muted); font-size: 13px; font-weight: 400; line-height: 1.4; }
+
+  /* Hamburger: three bars drawn with the span and its pseudo-elements, which
+     fold into a cross while the drawer is open. Last in the mobile row. */
+  .nav__burger { order: 4; }
+  .nav__burger-bars,
+  .nav__burger-bars::before,
+  .nav__burger-bars::after {
+    display: block;
+    width: 14px;
+    height: 2px;
+    border-radius: 1px;
+    background: currentColor;
+    transition: transform 0.2s, background-color 0.2s;
+  }
+  .nav__burger-bars { position: relative; }
+  .nav__burger-bars::before,
+  .nav__burger-bars::after { content: ''; position: absolute; left: 0; }
+  .nav__burger-bars::before { top: -5px; }
+  .nav__burger-bars::after { top: 5px; }
+  .nav.is-drawer-open .nav__burger-bars { background: transparent; }
+  .nav.is-drawer-open .nav__burger-bars::before { transform: translateY(5px) rotate(45deg); }
+  .nav.is-drawer-open .nav__burger-bars::after { transform: translateY(-5px) rotate(-45deg); }
+
+  /* The drawer hangs from the sticky nav across its full, gutter-bleeding
+     width, and scrolls on its own if it is taller than the screen. */
+  .nav__drawer {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: calc(100vh - var(--nav-h));
+    overflow-y: auto;
+    padding: 8px var(--pad-x) 24px;
+    background: var(--bg);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
+  }
+  @media (max-width: 760px) {
+    .nav.is-drawer-open .nav__drawer { display: block; }
+  }
+  .nav__drawer-link {
+    display: block;
+    padding: 12px 0;
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--ink);
+  }
+  .nav__drawer > .nav__drawer-link + .nav__drawer-link,
+  .nav__drawer-group + .nav__drawer-link { border-top: 1px solid var(--line); }
+  .nav__drawer-link:hover,
+  .nav__drawer-link[aria-current='page'] { color: var(--accent); }
+  .nav__drawer-group { padding: 12px 0 8px; }
+  .nav__drawer-heading {
+    display: block;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .nav__drawer-children {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+  }
+  .nav__drawer-children .nav__drawer-link { padding: 8px 0; font-size: 15px; font-weight: 700; }
 </style>
 
 <script>
@@ -139,5 +232,22 @@
         if (e.key === 'Escape' && menu.classList.contains('is-open')) { set(false); button.focus(); }
       });
     });
+
+    var nav = document.querySelector('.nav');
+    var burger = nav && nav.querySelector('[data-nav-drawer-toggle]');
+    var drawer = nav && nav.querySelector('[data-nav-drawer]');
+    if (!burger || !drawer) return;
+    function setDrawer(open) {
+      nav.classList.toggle('is-drawer-open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    burger.addEventListener('click', function () { setDrawer(!nav.classList.contains('is-drawer-open')); });
+    drawer.addEventListener('click', function (e) { if (e.target.closest('a')) setDrawer(false); });
+    document.addEventListener('click', function (e) { if (!nav.contains(e.target)) setDrawer(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('is-drawer-open')) { setDrawer(false); burger.focus(); }
+    });
+    // Back to desktop width: the drawer is hidden by CSS, so drop the state too.
+    window.matchMedia('(min-width: 761px)').addEventListener('change', function (e) { if (e.matches) setDrawer(false); });
   })();
 </script>

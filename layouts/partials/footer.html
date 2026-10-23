@@ -1,5 +1,5 @@
-{{- /* Overrides the nuno theme's footer so the mobile link list flattens the
-       nav's dropdown: an entry with children is replaced by its children.
+{{- /* Overrides the nuno theme's footer so the mobile link list leaves out the
+       nav links: nav.html's hamburger drawer already lists them on mobile.
        Everything else is the theme's footer, unchanged. */ -}}
 {{- $s := .Site -}}
 {{- $rss := "" -}}
@@ -22,14 +22,8 @@
     {{- with $rss }}<a href="{{ . }}" target="_blank" rel="noopener noreferrer">RSS</a>{{ end }}
   </span>
 
-  {{- /* Mobile puts the nav links here instead */}}
   <span class="foot__mobile">
     <span class="foot__links">
-      {{- range $s.Menus.main }}
-        {{- if .HasChildren }}
-          {{- range .Children }}<a href="{{ .URL | relURL }}">{{ .Name }}</a>{{ end }}
-        {{- else }}<a href="{{ .URL | relURL }}">{{ .Name }}</a>{{ end }}
-      {{- end }}
       {{- with $rss }}<a href="{{ . }}">RSS</a>{{ end }}
     </span>
   </span>
