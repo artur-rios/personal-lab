@@ -1,10 +1,12 @@
 # Artur Rios Lab
 
-[![Deploy](https://github.com/artur-rios/personal-lab/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/artur-rios/personal-lab/actions/workflows/deploy.yml)
-
 My lab notebook, kept in the open: study notes, brainstorms, how I build
-software and how I host it. It is a [Hugo](https://gohugo.io) site published to
-GitHub Pages at **<https://artur-rios.github.io/personal-lab/>**.
+software and how I host it. It is a [Hugo](https://gohugo.io) site published at
+**<https://lab.artur-rios.tech/>**.
+
+> **Where this lives:** the repository is at
+> <https://git.techcraftsmen.net/artur-rios/personal-lab>. The GitHub
+> repository is a read-only mirror of it.
 
 ## What lives here
 
@@ -35,23 +37,29 @@ content/          site content, one folder per section
 data/             site data (the lines the home page masthead cycles through)
 layouts/          the diagram shortcode, and overrides of the theme's nav and footer
 archetypes/       front matter templates for new pages
-themes/nuno/      the nuno theme, as a git submodule
+themes/nuno/      the nuno theme, fetched by the Dockerfile (git-ignored; see below)
 hugo.toml         site configuration
-.github/          the Deploy and Branch Policy workflows
+Dockerfile        builds the site and serves it (what is deployed)
+ci/               the build check's script
+yggdrasil.yml     what Jenkins checks
 ```
 
 ## Running it locally
 
 Requires Hugo **extended** 0.158 or later.
 
+The nuno theme is not a submodule: the image fetches it, pinned by commit and
+checksum in the [`Dockerfile`](Dockerfile). To run Hugo on your machine, clone
+it into `themes/nuno` at that commit (the folder is git-ignored). Without the
+theme Hugo builds an empty site.
+
 ```sh
-git clone --recurse-submodules https://github.com/artur-rios/personal-lab.git
+git clone https://git.techcraftsmen.net/artur-rios/personal-lab.git
 cd personal-lab
+git clone https://github.com/artur-rios/hugo-theme-nuno.git themes/nuno
+git -C themes/nuno checkout 8d00966c1d46e468281969431a9463c1fff14af9
 hugo server
 ```
-
-If you cloned without `--recurse-submodules`, fetch the theme with
-`git submodule update --init --recursive`. Without it Hugo builds an empty site.
 
 ## Writing a new page
 
@@ -85,5 +93,6 @@ series its own description. The SOLID articles under
 
 Work lands on `develop` through `feature/` and `fix/` branches. A
 `release/x.y.z` branch cut from `develop` and merged into `main` publishes the
-site and tags the release `vx.y.z`. [CONTRIBUTING.md](CONTRIBUTING.md) has the
-full branching model and what the workflows check.
+site, and the owner tags the release `vx.y.z` on `main`.
+[CONTRIBUTING.md](CONTRIBUTING.md) has the full branching model and what
+Jenkins checks.
