@@ -1,4 +1,4 @@
-baseURL = 'https://artur-rios.github.io/personal-lab/'
+baseURL = 'https://lab.artur-rios.tech/'
 locale = 'en-us'
 title = 'Artur Rios Lab'
 theme = 'nuno'
