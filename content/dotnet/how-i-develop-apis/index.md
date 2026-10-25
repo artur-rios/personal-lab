@@ -16,7 +16,7 @@ where a thing lives, a new feature is a list of files to add rather than a
 design decision, and a test that fails points at one small piece of code.
 
 This page describes that shape, using
-[Heimdall](https://artur-rios.github.io/heimdall-api/) as the example
+[Heimdall](https://docs.artur-rios.tech/heimdall-api/) as the example
 throughout. Heimdall is my identity management API: people, applications,
 logins, two-factor authentication and permissions, for several client systems
 at once, each in its own scope. It is the largest API I have, so every pattern
