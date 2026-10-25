@@ -43,7 +43,7 @@ makes Jenkins build the site's image from that commit and deploy it to
 The owner tags the releases; nothing tags them automatically. To release:
 
 1. Cut `release/x.y.z` from `develop` and open the pull request into `main`.
-2. Merge it (merge commit) once the checks pass.
+2. The owner merges it (merge commit) once the checks pass: on this repository only the owner can merge into `main`.
 3. The same day, the owner pushes an annotated `vx.y.z` tag on the merge commit
    on `main`:
 
@@ -60,8 +60,7 @@ branch policy refuses a release branch whose version already has one, so
 ## Running it locally
 
 The theme is not part of the repository: the image fetches it, pinned by
-commit and checksum (`NUNO_COMMIT` and `NUNO_SHA256` in the
-[`Dockerfile`](Dockerfile)). To preview with Hugo, put the same commit in
+commit (`NUNO_COMMIT` in the [`Dockerfile`](Dockerfile)). To preview with Hugo, put the same commit in
 `themes/nuno` (git ignores it):
 
 ```sh
@@ -72,7 +71,7 @@ git -C themes/nuno checkout 8d00966c1d46e468281969431a9463c1fff14af9
 hugo server
 ```
 
-To bump the theme, set `NUNO_COMMIT` and `NUNO_SHA256` in the `Dockerfile`
-(its comment says how) and check out the new commit in `themes/nuno`.
+To bump the theme, set `NUNO_COMMIT` in the `Dockerfile` and check out the new
+commit in `themes/nuno`.
 
 To build what is deployed: `docker build -t personal-lab-site .`

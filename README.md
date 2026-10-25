@@ -48,8 +48,8 @@ yggdrasil.yml     what Jenkins checks
 
 Requires Hugo **extended** 0.158 or later.
 
-The nuno theme is not a submodule: the image fetches it, pinned by commit and
-checksum in the [`Dockerfile`](Dockerfile). To run Hugo on your machine, clone
+The nuno theme is not a submodule: the image fetches it, pinned by commit in
+the [`Dockerfile`](Dockerfile). To run Hugo on your machine, clone
 it into `themes/nuno` at that commit (the folder is git-ignored). Without the
 theme Hugo builds an empty site.
 
