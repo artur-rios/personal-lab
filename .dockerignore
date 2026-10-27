@@ -1,0 +1,8 @@
+# Not part of the site's source: the history, the old build output, and the theme the Dockerfile fetches itself.
+.git
+.github
+.claude
+.hugo_build.lock
+public
+resources/_gen
+themes/nuno
