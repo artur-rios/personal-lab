@@ -1,4 +1,8 @@
-# Hugo build output; the Deploy workflow builds the site itself.
+# Hugo build output; the image builds the site itself.
 /public/
 /resources/_gen/
 .hugo_build.lock
+
+# The nuno theme: the Dockerfile fetches it for the image (its NUNO_COMMIT); for hugo on your machine, clone it here
+# at that commit (README.md, "Running it locally").
+/themes/nuno/

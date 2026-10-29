@@ -1,0 +1,15 @@
+# What Jenkins checks for this repository, read by the pipeline of the yggdrasil installation that runs it (yggdrasil's
+# docs/catalog.md, "Repository pipeline file", has every field). It is data, never code: images (pinned by version and
+# digest, which Renovate keeps up to date: the owner merges those changes), commands, globs and the names of Jenkins
+# credentials. The commands are scripts under ci/ that run from the repository's root, so you can run them on your own
+# machine too. The site deploys from main as the application personal-lab-site, and the owner tags its releases.
+#
+# Check it where the catalog is, in the yggdrasil checkout:
+#   python3 scripts/pipeline_config.py describe personal-lab-site <this repository's checkout>
+#   python3 scripts/pipeline_config.py describe personal-lab <this repository's checkout>
+
+checks:
+  build:                                 # the site's image can still be built (ci/build.sh), as the Pages build ran on every pull request
+    image: docker:29.7.2-cli@sha256:3f4743208d2338c934d7b8bcfbe1bb54c0b2355c510ad5e0f31c0c4a54bd704e
+    run: ci/build.sh
+    docker: true                         # the CI engine's socket: the image is built by it

@@ -188,7 +188,7 @@ milliseconds.
 ### Customers and staff in Heimdall
 
 Netbank owns no passwords. Everyone signs in through
-[Heimdall](https://artur-rios.github.io/heimdall-api/), the identity API that
+[Heimdall](https://docs.artur-rios.tech/heimdall-api/), the identity API that
 Fortuna already uses, and Netbank follows the same pattern.
 
 In Heimdall, a scope's permissions are added to the token of every identity in

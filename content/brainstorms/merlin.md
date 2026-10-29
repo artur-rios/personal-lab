@@ -31,7 +31,7 @@ reviews are stored, and how the two platforms see the same library.
 The last question decides most of the stack. Android and the web are two
 places to open the same library, so a book marked as finished on the phone
 should be finished in the browser too. That needs an account, which
-[Heimdall](https://artur-rios.github.io/heimdall-api/) provides, and a server
+[Heimdall](https://docs.artur-rios.tech/heimdall-api/) provides, and a server
 that holds each user's library. The server also searches the book database on
 the app's behalf, for reasons covered under
 [the public database](#the-public-database).
