@@ -1,18 +1,8 @@
 # Artur Rios Lab
 
-> [!NOTE]
-> This is the real, open-source code of personal-lab. Its home is Forgejo, at
-> https://git.techcraftsmen.net/artur-rios/personal-lab; the copy on GitHub is a read-only mirror, for viewing only, and
-> its issues and pull requests are not followed. If you want to contribute, email me at
-> arturdev@duck.com.
-
 My lab notebook, kept in the open: study notes, brainstorms, how I build
 software and how I host it. It is a [Hugo](https://gohugo.io) site published at
 **<https://lab.artur-rios.tech/>**.
-
-> **Where this lives:** the repository is at
-> <https://git.techcraftsmen.net/artur-rios/personal-lab>. The GitHub
-> repository is a read-only mirror of it.
 
 ## What lives here
 
@@ -102,3 +92,8 @@ Work lands on `develop` through `feature/` and `fix/` branches. A
 site, and the owner tags the release `vx.y.z` on `main`.
 [CONTRIBUTING.md](CONTRIBUTING.md) has the full branching model and what
 Jenkins checks.
+
+## Contributing
+
+The GitHub repository is a read-only mirror for the real, open-source code of personal-lab. Its home is Forgejo, at
+https://git.techcraftsmen.net/artur-rios/personal-lab. If you want to contribute, e-mail me at arturdev@duck.com.
