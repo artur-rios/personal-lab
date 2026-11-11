@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" role="img" aria-labelledby="cm-title">
+  <title id="cm-title">How Cryptomator works. On your device, your apps read and write plain files in the virtual drive. Cryptomator sits between the virtual drive and the vault folder, encrypting and decrypting each file with your key. The vault folder holds only encrypted .c9r files, and your sync app uploads that folder to the cloud provider, which sees only ciphertext. Taking a folder out means copying it from the virtual drive to a normal folder on your device.</title>
+  <defs>
+    <marker id="cm-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="cm-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head-accent" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Your device -->
+  <rect class="zone" x="10" y="40" width="660" height="240" rx="8"/>
+  <text class="sm" x="26" y="62">Your device</text>
+
+  <!-- Connectors -->
+  <path class="wire" d="M200 110 H250" marker-start="url(#cm-arrow)" marker-end="url(#cm-arrow)"/>
+  <path class="wire" d="M430 110 H480" marker-start="url(#cm-arrow)" marker-end="url(#cm-arrow)"/>
+  <path class="wire" d="M570 142 V198" marker-start="url(#cm-arrow)" marker-end="url(#cm-arrow)"/>
+  <path class="wire" d="M480 230 H430" marker-start="url(#cm-arrow)" marker-end="url(#cm-arrow)"/>
+  <path class="wire" d="M340 262 V328" marker-start="url(#cm-arrow)" marker-end="url(#cm-arrow)"/>
+  <path class="wire-accent" d="M290 142 V170 H110 V198" stroke-dasharray="6 5" marker-end="url(#cm-arrow-accent)"/>
+
+  <!-- Row 1 -->
+  <rect class="box" x="20" y="78" width="180" height="64" rx="6"/>
+  <text class="strong" x="110" y="104" text-anchor="middle">Your apps</text>
+  <text class="sm" x="110" y="124" text-anchor="middle">Word, Explorer, Finder</text>
+
+  <rect class="box" x="250" y="78" width="180" height="64" rx="6"/>
+  <text class="strong" x="340" y="104" text-anchor="middle">Virtual drive (V:)</text>
+  <text class="sm" x="340" y="124" text-anchor="middle">plain files, in memory</text>
+
+  <rect class="box-accent" x="480" y="78" width="180" height="64" rx="6"/>
+  <text class="strong" x="570" y="104" text-anchor="middle">Cryptomator</text>
+  <text class="sm" x="570" y="124" text-anchor="middle">encrypts with your key</text>
+
+  <!-- Row 2 -->
+  <rect class="box" x="20" y="198" width="180" height="64" rx="6"/>
+  <text class="strong" x="110" y="224" text-anchor="middle">Normal folder</text>
+  <text class="sm" x="110" y="244" text-anchor="middle">a folder taken out</text>
+
+  <rect class="box" x="250" y="198" width="180" height="64" rx="6"/>
+  <text class="strong" x="340" y="224" text-anchor="middle">Sync app</text>
+  <text class="sm" x="340" y="244" text-anchor="middle">uploads the vault folder</text>
+
+  <rect class="box" x="480" y="198" width="180" height="64" rx="6"/>
+  <text class="strong" x="570" y="224" text-anchor="middle">Vault folder</text>
+  <text class="sm" x="570" y="244" text-anchor="middle">encrypted .c9r files</text>
+
+  <!-- Outside the device -->
+  <rect class="box" x="250" y="328" width="180" height="64" rx="6"/>
+  <text class="strong" x="340" y="354" text-anchor="middle">Cloud provider</text>
+  <text class="sm" x="340" y="374" text-anchor="middle">sees only ciphertext</text>
+
+  <!-- Edge labels -->
+  <text class="sm" x="560" y="174" text-anchor="end">encrypt / decrypt</text>
+  <text class="sm accent" x="200" y="163" text-anchor="middle">copy out</text>
+  <text class="sm" x="350" y="306">syncs encrypted files</text>
+</svg>
