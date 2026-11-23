@@ -12,7 +12,7 @@ seriesOrder: 4
 seriesGroup: "The self-hosted platform"
 ---
 
-[Yggdrasil](https://git.techcraftsmen.net/artur-rios/yggdrasil) is the deploy
+[Yggdrasil](https://github.com/artur-rios/yggdrasil) is the deploy
 manager I built for my servers. It does three jobs: check every change before
 it can merge, take an application from its repository to a healthy container
 in the right environment, and go back to the previous version if the new one
