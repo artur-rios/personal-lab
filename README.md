@@ -50,7 +50,7 @@ it into `themes/nuno` at that commit (the folder is git-ignored). Without the
 theme Hugo builds an empty site.
 
 ```sh
-git clone https://git.techcraftsmen.net/artur-rios/personal-lab.git
+git clone https://github.com/artur-rios/personal-lab.git
 cd personal-lab
 git clone https://github.com/artur-rios/hugo-theme-nuno.git themes/nuno
 git -C themes/nuno checkout 8d00966c1d46e468281969431a9463c1fff14af9
@@ -95,5 +95,5 @@ Jenkins checks.
 
 ## Contributing
 
-The GitHub repository is a read-only mirror for the real, open-source code of personal-lab. Its home is Forgejo, at
-https://git.techcraftsmen.net/artur-rios/personal-lab. If you want to contribute, e-mail me at arturdev@duck.com.
+The GitHub repository, https://github.com/artur-rios/personal-lab, is a read-only mirror of the real, open-source code
+of personal-lab, whose home is my own Forgejo. If you want to contribute, e-mail me at arturdev@duck.com.

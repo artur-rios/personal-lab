@@ -1,7 +1,8 @@
 # Contributing
 
-This repository lives at <https://git.techcraftsmen.net/artur-rios/personal-lab>; the GitHub repository is a
-read-only mirror of it. Open pull requests on the git server.
+This repository lives on my own Forgejo; the GitHub repository,
+<https://github.com/artur-rios/personal-lab>, is a read-only mirror of it. Open
+pull requests on the git server.
 
 ## Branching model
 
@@ -64,7 +65,7 @@ commit (`NUNO_COMMIT` in the [`Dockerfile`](Dockerfile)). To preview with Hugo, 
 `themes/nuno` (git ignores it):
 
 ```sh
-git clone https://git.techcraftsmen.net/artur-rios/personal-lab.git
+git clone https://github.com/artur-rios/personal-lab.git
 cd personal-lab
 git clone https://github.com/artur-rios/hugo-theme-nuno.git themes/nuno
 git -C themes/nuno checkout 8d00966c1d46e468281969431a9463c1fff14af9
