@@ -108,7 +108,7 @@ installer for Ubuntu that takes the machine's role and asks before each step:
 # As the admin, on a fresh Ubuntu 24.04 or 26.04 server
 sudo apt update && sudo apt install -y git python3 python3-yaml
 sudo install -d -o "$USER" /opt/yggdrasil
-git clone -b main https://git.techcraftsmen.net/artur-rios/yggdrasil.git /opt/yggdrasil
+git clone -b main https://github.com/artur-rios/yggdrasil.git /opt/yggdrasil
 cd /opt/yggdrasil
 scripts/ygg.sh install --role apps      # or --role dev
 ```
